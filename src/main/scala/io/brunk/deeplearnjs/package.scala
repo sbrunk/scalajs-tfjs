@@ -1,5 +1,5 @@
 
-package io.brunk.scala.js
+package io.brunk
 
 package object deeplearnjs {
 
