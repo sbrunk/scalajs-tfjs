@@ -21,9 +21,12 @@
 
 package io.brunk.deeplearnjs.data
 
+import io.brunk.deeplearnjs.math.NDArray
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import scala.scalajs.js.typedarray.Uint32Array
 
   @js.native
   trait InputProvider extends js.Object {
@@ -50,7 +53,7 @@ import js.|
     def getCurrentExampleIndex(): Double              = js.native
     def getNextInput(inputId: Double): NDArray        = js.native
     def getEpoch(): Double                            = js.native
-    def getInputProviders(): js.Array[InputProvider]  = js.native
+    override def getInputProviders(): js.Array[InputProvider]  = js.native
     def getInputProvider(inputId: Double): InputProvider
   }
 

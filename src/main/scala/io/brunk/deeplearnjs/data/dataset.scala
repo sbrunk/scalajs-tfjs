@@ -21,9 +21,11 @@
 
 package io.brunk.deeplearnjs.data
 
+import io.brunk.deeplearnjs.math.NDArray
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 
   @js.native
   trait DataStats extends js.Object {

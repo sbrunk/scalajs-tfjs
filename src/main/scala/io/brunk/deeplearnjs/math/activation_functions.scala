@@ -34,27 +34,27 @@ trait ActivationFunction extends js.Object {
 @js.native
 @JSGlobal
 class TanHFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  override def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  override def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
 }
 
 @js.native
 @JSGlobal
 class ReLUFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  override def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  override def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
 }
 
 @js.native
 @JSGlobal
 class SigmoidFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  override def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  override def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
 }
 
 @js.native
 @JSGlobal
 class SquareFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  override def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  override def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
 }

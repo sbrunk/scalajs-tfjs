@@ -21,6 +21,9 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
+import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, Tensor, TensorArrayMap}
+import io.brunk.deeplearnjs.math.NDArrayMath
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -34,6 +37,6 @@ import js.|
     def backProp(math: NDArrayMath,
                  inferenceArrays: TensorArrayMap,
                  gradientArrays: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                      = js.native
+    override def dispose(): Unit                                      = js.native
   }
 

@@ -21,9 +21,12 @@
 
 package io.brunk.deeplearnjs.data
 
+import io.brunk.deeplearnjs.data.Checkpoint_loader.CheckpointManifest
+import io.brunk.deeplearnjs.math.NDArray
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 
   @js.native
   trait CheckpointVariable extends js.Object {

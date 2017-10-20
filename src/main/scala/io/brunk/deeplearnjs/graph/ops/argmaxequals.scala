@@ -21,6 +21,9 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
+import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, Tensor, TensorArrayMap}
+import io.brunk.deeplearnjs.math.NDArrayMath
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
