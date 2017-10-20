@@ -5,7 +5,7 @@
 lazy val `scala-js-deeplearnjs` =
   project
     .in(file("."))
-    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt)
+    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin)
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
