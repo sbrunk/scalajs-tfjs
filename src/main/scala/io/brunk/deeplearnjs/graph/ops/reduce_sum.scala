@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package reduce_sum {
-
-  @js.native
+@js.native
   @JSGlobal
   class ReduceSum protected () extends Operation {
     def this(x: Tensor, outTensor: Tensor) = this()
@@ -36,5 +33,3 @@ package reduce_sum {
                  inferenceArrays: TensorArrayMap,
                  gradientArrays: SummedTensorArrayMap): Unit = js.native
   }
-
-}

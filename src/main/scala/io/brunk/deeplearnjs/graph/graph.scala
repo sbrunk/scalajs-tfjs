@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package graph {
-
-  @js.native
+@js.native
   @JSGlobal
   class GraphLayers protected () extends js.Object {
     def this(g: Graph) = this()
@@ -452,5 +450,3 @@ package graph {
       js.Array[js.Array[Double]]
     ] | js.Array[js.Array[js.Array[js.Array[Double]]]]
   }
-
-}

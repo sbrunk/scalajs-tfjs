@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package gpgpu_math {
-
-  @js.native
+@js.native
   trait GPGPUProgram extends js.Object {
     var variableNames: js.Array[String] = js.native
     var outputShape: js.Array[Double]   = js.native
@@ -64,5 +61,3 @@ package gpgpu_math {
     def makeShaderKey(program: GPGPUProgram, inputs: js.Array[NDArray], output: NDArray): String =
       js.native
   }
-
-}

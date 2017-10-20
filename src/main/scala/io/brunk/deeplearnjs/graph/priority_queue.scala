@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package priority_queue {
-
-  @js.native
+@js.native
   @JSGlobal
   class PriorityQueue[T] protected () extends js.Object {
     def this(comparator: Comparator[T], indexObserver: IndexObserver[T] = ???) = this()
@@ -44,5 +41,3 @@ package priority_queue {
     type Comparator[T]    = js.Function2[T, T, Double]
     type IndexObserver[T] = js.Function2[T, Double, Unit]
   }
-
-}

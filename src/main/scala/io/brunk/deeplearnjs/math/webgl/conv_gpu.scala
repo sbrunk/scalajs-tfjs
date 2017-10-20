@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package conv_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class Conv2DProgram protected () extends GPGPUProgram {
     def this(convInfo: ConvInfo, hasBias: Boolean) = this()
@@ -36,5 +33,3 @@ package conv_gpu {
     var outputShape: js.Array[Double]   = js.native
     var userCode: String                = js.native
   }
-
-}

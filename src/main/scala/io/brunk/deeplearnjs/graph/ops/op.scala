@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package op {
-
-  @js.native
+@js.native
   @JSGlobal
   abstract class Operation extends js.Object {
     def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit
@@ -38,5 +35,3 @@ package op {
                                gradientArrays: SummedTensorArrayMap): Unit = js.native
     def dispose(): Unit                                                    = js.native
   }
-
-}

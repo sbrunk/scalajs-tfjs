@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package element_wise_activation {
-
-  @js.native
+@js.native
   @JSGlobal
   class ElementWiseActivation protected () extends Operation {
     def this(xTensor: Tensor, yTensor: Tensor, func: ActivationFunction) = this()
@@ -62,5 +59,3 @@ package element_wise_activation {
   class Square protected () extends ElementWiseActivation {
     def this(xTensor: Tensor, yTensor: Tensor) = this()
   }
-
-}

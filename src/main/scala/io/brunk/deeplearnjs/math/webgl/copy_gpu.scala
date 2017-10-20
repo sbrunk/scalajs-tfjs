@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package copy_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class Copy2DProgram protected () extends GPGPUProgram {
     def this(srcNumCols: Double, destNumCols: Double) = this()
@@ -41,5 +38,3 @@ package copy_gpu {
         destSize: js.Tuple2[Double, Double]
     ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
   }
-
-}

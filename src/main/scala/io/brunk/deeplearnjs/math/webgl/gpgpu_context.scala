@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package gpgpu_context {
-
-  @js.native
+@js.native
   @JSGlobal
   class GPGPUContext protected () extends js.Object {
     def this(gl: WebGLRenderingContext = ???) = this()
@@ -91,5 +89,3 @@ package gpgpu_context {
     def blockUntilAllProgramsCompleted(): Unit                             = js.native
     def runQuery(queryFn: js.Function0[Unit]): Promise[Double]             = js.native
   }
-
-}

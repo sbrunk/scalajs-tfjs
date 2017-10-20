@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package reshape {
-
-  @js.native
+@js.native
   @JSGlobal
   class Reshape[T1 <: NDArray, T2 <: NDArray] protected () extends Operation {
     def this(xTensor: Tensor, yTensor: Tensor) = this()
@@ -36,5 +33,3 @@ package reshape {
                  inferenceArrays: TensorArrayMap,
                  gradientArrays: SummedTensorArrayMap): Unit = js.native
   }
-
-}

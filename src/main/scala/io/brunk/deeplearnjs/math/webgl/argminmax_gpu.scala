@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package argminmax_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class ArgMinMaxProgram protected () extends GPGPUProgram {
     def this(aSize: Double, opType: String) = this()
@@ -42,5 +39,3 @@ package argminmax_gpu {
   object Argminmax_gpu extends js.Object {
     def getArgMinMaxSnippet(op: String, texName: String, size: Double): String = js.native
   }
-
-}

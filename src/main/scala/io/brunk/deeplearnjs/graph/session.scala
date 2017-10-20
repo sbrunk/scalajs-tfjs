@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package session {
-
-  @js.native
+@js.native
   @JSGlobal
   class FeedDictionary protected () extends js.Object {
     def this(feedEntries: js.Array[FeedEntry] = ???) = this()
@@ -70,5 +67,3 @@ package session {
     type FeedEntry      = js.Any
     type SessionRuntime = js.Any
   }
-
-}

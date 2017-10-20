@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package pool_gpu_test_util {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Pool_gpu_test_util extends js.Object {
     def uploadPoolDownload(a: Float32Array,
@@ -37,5 +35,3 @@ package pool_gpu_test_util {
                            zeroPad: Double | String,
                            op: String): Float32Array = js.native
   }
-
-}

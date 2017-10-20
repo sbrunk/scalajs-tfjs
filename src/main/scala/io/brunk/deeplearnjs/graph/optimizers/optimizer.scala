@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.graph.optimizers
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package optimizer {
-
-  @js.native
+@js.native
   @JSGlobal
   abstract class Optimizer protected () extends js.Object {
     def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
@@ -54,5 +52,3 @@ package optimizer {
     protected var one: Scalar                       = js.native
     protected var c: Scalar                         = js.native
   }
-
-}

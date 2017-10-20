@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package softmax {
-
-  @js.native
+@js.native
   @JSGlobal
   class Softmax protected () extends Operation {
     def this(logitsTensor: Tensor, output: Tensor) = this()
@@ -54,5 +51,3 @@ package softmax {
     def crossEntropyCost(math: NDArrayMath, y: Array1D, target: Array1D, epsilon: Scalar): Scalar =
       js.native
   }
-
-}

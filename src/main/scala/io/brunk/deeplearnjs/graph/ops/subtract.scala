@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package subtract {
-
-  @js.native
+@js.native
   @JSGlobal
   class Subtract protected () extends Operation {
     def this(t1: Tensor, t2: Tensor, outTensor: Tensor) = this()
@@ -37,5 +34,3 @@ package subtract {
                  gradientArrays: SummedTensorArrayMap): Unit = js.native
     def dispose(): Unit                                      = js.native
   }
-
-}

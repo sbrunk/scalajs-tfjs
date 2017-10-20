@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package argmaxequals_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class ArgMaxEqualsProgram protected () extends GPGPUProgram {
     def this(aSize: Double, bSize: Double) = this()
@@ -36,5 +33,3 @@ package argmaxequals_gpu {
     var params: js.Array[js.Any]        = js.native
     var userCode: String                = js.native
   }
-
-}

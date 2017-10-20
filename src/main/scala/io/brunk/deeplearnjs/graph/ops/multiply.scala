@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package multiply {
-
-  @js.native
+@js.native
   @JSGlobal
   class Multiply protected () extends Operation {
     def this(x1Tensor: Tensor, x2Tensor: Tensor, yTensor: Tensor) = this()
@@ -36,5 +33,3 @@ package multiply {
                  inferenceArrays: TensorArrayMap,
                  gradientArrays: SummedTensorArrayMap): Unit = js.native
   }
-
-}

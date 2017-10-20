@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package webgl_util {
-
-  @js.native
+@js.native
   trait WebGLContextAttributes extends js.Object {
     var alpha: Boolean                        = js.native
     var antialias: Boolean                    = js.native
@@ -109,5 +106,3 @@ package webgl_util {
         preferredTexShape: js.Tuple2[Double, Double] = ???
     ): js.Tuple2[Double, Double] = js.native
   }
-
-}

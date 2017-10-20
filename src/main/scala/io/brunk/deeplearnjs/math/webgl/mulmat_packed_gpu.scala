@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package mulmat_packed_gpu {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Mulmat_packed_gpu extends js.Object {
     def getFragmentShaderSource(sharedDimension: Double,
@@ -47,5 +44,3 @@ package mulmat_packed_gpu {
                                            bOrientation: MatrixOrientation = ???): Float32Array =
       js.native
   }
-
-}

@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package texture_manager {
-
-  @js.native
+@js.native
   @JSGlobal
   class TextureManager protected () extends js.Object {
     def this(gpgpu: GPGPUContext) = this()
@@ -37,5 +34,3 @@ package texture_manager {
     def getNumFreeTextures(): Double                                                  = js.native
     def dispose(): Unit                                                               = js.native
   }
-
-}

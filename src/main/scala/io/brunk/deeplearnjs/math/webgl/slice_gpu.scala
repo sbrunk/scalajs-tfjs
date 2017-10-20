@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package slice_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class SliceProgram protected () extends GPGPUProgram {
     def this(destSize: js.Array[Double]) = this()
@@ -41,5 +38,3 @@ package slice_gpu {
         start: js.Array[Double]
     ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
   }
-
-}

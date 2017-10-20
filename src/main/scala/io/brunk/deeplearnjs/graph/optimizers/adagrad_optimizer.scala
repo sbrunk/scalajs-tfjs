@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.optimizers
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package adagrad_optimizer {
-
-  @js.native
+@js.native
   @JSGlobal
   class AdagradOptimizer protected () extends Optimizer {
     def this(learningRate: Double, momentum: Double, specifiedVariableList: js.Array[Node] = ???) =
@@ -46,5 +43,3 @@ package adagrad_optimizer {
                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
     def dispose(): Unit                                          = js.native
   }
-
-}

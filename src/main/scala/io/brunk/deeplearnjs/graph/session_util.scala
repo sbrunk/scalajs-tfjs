@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package session_util {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Session_util extends js.Object {
     def getTerminatingNodesFromFeedDictionary(feedDictionary: FeedDictionary): js.Array[Node] =
@@ -59,5 +56,3 @@ package session_util {
     def throwErrorIfEvaluationSetContainsPlaceholderNodes(evaluationSet: js.Array[Node]): Unit =
       js.native
   }
-
-}

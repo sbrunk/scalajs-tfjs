@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package matmul {
-
-  @js.native
+@js.native
   @JSGlobal
   class MatMul protected () extends Operation {
     def this(x1Tensor: Tensor, x2Tensor: Tensor, yTensor: Tensor) = this()
@@ -36,5 +33,3 @@ package matmul {
                  inferenceArrays: TensorArrayMap,
                  gradientArrays: SummedTensorArrayMap): Unit = js.native
   }
-
-}

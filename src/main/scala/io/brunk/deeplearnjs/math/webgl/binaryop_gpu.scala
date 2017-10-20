@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package binaryop_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class BinaryOpProgram protected () extends GPGPUProgram {
     def this(op: String, aShape: js.Array[Double], bShape: js.Array[Double]) = this()
@@ -46,5 +43,3 @@ package binaryop_gpu {
     val MUL: js.Any = js.native
     val DIV: js.Any = js.native
   }
-
-}

@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package logsumexp_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class LogSumExpProgram protected () extends GPGPUProgram {
     def this(size: Double) = this()
@@ -36,5 +33,3 @@ package logsumexp_gpu {
     var outputShape: js.Array[Double]   = js.native
     var userCode: String                = js.native
   }
-
-}

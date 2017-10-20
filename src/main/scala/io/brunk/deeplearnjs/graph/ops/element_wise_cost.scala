@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package element_wise_cost {
-
-  @js.native
+@js.native
   @JSGlobal
   class ElementWiseCost protected () extends Operation {
     def this(x1Tensor: Tensor, x2Tensor: Tensor, yTensor: Tensor, func: ElementWiseCostFunction) =
@@ -48,5 +45,3 @@ package element_wise_cost {
   class MeanSquaredCost protected () extends ElementWiseCost {
     def this(x1Tensor: Tensor, x2Tensor: Tensor, yTensor: Tensor) = this()
   }
-
-}

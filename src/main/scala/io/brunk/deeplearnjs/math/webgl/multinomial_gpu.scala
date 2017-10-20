@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package multinomial_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class MultinomialProgram protected () extends GPGPUProgram {
     def this(numOutcomes: Double, numSamples: Double) = this()
@@ -38,5 +35,3 @@ package multinomial_gpu {
     var seedLoc: WebGLUniformLocation                                                    = js.native
     def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
   }
-
-}

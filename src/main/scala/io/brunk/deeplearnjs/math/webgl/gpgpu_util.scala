@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package gpgpu_util {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Gpgpu_util extends js.Object {
     def getWebGLContextAttributes(): WebGLContextAttributes                        = js.native
@@ -72,5 +70,3 @@ package gpgpu_util {
                                               rows: Double,
                                               columns: Double): Float32Array = js.native
   }
-
-}

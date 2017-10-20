@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package minmax_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class MinMaxProgram protected () extends GPGPUProgram {
     def this(size: Double, op: String) = this()
@@ -36,5 +33,3 @@ package minmax_gpu {
     var outputShape: js.Array[Double]   = js.native
     var userCode: String                = js.native
   }
-
-}

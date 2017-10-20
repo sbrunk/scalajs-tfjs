@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package tex_util {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Tex_util extends js.Object {
     def getUnpackedMatrixTextureShapeWidthHeight(rows: Double,
@@ -59,5 +56,3 @@ package tex_util {
                                    columns: Double,
                                    matrix: Float32Array): Float32Array = js.native
   }
-
-}

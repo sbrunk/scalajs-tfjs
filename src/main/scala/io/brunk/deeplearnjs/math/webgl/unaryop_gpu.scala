@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package unaryop_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class UnaryOpProgram protected () extends GPGPUProgram {
     def this(aShape: js.Array[Double], opSnippet: String) = this()
@@ -59,5 +56,3 @@ package unaryop_gpu {
     val COSH: String              = js.native
     val TANH: String              = js.native
   }
-
-}

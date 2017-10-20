@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package graph_util {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Graph_util extends js.Object {
     def getUnorderedEvaluationSet(nodes: js.Array[Node],
@@ -37,5 +34,3 @@ package graph_util {
     def shouldBackProp(t: Tensor): Boolean                                              = js.native
     def isPassthroughNode(node: Node, map: TensorArrayMap): Boolean                     = js.native
   }
-
-}

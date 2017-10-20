@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.graph.optimizers
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package sgd_optimizer {
-
-  @js.native
+@js.native
   @JSGlobal
   class SGDOptimizer protected () extends Optimizer {
     def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
@@ -40,5 +37,3 @@ package sgd_optimizer {
     def dispose(): Unit                                          = js.native
     def setLearningRate(learningRate: Double): Unit              = js.native
   }
-
-}

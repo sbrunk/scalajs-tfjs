@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package batchnorm_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class BatchNormProgram protected () extends GPGPUProgram {
     def this(xShape: js.Array[Double],
@@ -42,5 +40,3 @@ package batchnorm_gpu {
     var userCode: String                = js.native
     var supportsBroadcasting: Boolean   = js.native
   }
-
-}

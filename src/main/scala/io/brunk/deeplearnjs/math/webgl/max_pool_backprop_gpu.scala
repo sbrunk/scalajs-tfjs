@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package max_pool_backprop_gpu {
-
-  @js.native
+@js.native
   @JSGlobal
   class MaxPool2DBackpropProgram protected () extends GPGPUProgram {
     def this(convInfo: ConvInfo) = this()
@@ -36,5 +33,3 @@ package max_pool_backprop_gpu {
     var outputShape: js.Array[Double]   = js.native
     var userCode: String                = js.native
   }
-
-}

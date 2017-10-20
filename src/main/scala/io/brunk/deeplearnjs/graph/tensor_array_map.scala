@@ -22,12 +22,10 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package tensor_array_map {
-
-  @js.native
+@js.native
   @JSGlobal
   abstract class TensorArrayMapBase extends js.Object {
     def get(tensor: Tensor, skipChecks: Boolean = ???): NDArray = js.native
@@ -52,5 +50,3 @@ package tensor_array_map {
     def this(math: NDArrayMath) = this()
     def add(tensor: Tensor, array: NDArray): Unit = js.native
   }
-
-}

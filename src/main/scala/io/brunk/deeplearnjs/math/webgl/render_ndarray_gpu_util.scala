@@ -22,12 +22,9 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package render_ndarray_gpu_util {
-
-  @js.native
+@js.native
   @JSGlobalScope
   object Render_ndarray_gpu_util extends js.Object {
     def getRenderRGBShader(gpgpu: GPGPUContext, destinationWidth: Double): WebGLProgram = js.native
@@ -38,5 +35,3 @@ package render_ndarray_gpu_util {
                             renderShader: WebGLProgram,
                             sourceTex: WebGLTexture): Unit = js.native
   }
-
-}
