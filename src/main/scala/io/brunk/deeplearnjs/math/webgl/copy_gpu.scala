@@ -25,15 +25,17 @@ import org.scalajs.dom.raw.WebGLProgram
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
 class Copy2DProgram protected () extends GPGPUProgram {
   def this(srcNumCols: Double, destNumCols: Double) = this()
-  override var variableNames: js.Array[String] = js.native
-  override var params: js.Array[js.Any]        = js.native
-  override var outputShape: js.Array[Double]   = js.native
-  override var userCode: String                = js.native
+  var variableNames: js.Array[String]      = js.native
+  var params: js.Array[js.Any]             = js.native
+  var outputShape: js.Array[Double]        = js.native
+  var userCode: String                     = js.native
+  var supportsBroadcasting: Boolean | Unit = js.native
   def getCustomSetupFunc(
       sourceStart: js.Tuple2[Double, Double],
       destStart: js.Tuple2[Double, Double],

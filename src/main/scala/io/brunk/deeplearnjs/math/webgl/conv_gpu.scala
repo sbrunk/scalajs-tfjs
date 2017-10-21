@@ -25,13 +25,15 @@ import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
 class Conv2DProgram protected () extends GPGPUProgram {
   def this(convInfo: ConvInfo, hasBias: Boolean) = this()
-  override var variableNames: js.Array[String] = js.native
-  override var params: js.Array[js.Any]        = js.native
-  override var outputShape: js.Array[Double]   = js.native
-  override var userCode: String                = js.native
+  var variableNames: js.Array[String]      = js.native
+  var params: js.Array[js.Any]             = js.native
+  var outputShape: js.Array[Double]        = js.native
+  var userCode: String                     = js.native
+  var supportsBroadcasting: Boolean | Unit = js.native
 }

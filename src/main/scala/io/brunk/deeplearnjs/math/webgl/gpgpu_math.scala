@@ -27,26 +27,27 @@ import org.scalajs.dom.raw.{ WebGLProgram, WebGLUniformLocation }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 trait GPGPUProgram extends js.Object {
-  var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double]   = js.native
-  var params: js.Array[js.Any]        = js.native
-  var userCode: String                = js.native
-  var supportsBroadcasting: Boolean   = js.native
+  var variableNames: js.Array[String]
+  var outputShape: js.Array[Double]
+  var params: js.Array[js.Any]
+  var userCode: String
+  var supportsBroadcasting: Boolean | Unit //js.UndefOr[Boolean]
 }
 
 @js.native
 trait GPGPUBinary extends js.Object {
-  var webGLProgram: WebGLProgram                            = js.native
-  var program: GPGPUProgram                                 = js.native
-  var uniformLocations: js.Dictionary[WebGLUniformLocation] = js.native
-  var attributeLocations: js.Dictionary[Double]             = js.native
-  var gpgpu: GPGPUContext                                   = js.native
-  var source: String                                        = js.native
-  var inShapeInfos: js.Array[ShapeInfo]                     = js.native
-  var outShapeInfo: ShapeInfo                               = js.native
+  var webGLProgram: WebGLProgram
+  var program: GPGPUProgram
+  var uniformLocations: js.Dictionary[WebGLUniformLocation]
+  var attributeLocations: js.Dictionary[Double]
+  var gpgpu: GPGPUContext
+  var source: String
+  var inShapeInfos: js.Array[ShapeInfo]
+  var outShapeInfo: ShapeInfo
 }
 
 @js.native

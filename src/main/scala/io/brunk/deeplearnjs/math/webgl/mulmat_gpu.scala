@@ -25,6 +25,7 @@ import io.brunk.deeplearnjs.math.MatrixOrientation
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
@@ -33,8 +34,9 @@ class MatMulProgram protected () extends GPGPUProgram {
            bShape: js.Tuple2[Double, Double],
            aOrient: MatrixOrientation = ???,
            bOrient: MatrixOrientation = ???) = this()
-  override var variableNames: js.Array[String] = js.native
-  override var params: js.Array[js.Any]        = js.native
-  override var outputShape: js.Array[Double]   = js.native
-  override var userCode: String                = js.native
+  var variableNames: js.Array[String]      = js.native
+  var params: js.Array[js.Any]             = js.native
+  var outputShape: js.Array[Double]        = js.native
+  var userCode: String                     = js.native
+  var supportsBroadcasting: Boolean | Unit = js.native
 }

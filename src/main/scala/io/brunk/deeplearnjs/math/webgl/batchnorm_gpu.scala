@@ -34,9 +34,9 @@ class BatchNormProgram protected () extends GPGPUProgram {
            offsetShape: js.Array[Double] | Null,
            scaleShape: js.Array[Double] | Null,
            varianceEpsilon: Double) = this()
-  override var variableNames: js.Array[String] = js.native
-  override var params: js.Array[js.Any]        = js.native
-  override var outputShape: js.Array[Double]   = js.native
-  override var userCode: String                = js.native
-  override var supportsBroadcasting: Boolean   = js.native
+  var variableNames: js.Array[String]      = js.native
+  var params: js.Array[js.Any]             = js.native
+  var outputShape: js.Array[Double]        = js.native
+  var userCode: String                     = js.native
+  var supportsBroadcasting: Boolean | Unit = js.native
 }

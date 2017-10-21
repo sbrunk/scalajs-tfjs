@@ -29,9 +29,9 @@ import js.|
 @JSGlobal
 class AddScaledMatProgram protected () extends GPGPUProgram {
   def this(aShape: js.Array[Double], bShape: js.Array[Double]) = this()
-  override var variableNames: js.Array[String] = js.native
-  override var params: js.Array[js.Any]        = js.native
-  var outputShape: js.Array[Double]            = js.native
-  var userCode: String                         = js.native
-  var supportsBroadcasting: Boolean            = js.native
+  var variableNames: js.Array[String]      = js.native
+  var params: js.Array[js.Any]             = js.native
+  var outputShape: js.Array[Double]        = js.native
+  var userCode: String                     = js.native
+  var supportsBroadcasting: Boolean | Unit = js.native
 }
