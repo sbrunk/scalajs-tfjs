@@ -32,7 +32,7 @@ import scala.scalajs.js.annotation._
 @JSGlobal
 class SGDOptimizer protected () extends Optimizer {
   def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
-  override protected var learningRate: Double = js.native
+  //override protected var learningRate: Double = js.native
   def afterBatch(math: NDArrayMath,
                  batchSize: Double,
                  runtime: SessionRuntime,

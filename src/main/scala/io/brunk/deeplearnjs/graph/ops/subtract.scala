@@ -35,5 +35,5 @@ class Subtract protected () extends Operation {
   def backProp(math: NDArrayMath,
                inferenceArrays: TensorArrayMap,
                gradientArrays: SummedTensorArrayMap): Unit = js.native
-  def dispose(): Unit                                      = js.native
+  override def dispose(): Unit                             = js.native
 }

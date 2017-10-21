@@ -124,17 +124,20 @@ abstract class NDArrayMath protected () extends js.Object {
   def neg[T <: NDArray](a: T): T                         = js.native
   def negInternal[T <: NDArray](a: T): T
   def add(a: NDArray, b: NDArray): NDArray = js.native
-  def addInternal(a: NDArray, b: NDArray): NDArray
+  //def addInternal(a: NDArray, b: NDArray): NDArray
+  def addInternal[T <: NDArray](a: T, b: T): T
   def addStrict[T <: NDArray](a: T, b: T): T = js.native
   def sub(a: NDArray, b: NDArray): NDArray   = js.native
-  def subInternal(a: NDArray, b: NDArray): NDArray
+  //def subInternal(a: NDArray, b: NDArray): NDArray
+  def subInternal[T <: NDArray](a: T, b: T): T
   def subStrict[T <: NDArray](a: T, b: T): T    = js.native
   def multiply(a: NDArray, b: NDArray): NDArray = js.native
   def multiplyInternal[T <: NDArray](a: T, b: T): T
   def elementWiseMul[T <: NDArray](a: T, b: T): T = js.native
   def multiplyStrict[T <: NDArray](a: T, b: T): T = js.native
   def divide(a: NDArray, b: NDArray): NDArray     = js.native
-  def divideInternal(a: NDArray, b: NDArray): NDArray
+  //def divideInternal(a: NDArray, b: NDArray): NDArray
+  def divideInternal[T <: NDArray](a: T, b: T): T
   def divideStrict[T <: NDArray](a: T, b: T): T              = js.native
   def scalarDividedByArray[T <: NDArray](c: Scalar, a: T): T = js.native
   def arrayDividedByScalar[T <: NDArray](a: T, c: Scalar): T = js.native

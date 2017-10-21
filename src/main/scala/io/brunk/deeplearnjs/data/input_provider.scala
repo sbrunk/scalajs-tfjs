@@ -60,11 +60,11 @@ abstract class InMemoryShuffledInputProviderBuilder protected ()
 @js.native
 @JSGlobal
 class InCPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
-  def getInputProvider(inputId: Double): js.Any = js.native
+  def getInputProvider(inputId: Double): InputProvider = js.native
 }
 
 @js.native
 @JSGlobal
 class InGPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
-  def getInputProvider(inputId: Double): js.Any = js.native
+  def getInputProvider(inputId: Double): InputProvider = js.native
 }

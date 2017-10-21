@@ -61,40 +61,46 @@ class NDArrayMathGPU protected () extends NDArrayMath {
                      aOrientation: MatrixOrientation,
                      bOrientation: MatrixOrientation): Array2D = js.native
   def multiplyInternal[T <: NDArray](a: T, b: T): T            = js.native
+//  def batchNormalization3DInternal(x: Array3D,
+//                                   mean: Array3D | Array1D,
+//                                   variance: Array3D | Array1D,
+//                                   varianceEpsilon: Double | Null,
+//                                   scale: Array3D | Array1D = ???,
+//                                   offset: Array3D | Array1D = ???): Array3D = js.native
   def batchNormalization3DInternal(x: Array3D,
                                    mean: Array3D | Array1D,
                                    variance: Array3D | Array1D,
-                                   varianceEpsilon: Double | Null,
-                                   scale: Array3D | Array1D = ???,
-                                   offset: Array3D | Array1D = ???): Array3D = js.native
-  def switchDimInternal[T <: NDArray](a: T, newDim: js.Array[Double]): T     = js.native
-  def sumInternal(a: NDArray): Scalar                                        = js.native
-  def argMinInternal(a: NDArray): Scalar                                     = js.native
-  def argMaxInternal(a: NDArray): Scalar                                     = js.native
-  def argMaxEqualsInternal(x1: NDArray, x2: NDArray): Scalar                 = js.native
-  def topKInternal(ndarray: NDArray, k: Double): js.Any                      = js.native
-  def minInternal(a: NDArray): Scalar                                        = js.native
-  def maxInternal(a: NDArray): Scalar                                        = js.native
-  def divideInternal[T <: NDArray](a: T, b: T): T                            = js.native
-  def addInternal[T <: NDArray](a: T, b: T): T                               = js.native
-  def subInternal[T <: NDArray](a: T, b: T): T                               = js.native
-  def logSumExpInternal(a: NDArray): Scalar                                  = js.native
-  def expInternal[T <: NDArray](a: T): T                                     = js.native
-  def logInternal[T <: NDArray](a: T): T                                     = js.native
-  def sqrtInternal[T <: NDArray](a: T): T                                    = js.native
-  def reluInternal[T <: NDArray](a: T): T                                    = js.native
-  def absInternal[T <: NDArray](a: T): T                                     = js.native
-  def sigmoidInternal[T <: NDArray](a: T): T                                 = js.native
-  def sinInternal[T <: NDArray](a: T): T                                     = js.native
-  def cosInternal[T <: NDArray](a: T): T                                     = js.native
-  def tanInternal[T <: NDArray](a: T): T                                     = js.native
-  def asinInternal[T <: NDArray](a: T): T                                    = js.native
-  def acosInternal[T <: NDArray](a: T): T                                    = js.native
-  def atanInternal[T <: NDArray](a: T): T                                    = js.native
-  def sinhInternal[T <: NDArray](a: T): T                                    = js.native
-  def coshInternal[T <: NDArray](a: T): T                                    = js.native
-  def tanhInternal[T <: NDArray](a: T): T                                    = js.native
-  def stepInternal[T <: NDArray](a: T): T                                    = js.native
+                                   varianceEpsilon: Double,
+                                   scale: Array3D | Array1D,
+                                   offset: Array3D | Array1D): Array3D   = js.native
+  def switchDimInternal[T <: NDArray](a: T, newDim: js.Array[Double]): T = js.native
+  def sumInternal(a: NDArray): Scalar                                    = js.native
+  def argMinInternal(a: NDArray): Scalar                                 = js.native
+  def argMaxInternal(a: NDArray): Scalar                                 = js.native
+  def argMaxEqualsInternal(x1: NDArray, x2: NDArray): Scalar             = js.native
+  def topKInternal(ndarray: NDArray, k: Double): js.Any                  = js.native
+  def minInternal(a: NDArray): Scalar                                    = js.native
+  def maxInternal(a: NDArray): Scalar                                    = js.native
+  def divideInternal[T <: NDArray](a: T, b: T): T                        = js.native
+  def addInternal[T <: NDArray](a: T, b: T): T                           = js.native
+  def subInternal[T <: NDArray](a: T, b: T): T                           = js.native
+  def logSumExpInternal(a: NDArray): Scalar                              = js.native
+  def expInternal[T <: NDArray](a: T): T                                 = js.native
+  def logInternal[T <: NDArray](a: T): T                                 = js.native
+  def sqrtInternal[T <: NDArray](a: T): T                                = js.native
+  def reluInternal[T <: NDArray](a: T): T                                = js.native
+  def absInternal[T <: NDArray](a: T): T                                 = js.native
+  def sigmoidInternal[T <: NDArray](a: T): T                             = js.native
+  def sinInternal[T <: NDArray](a: T): T                                 = js.native
+  def cosInternal[T <: NDArray](a: T): T                                 = js.native
+  def tanInternal[T <: NDArray](a: T): T                                 = js.native
+  def asinInternal[T <: NDArray](a: T): T                                = js.native
+  def acosInternal[T <: NDArray](a: T): T                                = js.native
+  def atanInternal[T <: NDArray](a: T): T                                = js.native
+  def sinhInternal[T <: NDArray](a: T): T                                = js.native
+  def coshInternal[T <: NDArray](a: T): T                                = js.native
+  def tanhInternal[T <: NDArray](a: T): T                                = js.native
+  def stepInternal[T <: NDArray](a: T): T                                = js.native
   def conv2dInternal(x: Array3D,
                      filter: Array4D,
                      bias: Array1D | Null,

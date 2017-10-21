@@ -33,8 +33,8 @@ import scala.scalajs.js.annotation._
 class AdagradOptimizer protected () extends Optimizer {
   def this(learningRate: Double, momentum: Double, specifiedVariableList: js.Array[Node] = ???) =
     this()
-  override protected var learningRate: Double = js.native
-  protected var momentum: Double              = js.native
+  //protected var learningRate: Double = js.native
+  protected var momentum: Double = js.native
   override def beforeBatch(math: NDArrayMath,
                            batchSize: Double,
                            runtime: SessionRuntime,
