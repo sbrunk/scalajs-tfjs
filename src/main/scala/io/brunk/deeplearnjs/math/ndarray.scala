@@ -107,26 +107,26 @@ object Scalar extends js.Object {
 @JSGlobal
 class Array1D protected () extends NDArray {
   def this(data: NDArrayData) = this()
-  var shape: js.Tuple1[Double]                     = js.native
-  def get(i: Double): Double                       = js.native
-  def set(value: Double, i: Double): Unit          = js.native
-  def add(value: Double, i: Double): Unit          = js.native
-  def locToIndex(loc: js.Tuple1[Double]): Double   = js.native
-  def indexToLoc(index: Double): js.Tuple1[Double] = js.native
+  override var shape: Tuple1[Double]                     = js.native
+  def get(i: Double): Double                             = js.native
+  def set(value: Double, i: Double): Unit                = js.native
+  def add(value: Double, i: Double): Unit                = js.native
+  def locToIndex(loc: Tuple1[Double]): Double            = js.native
+  override def indexToLoc(index: Double): Tuple1[Double] = js.native
 }
 
 @js.native
 @JSGlobal
 object Array1D extends js.Object {
   def `new`(values: Float32Array | js.Array[Double]): Array1D = js.native
-  def zeros(shape: js.Tuple1[Double]): Array1D                = js.native
-  def randNormal(shape: js.Tuple1[Double], mean: Double = ???, stdDev: Double = ???): Array1D =
+  def zeros(shape: Tuple1[Double]): Array1D                   = js.native
+  def randNormal(shape: Tuple1[Double], mean: Double = ???, stdDev: Double = ???): Array1D =
     js.native
-  def randTruncatedNormal(shape: js.Tuple1[Double],
+  def randTruncatedNormal(shape: Tuple1[Double],
                           mean: Double = ???,
-                          stdDev: Double = ???): Array1D                   = js.native
-  def randUniform(shape: js.Tuple1[Double], a: Double, b: Double): Array1D = js.native
-  def make(shape: js.Tuple1[Double], data: NDArrayData): Array1D           = js.native
+                          stdDev: Double = ???): Array1D                = js.native
+  def randUniform(shape: Tuple1[Double], a: Double, b: Double): Array1D = js.native
+  def make(shape: Tuple1[Double], data: NDArrayData): Array1D           = js.native
 }
 
 @js.native
