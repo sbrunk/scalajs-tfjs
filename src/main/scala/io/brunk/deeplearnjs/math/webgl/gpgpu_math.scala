@@ -23,6 +23,7 @@ package io.brunk.deeplearnjs.math.webgl
 
 import io.brunk.deeplearnjs.math.NDArray
 import io.brunk.deeplearnjs.math.webgl.Shader_compiler.ShapeInfo
+import org.scalajs.dom.raw.{ WebGLProgram, WebGLUniformLocation }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._

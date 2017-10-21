@@ -24,6 +24,7 @@ package io.brunk.deeplearnjs
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
 @JSGlobalScope

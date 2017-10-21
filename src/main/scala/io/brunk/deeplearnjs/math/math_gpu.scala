@@ -110,10 +110,8 @@ class NDArrayMathGPU protected () extends NDArrayMath {
                                newShape2D: js.Tuple2[Double, Double],
                                alignCorners: Boolean): Array3D                       = js.native
   def multinomialInternal(probs: Array1D, numSamples: Double, seed: Double): Array1D = js.native
-  def oneHotInternal(indices: ndarray.Array1D,
-                     depth: Double,
-                     onValue: Double,
-                     offValue: Double): ndarray.Array2D = js.native
-  def getTextureManager(): TextureManager               = js.native
-  override def dispose(): Unit                          = js.native
+  def oneHotInternal(indices: Array1D, depth: Double, onValue: Double, offValue: Double): Array2D =
+    js.native
+  def getTextureManager(): TextureManager = js.native
+  override def dispose(): Unit            = js.native
 }

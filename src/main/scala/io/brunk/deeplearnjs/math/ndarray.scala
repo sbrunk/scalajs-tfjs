@@ -21,6 +21,9 @@
 
 package io.brunk.deeplearnjs.math
 
+import io.brunk.deeplearnjs.math.webgl.{ GPGPUContext, TextureManager }
+import org.scalajs.dom.raw.WebGLTexture
+
 import scala.scalajs.js
 import js.annotation._
 import js.{ Promise, | }
@@ -159,12 +162,12 @@ object Array2D extends js.Object {
 @JSGlobal
 class Array3D protected () extends NDArray {
   def this(shape: js.Tuple3[Double, Double, Double], data: NDArrayData) = this()
-  var shape: js.Tuple3[Double, Double, Double]                     = js.native
-  def get(i: Double, j: Double, k: Double): Double                 = js.native
-  def set(value: Double, i: Double, j: Double, k: Double): Unit    = js.native
-  def add(value: Double, i: Double, j: Double, k: Double): Unit    = js.native
-  def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double  = js.native
-  def indexToLoc(index: Double): js.Tuple3[Double, Double, Double] = js.native
+  override var shape: js.Tuple3[Double, Double, Double]                     = js.native
+  def get(i: Double, j: Double, k: Double): Double                          = js.native
+  def set(value: Double, i: Double, j: Double, k: Double): Unit             = js.native
+  def add(value: Double, i: Double, j: Double, k: Double): Unit             = js.native
+  def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double           = js.native
+  override def indexToLoc(index: Double): js.Tuple3[Double, Double, Double] = js.native
 }
 
 @js.native
@@ -190,12 +193,12 @@ object Array3D extends js.Object {
 @JSGlobal
 class Array4D protected () extends NDArray {
   def this(shape: js.Tuple4[Double, Double, Double, Double], data: NDArrayData) = this()
-  var shape: js.Tuple4[Double, Double, Double, Double]                     = js.native
-  def get(i: Double, j: Double, k: Double, l: Double): Double              = js.native
-  def set(value: Double, i: Double, j: Double, k: Double, l: Double): Unit = js.native
-  def add(value: Double, i: Double, j: Double, k: Double, l: Double): Unit = js.native
-  def locToIndex(locs: js.Tuple4[Double, Double, Double, Double]): Double  = js.native
-  def indexToLoc(index: Double): js.Tuple4[Double, Double, Double, Double] = js.native
+  override var shape: js.Tuple4[Double, Double, Double, Double]                     = js.native
+  def get(i: Double, j: Double, k: Double, l: Double): Double                       = js.native
+  def set(value: Double, i: Double, j: Double, k: Double, l: Double): Unit          = js.native
+  def add(value: Double, i: Double, j: Double, k: Double, l: Double): Unit          = js.native
+  def locToIndex(locs: js.Tuple4[Double, Double, Double, Double]): Double           = js.native
+  override def indexToLoc(index: Double): js.Tuple4[Double, Double, Double, Double] = js.native
 }
 
 @js.native
