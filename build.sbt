@@ -9,6 +9,7 @@ lazy val `scala-js-deeplearnjs` =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
+        "org.scala-js" %%% "scalajs-dom" % library.Version.scalajsDom,
         library.scalaCheck % Test,
         library.scalaTest  % Test
       )
@@ -23,6 +24,7 @@ lazy val library =
     object Version {
       val scalaCheck = "1.13.5"
       val scalaTest  = "3.0.4"
+      val scalajsDom = "0.9.3"
     }
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
     val scalaTest  = "org.scalatest"  %% "scalatest"  % Version.scalaTest
