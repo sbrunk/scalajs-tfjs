@@ -21,20 +21,20 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
-import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, TensorArrayMap}
+import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, TensorArrayMap }
 import io.brunk.deeplearnjs.math.NDArrayMath
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  abstract class Operation extends js.Object {
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit
-    def disposeTransientArrays(inferenceArrays: TensorArrayMap,
-                               gradientArrays: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                                    = js.native
-  }
+@JSGlobal
+abstract class Operation extends js.Object {
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit
+  def disposeTransientArrays(inferenceArrays: TensorArrayMap,
+                             gradientArrays: SummedTensorArrayMap): Unit = js.native
+  def dispose(): Unit                                                    = js.native
+}

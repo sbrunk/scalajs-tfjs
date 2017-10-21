@@ -21,49 +21,53 @@
 
 package io.brunk.deeplearnjs.graph
 
+import io.brunk.deeplearnjs.graph.Session.FeedEntry
+import io.brunk.deeplearnjs.graph.optimizers.Optimizer
+import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath, Scalar }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class FeedDictionary protected () extends js.Object {
-    def this(feedEntries: js.Array[FeedEntry] = ???) = this()
-    var dict: js.Any = js.native
-  }
+@JSGlobal
+class FeedDictionary protected () extends js.Object {
+  def this(feedEntries: js.Array[FeedEntry] = ???) = this()
+  var dict: js.Any = js.native
+}
 
-  @js.native
-  sealed trait CostReduction extends js.Object {}
+@js.native
+sealed trait CostReduction extends js.Object {}
 
-  @js.native
-  @JSGlobal
-  object CostReduction extends js.Object {
-    var NONE: CostReduction = js.native
-    var SUM: CostReduction  = js.native
-    var MEAN: CostReduction = js.native
-    @JSBracketAccess
-    def apply(value: CostReduction): String = js.native
-  }
+@js.native
+@JSGlobal
+object CostReduction extends js.Object {
+  var NONE: CostReduction = js.native
+  var SUM: CostReduction  = js.native
+  var MEAN: CostReduction = js.native
+  @JSBracketAccess
+  def apply(value: CostReduction): String = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class Session protected () extends js.Object {
-    def this(graph: Graph, math: NDArrayMath) = this()
-    def dispose(): Unit = js.native
-    def evalAll(tensors: js.Array[Tensor], feedEntries: js.Array[FeedEntry]): js.Array[NDArray] =
-      js.native
-    def eval(tensor: Tensor, feedEntries: js.Array[FeedEntry]): NDArray = js.native
-    def train(costTensor: Tensor,
-              feedEntries: js.Array[FeedEntry],
-              batchSize: Double,
-              optimizer: Optimizer,
-              costReduction: CostReduction = ???): Scalar = js.native
-    var activationArrayMap: TensorArrayMap                = js.native
-    var gradientArrayMap: SummedTensorArrayMap            = js.native
-  }
+@js.native
+@JSGlobal
+class Session protected () extends js.Object {
+  def this(graph: Graph, math: NDArrayMath) = this()
+  def dispose(): Unit = js.native
+  def evalAll(tensors: js.Array[Tensor], feedEntries: js.Array[FeedEntry]): js.Array[NDArray] =
+    js.native
+  def eval(tensor: Tensor, feedEntries: js.Array[FeedEntry]): NDArray = js.native
+  def train(costTensor: Tensor,
+            feedEntries: js.Array[FeedEntry],
+            batchSize: Double,
+            optimizer: Optimizer,
+            costReduction: CostReduction = ???): Scalar = js.native
+  var activationArrayMap: TensorArrayMap                = js.native
+  var gradientArrayMap: SummedTensorArrayMap            = js.native
+}
 
-  @js.native
-  @JSGlobalScope
-  object Session extends js.Object {
-    type FeedEntry      = js.Any
-    type SessionRuntime = js.Any
-  }
+@js.native
+@JSGlobalScope
+object Session extends js.Object {
+  type FeedEntry      = js.Any
+  type SessionRuntime = js.Any
+}

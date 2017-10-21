@@ -21,6 +21,9 @@
 
 package io.brunk.deeplearnjs.math
 
+import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
+import io.brunk.deeplearnjs.math.webgl.{ GPGPUContext, TextureManager }
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -112,5 +115,5 @@ class NDArrayMathGPU protected () extends NDArrayMath {
                      onValue: Double,
                      offValue: Double): ndarray.Array2D = js.native
   def getTextureManager(): TextureManager               = js.native
-  def dispose(): Unit                                   = js.native
+  override def dispose(): Unit                          = js.native
 }

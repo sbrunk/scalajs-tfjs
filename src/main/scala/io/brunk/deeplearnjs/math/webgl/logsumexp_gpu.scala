@@ -25,11 +25,11 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class LogSumExpProgram protected () extends GPGPUProgram {
-    def this(size: Double) = this()
-    var variableNames: js.Array[String] = js.native
-    var params: js.Array[js.Any]        = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-  }
+@JSGlobal
+class LogSumExpProgram protected () extends GPGPUProgram {
+  def this(size: Double) = this()
+  override var variableNames: js.Array[String] = js.native
+  override var params: js.Array[js.Any]        = js.native
+  override var outputShape: js.Array[Double]   = js.native
+  override var userCode: String                = js.native
+}

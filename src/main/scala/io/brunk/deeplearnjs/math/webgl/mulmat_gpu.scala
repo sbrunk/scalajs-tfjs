@@ -21,18 +21,20 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import io.brunk.deeplearnjs.math.MatrixOrientation
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class MatMulProgram protected () extends GPGPUProgram {
-    def this(aShape: js.Tuple2[Double, Double],
-             bShape: js.Tuple2[Double, Double],
-             aOrient: MatrixOrientation = ???,
-             bOrient: MatrixOrientation = ???) = this()
-    var variableNames: js.Array[String] = js.native
-    var params: js.Array[js.Any]        = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-  }
+@JSGlobal
+class MatMulProgram protected () extends GPGPUProgram {
+  def this(aShape: js.Tuple2[Double, Double],
+           bShape: js.Tuple2[Double, Double],
+           aOrient: MatrixOrientation = ???,
+           bOrient: MatrixOrientation = ???) = this()
+  override var variableNames: js.Array[String] = js.native
+  override var params: js.Array[js.Any]        = js.native
+  override var outputShape: js.Array[Double]   = js.native
+  override var userCode: String                = js.native
+}

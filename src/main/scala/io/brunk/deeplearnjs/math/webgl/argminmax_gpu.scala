@@ -25,17 +25,17 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class ArgMinMaxProgram protected () extends GPGPUProgram {
-    def this(aSize: Double, opType: String) = this()
-    var variableNames: js.Array[String] = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var params: js.Array[js.Any]        = js.native
-    var userCode: String                = js.native
-  }
+@JSGlobal
+class ArgMinMaxProgram protected () extends GPGPUProgram {
+  def this(aSize: Double, opType: String) = this()
+  override var variableNames: js.Array[String] = js.native
+  override var outputShape: js.Array[Double]   = js.native
+  override var params: js.Array[js.Any]        = js.native
+  override var userCode: String                = js.native
+}
 
-  @js.native
-  @JSGlobalScope
-  object Argminmax_gpu extends js.Object {
-    def getArgMinMaxSnippet(op: String, texName: String, size: Double): String = js.native
-  }
+@js.native
+@JSGlobalScope
+object Argminmax_gpu extends js.Object {
+  def getArgMinMaxSnippet(op: String, texName: String, size: Double): String = js.native
+}

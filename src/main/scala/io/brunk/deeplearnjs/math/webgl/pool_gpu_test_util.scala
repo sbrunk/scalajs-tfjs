@@ -23,15 +23,16 @@ package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.typedarray.Float32Array
 import scala.scalajs.js.|
 
 @js.native
-  @JSGlobalScope
-  object Pool_gpu_test_util extends js.Object {
-    def uploadPoolDownload(a: Float32Array,
-                           xShape: js.Tuple3[Double, Double, Double],
-                           filterSizes: js.Tuple2[Double, Double] | Double,
-                           strides: js.Tuple2[Double, Double] | Double,
-                           zeroPad: Double | String,
-                           op: String): Float32Array = js.native
-  }
+@JSGlobalScope
+object Pool_gpu_test_util extends js.Object {
+  def uploadPoolDownload(a: Float32Array,
+                         xShape: js.Tuple3[Double, Double, Double],
+                         filterSizes: js.Tuple2[Double, Double] | Double,
+                         strides: js.Tuple2[Double, Double] | Double,
+                         zeroPad: Double | String,
+                         op: String): Float32Array = js.native
+}

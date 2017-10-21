@@ -23,36 +23,37 @@ package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
-  @JSGlobalScope
-  object Tex_util extends js.Object {
-    def getUnpackedMatrixTextureShapeWidthHeight(rows: Double,
-                                                 columns: Double): js.Tuple2[Double, Double] =
-      js.native
-    def getUnpackedArraySizeFromMatrixSize(matrixSize: Double, channelsPerTexture: Double): Double =
-      js.native
-    def getColorMatrixTextureShapeWidthHeight(rows: Double,
-                                              columns: Double): js.Tuple2[Double, Double] =
-      js.native
-    def getMatrixSizeFromUnpackedArraySize(unpackedSize: Double,
-                                           channelsPerTexture: Double): Double = js.native
-    def encodeMatrixToUnpackedArray(matrix: Float32Array,
-                                    unpackedArray: Float32Array,
-                                    channelsPerTexture: Double): Unit = js.native
-    def decodeMatrixFromUnpackedArray(unpackedArray: Float32Array,
-                                      matrix: Float32Array,
-                                      channelsPerTexture: Double): Unit = js.native
-    def getPackedMatrixTextureShapeWidthHeight(rows: Double,
+@JSGlobalScope
+object Tex_util extends js.Object {
+  def getUnpackedMatrixTextureShapeWidthHeight(rows: Double,
                                                columns: Double): js.Tuple2[Double, Double] =
-      js.native
-    def getPackedRGBAArraySizeFromMatrixShape(rows: Double, columns: Double): Double = js.native
-    def encodeMatrixToPackedRGBA(matrix: Float32Array,
+    js.native
+  def getUnpackedArraySizeFromMatrixSize(matrixSize: Double, channelsPerTexture: Double): Double =
+    js.native
+  def getColorMatrixTextureShapeWidthHeight(rows: Double,
+                                            columns: Double): js.Tuple2[Double, Double] =
+    js.native
+  def getMatrixSizeFromUnpackedArraySize(unpackedSize: Double, channelsPerTexture: Double): Double =
+    js.native
+  def encodeMatrixToUnpackedArray(matrix: Float32Array,
+                                  unpackedArray: Float32Array,
+                                  channelsPerTexture: Double): Unit = js.native
+  def decodeMatrixFromUnpackedArray(unpackedArray: Float32Array,
+                                    matrix: Float32Array,
+                                    channelsPerTexture: Double): Unit = js.native
+  def getPackedMatrixTextureShapeWidthHeight(rows: Double,
+                                             columns: Double): js.Tuple2[Double, Double] =
+    js.native
+  def getPackedRGBAArraySizeFromMatrixShape(rows: Double, columns: Double): Double = js.native
+  def encodeMatrixToPackedRGBA(matrix: Float32Array,
+                               rows: Double,
+                               columns: Double,
+                               packedRGBA: Float32Array): Float32Array = js.native
+  def decodeMatrixFromPackedRGBA(packedRGBA: Float32Array,
                                  rows: Double,
                                  columns: Double,
-                                 packedRGBA: Float32Array): Float32Array = js.native
-    def decodeMatrixFromPackedRGBA(packedRGBA: Float32Array,
-                                   rows: Double,
-                                   columns: Double,
-                                   matrix: Float32Array): Float32Array = js.native
-  }
+                                 matrix: Float32Array): Float32Array = js.native
+}

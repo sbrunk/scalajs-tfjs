@@ -25,16 +25,16 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class SliceProgram protected () extends GPGPUProgram {
-    def this(destSize: js.Array[Double]) = this()
-    override var variableNames: js.Array[String] = js.native
-    override var params: js.Array[js.Any]        = js.native
-    override var outputShape: js.Array[Double]   = js.native
-    override var userCode: String                = js.native
-    var rank: Double                    = js.native
-    var startLoc: WebGLUniformLocation  = js.native
-    def getCustomSetupFunc(
-        start: js.Array[Double]
-    ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
-  }
+@JSGlobal
+class SliceProgram protected () extends GPGPUProgram {
+  def this(destSize: js.Array[Double]) = this()
+  override var variableNames: js.Array[String] = js.native
+  override var params: js.Array[js.Any]        = js.native
+  override var outputShape: js.Array[Double]   = js.native
+  override var userCode: String                = js.native
+  var rank: Double                             = js.native
+  var startLoc: WebGLUniformLocation           = js.native
+  def getCustomSetupFunc(
+      start: js.Array[Double]
+  ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+}

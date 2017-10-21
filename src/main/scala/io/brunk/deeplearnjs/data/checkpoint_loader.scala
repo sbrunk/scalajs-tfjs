@@ -26,26 +26,25 @@ import io.brunk.deeplearnjs.math.NDArray
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 
-  @js.native
-  trait CheckpointVariable extends js.Object {
-    var filename: String        = js.native
-    var shape: js.Array[Double] = js.native
-  }
+@js.native
+trait CheckpointVariable extends js.Object {
+  var filename: String        = js.native
+  var shape: js.Array[Double] = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class CheckpointLoader protected () extends js.Object {
-    def this(urlPath: String) = this()
-    def getCheckpointManifest(): Promise[CheckpointManifest] = js.native
-    def getAllVariables(): Promise[js.Dictionary[NDArray]]   = js.native
-    def getVariable(varName: String): Promise[NDArray]       = js.native
-  }
+@js.native
+@JSGlobal
+class CheckpointLoader protected () extends js.Object {
+  def this(urlPath: String) = this()
+  def getCheckpointManifest(): Promise[CheckpointManifest] = js.native
+  def getAllVariables(): Promise[js.Dictionary[NDArray]]   = js.native
+  def getVariable(varName: String): Promise[NDArray]       = js.native
+}
 
-  @js.native
-  @JSGlobalScope
-  object Checkpoint_loader extends js.Object {
-    type CheckpointManifest = js.Dictionary[CheckpointVariable]
-  }
-
+@js.native
+@JSGlobalScope
+object Checkpoint_loader extends js.Object {
+  type CheckpointManifest = js.Dictionary[CheckpointVariable]
+}

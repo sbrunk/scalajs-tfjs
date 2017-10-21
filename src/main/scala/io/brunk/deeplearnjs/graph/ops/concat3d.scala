@@ -21,21 +21,18 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
-import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, Tensor, TensorArrayMap}
+import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
 import io.brunk.deeplearnjs.math.NDArrayMath
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-
-  @js.native
-  @JSGlobal
-  class Concat3D protected () extends Operation {
-    def this(x1Tensor: Tensor, x2Tensor: Tensor, axis: Double, yTensor: Tensor) = this()
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
-
+@js.native
+@JSGlobal
+class Concat3D protected () extends Operation {
+  def this(x1Tensor: Tensor, x2Tensor: Tensor, axis: Double, yTensor: Tensor) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
+}

@@ -23,7 +23,8 @@ package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{ Promise, | }
+import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
 trait NDArrayData extends js.Object {
@@ -129,12 +130,12 @@ object Array1D extends js.Object {
 @JSGlobal
 class Array2D protected () extends NDArray {
   def this(shape: js.Tuple2[Double, Double], data: NDArrayData) = this()
-  var shape: js.Tuple2[Double, Double]                     = js.native
-  def get(i: Double, j: Double): Double                    = js.native
-  def set(value: Double, i: Double, j: Double): Unit       = js.native
-  def add(value: Double, i: Double, j: Double): Unit       = js.native
-  def locToIndex(locs: js.Tuple2[Double, Double]): Double  = js.native
-  def indexToLoc(index: Double): js.Tuple2[Double, Double] = js.native
+  override var shape: js.Tuple2[Double, Double]                     = js.native
+  def get(i: Double, j: Double): Double                             = js.native
+  def set(value: Double, i: Double, j: Double): Unit                = js.native
+  def add(value: Double, i: Double, j: Double): Unit                = js.native
+  def locToIndex(locs: js.Tuple2[Double, Double]): Double           = js.native
+  override def indexToLoc(index: Double): js.Tuple2[Double, Double] = js.native
 }
 
 @js.native

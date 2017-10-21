@@ -21,6 +21,9 @@
 
 package io.brunk.deeplearnjs.math
 
+import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
+import io.brunk.deeplearnjs.math.Math.ScopeResult
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

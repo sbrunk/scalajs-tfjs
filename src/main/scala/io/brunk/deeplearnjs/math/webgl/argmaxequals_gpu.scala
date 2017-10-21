@@ -25,11 +25,11 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class ArgMaxEqualsProgram protected () extends GPGPUProgram {
-    def this(aSize: Double, bSize: Double) = this()
-    var variableNames: js.Array[String] = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var params: js.Array[js.Any]        = js.native
-    var userCode: String                = js.native
-  }
+@JSGlobal
+class ArgMaxEqualsProgram protected () extends GPGPUProgram {
+  def this(aSize: Double, bSize: Double) = this()
+  override var variableNames: js.Array[String] = js.native
+  override var outputShape: js.Array[Double]   = js.native
+  override var params: js.Array[js.Any]        = js.native
+  override var userCode: String                = js.native
+}

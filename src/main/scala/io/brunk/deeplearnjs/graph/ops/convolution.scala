@@ -21,28 +21,25 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
-import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, Tensor, TensorArrayMap}
+import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
 import io.brunk.deeplearnjs.math.NDArrayMath
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-
-  @js.native
-  @JSGlobal
-  class Convolution2D protected () extends Operation {
-    def this(wTensor: Tensor,
-             xTensor: Tensor,
-             bTensor: Tensor,
-             yTensor: Tensor,
-             fieldSize: Double,
-             outputDepth: Double,
-             stride: Double = ???,
-             zeroPad: Double = ???) = this()
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
-
+@js.native
+@JSGlobal
+class Convolution2D protected () extends Operation {
+  def this(wTensor: Tensor,
+           xTensor: Tensor,
+           bTensor: Tensor,
+           yTensor: Tensor,
+           fieldSize: Double,
+           outputDepth: Double,
+           stride: Double = ???,
+           zeroPad: Double = ???) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
+}

@@ -21,44 +21,44 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
-import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, Tensor, TensorArrayMap}
-import io.brunk.deeplearnjs.math.{ActivationFunction, NDArrayMath}
+import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
+import io.brunk.deeplearnjs.math.{ ActivationFunction, NDArrayMath }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class ElementWiseActivation protected () extends Operation {
-    def this(xTensor: Tensor, yTensor: Tensor, func: ActivationFunction) = this()
-    protected var xTensor: Tensor                                             = js.native
-    protected var yTensor: Tensor                                             = js.native
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
+@JSGlobal
+class ElementWiseActivation protected () extends Operation {
+  def this(xTensor: Tensor, yTensor: Tensor, func: ActivationFunction) = this()
+  protected var xTensor: Tensor                                             = js.native
+  protected var yTensor: Tensor                                             = js.native
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class ReLU protected () extends ElementWiseActivation {
-    def this(xTensor: Tensor, yTensor: Tensor) = this()
-  }
+@js.native
+@JSGlobal
+class ReLU protected () extends ElementWiseActivation {
+  def this(xTensor: Tensor, yTensor: Tensor) = this()
+}
 
-  @js.native
-  @JSGlobal
-  class TanH protected () extends ElementWiseActivation {
-    def this(xTensor: Tensor, yTensor: Tensor) = this()
-  }
+@js.native
+@JSGlobal
+class TanH protected () extends ElementWiseActivation {
+  def this(xTensor: Tensor, yTensor: Tensor) = this()
+}
 
-  @js.native
-  @JSGlobal
-  class Sigmoid protected () extends ElementWiseActivation {
-    def this(xTensor: Tensor, yTensor: Tensor) = this()
-  }
+@js.native
+@JSGlobal
+class Sigmoid protected () extends ElementWiseActivation {
+  def this(xTensor: Tensor, yTensor: Tensor) = this()
+}
 
-  @js.native
-  @JSGlobal
-  class Square protected () extends ElementWiseActivation {
-    def this(xTensor: Tensor, yTensor: Tensor) = this()
-  }
+@js.native
+@JSGlobal
+class Square protected () extends ElementWiseActivation {
+  def this(xTensor: Tensor, yTensor: Tensor) = this()
+}

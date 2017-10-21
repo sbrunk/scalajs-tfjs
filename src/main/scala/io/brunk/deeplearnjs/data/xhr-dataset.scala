@@ -25,41 +25,40 @@ import io.brunk.deeplearnjs.math.NDArray
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 
-  @js.native
-  trait NDArrayInfo extends js.Object {
-    var path: String            = js.native
-    var name: String            = js.native
-    var dataType: String        = js.native
-    var shape: js.Array[Double] = js.native
-  }
+@js.native
+trait NDArrayInfo extends js.Object {
+  var path: String            = js.native
+  var name: String            = js.native
+  var dataType: String        = js.native
+  var shape: js.Array[Double] = js.native
+}
 
-  @js.native
-  trait XhrDatasetConfig extends js.Object {
-    var data: js.Array[NDArrayInfo]                 = js.native
-    var labelClassNames: js.Array[String]           = js.native
-    var modelConfigs: js.Dictionary[XhrModelConfig] = js.native
-  }
+@js.native
+trait XhrDatasetConfig extends js.Object {
+  var data: js.Array[NDArrayInfo]                 = js.native
+  var labelClassNames: js.Array[String]           = js.native
+  var modelConfigs: js.Dictionary[XhrModelConfig] = js.native
+}
 
-  @js.native
-  trait XhrModelConfig extends js.Object {
-    var path: String = js.native
-  }
+@js.native
+trait XhrModelConfig extends js.Object {
+  var path: String = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class XhrDataset protected () extends InMemoryDataset {
-    def this(xhrDatasetConfig: XhrDatasetConfig) = this()
-    protected var xhrDatasetConfig: XhrDatasetConfig                      = js.native
-    def getNDArray[T <: NDArray](info: NDArrayInfo): Promise[js.Array[T]] = js.native
-    def fetchData(): Promise[Unit]                                        = js.native
-  }
+@js.native
+@JSGlobal
+class XhrDataset protected () extends InMemoryDataset {
+  def this(xhrDatasetConfig: XhrDatasetConfig) = this()
+  protected var xhrDatasetConfig: XhrDatasetConfig                      = js.native
+  def getNDArray[T <: NDArray](info: NDArrayInfo): Promise[js.Array[T]] = js.native
+  def fetchData(): Promise[Unit]                                        = js.native
+}
 
-  @js.native
-  @JSGlobalScope
-  object `Xhr-dataset` extends js.Object {
-    def getXhrDatasetConfig(jsonConfigPath: String): Promise[js.Dictionary[XhrDatasetConfig]] =
-      js.native
-  }
-
+@js.native
+@JSGlobalScope
+object `Xhr-dataset` extends js.Object {
+  def getXhrDatasetConfig(jsonConfigPath: String): Promise[js.Dictionary[XhrDatasetConfig]] =
+    js.native
+}

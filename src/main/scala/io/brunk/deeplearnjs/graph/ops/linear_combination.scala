@@ -21,22 +21,22 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
-import io.brunk.deeplearnjs.graph.{SummedTensorArrayMap, Tensor, TensorArrayMap}
+import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
 import io.brunk.deeplearnjs.math.NDArrayMath
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class LinearCombination protected () extends Operation {
-    def this(x1Tensor: Tensor,
-             x2Tensor: Tensor,
-             c1Tensor: Tensor,
-             c2Tensor: Tensor,
-             outTensor: Tensor) = this()
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
+@JSGlobal
+class LinearCombination protected () extends Operation {
+  def this(x1Tensor: Tensor,
+           x2Tensor: Tensor,
+           c1Tensor: Tensor,
+           c2Tensor: Tensor,
+           outTensor: Tensor) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
+}

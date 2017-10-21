@@ -21,26 +21,29 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import io.brunk.deeplearnjs.math.MatrixOrientation
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
-  @JSGlobalScope
-  object Mulmat_packed_gpu extends js.Object {
-    def getFragmentShaderSource(sharedDimension: Double,
-                                aOrientation: MatrixOrientation,
-                                bOrientation: MatrixOrientation): String = js.native
-    def multiplyMatrixPacked(gpgpu: GPGPUContext,
-                             multiplyProgram: WebGLProgram,
-                             a: WebGLTexture,
-                             b: WebGLTexture,
-                             result: WebGLTexture,
-                             resultShapeRowCol: js.Tuple2[Double, Double]): Unit = js.native
-    def uploadMultiplyMatrixPackedDownload(a: Float32Array,
-                                           aShapeRowCol: js.Tuple2[Double, Double],
-                                           b: Float32Array,
-                                           bShapeRowCol: js.Tuple2[Double, Double],
-                                           aOrientation: MatrixOrientation = ???,
-                                           bOrientation: MatrixOrientation = ???): Float32Array =
-      js.native
-  }
+@JSGlobalScope
+object Mulmat_packed_gpu extends js.Object {
+  def getFragmentShaderSource(sharedDimension: Double,
+                              aOrientation: MatrixOrientation,
+                              bOrientation: MatrixOrientation): String = js.native
+  def multiplyMatrixPacked(gpgpu: GPGPUContext,
+                           multiplyProgram: WebGLProgram,
+                           a: WebGLTexture,
+                           b: WebGLTexture,
+                           result: WebGLTexture,
+                           resultShapeRowCol: js.Tuple2[Double, Double]): Unit = js.native
+  def uploadMultiplyMatrixPackedDownload(a: Float32Array,
+                                         aShapeRowCol: js.Tuple2[Double, Double],
+                                         b: Float32Array,
+                                         bShapeRowCol: js.Tuple2[Double, Double],
+                                         aOrientation: MatrixOrientation = ???,
+                                         bOrientation: MatrixOrientation = ???): Float32Array =
+    js.native
+}

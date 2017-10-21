@@ -25,21 +25,21 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-  @JSGlobal
-  class BinaryOpProgram protected () extends GPGPUProgram {
-    def this(op: String, aShape: js.Array[Double], bShape: js.Array[Double]) = this()
-    var variableNames: js.Array[String] = js.native
-    var params: js.Array[js.Any]        = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-    var supportsBroadcasting: Boolean   = js.native
-  }
+@JSGlobal
+class BinaryOpProgram protected () extends GPGPUProgram {
+  def this(op: String, aShape: js.Array[Double], bShape: js.Array[Double]) = this()
+  override var variableNames: js.Array[String] = js.native
+  override var params: js.Array[js.Any]        = js.native
+  override var outputShape: js.Array[Double]   = js.native
+  override var userCode: String                = js.native
+  override var supportsBroadcasting: Boolean   = js.native
+}
 
-  @js.native
-  @JSGlobalScope
-  object Binaryop_gpu extends js.Object {
-    val ADD: js.Any = js.native
-    val SUB: js.Any = js.native
-    val MUL: js.Any = js.native
-    val DIV: js.Any = js.native
-  }
+@js.native
+@JSGlobalScope
+object Binaryop_gpu extends js.Object {
+  val ADD: js.Any = js.native
+  val SUB: js.Any = js.native
+  val MUL: js.Any = js.native
+  val DIV: js.Any = js.native
+}
