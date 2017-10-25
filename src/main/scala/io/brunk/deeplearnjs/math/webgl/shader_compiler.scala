@@ -22,21 +22,16 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package shader_compiler {
-
-  @js.native
-  @JSGlobalScope
-  object Shader_compiler extends js.Object {
-    type ShapeInfo = js.Any
-    type InputInfo = js.Any
-    def makeShader(inputsInfo: js.Array[InputInfo],
-                   outputShape: ShapeInfo,
-                   userCode: String,
-                   broadcast: Boolean,
-                   numBatchDims: Double): String = js.native
-  }
-
+@js.native
+@JSGlobalScope
+object Shader_compiler extends js.Object {
+  type ShapeInfo = js.Any
+  type InputInfo = js.Any
+  def makeShader(inputsInfo: js.Array[InputInfo],
+                 outputShape: ShapeInfo,
+                 userCode: String,
+                 broadcast: Boolean,
+                 numBatchDims: Double): String = js.native
 }

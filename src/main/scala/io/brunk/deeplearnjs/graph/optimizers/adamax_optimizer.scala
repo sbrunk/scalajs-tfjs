@@ -22,30 +22,25 @@
 package io.brunk.deeplearnjs.graph.optimizers
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package adamax_optimizer {
-
-  @js.native
-  @JSGlobal
-  class AdamaxOptimizer protected () extends Optimizer {
-    def this(learningRate: Double,
-             beta1: Double,
-             beta2: Double,
-             specifiedVariableList: js.Array[Node] = ???) = this()
-    protected var learningRate: Double = js.native
-    def beforeBatch(math: NDArrayMath,
-                    batchSize: Double,
-                    runtime: SessionRuntime,
-                    activationArrayMap: TensorArrayMap,
-                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterBatch(math: NDArrayMath,
-                   batchSize: Double,
-                   runtime: SessionRuntime,
-                   activationArrayMap: TensorArrayMap,
-                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                          = js.native
-  }
-
+@js.native
+@JSGlobal
+class AdamaxOptimizer protected () extends Optimizer {
+  def this(learningRate: Double,
+           beta1: Double,
+           beta2: Double,
+           specifiedVariableList: js.Array[Node] = ???) = this()
+  protected var learningRate: Double = js.native
+  def beforeBatch(math: NDArrayMath,
+                  batchSize: Double,
+                  runtime: SessionRuntime,
+                  activationArrayMap: TensorArrayMap,
+                  gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  def afterBatch(math: NDArrayMath,
+                 batchSize: Double,
+                 runtime: SessionRuntime,
+                 activationArrayMap: TensorArrayMap,
+                 gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  def dispose(): Unit                                          = js.native
 }

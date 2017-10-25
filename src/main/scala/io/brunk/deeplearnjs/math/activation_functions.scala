@@ -22,43 +22,38 @@
 package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package activation_functions {
+@js.native
+trait ActivationFunction extends js.Object {
+  def output[T <: NDArray](math: NDArrayMath, input: T): T         = js.native
+  def der[T <: NDArray](math: NDArrayMath, input: T, output: T): T = js.native
+}
 
-  @js.native
-  trait ActivationFunction extends js.Object {
-    def output[T <: NDArray](math: NDArrayMath, input: T): T         = js.native
-    def der[T <: NDArray](math: NDArrayMath, input: T, output: T): T = js.native
-  }
+@js.native
+@JSGlobal
+class TanHFunc extends ActivationFunction {
+  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class TanHFunc extends ActivationFunction {
-    def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-    def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  }
+@js.native
+@JSGlobal
+class ReLUFunc extends ActivationFunction {
+  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class ReLUFunc extends ActivationFunction {
-    def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-    def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  }
+@js.native
+@JSGlobal
+class SigmoidFunc extends ActivationFunction {
+  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class SigmoidFunc extends ActivationFunction {
-    def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-    def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  }
-
-  @js.native
-  @JSGlobal
-  class SquareFunc extends ActivationFunction {
-    def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-    def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  }
-
+@js.native
+@JSGlobal
+class SquareFunc extends ActivationFunction {
+  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
 }

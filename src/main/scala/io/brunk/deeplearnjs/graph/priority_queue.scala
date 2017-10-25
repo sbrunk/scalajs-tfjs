@@ -22,27 +22,22 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package priority_queue {
+@js.native
+@JSGlobal
+class PriorityQueue[T] protected () extends js.Object {
+  def this(comparator: Comparator[T], indexObserver: IndexObserver[T] = ???) = this()
+  def enqueue(t: T): Unit                  = js.native
+  def dequeue(): T                         = js.native
+  def update(newT: T, index: Double): Unit = js.native
+  def empty(): Boolean                     = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class PriorityQueue[T] protected () extends js.Object {
-    def this(comparator: Comparator[T], indexObserver: IndexObserver[T] = ???) = this()
-    def enqueue(t: T): Unit                  = js.native
-    def dequeue(): T                         = js.native
-    def update(newT: T, index: Double): Unit = js.native
-    def empty(): Boolean                     = js.native
-  }
-
-  @js.native
-  @JSGlobalScope
-  object Priority_queue extends js.Object {
-    def defaultCompare[T](a: T, b: T): Double = js.native
-    type Comparator[T]    = js.Function2[T, T, Double]
-    type IndexObserver[T] = js.Function2[T, Double, Unit]
-  }
-
+@js.native
+@JSGlobalScope
+object Priority_queue extends js.Object {
+  def defaultCompare[T](a: T, b: T): Double = js.native
+  type Comparator[T]    = js.Function2[T, T, Double]
+  type IndexObserver[T] = js.Function2[T, Double, Unit]
 }

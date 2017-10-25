@@ -22,78 +22,74 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package gpgpu_context {
-
-  @js.native
-  @JSGlobal
-  class GPGPUContext protected () extends js.Object {
-    def this(gl: WebGLRenderingContext = ???) = this()
-    var gl: WebGLRenderingContext                                        = js.native
-    var loseContextExtension: WebGLLoseContextExtension                  = js.native
-    var vertexBuffer: WebGLBuffer                                        = js.native
-    var indexBuffer: WebGLBuffer                                         = js.native
-    var framebuffer: WebGLFramebuffer                                    = js.native
-    var outputTexture: WebGLTexture | Null                               = js.native
-    var program: WebGLProgram | Null                                     = js.native
-    def dispose(): Unit                                                  = js.native
-    def enableAutomaticDebugValidation(enabled: Boolean): Unit           = js.native
-    def createMatrixTexture(rows: Double, columns: Double): WebGLTexture = js.native
-    def uploadPixelDataToTexture(
-        texture: WebGLTexture,
-        pixels: ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement
-    ): Unit                                                                    = js.native
-    def createPackedMatrixTexture(rows: Double, columns: Double): WebGLTexture = js.native
-    def deleteMatrixTexture(texture: WebGLTexture): Unit                       = js.native
-    def uploadMatrixToTexture(texture: WebGLTexture,
-                              rows: Double,
-                              columns: Double,
-                              matrix: Float32Array): Unit = js.native
-    def uploadMatrixToPackedTexture(texture: WebGLTexture,
-                                    rows: Double,
-                                    columns: Double,
-                                    matrix: Float32Array): Unit = js.native
-    def downloadMatrixFromTexture(texture: WebGLTexture,
+@js.native
+@JSGlobal
+class GPGPUContext protected () extends js.Object {
+  def this(gl: WebGLRenderingContext = ???) = this()
+  var gl: WebGLRenderingContext                                        = js.native
+  var loseContextExtension: WebGLLoseContextExtension                  = js.native
+  var vertexBuffer: WebGLBuffer                                        = js.native
+  var indexBuffer: WebGLBuffer                                         = js.native
+  var framebuffer: WebGLFramebuffer                                    = js.native
+  var outputTexture: WebGLTexture | Null                               = js.native
+  var program: WebGLProgram | Null                                     = js.native
+  def dispose(): Unit                                                  = js.native
+  def enableAutomaticDebugValidation(enabled: Boolean): Unit           = js.native
+  def createMatrixTexture(rows: Double, columns: Double): WebGLTexture = js.native
+  def uploadPixelDataToTexture(
+      texture: WebGLTexture,
+      pixels: ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement
+  ): Unit                                                                    = js.native
+  def createPackedMatrixTexture(rows: Double, columns: Double): WebGLTexture = js.native
+  def deleteMatrixTexture(texture: WebGLTexture): Unit                       = js.native
+  def uploadMatrixToTexture(texture: WebGLTexture,
+                            rows: Double,
+                            columns: Double,
+                            matrix: Float32Array): Unit = js.native
+  def uploadMatrixToPackedTexture(texture: WebGLTexture,
                                   rows: Double,
-                                  columns: Double): Float32Array = js.native
-    def downloadMatrixFromRGBAColorTexture(texture: WebGLTexture,
-                                           rows: Double,
-                                           columns: Double,
-                                           channels: Double): Float32Array = js.native
-    def downloadMatrixFromPackedTexture(texture: WebGLTexture,
-                                        rows: Double,
-                                        columns: Double): Float32Array = js.native
-    def createProgram(fragmentShaderSource: String): WebGLProgram      = js.native
-    def deleteProgram(program: WebGLProgram): Unit                     = js.native
-    def setProgram(program: WebGLProgram | Null): Unit                 = js.native
-    def getUniformLocation(program: WebGLProgram, uniformName: String): WebGLUniformLocation =
-      js.native
-    def getAttributeLocation(program: WebGLProgram, attribute: String): Double = js.native
-    def getUniformLocationNoThrow(program: WebGLProgram,
-                                  uniformName: String): WebGLUniformLocation = js.native
-    def setInputMatrixTexture(inputMatrixTexture: WebGLTexture,
-                              uniformLocation: WebGLUniformLocation,
-                              textureUnit: Double): Unit = js.native
-    def setOutputMatrixTexture(outputMatrixTexture: WebGLTexture,
-                               rows: Double,
-                               columns: Double): Unit = js.native
-    def setOutputPackedMatrixTexture(outputPackedMatrixTexture: WebGLTexture,
-                                     rows: Double,
-                                     columns: Double): Unit = js.native
-    def setOutputMatrixWriteRegion(startRow: Double,
-                                   numRows: Double,
-                                   startColumn: Double,
-                                   numColumns: Double): Unit = js.native
-    def setOutputPackedMatrixWriteRegion(startRow: Double,
-                                         numRows: Double,
-                                         startColumn: Double,
-                                         numColumns: Double): Unit         = js.native
-    def debugValidate(): Unit                                              = js.native
-    def executeProgram(attribLocations: js.Dictionary[Double] = ???): Unit = js.native
-    def blockUntilAllProgramsCompleted(): Unit                             = js.native
-    def runQuery(queryFn: js.Function0[Unit]): Promise[Double]             = js.native
-  }
-
+                                  columns: Double,
+                                  matrix: Float32Array): Unit = js.native
+  def downloadMatrixFromTexture(texture: WebGLTexture,
+                                rows: Double,
+                                columns: Double): Float32Array = js.native
+  def downloadMatrixFromRGBAColorTexture(texture: WebGLTexture,
+                                         rows: Double,
+                                         columns: Double,
+                                         channels: Double): Float32Array = js.native
+  def downloadMatrixFromPackedTexture(texture: WebGLTexture,
+                                      rows: Double,
+                                      columns: Double): Float32Array = js.native
+  def createProgram(fragmentShaderSource: String): WebGLProgram      = js.native
+  def deleteProgram(program: WebGLProgram): Unit                     = js.native
+  def setProgram(program: WebGLProgram | Null): Unit                 = js.native
+  def getUniformLocation(program: WebGLProgram, uniformName: String): WebGLUniformLocation =
+    js.native
+  def getAttributeLocation(program: WebGLProgram, attribute: String): Double = js.native
+  def getUniformLocationNoThrow(program: WebGLProgram, uniformName: String): WebGLUniformLocation =
+    js.native
+  def setInputMatrixTexture(inputMatrixTexture: WebGLTexture,
+                            uniformLocation: WebGLUniformLocation,
+                            textureUnit: Double): Unit = js.native
+  def setOutputMatrixTexture(outputMatrixTexture: WebGLTexture,
+                             rows: Double,
+                             columns: Double): Unit = js.native
+  def setOutputPackedMatrixTexture(outputPackedMatrixTexture: WebGLTexture,
+                                   rows: Double,
+                                   columns: Double): Unit = js.native
+  def setOutputMatrixWriteRegion(startRow: Double,
+                                 numRows: Double,
+                                 startColumn: Double,
+                                 numColumns: Double): Unit = js.native
+  def setOutputPackedMatrixWriteRegion(startRow: Double,
+                                       numRows: Double,
+                                       startColumn: Double,
+                                       numColumns: Double): Unit         = js.native
+  def debugValidate(): Unit                                              = js.native
+  def executeProgram(attribLocations: js.Dictionary[Double] = ???): Unit = js.native
+  def blockUntilAllProgramsCompleted(): Unit                             = js.native
+  def runQuery(queryFn: js.Function0[Unit]): Promise[Double]             = js.native
 }

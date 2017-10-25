@@ -22,24 +22,19 @@
 package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package cost_functions {
+@js.native
+trait ElementWiseCostFunction extends js.Object {
+  def cost[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T = js.native
+  def der[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T  = js.native
+  def dispose(): Unit                                        = js.native
+}
 
-  @js.native
-  trait ElementWiseCostFunction extends js.Object {
-    def cost[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T = js.native
-    def der[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T  = js.native
-    def dispose(): Unit                                        = js.native
-  }
-
-  @js.native
-  @JSGlobal
-  class SquareCostFunc extends ElementWiseCostFunction {
-    def cost[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T = js.native
-    def der[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T  = js.native
-    def dispose(): Unit                                        = js.native
-  }
-
+@js.native
+@JSGlobal
+class SquareCostFunc extends ElementWiseCostFunction {
+  def cost[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T = js.native
+  def der[T <: NDArray](math: NDArrayMath, x1: T, x2: T): T  = js.native
+  def dispose(): Unit                                        = js.native
 }

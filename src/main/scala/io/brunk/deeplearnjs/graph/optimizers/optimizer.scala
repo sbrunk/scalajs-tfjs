@@ -22,37 +22,33 @@
 package io.brunk.deeplearnjs.graph.optimizers
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
-package optimizer {
-
-  @js.native
-  @JSGlobal
-  abstract class Optimizer protected () extends js.Object {
-    def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
-    protected var learningRate: Double                                  = js.native
-    protected var variableNodes: js.Array[VariableNode]                 = js.native
-    protected var specifiedVariableNodes: js.Array[VariableNode] | Null = js.native
-    def beforeBatch(math: NDArrayMath,
-                    batchSize: Double,
-                    runtime: SessionRuntime,
-                    activationArrayMap: TensorArrayMap,
-                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterExample(math: NDArrayMath,
-                     runtime: SessionRuntime,
-                     activationArrayMap: TensorArrayMap,
-                     gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterBatch(math: NDArrayMath,
-                   batchSize: Double,
+@js.native
+@JSGlobal
+abstract class Optimizer protected () extends js.Object {
+  def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
+  protected var learningRate: Double                                  = js.native
+  protected var variableNodes: js.Array[VariableNode]                 = js.native
+  protected var specifiedVariableNodes: js.Array[VariableNode] | Null = js.native
+  def beforeBatch(math: NDArrayMath,
+                  batchSize: Double,
+                  runtime: SessionRuntime,
+                  activationArrayMap: TensorArrayMap,
+                  gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  def afterExample(math: NDArrayMath,
                    runtime: SessionRuntime,
                    activationArrayMap: TensorArrayMap,
-                   gradientArrayMap: SummedTensorArrayMap): Unit
-    def dispose(): Unit                             = js.native
-    protected var variableGradients: TensorArrayMap = js.native
-    protected var prevBatchSize: Double             = js.native
-    protected var one: Scalar[String]               = js.native
-    protected var c: Scalar                         = js.native
-  }
-
+                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  def afterBatch(math: NDArrayMath,
+                 batchSize: Double,
+                 runtime: SessionRuntime,
+                 activationArrayMap: TensorArrayMap,
+                 gradientArrayMap: SummedTensorArrayMap): Unit
+  def dispose(): Unit                             = js.native
+  protected var variableGradients: TensorArrayMap = js.native
+  protected var prevBatchSize: Double             = js.native
+  protected var one: Scalar[String]               = js.native
+  protected var c: Scalar                         = js.native
 }

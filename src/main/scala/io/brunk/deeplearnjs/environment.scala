@@ -25,47 +25,43 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package environment {
+@js.native
+sealed trait Type extends js.Object {}
 
-  @js.native
-  sealed trait Type extends js.Object {}
+@js.native
+@JSGlobal
+object Type extends js.Object {
+  var NUMBER: Type  = js.native
+  var BOOLEAN: Type = js.native
+  @JSBracketAccess
+  def apply(value: Type): String = js.native
+}
 
-  @js.native
-  @JSGlobal
-  object Type extends js.Object {
-    var NUMBER: Type  = js.native
-    var BOOLEAN: Type = js.native
-    @JSBracketAccess
-    def apply(value: Type): String = js.native
-  }
+@js.native
+trait Features extends js.Object {
+  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_ENABLED: Boolean  = js.native
+  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean = js.native
+  var WEBGL_VERSION: Double                                  = js.native
+  var WEBGL_FLOAT_TEXTURE_ENABLED: Boolean                   = js.native
+}
 
-  @js.native
-  trait Features extends js.Object {
-    var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_ENABLED: Boolean  = js.native
-    var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean = js.native
-    var WEBGL_VERSION: Double                                  = js.native
-    var WEBGL_FLOAT_TEXTURE_ENABLED: Boolean                   = js.native
-  }
+@js.native
+trait URLProperty extends js.Object {
+  var name: String = js.native
+  var `type`: Type = js.native
+}
 
-  @js.native
-  trait URLProperty extends js.Object {
-    var name: String = js.native
-    var `type`: Type = js.native
-  }
+@js.native
+@JSGlobal
+class Environment protected () extends js.Object {
+  def this(features: Features = ???) = this()
+  def get[K <: String](feature: K): Boolean | Double = js.native
+}
 
-  @js.native
-  @JSGlobal
-  class Environment protected () extends js.Object {
-    def this(features: Features = ???) = this()
-    def get[K <: String](feature: K): Boolean | Double = js.native
-  }
-
-  @js.native
-  @JSGlobalScope
-  object Environment extends js.Object {
-    val URL_PROPERTIES: js.Array[URLProperty]          = js.native
-    def ENV: Environment                               = js.native
-    def setEnvironment(environment: Environment): Unit = js.native
-  }
-
+@js.native
+@JSGlobalScope
+object Environment extends js.Object {
+  val URL_PROPERTIES: js.Array[URLProperty]          = js.native
+  def ENV: Environment                               = js.native
+  def setEnvironment(environment: Environment): Unit = js.native
 }

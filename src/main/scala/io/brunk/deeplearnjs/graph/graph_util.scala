@@ -22,20 +22,15 @@
 package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package graph_util {
-
-  @js.native
-  @JSGlobalScope
-  object Graph_util extends js.Object {
-    def getUnorderedEvaluationSet(nodes: js.Array[Node],
-                                  terminatingNodes: js.Array[Node]): js.Array[Node]     = js.native
-    def getOrderedEvaluationSet(unorderedEvaluationSet: js.Array[Node]): js.Array[Node] = js.native
-    def isInputNode(node: Node): Boolean                                                = js.native
-    def shouldBackProp(t: Tensor): Boolean                                              = js.native
-    def isPassthroughNode(node: Node, map: TensorArrayMap): Boolean                     = js.native
-  }
-
+@js.native
+@JSGlobalScope
+object Graph_util extends js.Object {
+  def getUnorderedEvaluationSet(nodes: js.Array[Node],
+                                terminatingNodes: js.Array[Node]): js.Array[Node]     = js.native
+  def getOrderedEvaluationSet(unorderedEvaluationSet: js.Array[Node]): js.Array[Node] = js.native
+  def isInputNode(node: Node): Boolean                                                = js.native
+  def shouldBackProp(t: Tensor): Boolean                                              = js.native
+  def isPassthroughNode(node: Node, map: TensorArrayMap): Boolean                     = js.native
 }

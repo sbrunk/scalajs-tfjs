@@ -22,21 +22,16 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package resize_bilinear_gpu {
-
-  @js.native
-  @JSGlobal
-  class ResizeBilinear3DProgram protected () extends GPGPUProgram {
-    def this(inputShape: js.Tuple3[Double, Double, Double],
-             outputDimensionsRowCol: js.Tuple2[Double, Double],
-             alignCorners: Boolean) = this()
-    var variableNames: js.Array[String] = js.native
-    var params: js.Array[js.Any]        = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-  }
-
+@js.native
+@JSGlobal
+class ResizeBilinear3DProgram protected () extends GPGPUProgram {
+  def this(inputShape: js.Tuple3[Double, Double, Double],
+           outputDimensionsRowCol: js.Tuple2[Double, Double],
+           alignCorners: Boolean) = this()
+  var variableNames: js.Array[String] = js.native
+  var params: js.Array[js.Any]        = js.native
+  var outputShape: js.Array[Double]   = js.native
+  var userCode: String                = js.native
 }

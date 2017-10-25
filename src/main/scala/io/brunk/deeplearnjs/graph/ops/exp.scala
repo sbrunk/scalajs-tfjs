@@ -22,19 +22,14 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package exp {
-
-  @js.native
-  @JSGlobal
-  class Exp protected () extends Operation {
-    def this(xTensor: Tensor, yTensor: Tensor) = this()
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
-
+@js.native
+@JSGlobal
+class Exp protected () extends Operation {
+  def this(xTensor: Tensor, yTensor: Tensor) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
 }

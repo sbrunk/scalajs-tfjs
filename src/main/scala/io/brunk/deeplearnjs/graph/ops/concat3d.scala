@@ -22,19 +22,14 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package concat3d {
-
-  @js.native
-  @JSGlobal
-  class Concat3D protected () extends Operation {
-    def this(x1Tensor: Tensor, x2Tensor: Tensor, axis: Double, yTensor: Tensor) = this()
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
-
+@js.native
+@JSGlobal
+class Concat3D protected () extends Operation {
+  def this(x1Tensor: Tensor, x2Tensor: Tensor, axis: Double, yTensor: Tensor) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
 }

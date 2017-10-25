@@ -22,20 +22,15 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package addscaledmat_gpu {
-
-  @js.native
-  @JSGlobal
-  class AddScaledMatProgram protected () extends GPGPUProgram {
-    def this(aShape: js.Array[Double], bShape: js.Array[Double]) = this()
-    var variableNames: js.Array[String] = js.native
-    var params: js.Array[js.Any]        = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-    var supportsBroadcasting: Boolean   = js.native
-  }
-
+@js.native
+@JSGlobal
+class AddScaledMatProgram protected () extends GPGPUProgram {
+  def this(aShape: js.Array[Double], bShape: js.Array[Double]) = this()
+  var variableNames: js.Array[String] = js.native
+  var params: js.Array[js.Any]        = js.native
+  var outputShape: js.Array[Double]   = js.native
+  var userCode: String                = js.native
+  var supportsBroadcasting: Boolean   = js.native
 }

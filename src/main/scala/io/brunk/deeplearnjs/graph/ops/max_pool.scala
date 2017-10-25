@@ -22,23 +22,18 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package max_pool {
-
-  @js.native
-  @JSGlobal
-  class MaxPool protected () extends Operation {
-    def this(xTensor: Tensor,
-             yTensor: Tensor,
-             fieldSize: Double,
-             stride: Double = ???,
-             pad: Double = ???) = this()
-    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-    def backProp(math: NDArrayMath,
-                 inferenceArrays: TensorArrayMap,
-                 gradientArrays: SummedTensorArrayMap): Unit = js.native
-  }
-
+@js.native
+@JSGlobal
+class MaxPool protected () extends Operation {
+  def this(xTensor: Tensor,
+           yTensor: Tensor,
+           fieldSize: Double,
+           stride: Double = ???,
+           pad: Double = ???) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
 }

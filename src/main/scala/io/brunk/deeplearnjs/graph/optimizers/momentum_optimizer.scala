@@ -22,29 +22,24 @@
 package io.brunk.deeplearnjs.graph.optimizers
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package momentum_optimizer {
-
-  @js.native
-  @JSGlobal
-  class MomentumOptimizer protected () extends SGDOptimizer {
-    def this(learningRate: Double, momentum: Double, specifiedVariableList: js.Array[Node] = ???) =
-      this()
-    protected var learningRate: Double = js.native
-    def beforeBatch(math: NDArrayMath,
-                    batchSize: Double,
-                    runtime: SessionRuntime,
-                    activationArrayMap: TensorArrayMap,
-                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterBatch(math: NDArrayMath,
-                   batchSize: Double,
-                   runtime: SessionRuntime,
-                   activationArrayMap: TensorArrayMap,
-                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                          = js.native
-    def setMomentum(momentum: Double): Unit                      = js.native
-  }
-
+@js.native
+@JSGlobal
+class MomentumOptimizer protected () extends SGDOptimizer {
+  def this(learningRate: Double, momentum: Double, specifiedVariableList: js.Array[Node] = ???) =
+    this()
+  protected var learningRate: Double = js.native
+  def beforeBatch(math: NDArrayMath,
+                  batchSize: Double,
+                  runtime: SessionRuntime,
+                  activationArrayMap: TensorArrayMap,
+                  gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  def afterBatch(math: NDArrayMath,
+                 batchSize: Double,
+                 runtime: SessionRuntime,
+                 activationArrayMap: TensorArrayMap,
+                 gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  def dispose(): Unit                                          = js.native
+  def setMomentum(momentum: Double): Unit                      = js.native
 }

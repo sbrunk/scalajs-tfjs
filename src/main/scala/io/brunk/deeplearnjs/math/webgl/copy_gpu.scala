@@ -22,24 +22,19 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation._
 
-package copy_gpu {
-
-  @js.native
-  @JSGlobal
-  class Copy2DProgram protected () extends GPGPUProgram {
-    def this(srcNumCols: Double, destNumCols: Double) = this()
-    var variableNames: js.Array[String] = js.native
-    var params: js.Array[js.Any]        = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-    def getCustomSetupFunc(
-        sourceStart: js.Tuple2[Double, Double],
-        destStart: js.Tuple2[Double, Double],
-        destSize: js.Tuple2[Double, Double]
-    ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
-  }
-
+@js.native
+@JSGlobal
+class Copy2DProgram protected () extends GPGPUProgram {
+  def this(srcNumCols: Double, destNumCols: Double) = this()
+  var variableNames: js.Array[String] = js.native
+  var params: js.Array[js.Any]        = js.native
+  var outputShape: js.Array[Double]   = js.native
+  var userCode: String                = js.native
+  def getCustomSetupFunc(
+      sourceStart: js.Tuple2[Double, Double],
+      destStart: js.Tuple2[Double, Double],
+      destSize: js.Tuple2[Double, Double]
+  ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
 }
