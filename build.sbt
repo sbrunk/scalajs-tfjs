@@ -5,14 +5,15 @@
 lazy val `scala-js-deeplearnjs` =
   project
     .in(file("."))
-    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin)
+    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
-        "org.scala-js" %%% "scalajs-dom" % library.Version.scalajsDom,
+        library.scalajsDom,
         library.scalaCheck % Test,
         library.scalaTest  % Test
-      )
+      ),
+      npmDependencies in Test += "deeplearn" -> "0.3.3",
     )
 
 // *****************************************************************************
@@ -26,8 +27,9 @@ lazy val library =
       val scalaTest  = "3.0.4"
       val scalajsDom = "0.9.3"
     }
+    val scalajsDom = "org.scala-js" %%%! "scalajs-dom" % Version.scalajsDom
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
-    val scalaTest  = "org.scalatest"  %% "scalatest"  % Version.scalaTest
+    val scalaTest  = "org.scalatest"  %%%! "scalatest"  % Version.scalaTest
   }
 
 // *****************************************************************************
