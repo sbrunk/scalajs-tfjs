@@ -21,48 +21,49 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
-import io.brunk.deeplearnjs.math.NDArray
-import io.brunk.deeplearnjs.math.webgl.Shader_compiler.ShapeInfo
-import org.scalajs.dom.raw.{ WebGLProgram, WebGLUniformLocation }
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
-import scala.scalajs.js.|
+import js.annotation._
+import js.|
 
-@js.native
-trait GPGPUProgram extends js.Object {
-  var variableNames: js.Array[String]
-  var outputShape: js.Array[Double]
-  var params: js.Array[js.Any]
-  var userCode: String
-  var supportsBroadcasting: Boolean | Unit //js.UndefOr[Boolean]
-}
+package gpgpu_math {
 
-@js.native
-trait GPGPUBinary extends js.Object {
-  var webGLProgram: WebGLProgram
-  var program: GPGPUProgram
-  var uniformLocations: js.Dictionary[WebGLUniformLocation]
-  var attributeLocations: js.Dictionary[Double]
-  var gpgpu: GPGPUContext
-  var source: String
-  var inShapeInfos: js.Array[ShapeInfo]
-  var outShapeInfo: ShapeInfo
-}
+  @js.native
+  trait GPGPUProgram extends js.Object {
+    var variableNames: js.Array[String] = js.native
+    var outputShape: js.Array[Double]   = js.native
+    var params: js.Array[js.Any]        = js.native
+    var userCode: String                = js.native
+    var supportsBroadcasting: Boolean   = js.native
+    var numBatchDims: Double            = js.native
+  }
 
-@js.native
-@JSGlobalScope
-object Gpgpu_math extends js.Object {
-  def compileProgram[T <: NDArray, K <: NDArray](gpgpu: GPGPUContext,
-                                                 program: GPGPUProgram,
-                                                 inputs: js.Array[T],
-                                                 output: K): GPGPUBinary = js.native
-  def runProgram[T <: NDArray, K <: NDArray](
-      binary: GPGPUBinary,
-      inputs: js.Array[T],
-      output: K,
-      customSetup: js.Function2[GPGPUContext, WebGLProgram, Unit] = ???
-  ): Unit = js.native
-  def makeShaderKey(program: GPGPUProgram, inputs: js.Array[NDArray], output: NDArray): String =
-    js.native
+  @js.native
+  trait GPGPUBinary extends js.Object {
+    var webGLProgram: WebGLProgram                            = js.native
+    var program: GPGPUProgram                                 = js.native
+    var uniformLocations: js.Dictionary[WebGLUniformLocation] = js.native
+    var attributeLocations: js.Dictionary[Double]             = js.native
+    var gpgpu: GPGPUContext                                   = js.native
+    var source: String                                        = js.native
+    var inShapeInfos: js.Array[ShapeInfo]                     = js.native
+    var outShapeInfo: ShapeInfo                               = js.native
+  }
+
+  @js.native
+  @JSGlobalScope
+  object Gpgpu_math extends js.Object {
+    def compileProgram[T <: NDArray, K <: NDArray](gpgpu: GPGPUContext,
+                                                   program: GPGPUProgram,
+                                                   inputs: js.Array[T],
+                                                   output: K): GPGPUBinary = js.native
+    def runProgram[T <: NDArray, K <: NDArray](
+        binary: GPGPUBinary,
+        inputs: js.Array[T],
+        output: K,
+        customSetup: js.Function2[GPGPUContext, WebGLProgram, Unit] = ???
+    ): Unit = js.native
+    def makeShaderKey(program: GPGPUProgram, inputs: js.Array[NDArray], output: NDArray): String =
+      js.native
+  }
+
 }

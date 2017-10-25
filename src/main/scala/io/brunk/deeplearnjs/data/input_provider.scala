@@ -21,50 +21,51 @@
 
 package io.brunk.deeplearnjs.data
 
-import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath }
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
-import scala.scalajs.js.typedarray.Uint32Array
 
-@js.native
-trait InputProvider extends js.Object {
-  def getNextCopy(math: NDArrayMath): NDArray
-  def disposeCopy(math: NDArrayMath, copy: NDArray): Unit
-}
+package input_provider {
 
-@js.native
-trait ShuffledInputProviderBuilder extends js.Object {
-  def getInputProviders(): js.Array[InputProvider]
-}
+  @js.native
+  trait InputProvider extends js.Object {
+    def getNextCopy(math: NDArrayMath): NDArray             = js.native
+    def disposeCopy(math: NDArrayMath, copy: NDArray): Unit = js.native
+  }
 
-@js.native
-@JSGlobal
-abstract class InMemoryShuffledInputProviderBuilder protected ()
-    extends ShuffledInputProviderBuilder {
-  def this(inputs: js.Array[js.Array[NDArray]]) = this()
-  protected var inputs: js.Array[js.Array[NDArray]] = js.native
-  protected var shuffledIndices: Uint32Array        = js.native
-  protected var numInputs: Double                   = js.native
-  protected var idx: Double                         = js.native
-  protected var inputCounter: Double                = js.native
-  protected var epoch: Double                       = js.native
-  def getCurrentExampleIndex(): Double              = js.native
-  def getNextInput(inputId: Double): NDArray        = js.native
-  def getEpoch(): Double                            = js.native
-  def getInputProviders(): js.Array[InputProvider]  = js.native
-  def getInputProvider(inputId: Double): InputProvider
-}
+  @js.native
+  trait ShuffledInputProviderBuilder extends js.Object {
+    def getInputProviders(): js.Array[InputProvider] = js.native
+  }
 
-@js.native
-@JSGlobal
-class InCPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
-  def getInputProvider(inputId: Double): InputProvider = js.native
-}
+  @js.native
+  @JSGlobal
+  abstract class InMemoryShuffledInputProviderBuilder protected ()
+      extends ShuffledInputProviderBuilder {
+    def this(inputs: js.Array[js.Array[NDArray]]) = this()
+    protected var inputs: js.Array[js.Array[NDArray]] = js.native
+    protected var shuffledIndices: Uint32Array        = js.native
+    protected var numInputs: Double                   = js.native
+    protected var idx: Double                         = js.native
+    protected var inputCounter: Double                = js.native
+    protected var epoch: Double                       = js.native
+    def getCurrentExampleIndex(): Double              = js.native
+    def getNextInput(inputId: Double): NDArray        = js.native
+    def getEpoch(): Double                            = js.native
+    def getInputProviders(): js.Array[InputProvider]  = js.native
+    def getInputProvider(inputId: Double): InputProvider
+  }
 
-@js.native
-@JSGlobal
-class InGPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
-  def getInputProvider(inputId: Double): InputProvider = js.native
+  @js.native
+  @JSGlobal
+  class InCPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
+    def getInputProvider(inputId: Double): js.Any = js.native
+  }
+
+  @js.native
+  @JSGlobal
+  class InGPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
+    def getInputProvider(inputId: Double): js.Any = js.native
+  }
+
 }

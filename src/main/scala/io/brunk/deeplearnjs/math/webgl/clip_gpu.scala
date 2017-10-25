@@ -22,16 +22,19 @@
 package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
-import scala.scalajs.js.|
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class ArgMaxEqualsProgram protected () extends GPGPUProgram {
-  def this(aSize: Double, bSize: Double) = this()
-  var variableNames: js.Array[String]      = js.native
-  var outputShape: js.Array[Double]        = js.native
-  var params: js.Array[js.Any]             = js.native
-  var userCode: String                     = js.native
-  var supportsBroadcasting: Boolean | Unit = js.native
+package clip_gpu {
+
+  @js.native
+  @JSGlobal
+  class ClipProgram protected () extends GPGPUProgram {
+    def this(aShape: js.Array[Double], min: Double, max: Double) = this()
+    var variableNames: js.Array[String] = js.native
+    var params: js.Array[js.Any]        = js.native
+    var userCode: String                = js.native
+    var outputShape: js.Array[Double]   = js.native
+  }
+
 }

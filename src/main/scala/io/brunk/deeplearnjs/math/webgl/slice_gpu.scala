@@ -21,25 +21,25 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
-import org.scalajs.dom.raw.{ WebGLProgram, WebGLUniformLocation }
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
-import scala.scalajs.js.|
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class SliceProgram protected () extends GPGPUProgram {
-  def this(destSize: js.Array[Double]) = this()
-  var variableNames: js.Array[String]      = js.native
-  var params: js.Array[js.Any]             = js.native
-  var outputShape: js.Array[Double]        = js.native
-  var userCode: String                     = js.native
-  var supportsBroadcasting: Boolean | Unit = js.native
-  var rank: Double                         = js.native
-  var startLoc: WebGLUniformLocation       = js.native
-  def getCustomSetupFunc(
-      start: js.Array[Double]
-  ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+package slice_gpu {
+
+  @js.native
+  @JSGlobal
+  class SliceProgram protected () extends GPGPUProgram {
+    def this(destSize: js.Array[Double]) = this()
+    var variableNames: js.Array[String] = js.native
+    var params: js.Array[js.Any]        = js.native
+    var outputShape: js.Array[Double]   = js.native
+    var userCode: String                = js.native
+    var rank: Double                    = js.native
+    var startLoc: WebGLUniformLocation  = js.native
+    def getCustomSetupFunc(
+        start: js.Array[Double]
+    ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+  }
 
 }

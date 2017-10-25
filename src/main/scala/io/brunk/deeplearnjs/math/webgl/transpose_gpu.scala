@@ -19,31 +19,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package io.brunk.deeplearnjs.graph.optimizers
+package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package rmsprop_optimizer {
+package transpose_gpu {
 
   @js.native
   @JSGlobal
-  class RMSPropOptimizer protected () extends Optimizer {
-    def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
-      this()
-    protected var learningRate: Double = js.native
-    def beforeBatch(math: NDArrayMath,
-                    batchSize: Double,
-                    runtime: SessionRuntime,
-                    activationArrayMap: TensorArrayMap,
-                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterBatch(math: NDArrayMath,
-                   batchSize: Double,
-                   runtime: SessionRuntime,
-                   activationArrayMap: TensorArrayMap,
-                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                          = js.native
+  class TransposeProgram protected () extends GPGPUProgram {
+    def this(aShape: js.Array[Double], newDim: js.Array[Double]) = this()
+    var variableNames: js.Array[String] = js.native
+    var params: js.Array[js.Any]        = js.native
+    var outputShape: js.Array[Double]   = js.native
+    var userCode: String                = js.native
+    var rank: Double                    = js.native
   }
 
 }

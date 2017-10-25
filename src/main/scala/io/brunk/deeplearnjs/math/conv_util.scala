@@ -25,33 +25,37 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-@js.native
-@JSGlobalScope
-object Conv_util extends js.Object {
-  type ConvInfo = js.Any
-  def computeConvInfo(inShape: js.Tuple3[Double, Double, Double],
-                      filterHeight: Double,
-                      filterWidth: Double,
-                      outDepth: Double,
-                      strideHeight: Double,
-                      strideWidth: Double,
-                      pad: String | Double): ConvInfo = js.native
-  def computeOutputShape3D(inShape: js.Tuple3[Double, Double, Double],
-                           fieldSize: Double,
-                           outDepth: Double,
-                           stride: Double,
-                           zeroPad: Double = ???): js.Tuple3[Double, Double, Double] = js.native
-  def computeDefaultPad(inputShape: js.Tuple3[Double, Double, Double],
-                        fieldSize: Double,
-                        stride: Double): Double = js.native
-  def computeTexShapeFrom3D(
-      shapeRowColDepth: js.Tuple3[Double, Double, Double]
-  ): js.Tuple2[Double, Double] = js.native
-  def computeWeightsShape4D(inputDepth: Double,
-                            outputDepth: Double,
-                            filterHeight: Double,
-                            filterWidth: Double): js.Tuple4[Double, Double, Double, Double] =
-    js.native
-  def computeDilatedRC(rc: js.Tuple2[Double, Double],
-                       origStride: Double): js.Tuple2[Double, Double] = js.native
+package conv_util {
+
+  @js.native
+  @JSGlobalScope
+  object Conv_util extends js.Object {
+    type ConvInfo = js.Any
+    def computeConvInfo(inShape: js.Tuple3[Double, Double, Double],
+                        filterHeight: Double,
+                        filterWidth: Double,
+                        outDepth: Double,
+                        strideHeight: Double,
+                        strideWidth: Double,
+                        pad: String | Double): ConvInfo = js.native
+    def computeOutputShape3D(inShape: js.Tuple3[Double, Double, Double],
+                             fieldSize: Double,
+                             outDepth: Double,
+                             stride: Double,
+                             zeroPad: Double = ???): js.Tuple3[Double, Double, Double] = js.native
+    def computeDefaultPad(inputShape: js.Tuple3[Double, Double, Double],
+                          fieldSize: Double,
+                          stride: Double): Double = js.native
+    def computeTexShapeFrom3D(
+        shapeRowColDepth: js.Tuple3[Double, Double, Double]
+    ): js.Tuple2[Double, Double] = js.native
+    def computeWeightsShape4D(inputDepth: Double,
+                              outputDepth: Double,
+                              filterHeight: Double,
+                              filterWidth: Double): js.Tuple4[Double, Double, Double, Double] =
+      js.native
+    def computeDilatedRC(rc: js.Tuple2[Double, Double],
+                         origStride: Double): js.Tuple2[Double, Double] = js.native
+  }
+
 }

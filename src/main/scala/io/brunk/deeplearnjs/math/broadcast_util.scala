@@ -19,20 +19,22 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package io.brunk.deeplearnjs.math.webgl
+package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
-import scala.scalajs.js.typedarray.Float32Array
-import scala.scalajs.js.|
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobalScope
-object Pool_gpu_test_util extends js.Object {
-  def uploadPoolDownload(a: Float32Array,
-                         xShape: js.Tuple3[Double, Double, Double],
-                         filterSizes: js.Tuple2[Double, Double] | Double,
-                         strides: js.Tuple2[Double, Double] | Double,
-                         zeroPad: Double | String,
-                         op: String): Float32Array = js.native
+package broadcast_util {
+
+  @js.native
+  @JSGlobalScope
+  object Broadcast_util extends js.Object {
+    def getBroadcastDims(inShape: js.Array[Double], outShape: js.Array[Double]): js.Array[Double] =
+      js.native
+    def broadcastDimsAreOuter(dims: js.Array[Double]): Boolean = js.native
+    def assertAndGetBroadcastShape(shapeA: js.Array[Double],
+                                   shapeB: js.Array[Double]): js.Array[Double] = js.native
+  }
+
 }

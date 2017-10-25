@@ -21,19 +21,22 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
-import org.scalajs.dom.raw.{ WebGLProgram, WebGLTexture }
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobalScope
-object Render_ndarray_gpu_util extends js.Object {
-  def getRenderRGBShader(gpgpu: GPGPUContext, destinationWidth: Double): WebGLProgram = js.native
-  def renderToCanvas(gpgpu: GPGPUContext,
-                     renderShader: WebGLProgram,
-                     sourceTex: WebGLTexture): Unit = js.native
-  def renderToFramebuffer(gpgpu: GPGPUContext,
-                          renderShader: WebGLProgram,
-                          sourceTex: WebGLTexture): Unit = js.native
+package render_ndarray_gpu_util {
+
+  @js.native
+  @JSGlobalScope
+  object Render_ndarray_gpu_util extends js.Object {
+    def getRenderRGBShader(gpgpu: GPGPUContext, destinationWidth: Double): WebGLProgram = js.native
+    def renderToCanvas(gpgpu: GPGPUContext,
+                       renderShader: WebGLProgram,
+                       sourceTex: WebGLTexture): Unit = js.native
+    def renderToFramebuffer(gpgpu: GPGPUContext,
+                            renderShader: WebGLProgram,
+                            sourceTex: WebGLTexture): Unit = js.native
+  }
+
 }

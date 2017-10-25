@@ -21,21 +21,22 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
-import org.scalajs.dom.raw.{ WebGLProgram, WebGLUniformLocation }
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
-import scala.scalajs.js.|
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class OneHotProgram protected () extends GPGPUProgram {
-  def this(numIndices: Double, depth: Double, onValue: Double, offValue: Double) = this()
-  var variableNames: js.Array[String]                                                  = js.native
-  var params: js.Array[js.Any]                                                         = js.native
-  var outputShape: js.Array[Double]                                                    = js.native
-  var userCode: String                                                                 = js.native
-  var supportsBroadcasting: Boolean | Unit                                             = js.native
-  var seedLoc: WebGLUniformLocation                                                    = js.native
-  def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+package onehot_gpu {
+
+  @js.native
+  @JSGlobal
+  class OneHotProgram protected () extends GPGPUProgram {
+    def this(numIndices: Double, depth: Double, onValue: Double, offValue: Double) = this()
+    var variableNames: js.Array[String]                                                  = js.native
+    var params: js.Array[js.Any]                                                         = js.native
+    var outputShape: js.Array[Double]                                                    = js.native
+    var userCode: String                                                                 = js.native
+    var seedLoc: WebGLUniformLocation                                                    = js.native
+    def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+  }
+
 }

@@ -21,39 +21,38 @@
 
 package io.brunk.deeplearnjs.graph.ops
 
-import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
-import io.brunk.deeplearnjs.math.{ Array1D, NDArrayMath, Scalar }
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class Softmax protected () extends Operation {
-  def this(logitsTensor: Tensor, output: Tensor) = this()
-  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-  //def backProp(): Unit                                                      = js.native
-  def backProp(math: NDArrayMath,
-               inferenceArrays: TensorArrayMap,
-               gradientArrays: SummedTensorArrayMap): Unit = js.native
-}
+package softmax {
 
-@js.native
-@JSGlobal
-class SoftmaxCrossEntropyCost protected () extends Operation {
-  def this(logitsTensor: Tensor, labelTensor: Tensor, yTensor: Tensor) = this()
-  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-  def backProp(math: NDArrayMath,
-               inferenceArrays: TensorArrayMap,
-               gradientArrays: SummedTensorArrayMap): Unit = js.native
-  override def disposeTransientArrays(inferenceArrays: TensorArrayMap,
-                                      gradientArrays: SummedTensorArrayMap): Unit = js.native
-  override def dispose(): Unit                                                    = js.native
-}
+  @js.native
+  @JSGlobal
+  class Softmax protected () extends Operation {
+    def this(logitsTensor: Tensor, output: Tensor) = this()
+    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+    def backProp(): Unit                                                      = js.native
+  }
 
-@js.native
-@JSGlobalScope
-object Softmax extends js.Object {
-  def crossEntropyCost(math: NDArrayMath, y: Array1D, target: Array1D, epsilon: Scalar): Scalar =
-    js.native
+  @js.native
+  @JSGlobal
+  class SoftmaxCrossEntropyCost protected () extends Operation {
+    def this(logitsTensor: Tensor, labelTensor: Tensor, yTensor: Tensor) = this()
+    def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+    def backProp(math: NDArrayMath,
+                 inferenceArrays: TensorArrayMap,
+                 gradientArrays: SummedTensorArrayMap): Unit = js.native
+    def disposeTransientArrays(inferenceArrays: TensorArrayMap,
+                               gradientArrays: SummedTensorArrayMap): Unit = js.native
+    def dispose(): Unit                                                    = js.native
+  }
+
+  @js.native
+  @JSGlobalScope
+  object Softmax extends js.Object {
+    def crossEntropyCost(math: NDArrayMath, y: Array1D, target: Array1D, epsilon: Scalar): Scalar =
+      js.native
+  }
+
 }

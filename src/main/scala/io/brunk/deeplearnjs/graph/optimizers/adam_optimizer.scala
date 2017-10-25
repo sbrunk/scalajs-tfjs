@@ -25,13 +25,15 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package rmsprop_optimizer {
+package adam_optimizer {
 
   @js.native
   @JSGlobal
-  class RMSPropOptimizer protected () extends Optimizer {
-    def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
-      this()
+  class AdamOptimizer protected () extends Optimizer {
+    def this(learningRate: Double,
+             beta1: Double,
+             beta2: Double,
+             specifiedVariableList: js.Array[Node] = ???) = this()
     protected var learningRate: Double = js.native
     def beforeBatch(math: NDArrayMath,
                     batchSize: Double,

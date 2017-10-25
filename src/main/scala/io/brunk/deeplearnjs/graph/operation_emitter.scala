@@ -21,13 +21,16 @@
 
 package io.brunk.deeplearnjs.graph
 
-import io.brunk.deeplearnjs.graph.ops.Operation
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobalScope
-object Operation_emitter extends js.Object {
-  def emitFromGraphNodes(nodes: js.Array[Node]): js.Array[Operation] = js.native
+package operation_emitter {
+
+  @js.native
+  @JSGlobalScope
+  object Operation_emitter extends js.Object {
+    def emitFromGraphNodes(nodes: js.Array[Node]): js.Array[Operation] = js.native
+  }
+
 }

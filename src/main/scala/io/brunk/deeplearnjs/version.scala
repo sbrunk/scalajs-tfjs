@@ -19,31 +19,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package io.brunk.deeplearnjs.graph.optimizers
+package io.brunk.deeplearnjs
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package rmsprop_optimizer {
-
-  @js.native
-  @JSGlobal
-  class RMSPropOptimizer protected () extends Optimizer {
-    def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
-      this()
-    protected var learningRate: Double = js.native
-    def beforeBatch(math: NDArrayMath,
-                    batchSize: Double,
-                    runtime: SessionRuntime,
-                    activationArrayMap: TensorArrayMap,
-                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterBatch(math: NDArrayMath,
-                   batchSize: Double,
-                   runtime: SessionRuntime,
-                   activationArrayMap: TensorArrayMap,
-                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                          = js.native
-  }
-
+@js.native
+//@JSGlobalScope
+@JSImport("deeplearn", "version")
+object Version extends js.Object {
+  val version: String = js.native
 }

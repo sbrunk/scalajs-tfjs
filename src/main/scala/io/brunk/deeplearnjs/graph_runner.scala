@@ -21,70 +21,69 @@
 
 package io.brunk.deeplearnjs
 
-import io.brunk.deeplearnjs.graph.{ Session, Tensor }
-import io.brunk.deeplearnjs.graph.Session.FeedEntry
-import io.brunk.deeplearnjs.graph.optimizers.Optimizer
-import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath, Scalar }
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
-@js.native
-trait GraphRunnerEventObserver extends js.Object {
-  var batchesTrainedCallback: js.Function1[Double, Unit] = js.native
-  var avgCostCallback: js.Function1[Scalar, Unit]        = js.native
-  var metricCallback: js.Function1[NDArray, Unit]        = js.native
-  var inferenceExamplesCallback
-    : js.Function2[js.Array[js.Array[FeedEntry]], js.Array[NDArray], Unit] = js.native
-  var inferenceExamplesPerSecCallback: js.Function1[Double, Unit]          = js.native
-  var trainExamplesPerSecCallback: js.Function1[Double, Unit]              = js.native
-  var totalTimeCallback: js.Function1[Double, Unit]                        = js.native
-  var doneTrainingCallback: js.Function0[Unit]                             = js.native
-}
+package graph_runner {
 
-@js.native
-sealed trait MetricReduction extends js.Object {}
+  @js.native
+  trait GraphRunnerEventObserver extends js.Object {
+    var batchesTrainedCallback: js.Function1[Double, Unit] = js.native
+    var avgCostCallback: js.Function1[Scalar, Unit]        = js.native
+    var metricCallback: js.Function1[NDArray, Unit]        = js.native
+    var inferenceExamplesCallback
+      : js.Function2[js.Array[js.Array[FeedEntry]], js.Array[NDArray], Unit] = js.native
+    var inferenceExamplesPerSecCallback: js.Function1[Double, Unit]          = js.native
+    var trainExamplesPerSecCallback: js.Function1[Double, Unit]              = js.native
+    var totalTimeCallback: js.Function1[Double, Unit]                        = js.native
+    var doneTrainingCallback: js.Function0[Unit]                             = js.native
+  }
 
-@js.native
-@JSGlobal
-object MetricReduction extends js.Object {
-  var SUM: MetricReduction  = js.native
-  var MEAN: MetricReduction = js.native
-  @JSBracketAccess
-  def apply(value: MetricReduction): String = js.native
-}
+  @js.native
+  sealed trait MetricReduction extends js.Object {}
 
-@js.native
-@JSGlobal
-class GraphRunner protected () extends js.Object {
-  def this(math: NDArrayMath, session: Session, eventObserver: GraphRunnerEventObserver) = this()
-  def resetStatistics(): Unit = js.native
-  def train(costTensor: Tensor,
-            trainFeedEntries: js.Array[FeedEntry],
-            batchSize: Double,
-            optimizer: Optimizer,
-            numBatches: Double = ???,
-            metricTensor: Tensor = ???,
-            metricFeedEntries: js.Array[FeedEntry] = ???,
-            metricBatchSize: Double = ???,
-            metricReduction: MetricReduction = ???,
-            evalIntervalMs: Double = ???,
-            costIntervalMs: Double = ???): Unit = js.native
-  def stopTraining(): Unit                      = js.native
-  def resumeTraining(): Unit                    = js.native
-  def infer(inferenceTensor: Tensor,
-            inferenceFeedEntries: js.Array[FeedEntry],
-            inferenceExampleIntervalMs: Double = ???,
-            inferenceExampleCount: Double = ???,
-            numPasses: Double = ???): Unit                          = js.native
-  def stopInferring(): Unit                                         = js.native
-  def isInferenceRunning(): Boolean                                 = js.native
-  def computeMetric(): Scalar                                       = js.native
-  def getTotalBatchesTrained(): Double                              = js.native
-  def getLastComputedMetric(): Scalar                               = js.native
-  def setMath(math: NDArrayMath): Unit                              = js.native
-  def setSession(session: Session): Unit                            = js.native
-  def setInferenceTensor(inferenceTensor: Tensor): Unit             = js.native
-  def setInferenceExampleCount(inferenceExampleCount: Double): Unit = js.native
+  @js.native
+  @JSGlobal
+  object MetricReduction extends js.Object {
+    var SUM: MetricReduction  = js.native
+    var MEAN: MetricReduction = js.native
+    @JSBracketAccess
+    def apply(value: MetricReduction): String = js.native
+  }
+
+  @js.native
+  @JSGlobal
+  class GraphRunner protected () extends js.Object {
+    def this(math: NDArrayMath, session: Session, eventObserver: GraphRunnerEventObserver) = this()
+    def resetStatistics(): Unit = js.native
+    def train(costTensor: Tensor,
+              trainFeedEntries: js.Array[FeedEntry],
+              batchSize: Double,
+              optimizer: Optimizer,
+              numBatches: Double = ???,
+              metricTensor: Tensor = ???,
+              metricFeedEntries: js.Array[FeedEntry] = ???,
+              metricBatchSize: Double = ???,
+              metricReduction: MetricReduction = ???,
+              evalIntervalMs: Double = ???,
+              costIntervalMs: Double = ???): Unit = js.native
+    def stopTraining(): Unit                      = js.native
+    def resumeTraining(): Unit                    = js.native
+    def infer(inferenceTensor: Tensor,
+              inferenceFeedEntries: js.Array[FeedEntry],
+              inferenceExampleIntervalMs: Double = ???,
+              inferenceExampleCount: Double = ???,
+              numPasses: Double = ???): Unit                          = js.native
+    def stopInferring(): Unit                                         = js.native
+    def isInferenceRunning(): Boolean                                 = js.native
+    def computeMetric(): Scalar                                       = js.native
+    def getTotalBatchesTrained(): Double                              = js.native
+    def getLastComputedMetric(): Scalar                               = js.native
+    def setMath(math: NDArrayMath): Unit                              = js.native
+    def setSession(session: Session): Unit                            = js.native
+    def setInferenceTensor(inferenceTensor: Tensor): Unit             = js.native
+    def setInferenceExampleCount(inferenceExampleCount: Double): Unit = js.native
+  }
+
 }

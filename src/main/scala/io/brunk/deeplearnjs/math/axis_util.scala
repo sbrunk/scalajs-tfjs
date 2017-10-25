@@ -19,31 +19,31 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package io.brunk.deeplearnjs.graph.optimizers
+package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package rmsprop_optimizer {
+package axis_util {
 
   @js.native
-  @JSGlobal
-  class RMSPropOptimizer protected () extends Optimizer {
-    def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
-      this()
-    protected var learningRate: Double = js.native
-    def beforeBatch(math: NDArrayMath,
-                    batchSize: Double,
-                    runtime: SessionRuntime,
-                    activationArrayMap: TensorArrayMap,
-                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def afterBatch(math: NDArrayMath,
-                   batchSize: Double,
-                   runtime: SessionRuntime,
-                   activationArrayMap: TensorArrayMap,
-                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-    def dispose(): Unit                                          = js.native
+  @JSGlobalScope
+  object Axis_util extends js.Object {
+    def axesAreInnerMostDims(axes: js.Array[Double], rank: Double): Boolean = js.native
+    def combineLocations(outputLoc: js.Array[Double],
+                         reduceLoc: js.Array[Double],
+                         axes: js.Array[Double]): js.Array[Double] = js.native
+    def computeOutAndReduceShapes(
+        aShape: js.Array[Double],
+        axes: js.Array[Double]
+    ): js.Tuple2[js.Array[Double], js.Array[Double]] = js.native
+    def expandShapeToKeepDim(shape: js.Array[Double], axes: js.Array[Double]): js.Array[Double] =
+      js.native
+    def parseAxisParam(axis: Double | js.Array[Double], shape: js.Array[Double]): js.Array[Double] =
+      js.native
+    def assertAxesAreInnerMostDims(msg: String, axes: js.Array[Double], rank: Double): Unit =
+      js.native
   }
 
 }

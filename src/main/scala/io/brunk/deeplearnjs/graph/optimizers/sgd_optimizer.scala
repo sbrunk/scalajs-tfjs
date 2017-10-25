@@ -21,23 +21,24 @@
 
 package io.brunk.deeplearnjs.graph.optimizers
 
-import io.brunk.deeplearnjs.graph.Session.SessionRuntime
-import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap }
-import io.brunk.deeplearnjs.math.NDArrayMath
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class SGDOptimizer protected () extends Optimizer {
-  def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
-  //override protected var learningRate: Double = js.native
-  def afterBatch(math: NDArrayMath,
-                 batchSize: Double,
-                 runtime: SessionRuntime,
-                 activationArrayMap: TensorArrayMap,
-                 gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-  override def dispose(): Unit                                 = js.native
-  def setLearningRate(learningRate: Double): Unit              = js.native
+package sgd_optimizer {
+
+  @js.native
+  @JSGlobal
+  class SGDOptimizer protected () extends Optimizer {
+    def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
+    protected var learningRate: Double = js.native
+    def afterBatch(math: NDArrayMath,
+                   batchSize: Double,
+                   runtime: SessionRuntime,
+                   activationArrayMap: TensorArrayMap,
+                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+    def dispose(): Unit                                          = js.native
+    def setLearningRate(learningRate: Double): Unit              = js.native
+  }
+
 }

@@ -21,18 +21,21 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
-import org.scalajs.dom.raw.WebGLTexture
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class TextureManager protected () extends js.Object {
-  def this(gpgpu: GPGPUContext) = this()
-  def acquireTexture(shapeRC: js.Tuple2[Double, Double]): WebGLTexture              = js.native
-  def releaseTexture(texture: WebGLTexture, shape: js.Tuple2[Double, Double]): Unit = js.native
-  def getNumUsedTextures(): Double                                                  = js.native
-  def getNumFreeTextures(): Double                                                  = js.native
-  def dispose(): Unit                                                               = js.native
+package texture_manager {
+
+  @js.native
+  @JSGlobal
+  class TextureManager protected () extends js.Object {
+    def this(gpgpu: GPGPUContext) = this()
+    def acquireTexture(shapeRC: js.Tuple2[Double, Double]): WebGLTexture              = js.native
+    def releaseTexture(texture: WebGLTexture, shape: js.Tuple2[Double, Double]): Unit = js.native
+    def getNumUsedTextures(): Double                                                  = js.native
+    def getNumFreeTextures(): Double                                                  = js.native
+    def dispose(): Unit                                                               = js.native
+  }
+
 }

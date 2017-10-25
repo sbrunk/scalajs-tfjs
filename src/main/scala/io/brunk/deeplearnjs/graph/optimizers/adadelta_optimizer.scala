@@ -21,28 +21,29 @@
 
 package io.brunk.deeplearnjs.graph.optimizers
 
-import io.brunk.deeplearnjs.graph.Session.SessionRuntime
-import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap }
-import io.brunk.deeplearnjs.math.NDArrayMath
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class AdadeltaOptimizer protected () extends Optimizer {
-  def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
-    this()
-  //protected var learningRate: Double = js.native
-  override def beforeBatch(math: NDArrayMath,
-                           batchSize: Double,
-                           runtime: SessionRuntime,
-                           activationArrayMap: TensorArrayMap,
-                           gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-  def afterBatch(math: NDArrayMath,
-                 batchSize: Double,
-                 runtime: SessionRuntime,
-                 activationArrayMap: TensorArrayMap,
-                 gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-  override def dispose(): Unit                                 = js.native
+package adadelta_optimizer {
+
+  @js.native
+  @JSGlobal
+  class AdadeltaOptimizer protected () extends Optimizer {
+    def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
+      this()
+    protected var learningRate: Double = js.native
+    def beforeBatch(math: NDArrayMath,
+                    batchSize: Double,
+                    runtime: SessionRuntime,
+                    activationArrayMap: TensorArrayMap,
+                    gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+    def afterBatch(math: NDArrayMath,
+                   batchSize: Double,
+                   runtime: SessionRuntime,
+                   activationArrayMap: TensorArrayMap,
+                   gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+    def dispose(): Unit                                          = js.native
+  }
+
 }
