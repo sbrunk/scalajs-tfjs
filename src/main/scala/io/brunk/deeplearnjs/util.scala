@@ -23,7 +23,8 @@ package io.brunk.deeplearnjs
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{ Promise, | }
+import scala.scalajs.js.typedarray.{ Float32Array, Int32Array, Uint32Array, Uint8Array }
 
 @js.native
 @JSGlobalScope

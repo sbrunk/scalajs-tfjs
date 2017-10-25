@@ -21,9 +21,15 @@
 
 package io.brunk.deeplearnjs.math
 
+import io.brunk.deeplearnjs.math.webgl.{ GPGPUContext, TextureManager, TextureType }
+import org.scalajs.dom.ImageData
+import org.scalajs.dom.raw.{ HTMLCanvasElement, HTMLVideoElement, WebGLTexture }
+import org.w3c.dom.html.HTMLImageElement
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
-import scala.scalajs.js.|
+import scala.scalajs.js.typedarray.{ Float32Array, Int32Array, Uint8Array }
+import scala.scalajs.js.{ Promise, | }
 
 @js.native
 sealed trait DType extends js.Object {}

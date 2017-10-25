@@ -21,6 +21,10 @@
 
 package io.brunk.deeplearnjs.graph.optimizers
 
+import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap, VariableNode }
+import io.brunk.deeplearnjs.graph.Session.SessionRuntime
+import io.brunk.deeplearnjs.math.{ NDArrayMath, Scalar }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import scala.scalajs.js.|

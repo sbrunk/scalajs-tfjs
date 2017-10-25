@@ -21,6 +21,8 @@
 
 package io.brunk.deeplearnjs.graph
 
+import io.brunk.deeplearnjs.graph.ops.Operation
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 

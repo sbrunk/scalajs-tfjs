@@ -21,8 +21,11 @@
 
 package io.brunk.deeplearnjs.data
 
+import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.typedarray.Uint32Array
 
 @js.native
 trait InputProvider extends js.Object {

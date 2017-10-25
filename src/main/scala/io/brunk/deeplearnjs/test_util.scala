@@ -21,9 +21,13 @@
 
 package io.brunk.deeplearnjs
 
+import io.brunk.deeplearnjs.Util.{ DType, TypedArray }
+import io.brunk.deeplearnjs.math.NDArrayMath
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{ Promise, | }
+import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
 @JSGlobalScope

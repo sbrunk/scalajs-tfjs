@@ -21,6 +21,8 @@
 
 package io.brunk.deeplearnjs.graph
 
+import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import scala.scalajs.js.|

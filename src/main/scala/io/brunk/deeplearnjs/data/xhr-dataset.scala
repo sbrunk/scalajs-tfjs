@@ -21,7 +21,10 @@
 
 package io.brunk.deeplearnjs.data
 
+import io.brunk.deeplearnjs.math.NDArray
+
 import scala.scalajs.js
+import scala.scalajs.js.Promise
 import scala.scalajs.js.annotation._
 
 @js.native

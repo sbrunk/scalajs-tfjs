@@ -21,9 +21,12 @@
 
 package io.brunk.deeplearnjs.math
 
+import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
+import io.brunk.deeplearnjs.math.Math.{ ScopeResult, ScopeResultImmediate }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
-import scala.scalajs.js.|
+import scala.scalajs.js.{ Promise, | }
 
 @js.native
 trait LSTMCell extends js.Object {
