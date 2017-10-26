@@ -144,14 +144,14 @@ object Scalar extends js.Object {
 @JSGlobal
 class Array1D protected () extends NDArray {
   def this(data: NDArrayData, dtype: DType) = this()
-  var shape: js.Tuple1[Double]                     = js.native
-  def get(i: Double): Double                       = js.native
-  def set(value: Double, i: Double): Unit          = js.native
-  def `val`(i: Double): Promise[Double]            = js.native
-  def add(value: Double, i: Double): Unit          = js.native
-  def locToIndex(loc: js.Tuple1[Double]): Double   = js.native
-  def indexToLoc(index: Double): js.Tuple1[Double] = js.native
-  def asType(dtype: DType): Array1D                = js.native
+  var shape: Tuple1[Double]                     = js.native
+  def get(i: Double): Double                    = js.native
+  def set(value: Double, i: Double): Unit       = js.native
+  def `val`(i: Double): Promise[Double]         = js.native
+  def add(value: Double, i: Double): Unit       = js.native
+  def locToIndex(loc: Tuple1[Double]): Double   = js.native
+  def indexToLoc(index: Double): Tuple1[Double] = js.native
+  def asType(dtype: DType): Array1D             = js.native
 }
 
 @js.native
@@ -160,14 +160,14 @@ object Array1D extends js.Object {
   def `new`(
       values: Float32Array | Int32Array | Uint8Array | js.Array[Double] | js.Array[Boolean],
       dtype: DType = ???
-  ): Array1D                                                       = js.native
-  def zeros(shape: js.Tuple1[Double], dtype: DType = ???): Array1D = js.native
-  def randNormal(shape: js.Tuple1[Double], mean: Double = ???, stdDev: Double = ???): Array1D =
+  ): Array1D                                                    = js.native
+  def zeros(shape: Tuple1[Double], dtype: DType = ???): Array1D = js.native
+  def randNormal(shape: Tuple1[Double], mean: Double = ???, stdDev: Double = ???): Array1D =
     js.native
-  def randTruncatedNormal(shape: js.Tuple1[Double],
+  def randTruncatedNormal(shape: Tuple1[Double],
                           mean: Double = ???,
-                          stdDev: Double = ???): Array1D                   = js.native
-  def randUniform(shape: js.Tuple1[Double], a: Double, b: Double): Array1D = js.native
+                          stdDev: Double = ???): Array1D                = js.native
+  def randUniform(shape: Tuple1[Double], a: Double, b: Double): Array1D = js.native
 }
 
 @js.native
