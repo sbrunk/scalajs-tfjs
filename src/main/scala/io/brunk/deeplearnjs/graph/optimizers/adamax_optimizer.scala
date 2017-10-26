@@ -35,16 +35,16 @@ class AdamaxOptimizer protected () extends Optimizer {
            beta1: Double,
            beta2: Double,
            specifiedVariableList: js.Array[Node] = ???) = this()
-  protected var learningRate: Double = js.native
-  def beforeBatch(math: NDArrayMath,
-                  batchSize: Double,
-                  runtime: SessionRuntime,
-                  activationArrayMap: TensorArrayMap,
-                  gradientArrayMap: SummedTensorArrayMap): Unit = js.native
+  //protected var learningRate: Double = js.native
+  override def beforeBatch(math: NDArrayMath,
+                           batchSize: Double,
+                           runtime: SessionRuntime,
+                           activationArrayMap: TensorArrayMap,
+                           gradientArrayMap: SummedTensorArrayMap): Unit = js.native
   def afterBatch(math: NDArrayMath,
                  batchSize: Double,
                  runtime: SessionRuntime,
                  activationArrayMap: TensorArrayMap,
                  gradientArrayMap: SummedTensorArrayMap): Unit = js.native
-  def dispose(): Unit                                          = js.native
+  override def dispose(): Unit                                 = js.native
 }

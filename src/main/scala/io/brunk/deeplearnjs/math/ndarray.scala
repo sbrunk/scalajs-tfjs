@@ -121,13 +121,13 @@ object NDArray extends js.Object {
 @JSGlobal
 class Scalar protected () extends NDArray {
   def this(data: NDArrayData, dtype: DType) = this()
-  def get(): Double                               = js.native
-  def `val`(): Promise[Double]                    = js.native
-  def set(value: Double): Unit                    = js.native
-  def add(value: Double): Unit                    = js.native
-  def asType(dtype: DType): Scalar                = js.native
-  def locToIndex(loc: js.Array[Double]): Double   = js.native
-  def indexToLoc(index: Double): js.Array[Double] = js.native
+  def get(): Double                                        = js.native
+  def `val`(): Promise[Double]                             = js.native
+  def set(value: Double): Unit                             = js.native
+  def add(value: Double): Unit                             = js.native
+  override def asType(dtype: DType): Scalar                = js.native
+  override def locToIndex(loc: js.Array[Double]): Double   = js.native
+  override def indexToLoc(index: Double): js.Array[Double] = js.native
 }
 
 @js.native
@@ -144,14 +144,16 @@ object Scalar extends js.Object {
 @JSGlobal
 class Array1D protected () extends NDArray {
   def this(data: NDArrayData, dtype: DType) = this()
-  var shape: Tuple1[Double]                     = js.native
-  def get(i: Double): Double                    = js.native
-  def set(value: Double, i: Double): Unit       = js.native
-  def `val`(i: Double): Promise[Double]         = js.native
-  def add(value: Double, i: Double): Unit       = js.native
-  def locToIndex(loc: Tuple1[Double]): Double   = js.native
-  def indexToLoc(index: Double): Tuple1[Double] = js.native
-  def asType(dtype: DType): Array1D             = js.native
+  @JSName("shape")
+  var shape1D: Tuple1[Double]                 = js.native
+  def get(i: Double): Double                  = js.native
+  def set(value: Double, i: Double): Unit     = js.native
+  def `val`(i: Double): Promise[Double]       = js.native
+  def add(value: Double, i: Double): Unit     = js.native
+  def locToIndex(loc: Tuple1[Double]): Double = js.native
+  @JSName("indexToLoc")
+  def indexToLoc1D(index: Double): Tuple1[Double] = js.native
+  override def asType(dtype: DType): Array1D      = js.native
 }
 
 @js.native
@@ -174,14 +176,16 @@ object Array1D extends js.Object {
 @JSGlobal
 class Array2D protected () extends NDArray {
   def this(shape: js.Tuple2[Double, Double], data: NDArrayData, dtype: DType) = this()
-  var shape: js.Tuple2[Double, Double]                     = js.native
-  def get(i: Double, j: Double): Double                    = js.native
-  def set(value: Double, i: Double, j: Double): Unit       = js.native
-  def add(value: Double, i: Double, j: Double): Unit       = js.native
-  def `val`(i: Double, j: Double): Promise[Double]         = js.native
-  def locToIndex(locs: js.Tuple2[Double, Double]): Double  = js.native
-  def indexToLoc(index: Double): js.Tuple2[Double, Double] = js.native
-  def asType(dtype: DType): Array2D                        = js.native
+  @JSName("shape")
+  var shape2D: js.Tuple2[Double, Double]                  = js.native
+  def get(i: Double, j: Double): Double                   = js.native
+  def set(value: Double, i: Double, j: Double): Unit      = js.native
+  def add(value: Double, i: Double, j: Double): Unit      = js.native
+  def `val`(i: Double, j: Double): Promise[Double]        = js.native
+  def locToIndex(locs: js.Tuple2[Double, Double]): Double = js.native
+  @JSName("indexToLoc")
+  def indexToLoc2D(index: Double): js.Tuple2[Double, Double] = js.native
+  override def asType(dtype: DType): Array2D                 = js.native
 }
 
 @js.native
@@ -209,14 +213,16 @@ object Array2D extends js.Object {
 @JSGlobal
 class Array3D protected () extends NDArray {
   def this(shape: js.Tuple3[Double, Double, Double], data: NDArrayData, dtype: DType) = this()
-  var shape: js.Tuple3[Double, Double, Double]                     = js.native
-  def get(i: Double, j: Double, k: Double): Double                 = js.native
-  def set(value: Double, i: Double, j: Double, k: Double): Unit    = js.native
-  def `val`(i: Double, j: Double, k: Double): Promise[Double]      = js.native
-  def add(value: Double, i: Double, j: Double, k: Double): Unit    = js.native
-  def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double  = js.native
-  def indexToLoc(index: Double): js.Tuple3[Double, Double, Double] = js.native
-  def asType(dtype: DType): Array3D                                = js.native
+  @JSName("shape")
+  var shape3D: js.Tuple3[Double, Double, Double]                  = js.native
+  def get(i: Double, j: Double, k: Double): Double                = js.native
+  def set(value: Double, i: Double, j: Double, k: Double): Unit   = js.native
+  def `val`(i: Double, j: Double, k: Double): Promise[Double]     = js.native
+  def add(value: Double, i: Double, j: Double, k: Double): Unit   = js.native
+  def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double = js.native
+  @JSName("indexToLoc")
+  def indexToLoc3D(index: Double): js.Tuple3[Double, Double, Double] = js.native
+  override def asType(dtype: DType): Array3D                         = js.native
 }
 
 @js.native
@@ -246,14 +252,16 @@ object Array3D extends js.Object {
 class Array4D protected () extends NDArray {
   def this(shape: js.Tuple4[Double, Double, Double, Double], data: NDArrayData, dtype: DType) =
     this()
-  var shape: js.Tuple4[Double, Double, Double, Double]                     = js.native
+  @JSName("shape")
+  var shape4D: js.Tuple4[Double, Double, Double, Double]                   = js.native
   def get(i: Double, j: Double, k: Double, l: Double): Double              = js.native
   def set(value: Double, i: Double, j: Double, k: Double, l: Double): Unit = js.native
   def `val`(i: Double, j: Double, k: Double, l: Double): Promise[Double]   = js.native
   def add(value: Double, i: Double, j: Double, k: Double, l: Double): Unit = js.native
   def locToIndex(locs: js.Tuple4[Double, Double, Double, Double]): Double  = js.native
-  def indexToLoc(index: Double): js.Tuple4[Double, Double, Double, Double] = js.native
-  def asType(dtype: DType): Array4D                                        = js.native
+  @JSName("indexToLoc")
+  def indexToLoc4D(index: Double): js.Tuple4[Double, Double, Double, Double] = js.native
+  override def asType(dtype: DType): Array4D                                 = js.native
 }
 
 @js.native

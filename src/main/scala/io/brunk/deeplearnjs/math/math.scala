@@ -281,8 +281,8 @@ abstract class NDArrayMath protected () extends js.Object {
                                    mean: Array3D | Array1D,
                                    variance: Array3D | Array1D,
                                    varianceEpsilon: Double,
-                                   scale: Array3D | Array1D = ???,
-                                   offset: Array3D | Array1D = ???): Array3D
+                                   scale: Array3D | Array1D,
+                                   offset: Array3D | Array1D): Array3D
   def multiRNNCell(lstmCells: js.Array[LSTMCell],
                    data: Array2D,
                    c: js.Array[Array2D],

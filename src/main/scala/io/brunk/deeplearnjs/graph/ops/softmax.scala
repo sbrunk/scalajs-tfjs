@@ -32,7 +32,9 @@ import scala.scalajs.js.annotation._
 class Softmax protected () extends Operation {
   def this(logitsTensor: Tensor, output: Tensor) = this()
   def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-  def backProp(): Unit                                                      = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
 }
 
 @js.native

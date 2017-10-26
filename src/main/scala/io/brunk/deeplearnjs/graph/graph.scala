@@ -129,7 +129,7 @@ class ConstantNode protected () extends Node {
 @JSGlobal
 class ReshapeNode protected () extends Node {
   def this(graph: Graph, name: String, x: Tensor, shape: js.Array[Double]) = this()
-  var name: String     = js.native
+  //var name: String     = js.native
   def validate(): Unit = js.native
 }
 

@@ -29,13 +29,13 @@ import scala.scalajs.js.typedarray.Uint32Array
 
 @js.native
 trait InputProvider extends js.Object {
-  def getNextCopy(math: NDArrayMath): NDArray             = js.native
-  def disposeCopy(math: NDArrayMath, copy: NDArray): Unit = js.native
+  def getNextCopy(math: NDArrayMath): NDArray
+  def disposeCopy(math: NDArrayMath, copy: NDArray): Unit
 }
 
 @js.native
 trait ShuffledInputProviderBuilder extends js.Object {
-  def getInputProviders(): js.Array[InputProvider] = js.native
+  def getInputProviders(): js.Array[InputProvider]
 }
 
 @js.native
@@ -59,11 +59,11 @@ abstract class InMemoryShuffledInputProviderBuilder protected ()
 @js.native
 @JSGlobal
 class InCPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
-  def getInputProvider(inputId: Double): js.Any = js.native
+  def getInputProvider(inputId: Double): InputProvider = js.native
 }
 
 @js.native
 @JSGlobal
 class InGPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
-  def getInputProvider(inputId: Double): js.Any = js.native
+  def getInputProvider(inputId: Double): InputProvider = js.native
 }

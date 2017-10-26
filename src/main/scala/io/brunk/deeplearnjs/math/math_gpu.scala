@@ -120,5 +120,5 @@ class NDArrayMathGPU protected () extends NDArrayMath {
   def oneHotInternal(indices: Array1D, depth: Double, onValue: Double, offValue: Double): Array2D =
     js.native
   def getTextureManager(): TextureManager = js.native
-  def dispose(): Unit                     = js.native
+  override def dispose(): Unit            = js.native
 }
