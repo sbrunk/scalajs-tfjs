@@ -21,6 +21,9 @@
 
 package io.brunk.deeplearnjs.math
 
+import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
+import io.brunk.deeplearnjs.math.webgl.{ GPGPUContext, TextureManager }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
@@ -30,7 +33,7 @@ import scala.scalajs.js.|
 class NDArrayMathGPU protected () extends NDArrayMath {
   def this(gpgpu: GPGPUContext = ???, safeMode: Boolean = ???) = this()
   def getGPGPUContext(): GPGPUContext                                       = js.native
-  def cloneInternal[G <: String, T <: NDArray[G]](a: T): T                  = js.native
+  def cloneInternal[G <: String, T <: NDArray](a: T): T                     = js.native
   def slice1DInternal(input: Array1D, begin: Double, size: Double): Array1D = js.native
   def slice2DInternal(input: Array2D,
                       begin: js.Tuple2[Double, Double],
@@ -63,40 +66,40 @@ class NDArrayMathGPU protected () extends NDArrayMath {
                                    variance: Array3D | Array1D,
                                    varianceEpsilon: Double | Null,
                                    scale: Array3D | Array1D = ???,
-                                   offset: Array3D | Array1D = ???): Array3D           = js.native
-  def transposeInternal[D <: String, T <: NDArray[D]](a: T, perm: js.Array[Double]): T = js.native
-  def sumInternal[T <: String](a: NDArray[T], axes: js.Array[Double]): NDArray[String] = js.native
-  def argMinInternal(a: NDArray, axes: js.Array[Double]): NDArray[String]              = js.native
-  def argMaxInternal(a: NDArray, axes: js.Array[Double]): NDArray[String]              = js.native
-  def equalInternal(x: NDArray, y: NDArray): NDArray[String]                           = js.native
-  def topKInternal(ndarray: NDArray, k: Double): js.Any                                = js.native
-  def minInternal[G <: String](a: NDArray[G], axes: js.Array[Double]): NDArray[G]      = js.native
-  def maxInternal[G <: String](a: NDArray[G], axes: js.Array[Double]): NDArray[G]      = js.native
-  def divideInternal[T <: NDArray](a: T, b: T): T                                      = js.native
-  def addInternal[T <: NDArray](a: T, b: T): T                                         = js.native
-  def subtractInternal[T <: NDArray](a: T, b: T): T                                    = js.native
-  def logSumExpInternal(a: NDArray, axes: js.Array[Double]): NDArray                   = js.native
-  def ceilInternal[T <: NDArray](a: T): T                                              = js.native
-  def floorInternal[T <: NDArray](a: T): T                                             = js.native
-  def expInternal[T <: NDArray](a: T): T                                               = js.native
-  def logInternal[T <: NDArray](a: T): T                                               = js.native
-  def sqrtInternal[T <: NDArray](a: T): T                                              = js.native
-  def reluInternal[T <: NDArray](a: T): T                                              = js.native
-  def eluInternal[T <: NDArray](a: T): T                                               = js.native
-  def leakyReluInternal[T <: NDArray](a: T, alpha: Double): T                          = js.native
-  def clipInternal[T <: NDArray](a: T, min: Double, max: Double): T                    = js.native
-  def absInternal[T <: NDArray](a: T): T                                               = js.native
-  def sigmoidInternal[T <: NDArray](a: T): T                                           = js.native
-  def sinInternal[T <: NDArray](a: T): T                                               = js.native
-  def cosInternal[T <: NDArray](a: T): T                                               = js.native
-  def tanInternal[T <: NDArray](a: T): T                                               = js.native
-  def asinInternal[T <: NDArray](a: T): T                                              = js.native
-  def acosInternal[T <: NDArray](a: T): T                                              = js.native
-  def atanInternal[T <: NDArray](a: T): T                                              = js.native
-  def sinhInternal[T <: NDArray](a: T): T                                              = js.native
-  def coshInternal[T <: NDArray](a: T): T                                              = js.native
-  def tanhInternal[T <: NDArray](a: T): T                                              = js.native
-  def stepInternal[T <: NDArray](a: T): T                                              = js.native
+                                   offset: Array3D | Array1D = ???): Array3D        = js.native
+  def transposeInternal[D <: String, T <: NDArray](a: T, perm: js.Array[Double]): T = js.native
+  def sumInternal[T <: String](a: NDArray, axes: js.Array[Double]): NDArray         = js.native
+  def argMinInternal(a: NDArray, axes: js.Array[Double]): NDArray                   = js.native
+  def argMaxInternal(a: NDArray, axes: js.Array[Double]): NDArray                   = js.native
+  def equalInternal(x: NDArray, y: NDArray): NDArray                                = js.native
+  def topKInternal(ndarray: NDArray, k: Double): js.Any                             = js.native
+  def minInternal[G <: String](a: NDArray, axes: js.Array[Double]): NDArray         = js.native
+  def maxInternal[G <: String](a: NDArray, axes: js.Array[Double]): NDArray         = js.native
+  def divideInternal[T <: NDArray](a: T, b: T): T                                   = js.native
+  def addInternal[T <: NDArray](a: T, b: T): T                                      = js.native
+  def subtractInternal[T <: NDArray](a: T, b: T): T                                 = js.native
+  def logSumExpInternal(a: NDArray, axes: js.Array[Double]): NDArray                = js.native
+  def ceilInternal[T <: NDArray](a: T): T                                           = js.native
+  def floorInternal[T <: NDArray](a: T): T                                          = js.native
+  def expInternal[T <: NDArray](a: T): T                                            = js.native
+  def logInternal[T <: NDArray](a: T): T                                            = js.native
+  def sqrtInternal[T <: NDArray](a: T): T                                           = js.native
+  def reluInternal[T <: NDArray](a: T): T                                           = js.native
+  def eluInternal[T <: NDArray](a: T): T                                            = js.native
+  def leakyReluInternal[T <: NDArray](a: T, alpha: Double): T                       = js.native
+  def clipInternal[T <: NDArray](a: T, min: Double, max: Double): T                 = js.native
+  def absInternal[T <: NDArray](a: T): T                                            = js.native
+  def sigmoidInternal[T <: NDArray](a: T): T                                        = js.native
+  def sinInternal[T <: NDArray](a: T): T                                            = js.native
+  def cosInternal[T <: NDArray](a: T): T                                            = js.native
+  def tanInternal[T <: NDArray](a: T): T                                            = js.native
+  def asinInternal[T <: NDArray](a: T): T                                           = js.native
+  def acosInternal[T <: NDArray](a: T): T                                           = js.native
+  def atanInternal[T <: NDArray](a: T): T                                           = js.native
+  def sinhInternal[T <: NDArray](a: T): T                                           = js.native
+  def coshInternal[T <: NDArray](a: T): T                                           = js.native
+  def tanhInternal[T <: NDArray](a: T): T                                           = js.native
+  def stepInternal[T <: NDArray](a: T): T                                           = js.native
   def conv2dInternal(x: Array3D,
                      filter: Array4D,
                      bias: Array1D | Null,
@@ -112,12 +115,10 @@ class NDArrayMathGPU protected () extends NDArrayMath {
   def resizeBilinear3DInternal(x: Array3D,
                                newShape2D: js.Tuple2[Double, Double],
                                alignCorners: Boolean): Array3D = js.native
-  def multinomialInternal(probs: Array2D, numSamples: Double, seed: Double): Array2D[String] =
+  def multinomialInternal(probs: Array2D, numSamples: Double, seed: Double): Array2D =
     js.native
-  def oneHotInternal(indices: ndarray.Array1D,
-                     depth: Double,
-                     onValue: Double,
-                     offValue: Double): ndarray.Array2D = js.native
-  def getTextureManager(): TextureManager               = js.native
-  def dispose(): Unit                                   = js.native
+  def oneHotInternal(indices: Array1D, depth: Double, onValue: Double, offValue: Double): Array2D =
+    js.native
+  def getTextureManager(): TextureManager = js.native
+  def dispose(): Unit                     = js.native
 }

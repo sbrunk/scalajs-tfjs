@@ -53,6 +53,6 @@ abstract class Optimizer protected () extends js.Object {
   def dispose(): Unit                             = js.native
   protected var variableGradients: TensorArrayMap = js.native
   protected var prevBatchSize: Double             = js.native
-  protected var one: Scalar[String]               = js.native
+  protected var one: Scalar                       = js.native
   protected var c: Scalar                         = js.native
 }

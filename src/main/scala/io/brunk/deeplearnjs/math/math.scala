@@ -62,7 +62,7 @@ abstract class NDArrayMath protected () extends js.Object {
   def startScope(): Unit                                                             = js.native
   def endScope(result: ScopeResultImmediate): Unit                                   = js.native
   def keep[T <: NDArray](result: T): T                                               = js.native
-  def track[G <: String, T <: NDArray[G]](result: T): T                              = js.native
+  def track[G <: String, T <: NDArray](result: T): T                                 = js.native
   def dispose(): Unit                                                                = js.native
   def matMul(a: Array2D,
              b: Array2D,
@@ -124,45 +124,42 @@ abstract class NDArrayMath protected () extends js.Object {
                 axis: Double | js.Array[Double] = ???,
                 keepDims: Boolean = ???): NDArray = js.native
   def logSumExpInternal(ndarray: NDArray, axes: js.Array[Double]): NDArray
-  def sum[T <: String](input: NDArray[T],
-                       axis: Double | js.Array[Double] = ???,
-                       keepDims: Boolean = ???): NDArray[String] = js.native
-  def sumInternal[T <: String](ndarray: NDArray[T], axes: js.Array[Double]): NDArray[String]
-  def argMin(input: NDArray, axis: Double = ???): NDArray[String] = js.native
-  def argMinInternal(ndarray: NDArray, axes: js.Array[Double]): NDArray[String]
-  def argMax(input: NDArray, axis: Double = ???): NDArray[String] = js.native
-  def argMaxInternal(ndarray: NDArray, axes: js.Array[Double]): NDArray[String]
-  def argMaxEquals(x1: NDArray, x2: NDArray): Scalar[String] = js.native
-  def equal(x: NDArray, y: NDArray): NDArray[String]         = js.native
-  def equalInternal(x: NDArray, y: NDArray): NDArray[String]
-  def equalStrict[D <: String, T <: NDArray[D]](x: T, y: T): NDArray[String] = js.native
-  def topK(ndarray: NDArray, k: Double): js.Any                              = js.native
+  def sum(input: NDArray, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): NDArray =
+    js.native
+  def sumInternal(ndarray: NDArray, axes: js.Array[Double]): NDArray
+  def argMin(input: NDArray, axis: Double = ???): NDArray = js.native
+  def argMinInternal(ndarray: NDArray, axes: js.Array[Double]): NDArray
+  def argMax(input: NDArray, axis: Double = ???): NDArray = js.native
+  def argMaxInternal(ndarray: NDArray, axes: js.Array[Double]): NDArray
+  def argMaxEquals(x1: NDArray, x2: NDArray): Scalar = js.native
+  def equal(x: NDArray, y: NDArray): NDArray         = js.native
+  def equalInternal(x: NDArray, y: NDArray): NDArray
+  def equalStrict[D <: String, T <: NDArray](x: T, y: T): NDArray = js.native
+  def topK(ndarray: NDArray, k: Double): js.Any                   = js.native
   def topKInternal(ndarray: NDArray, k: Double): js.Any
-  def min[G <: String](input: NDArray[G],
-                       axis: Double | js.Array[Double] = ???,
-                       keepDims: Boolean = ???): NDArray[G] = js.native
-  def minInternal[G <: String](input: NDArray[G], axes: js.Array[Double]): NDArray[G]
-  def max[G <: String](input: NDArray[G],
-                       axis: Double | js.Array[Double] = ???,
-                       keepDims: Boolean = ???): NDArray[G] = js.native
-  def maxInternal[G <: String](input: NDArray[G], axes: js.Array[Double]): NDArray[G]
-  def softmax[T <: NDArray](logits: T, dim: Double = ???): T                         = js.native
-  def switchDim[T <: NDArray](a: T, newDim: js.Array[Double]): T                     = js.native
-  def transpose[D <: String, T <: NDArray[D]](a: T, perm: js.Array[Double] = ???): T = js.native
-  def transposeInternal[D <: String, T <: NDArray[D]](a: T, perm: js.Array[Double]): T
+  def min(input: NDArray, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): NDArray =
+    js.native
+  def minInternal(input: NDArray, axes: js.Array[Double]): NDArray
+  def max(input: NDArray, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): NDArray =
+    js.native
+  def maxInternal(input: NDArray, axes: js.Array[Double]): NDArray
+  def softmax[T <: NDArray](logits: T, dim: Double = ???): T                      = js.native
+  def switchDim[T <: NDArray](a: T, newDim: js.Array[Double]): T                  = js.native
+  def transpose[D <: String, T <: NDArray](a: T, perm: js.Array[Double] = ???): T = js.native
+  def transposeInternal[D <: String, T <: NDArray](a: T, perm: js.Array[Double]): T
   def scalarPlusArray[T <: NDArray](c: Scalar, a: T): T  = js.native
   def scalarMinusArray[T <: NDArray](c: Scalar, a: T): T = js.native
   def arrayMinusScalar[T <: NDArray](a: T, c: Scalar): T = js.native
   def neg[T <: NDArray](a: T): T                         = js.native
   def negInternal[T <: NDArray](a: T): T
-  def add[G <: String](a: NDArray[G], b: NDArray[G]): NDArray[G] = js.native
-  def addInternal[G <: String](a: NDArray[G], b: NDArray[G]): NDArray[G]
-  def addStrict[D <: String, T <: NDArray[D]](a: T, b: T): T          = js.native
-  def subtract[G <: String](a: NDArray[G], b: NDArray[G]): NDArray[G] = js.native
-  def sub[G <: String](a: NDArray[G], b: NDArray[G]): NDArray[G]      = js.native
-  def subtractInternal[G <: String](a: NDArray[G], b: NDArray[G]): NDArray[G]
-  def subStrict[D <: String, T <: NDArray[D]](a: T, b: T): T = js.native
-  def multiply(a: NDArray, b: NDArray): NDArray              = js.native
+  def add(a: NDArray, b: NDArray): NDArray = js.native
+  def addInternal(a: NDArray, b: NDArray): NDArray
+  def addStrict[D <: String, T <: NDArray](a: T, b: T): T = js.native
+  def subtract(a: NDArray, b: NDArray): NDArray           = js.native
+  def sub(a: NDArray, b: NDArray): NDArray                = js.native
+  def subtractInternal(a: NDArray, b: NDArray): NDArray
+  def subStrict[D <: String, T <: NDArray](a: T, b: T): T = js.native
+  def multiply(a: NDArray, b: NDArray): NDArray           = js.native
   def multiplyInternal[T <: NDArray](a: T, b: T): T
   def elementWiseMul[T <: NDArray](a: T, b: T): T = js.native
   def multiplyStrict[T <: NDArray](a: T, b: T): T = js.native
@@ -299,8 +296,8 @@ abstract class NDArrayMath protected () extends js.Object {
                     h: Array2D): js.Tuple2[Array2D, Array2D] = js.native
   def multinomial(probabilities: Array1D | Array2D,
                   numSamples: Double,
-                  seed: Double = ???): Array1D[String] | Array2D[String] = js.native
-  def multinomialInternal(probabilities: Array2D, numSamples: Double, seed: Double): Array2D[String]
+                  seed: Double = ???): Array1D | Array2D = js.native
+  def multinomialInternal(probabilities: Array2D, numSamples: Double, seed: Double): Array2D
   def oneHot(indices: Array1D,
              depth: Double,
              onValue: Double = ???,
