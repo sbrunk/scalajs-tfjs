@@ -62,7 +62,7 @@ abstract class NDArrayMath protected () extends js.Object {
   def startScope(): Unit                                                             = js.native
   def endScope(result: ScopeResultImmediate): Unit                                   = js.native
   def keep[T <: NDArray](result: T): T                                               = js.native
-  def track[G <: String, T <: NDArray](result: T): T                                 = js.native
+  def track[T <: NDArray](result: T): T                                              = js.native
   def dispose(): Unit                                                                = js.native
   def matMul(a: Array2D,
              b: Array2D,
@@ -134,8 +134,8 @@ abstract class NDArrayMath protected () extends js.Object {
   def argMaxEquals(x1: NDArray, x2: NDArray): Scalar = js.native
   def equal(x: NDArray, y: NDArray): NDArray         = js.native
   def equalInternal(x: NDArray, y: NDArray): NDArray
-  def equalStrict[D <: String, T <: NDArray](x: T, y: T): NDArray = js.native
-  def topK(ndarray: NDArray, k: Double): js.Any                   = js.native
+  def equalStrict[T <: NDArray](x: T, y: T): NDArray = js.native
+  def topK(ndarray: NDArray, k: Double): js.Any      = js.native
   def topKInternal(ndarray: NDArray, k: Double): js.Any
   def min(input: NDArray, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): NDArray =
     js.native
@@ -143,28 +143,31 @@ abstract class NDArrayMath protected () extends js.Object {
   def max(input: NDArray, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): NDArray =
     js.native
   def maxInternal(input: NDArray, axes: js.Array[Double]): NDArray
-  def softmax[T <: NDArray](logits: T, dim: Double = ???): T                      = js.native
-  def switchDim[T <: NDArray](a: T, newDim: js.Array[Double]): T                  = js.native
-  def transpose[D <: String, T <: NDArray](a: T, perm: js.Array[Double] = ???): T = js.native
-  def transposeInternal[D <: String, T <: NDArray](a: T, perm: js.Array[Double]): T
+  def softmax[T <: NDArray](logits: T, dim: Double = ???): T         = js.native
+  def switchDim[T <: NDArray](a: T, newDim: js.Array[Double]): T     = js.native
+  def transpose[T <: NDArray](a: T, perm: js.Array[Double] = ???): T = js.native
+  def transposeInternal[T <: NDArray](a: T, perm: js.Array[Double]): T
   def scalarPlusArray[T <: NDArray](c: Scalar, a: T): T  = js.native
   def scalarMinusArray[T <: NDArray](c: Scalar, a: T): T = js.native
   def arrayMinusScalar[T <: NDArray](a: T, c: Scalar): T = js.native
   def neg[T <: NDArray](a: T): T                         = js.native
   def negInternal[T <: NDArray](a: T): T
   def add(a: NDArray, b: NDArray): NDArray = js.native
-  def addInternal(a: NDArray, b: NDArray): NDArray
-  def addStrict[D <: String, T <: NDArray](a: T, b: T): T = js.native
-  def subtract(a: NDArray, b: NDArray): NDArray           = js.native
-  def sub(a: NDArray, b: NDArray): NDArray                = js.native
-  def subtractInternal(a: NDArray, b: NDArray): NDArray
-  def subStrict[D <: String, T <: NDArray](a: T, b: T): T = js.native
-  def multiply(a: NDArray, b: NDArray): NDArray           = js.native
+  //def addInternal(a: NDArray, b: NDArray): NDArray
+  def addInternal[T <: NDArray](a: T, b: T): T
+  def addStrict[T <: NDArray](a: T, b: T): T    = js.native
+  def subtract(a: NDArray, b: NDArray): NDArray = js.native
+  def sub(a: NDArray, b: NDArray): NDArray      = js.native
+  //def subtractInternal(a: NDArray, b: NDArray): NDArray
+  def subtractInternal[T <: NDArray](a: T, b: T): T
+  def subStrict[T <: NDArray](a: T, b: T): T    = js.native
+  def multiply(a: NDArray, b: NDArray): NDArray = js.native
   def multiplyInternal[T <: NDArray](a: T, b: T): T
   def elementWiseMul[T <: NDArray](a: T, b: T): T = js.native
   def multiplyStrict[T <: NDArray](a: T, b: T): T = js.native
   def divide(a: NDArray, b: NDArray): NDArray     = js.native
-  def divideInternal(a: NDArray, b: NDArray): NDArray
+  //def divideInternal(a: NDArray, b: NDArray): NDArray
+  def divideInternal[T <: NDArray](a: T, b: T): T
   def divideStrict[T <: NDArray](a: T, b: T): T              = js.native
   def scalarDividedByArray[T <: NDArray](c: Scalar, a: T): T = js.native
   def arrayDividedByScalar[T <: NDArray](a: T, c: Scalar): T = js.native
@@ -280,9 +283,9 @@ abstract class NDArrayMath protected () extends js.Object {
   def batchNormalization3DInternal(x: Array3D,
                                    mean: Array3D | Array1D,
                                    variance: Array3D | Array1D,
-                                   varianceEpsilon: Double,
-                                   scale: Array3D | Array1D,
-                                   offset: Array3D | Array1D): Array3D
+                                   varianceEpsilon: Double | Null,
+                                   scale: Array3D | Array1D | Unit,
+                                   offset: Array3D | Array1D | Unit): Array3D
   def multiRNNCell(lstmCells: js.Array[LSTMCell],
                    data: Array2D,
                    c: js.Array[Array2D],

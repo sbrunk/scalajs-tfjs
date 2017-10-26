@@ -100,7 +100,7 @@ class NDArrayMathCPU protected () extends NDArrayMath {
     js.native
   def conv2dDerFilterInternal(x: Array3D, dY: Array3D, convInfo: ConvInfo): Array4D = js.native
   def conv2dDerBiasInternal(dY: Array3D): Array1D                                   = js.native
-  def transposeInternal[D <: String, T <: NDArray](a: T, perm: js.Array[Double]): T = js.native
+  def transposeInternal[T <: NDArray](a: T, perm: js.Array[Double]): T              = js.native
   def maxPoolInternal(x: Array3D, convInfo: ConvInfo): Array3D                      = js.native
   def maxPoolPositions(x: Array3D, convInfo: ConvInfo): Array3D                     = js.native
   def maxPoolBackpropInternal(dy: Array3D, x: Array3D, convInfo: ConvInfo): Array3D = js.native
@@ -112,9 +112,9 @@ class NDArrayMathCPU protected () extends NDArrayMath {
   def batchNormalization3DInternal(x: Array3D,
                                    mean: Array3D | Array1D,
                                    variance: Array3D | Array1D,
-                                   varianceEpsilon: Double = ???,
-                                   scale: Array3D | Array1D = ???,
-                                   offset: Array3D | Array1D = ???): Array3D = js.native
+                                   varianceEpsilon: Double | Null = ???,
+                                   scale: Array3D | Array1D | Unit = ???,
+                                   offset: Array3D | Array1D | Unit = ???): Array3D = js.native
   def multinomialInternal(probabilities: Array2D, numSamples: Double, seed: Double): Array2D =
     js.native
   def oneHotInternal(indices: Array1D, depth: Double, onValue: Double, offValue: Double): Array2D =

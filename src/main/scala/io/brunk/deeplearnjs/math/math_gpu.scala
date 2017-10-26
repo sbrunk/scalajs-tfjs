@@ -33,7 +33,7 @@ import scala.scalajs.js.|
 class NDArrayMathGPU protected () extends NDArrayMath {
   def this(gpgpu: GPGPUContext = ???, safeMode: Boolean = ???) = this()
   def getGPGPUContext(): GPGPUContext                                       = js.native
-  def cloneInternal[G <: String, T <: NDArray](a: T): T                     = js.native
+  def cloneInternal[T <: NDArray](a: T): T                                  = js.native
   def slice1DInternal(input: Array1D, begin: Double, size: Double): Array1D = js.native
   def slice2DInternal(input: Array2D,
                       begin: js.Tuple2[Double, Double],
@@ -65,16 +65,16 @@ class NDArrayMathGPU protected () extends NDArrayMath {
                                    mean: Array3D | Array1D,
                                    variance: Array3D | Array1D,
                                    varianceEpsilon: Double | Null,
-                                   scale: Array3D | Array1D = ???,
-                                   offset: Array3D | Array1D = ???): Array3D        = js.native
-  def transposeInternal[D <: String, T <: NDArray](a: T, perm: js.Array[Double]): T = js.native
-  def sumInternal[T <: String](a: NDArray, axes: js.Array[Double]): NDArray         = js.native
+                                   scale: Array3D | Array1D | Unit = ???,
+                                   offset: Array3D | Array1D | Unit = ???): Array3D = js.native
+  def transposeInternal[T <: NDArray](a: T, perm: js.Array[Double]): T              = js.native
+  def sumInternal(a: NDArray, axes: js.Array[Double]): NDArray                      = js.native
   def argMinInternal(a: NDArray, axes: js.Array[Double]): NDArray                   = js.native
   def argMaxInternal(a: NDArray, axes: js.Array[Double]): NDArray                   = js.native
   def equalInternal(x: NDArray, y: NDArray): NDArray                                = js.native
   def topKInternal(ndarray: NDArray, k: Double): js.Any                             = js.native
-  def minInternal[G <: String](a: NDArray, axes: js.Array[Double]): NDArray         = js.native
-  def maxInternal[G <: String](a: NDArray, axes: js.Array[Double]): NDArray         = js.native
+  def minInternal(a: NDArray, axes: js.Array[Double]): NDArray                      = js.native
+  def maxInternal(a: NDArray, axes: js.Array[Double]): NDArray                      = js.native
   def divideInternal[T <: NDArray](a: T, b: T): T                                   = js.native
   def addInternal[T <: NDArray](a: T, b: T): T                                      = js.native
   def subtractInternal[T <: NDArray](a: T, b: T): T                                 = js.native
