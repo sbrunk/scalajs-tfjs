@@ -25,6 +25,7 @@ import org.scalajs.dom.raw.{ WebGLProgram, WebGLUniformLocation }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
@@ -34,7 +35,10 @@ class MultinomialProgram protected () extends GPGPUProgram {
   var params: js.Array[js.Any]                                                         = js.native
   var outputShape: js.Array[Double]                                                    = js.native
   var userCode: String                                                                 = js.native
-  var numBatchDims: Double                                                             = js.native
+  var numBatchDims: Double | Unit                                                      = js.native
   var seedLoc: WebGLUniformLocation                                                    = js.native
   def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+
+  var supportsBroadcasting: Boolean | Unit = js.native
+
 }

@@ -25,6 +25,7 @@ import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
@@ -34,6 +35,9 @@ class Conv2DDerWeightsProgram protected () extends GPGPUProgram {
   var params: js.Array[js.Any]        = js.native
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
+
+  var supportsBroadcasting: Boolean | Unit = js.native
+  var numBatchDims: Double | Unit          = js.native
 }
 
 @js.native
@@ -44,6 +48,9 @@ class Conv2DDerInputProgram protected () extends GPGPUProgram {
   var params: js.Array[js.Any]        = js.native
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
+
+  var supportsBroadcasting: Boolean | Unit = js.native
+  var numBatchDims: Double | Unit          = js.native
 }
 
 @js.native
@@ -54,4 +61,7 @@ class Conv2DDerBiasProgram protected () extends GPGPUProgram {
   var params: js.Array[js.Any]        = js.native
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
+
+  var supportsBroadcasting: Boolean | Unit = js.native
+  var numBatchDims: Double | Unit          = js.native
 }

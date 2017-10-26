@@ -26,8 +26,8 @@ import scala.scalajs.js.annotation._
 
 @js.native
 trait ActivationFunction extends js.Object {
-  def output[T <: NDArray](math: NDArrayMath, input: T): T         = js.native
-  def der[T <: NDArray](math: NDArrayMath, input: T, output: T): T = js.native
+  def output[T <: NDArray](math: NDArrayMath, input: T): T
+  def der[T <: NDArray](math: NDArrayMath, input: T, output: T): T
 }
 
 @js.native

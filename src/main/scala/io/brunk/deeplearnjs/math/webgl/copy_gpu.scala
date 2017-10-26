@@ -25,6 +25,7 @@ import org.scalajs.dom.raw.WebGLProgram
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
@@ -39,4 +40,7 @@ class Copy2DProgram protected () extends GPGPUProgram {
       destStart: js.Tuple2[Double, Double],
       destSize: js.Tuple2[Double, Double]
   ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+
+  var supportsBroadcasting: Boolean | Unit = js.native
+  var numBatchDims: Double | Unit          = js.native
 }

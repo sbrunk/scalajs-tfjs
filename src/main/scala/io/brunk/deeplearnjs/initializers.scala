@@ -28,8 +28,7 @@ import js.annotation._
 import js.|
 @js.native
 trait Initializer extends js.Object {
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
-    js.native
+  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray
 }
 
 @js.native

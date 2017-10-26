@@ -43,9 +43,9 @@ class SoftmaxCrossEntropyCost protected () extends Operation {
   def backProp(math: NDArrayMath,
                inferenceArrays: TensorArrayMap,
                gradientArrays: SummedTensorArrayMap): Unit = js.native
-  def disposeTransientArrays(inferenceArrays: TensorArrayMap,
-                             gradientArrays: SummedTensorArrayMap): Unit = js.native
-  def dispose(): Unit                                                    = js.native
+  override def disposeTransientArrays(inferenceArrays: TensorArrayMap,
+                                      gradientArrays: SummedTensorArrayMap): Unit = js.native
+  override def dispose(): Unit                                                    = js.native
 }
 
 @js.native

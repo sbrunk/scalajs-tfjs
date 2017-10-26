@@ -23,6 +23,7 @@ package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
@@ -32,5 +33,7 @@ class MinMaxProgram protected () extends GPGPUProgram {
   var params: js.Array[js.Any]        = js.native
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
-  var numBatchDims: Double            = js.native
+  var numBatchDims: Double | Unit     = js.native
+
+  var supportsBroadcasting: Boolean | Unit = js.native
 }

@@ -23,16 +23,19 @@ package io.brunk.deeplearnjs.math.webgl
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.|
 
 @js.native
 @JSGlobal
 class BinaryOpProgram protected () extends GPGPUProgram {
   def this(op: String, aShape: js.Array[Double], bShape: js.Array[Double]) = this()
-  var variableNames: js.Array[String] = js.native
-  var params: js.Array[js.Any]        = js.native
-  var outputShape: js.Array[Double]   = js.native
-  var userCode: String                = js.native
-  var supportsBroadcasting: Boolean   = js.native
+  var variableNames: js.Array[String]      = js.native
+  var params: js.Array[js.Any]             = js.native
+  var outputShape: js.Array[Double]        = js.native
+  var userCode: String                     = js.native
+  var supportsBroadcasting: Boolean | Unit = js.native
+
+  var numBatchDims: Double | Unit = js.native
 }
 
 @js.native
