@@ -21,6 +21,8 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import org.scalajs.dom.raw.WebGLTexture
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 

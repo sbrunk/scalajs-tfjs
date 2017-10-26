@@ -21,8 +21,12 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import io.brunk.deeplearnjs.math.MatrixOrientation
+import org.scalajs.dom.raw.{ WebGLProgram, WebGLTexture }
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
 @JSGlobalScope

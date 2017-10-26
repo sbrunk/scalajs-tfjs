@@ -21,8 +21,11 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import org.scalajs.dom.raw._
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import scala.scalajs.js.typedarray.Float32Array
 import scala.scalajs.js.|
 
 @js.native

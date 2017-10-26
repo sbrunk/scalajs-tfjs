@@ -21,6 +21,8 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 

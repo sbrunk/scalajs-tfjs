@@ -21,6 +21,8 @@
 
 package io.brunk.deeplearnjs.math.webgl
 
+import io.brunk.deeplearnjs.math.MatrixOrientation
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
