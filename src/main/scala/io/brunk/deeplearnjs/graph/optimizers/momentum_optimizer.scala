@@ -29,7 +29,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MomentumOptimizer")
 class MomentumOptimizer protected () extends SGDOptimizer {
   def this(learningRate: Double, momentum: Double, specifiedVariableList: js.Array[Node] = ???) =
     this()

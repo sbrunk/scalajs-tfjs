@@ -30,7 +30,7 @@ import js.{ Promise, | }
 import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "test_util")
 object Test_util extends js.Object {
   val TEST_EPSILON: js.Any = js.native
   def expectArraysClose(actual: TypedArray | js.Array[Double],

@@ -27,7 +27,7 @@ import js.{ Promise, | }
 import scala.scalajs.js.typedarray.{ Float32Array, Int32Array, Uint32Array, Uint8Array }
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "util")
 object Util extends js.Object {
   type TypedArray = Float32Array | Int32Array | Uint8Array
   type FlatVector = js.Array[Boolean] | js.Array[Double] | TypedArray

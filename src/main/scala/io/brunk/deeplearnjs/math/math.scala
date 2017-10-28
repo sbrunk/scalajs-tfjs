@@ -30,7 +30,7 @@ import scala.scalajs.js.{ Promise, | }
 
 @js.native
 trait LSTMCell extends js.Object {
-  def apply(data: Array2D, c: Array2D, h: Array2D): js.Tuple2[Array2D, Array2D] = js.native
+  def apply(data: Array2D, c: Array2D, h: Array2D): js.Tuple2[Array2D, Array2D]
 }
 
 @js.native
@@ -44,7 +44,7 @@ trait SumTypes extends js.Object {
 sealed trait SumTypesMap extends js.Object {}
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SumTypesMap")
 object SumTypesMap extends js.Object {
   var float32: SumTypesMap = js.native
   var int32: SumTypesMap   = js.native
@@ -54,7 +54,7 @@ object SumTypesMap extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "NDArrayMath")
 abstract class NDArrayMath protected () extends js.Object {
   def this(safeMode: Boolean) = this()
   def scope[T <: ScopeResult](scopeFn: js.Function2[js.Function, js.Function, T]): T = js.native
@@ -312,7 +312,7 @@ abstract class NDArrayMath protected () extends js.Object {
 sealed trait MatrixOrientation extends js.Object {}
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MatrixOrientation")
 object MatrixOrientation extends js.Object {
   var REGULAR: MatrixOrientation    = js.native
   var TRANSPOSED: MatrixOrientation = js.native
@@ -321,7 +321,7 @@ object MatrixOrientation extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", JSImport.Namespace)
 object Math extends js.Object {
   type ScopeResultImmediate = js.Array[NDArray] | NDArray | Unit
   type ScopeResult          = ScopeResultImmediate | Promise[ScopeResultImmediate]

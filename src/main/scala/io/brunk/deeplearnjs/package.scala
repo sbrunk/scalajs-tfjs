@@ -19,7 +19,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package io.brunk.deeplearnjs;
+package io.brunk
 
 package object deeplearnjs {
 
@@ -27,4 +27,5 @@ package object deeplearnjs {
   type Iterable[+A]    = scala.collection.immutable.Iterable[A]
   type Seq[+A]         = scala.collection.immutable.Seq[A]
   type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+
 }

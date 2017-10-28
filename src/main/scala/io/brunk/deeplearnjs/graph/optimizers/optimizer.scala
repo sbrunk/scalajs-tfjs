@@ -30,7 +30,7 @@ import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Optimizer")
 abstract class Optimizer protected () extends js.Object {
   def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
   protected var learningRate: Double                                  = js.native

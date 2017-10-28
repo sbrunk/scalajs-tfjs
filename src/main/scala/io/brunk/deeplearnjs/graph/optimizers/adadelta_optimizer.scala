@@ -29,7 +29,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "AdadeltaOptimizer")
 class AdadeltaOptimizer protected () extends Optimizer {
   def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
     this()

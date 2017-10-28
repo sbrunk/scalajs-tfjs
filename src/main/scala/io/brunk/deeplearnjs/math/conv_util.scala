@@ -26,7 +26,7 @@ import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "conv_util")
 object Conv_util extends js.Object {
   type ConvInfo = js.Any
   def computeConvInfo(inShape: js.Tuple3[Double, Double, Double],

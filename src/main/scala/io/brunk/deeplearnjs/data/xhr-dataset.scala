@@ -29,26 +29,26 @@ import scala.scalajs.js.annotation._
 
 @js.native
 trait NDArrayInfo extends js.Object {
-  var path: String            = js.native
-  var name: String            = js.native
-  var dataType: String        = js.native
-  var shape: js.Array[Double] = js.native
+  var path: String
+  var name: String
+  var dataType: String
+  var shape: js.Array[Double]
 }
 
 @js.native
 trait XhrDatasetConfig extends js.Object {
-  var data: js.Array[NDArrayInfo]                 = js.native
-  var labelClassNames: js.Array[String]           = js.native
-  var modelConfigs: js.Dictionary[XhrModelConfig] = js.native
+  var data: js.Array[NDArrayInfo]
+  var labelClassNames: js.Array[String]
+  var modelConfigs: js.Dictionary[XhrModelConfig]
 }
 
 @js.native
 trait XhrModelConfig extends js.Object {
-  var path: String = js.native
+  var path: String
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "XhrDataset")
 class XhrDataset protected () extends InMemoryDataset {
   def this(xhrDatasetConfig: XhrDatasetConfig) = this()
   protected var xhrDatasetConfig: XhrDatasetConfig                      = js.native
@@ -57,7 +57,7 @@ class XhrDataset protected () extends InMemoryDataset {
 }
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "Xhr-dataset")
 object `Xhr-dataset` extends js.Object {
   def getXhrDatasetConfig(jsonConfigPath: String): Promise[js.Dictionary[XhrDatasetConfig]] =
     js.native

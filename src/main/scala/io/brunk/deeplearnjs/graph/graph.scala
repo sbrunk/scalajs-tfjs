@@ -30,7 +30,7 @@ import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "GraphLayers")
 class GraphLayers protected () extends js.Object {
   def this(g: Graph) = this()
   def dense(name: String,
@@ -43,7 +43,7 @@ class GraphLayers protected () extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Graph")
 class Graph extends js.Object {
   var layers: GraphLayers                                                            = js.native
   def variable(name: String, data: NDArray): Tensor                                  = js.native
@@ -82,7 +82,7 @@ class Graph extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Tensor")
 class Tensor protected () extends js.Object {
   def this(shape: js.Array[Double]) = this()
   var shape: js.Array[Double] = js.native
@@ -91,7 +91,7 @@ class Tensor protected () extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Node")
 abstract class Node protected () extends js.Object {
   def this(graph: Graph, name: String, inputs: js.Dictionary[Tensor], output: Tensor) = this()
   var graph: Graph                  = js.native
@@ -103,7 +103,7 @@ abstract class Node protected () extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "VariableNode")
 class VariableNode protected () extends Node {
   def this(graph: Graph, name: String, data: NDArray) = this()
   var data: NDArray    = js.native
@@ -111,14 +111,14 @@ class VariableNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "PlaceholderNode")
 class PlaceholderNode protected () extends Node {
   def this(graph: Graph, name: String, shape: js.Array[Double]) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ConstantNode")
 class ConstantNode protected () extends Node {
   def this(graph: Graph, data: NDArray) = this()
   var data: NDArray    = js.native
@@ -126,7 +126,7 @@ class ConstantNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ReshapeNode")
 class ReshapeNode protected () extends Node {
   def this(graph: Graph, name: String, x: Tensor, shape: js.Array[Double]) = this()
   //var name: String     = js.native
@@ -134,20 +134,20 @@ class ReshapeNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ReshapeNode")
 object ReshapeNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "FusedLinearCombinationNode")
 class FusedLinearCombinationNode protected () extends Node {
   def this(graph: Graph, t1: Tensor, t2: Tensor, c1: Tensor, c2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "FusedLinearCombinationNode")
 object FusedLinearCombinationNode extends js.Object {
   def T1: String = js.native
   def T2: String = js.native
@@ -156,76 +156,76 @@ object FusedLinearCombinationNode extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "AddNode")
 class AddNode protected () extends Node {
   def this(graph: Graph, t1: Tensor, t2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "AddNode")
 object AddNode extends js.Object {
   def T1: String = js.native
   def T2: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SubtractNode")
 class SubtractNode protected () extends Node {
   def this(graph: Graph, t1: Tensor, t2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SubtractNode")
 object SubtractNode extends js.Object {
   def T1: String = js.native
   def T2: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MultiplyNode")
 class MultiplyNode protected () extends Node {
   def this(graph: Graph, t1: Tensor, t2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MultiplyNode")
 object MultiplyNode extends js.Object {
   def T1: String = js.native
   def T2: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "DivideNode")
 class DivideNode protected () extends Node {
   def this(graph: Graph, t1: Tensor, t2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "DivideNode")
 object DivideNode extends js.Object {
   def T1: String = js.native
   def T2: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ReduceSumNode")
 class ReduceSumNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ReduceSumNode")
 object ReduceSumNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Concat3DNode")
 class Concat3DNode protected () extends Node {
   def this(graph: Graph, x1: Tensor, x2: Tensor, axis: Double) = this()
   var axis: Double     = js.native
@@ -233,7 +233,7 @@ class Concat3DNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Concat3DNode")
 object Concat3DNode extends js.Object {
   def X1: String   = js.native
   def X2: String   = js.native
@@ -241,21 +241,21 @@ object Concat3DNode extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MatMulNode")
 class MatMulNode protected () extends Node {
   def this(graph: Graph, x1: Tensor, x2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MatMulNode")
 object MatMulNode extends js.Object {
   def X1: String = js.native
   def X2: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Convolution2DNode")
 class Convolution2DNode protected () extends Node {
   def this(graph: Graph,
            x: Tensor,
@@ -273,7 +273,7 @@ class Convolution2DNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Convolution2DNode")
 object Convolution2DNode extends js.Object {
   def X: String = js.native
   def W: String = js.native
@@ -281,7 +281,7 @@ object Convolution2DNode extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MaxPoolNode")
 class MaxPoolNode protected () extends Node {
   def this(graph: Graph,
            x: Tensor,
@@ -295,132 +295,132 @@ class MaxPoolNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MaxPoolNode")
 object MaxPoolNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ReLUNode")
 class ReLUNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ReLUNode")
 object ReLUNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ExpNode")
 class ExpNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ExpNode")
 object ExpNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "LogNode")
 class LogNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "LogNode")
 object LogNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "TanHNode")
 class TanHNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "TanHNode")
 object TanHNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SigmoidNode")
 class SigmoidNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SigmoidNode")
 object SigmoidNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SquareNode")
 class SquareNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SquareNode")
 object SquareNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SoftmaxCrossEntropyCostNode")
 class SoftmaxCrossEntropyCostNode protected () extends Node {
   def this(graph: Graph, x: Tensor, target: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SoftmaxCrossEntropyCostNode")
 object SoftmaxCrossEntropyCostNode extends js.Object {
   def X: String      = js.native
   def TARGET: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SoftmaxNode")
 class SoftmaxNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "SoftmaxNode")
 object SoftmaxNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MeanSquaredCostNode")
 class MeanSquaredCostNode protected () extends Node {
   def this(graph: Graph, label: Tensor, prediction: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MeanSquaredCostNode")
 object MeanSquaredCostNode extends js.Object {
   def LABEL: String      = js.native
   def PREDICTION: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ArgMaxNode")
 class ArgMaxNode protected () extends Node {
   def this(graph: Graph, x: Tensor) = this()
   var x: Tensor        = js.native
@@ -428,27 +428,27 @@ class ArgMaxNode protected () extends Node {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ArgMaxNode")
 object ArgMaxNode extends js.Object {
   def X: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ArgMaxEqualsNode")
 class ArgMaxEqualsNode protected () extends Node {
   def this(graph: Graph, x1: Tensor, x2: Tensor) = this()
   def validate(): Unit = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "ArgMaxEqualsNode")
 object ArgMaxEqualsNode extends js.Object {
   def X1: String = js.native
   def X2: String = js.native
 }
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "graph")
 object Graph extends js.Object {
   type ArrayData = NDArray | Double | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[
     js.Array[js.Array[Double]]

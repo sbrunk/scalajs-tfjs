@@ -35,7 +35,7 @@ trait CheckpointVariable extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "CheckpointLoader")
 class CheckpointLoader protected () extends js.Object {
   def this(urlPath: String) = this()
   def getCheckpointManifest(): Promise[CheckpointManifest] = js.native

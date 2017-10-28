@@ -29,7 +29,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "AdamaxOptimizer")
 class AdamaxOptimizer protected () extends Optimizer {
   def this(learningRate: Double,
            beta1: Double,

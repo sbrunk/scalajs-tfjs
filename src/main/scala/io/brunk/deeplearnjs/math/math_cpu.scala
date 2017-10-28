@@ -28,7 +28,7 @@ import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "NDArrayMathCPU")
 class NDArrayMathCPU protected () extends NDArrayMath {
   def this(safeMode: Boolean = ???) = this()
   def cloneInternal[T <: NDArray](ndarray: T): T                            = js.native

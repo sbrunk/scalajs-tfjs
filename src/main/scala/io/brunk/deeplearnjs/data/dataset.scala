@@ -29,14 +29,14 @@ import scala.scalajs.js.{ Promise, | }
 
 @js.native
 trait DataStats extends js.Object {
-  var exampleCount: Double    = js.native
-  var inputMin: Double        = js.native
-  var inputMax: Double        = js.native
-  var shape: js.Array[Double] = js.native
+  var exampleCount: Double
+  var inputMin: Double
+  var inputMax: Double
+  var shape: js.Array[Double]
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "InMemoryDataset")
 abstract class InMemoryDataset protected () extends js.Object {
   def this(dataShapes: js.Array[js.Array[Double]]) = this()
   protected var dataShapes: js.Array[js.Array[Double]]      = js.native

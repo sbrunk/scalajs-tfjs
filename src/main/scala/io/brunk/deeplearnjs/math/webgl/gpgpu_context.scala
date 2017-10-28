@@ -30,7 +30,7 @@ import scala.scalajs.js.typedarray.Float32Array
 import scala.scalajs.js.{ Promise, | }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "GPGPUContext")
 class GPGPUContext protected () extends js.Object {
   def this(gl: WebGLRenderingContext = ???) = this()
   var gl: WebGLRenderingContext                                        = js.native

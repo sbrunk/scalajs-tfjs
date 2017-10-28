@@ -39,27 +39,27 @@ object Type extends js.Object {
 
 @js.native
 trait Features extends js.Object {
-  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_ENABLED: Boolean  = js.native
-  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean = js.native
-  var WEBGL_VERSION: Double                                  = js.native
-  var WEBGL_FLOAT_TEXTURE_ENABLED: Boolean                   = js.native
+  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_ENABLED: Boolean
+  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean
+  var WEBGL_VERSION: Double
+  var WEBGL_FLOAT_TEXTURE_ENABLED: Boolean
 }
 
 @js.native
 trait URLProperty extends js.Object {
-  var name: String = js.native
-  var `type`: Type = js.native
+  var name: String
+  var `type`: Type
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Environment")
 class Environment protected () extends js.Object {
   def this(features: Features = ???) = this()
   def get[K <: String](feature: K): Boolean | Double = js.native
 }
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "environment")
 object Environment extends js.Object {
   val URL_PROPERTIES: js.Array[URLProperty]          = js.native
   def ENV: Environment                               = js.native

@@ -29,7 +29,7 @@ import scala.scalajs.js.typedarray.Float32Array
 import scala.scalajs.js.|
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "gpgpu_util")
 object Gpgpu_util extends js.Object {
   def getWebGLContextAttributes(): WebGLContextAttributes                        = js.native
   def createWebGLContext(canvas: HTMLCanvasElement = ???): WebGLRenderingContext = js.native

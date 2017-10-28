@@ -29,7 +29,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "RMSPropOptimizer")
 class RMSPropOptimizer protected () extends Optimizer {
   def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
     this()

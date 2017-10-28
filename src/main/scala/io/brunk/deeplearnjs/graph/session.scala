@@ -39,7 +39,7 @@ class FeedDictionary protected () extends js.Object {
 sealed trait CostReduction extends js.Object {}
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "CostReduction")
 object CostReduction extends js.Object {
   var NONE: CostReduction = js.native
   var SUM: CostReduction  = js.native
@@ -49,7 +49,7 @@ object CostReduction extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Session")
 class Session protected () extends js.Object {
   def this(graph: Graph, math: NDArrayMath) = this()
   def dispose(): Unit = js.native
@@ -66,7 +66,7 @@ class Session protected () extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
+@JSImport("deeplearn", "session")
 object Session extends js.Object {
   type FeedEntry      = js.Any
   type SessionRuntime = js.Any

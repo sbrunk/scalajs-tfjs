@@ -35,7 +35,7 @@ import scala.scalajs.js.{ Promise, | }
 sealed trait DType extends js.Object {}
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "DType")
 object DType extends js.Object {
   var float32: DType = js.native
   var int32: DType   = js.native
@@ -60,7 +60,7 @@ trait NDArrayData extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "NDArray")
 class NDArray protected () extends js.Object {
   def this(shape: js.Array[Double], data: NDArrayData, dtype: DType) = this()
   var shape: js.Array[Double]                                                     = js.native
@@ -98,7 +98,7 @@ class NDArray protected () extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "NDArray")
 object NDArray extends js.Object {
   def zeros(shape: js.Array[Double], dtype: DType = ???): NDArray = js.native
   def zerosLike(another: DType): NDArray                          = js.native
@@ -118,7 +118,7 @@ object NDArray extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Scalar")
 class Scalar protected () extends NDArray {
   def this(data: NDArrayData, dtype: DType) = this()
   def get(): Double                                        = js.native
@@ -131,7 +131,7 @@ class Scalar protected () extends NDArray {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Scalar")
 object Scalar extends js.Object {
   def `new`(value: Double | Boolean, dtype: DType = ???): Scalar = js.native
   var ZERO: Scalar                                               = js.native
@@ -141,7 +141,7 @@ object Scalar extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array1D")
 class Array1D protected () extends NDArray {
   def this(data: NDArrayData, dtype: DType) = this()
   @JSName("shape")
@@ -157,7 +157,7 @@ class Array1D protected () extends NDArray {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array1D")
 object Array1D extends js.Object {
   def `new`(
       values: Float32Array | Int32Array | Uint8Array | js.Array[Double] | js.Array[Boolean],
@@ -173,7 +173,7 @@ object Array1D extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array2D")
 class Array2D protected () extends NDArray {
   def this(shape: js.Tuple2[Double, Double], data: NDArrayData, dtype: DType) = this()
   @JSName("shape")
@@ -189,7 +189,7 @@ class Array2D protected () extends NDArray {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array2D")
 object Array2D extends js.Object {
   def `new`(
       shape: js.Tuple2[Double, Double],
@@ -210,7 +210,7 @@ object Array2D extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array3D")
 class Array3D protected () extends NDArray {
   def this(shape: js.Tuple3[Double, Double, Double], data: NDArrayData, dtype: DType) = this()
   @JSName("shape")
@@ -226,7 +226,7 @@ class Array3D protected () extends NDArray {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array3D")
 object Array3D extends js.Object {
   def `new`(
       shape: js.Tuple3[Double, Double, Double],
@@ -248,7 +248,7 @@ object Array3D extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array4D")
 class Array4D protected () extends NDArray {
   def this(shape: js.Tuple4[Double, Double, Double, Double], data: NDArrayData, dtype: DType) =
     this()
@@ -265,7 +265,7 @@ class Array4D protected () extends NDArray {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "Array4D")
 object Array4D extends js.Object {
   def `new`(
       shape: js.Tuple4[Double, Double, Double, Double],

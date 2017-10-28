@@ -29,7 +29,7 @@ import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "NDArrayMathGPU")
 class NDArrayMathGPU protected () extends NDArrayMath {
   def this(gpgpu: GPGPUContext = ???, safeMode: Boolean = ???) = this()
   def getGPGPUContext(): GPGPUContext                                       = js.native

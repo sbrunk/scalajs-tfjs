@@ -47,7 +47,7 @@ trait GraphRunnerEventObserver extends js.Object {
 sealed trait MetricReduction extends js.Object {}
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "MetricReduction")
 object MetricReduction extends js.Object {
   var SUM: MetricReduction  = js.native
   var MEAN: MetricReduction = js.native
@@ -56,7 +56,7 @@ object MetricReduction extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "GraphRunner")
 class GraphRunner protected () extends js.Object {
   def this(math: NDArrayMath, session: Session, eventObserver: GraphRunnerEventObserver) = this()
   def resetStatistics(): Unit = js.native

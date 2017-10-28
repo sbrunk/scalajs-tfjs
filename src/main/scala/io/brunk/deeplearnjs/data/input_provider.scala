@@ -39,7 +39,7 @@ trait ShuffledInputProviderBuilder extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "InMemoryShuffledInputProviderBuilder")
 abstract class InMemoryShuffledInputProviderBuilder protected ()
     extends ShuffledInputProviderBuilder {
   def this(inputs: js.Array[js.Array[NDArray]]) = this()
@@ -57,13 +57,13 @@ abstract class InMemoryShuffledInputProviderBuilder protected ()
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "InCPUMemoryShuffledInputProviderBuilder")
 class InCPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
   def getInputProvider(inputId: Double): InputProvider = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("deeplearn", "InGPUMemoryShuffledInputProviderBuilder")
 class InGPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
   def getInputProvider(inputId: Double): InputProvider = js.native
 }
