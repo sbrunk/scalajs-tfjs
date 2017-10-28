@@ -16,6 +16,20 @@ lazy val `scala-js-deeplearnjs` =
       npmDependencies in Test += "deeplearn" -> "0.3.3",
     )
 
+lazy val example =
+  project
+    .in(file("example"))
+    .enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
+    .settings(settings)
+    .settings(
+      libraryDependencies ++= Seq(
+        library.scalajsDom,
+      ),
+      npmDependencies in Compile += "deeplearn" -> "0.3.3",
+      scalaJSUseMainModuleInitializer := true
+    )
+    .dependsOn(`scala-js-deeplearnjs`)
+
 // *****************************************************************************
 // Library dependencies
 // *****************************************************************************
