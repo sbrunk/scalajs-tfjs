@@ -1,6 +1,8 @@
 # scala-js-deeplearnjs #
 
-Welcome to scala-js-deeplearnjs!
+This projects aims to provide a [Scala.js](http://www.scala-js.org/) facade for [deeplearn.js](https://deeplearnjs.org).
+
+This is WIP and at a very early stage. Don't expect anything to work right now. 
 
 ## Contribution policy ##
 
@@ -14,4 +16,5 @@ legal authority to do so.
 ## License ##
 
 This code is open source software licensed under the
-[MIT](https://opensource.org/licenses/MIT) license.
+[Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
+
