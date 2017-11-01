@@ -42,7 +42,7 @@ trait ShuffledInputProviderBuilder extends js.Object {
 @JSImport("deeplearn", "InMemoryShuffledInputProviderBuilder")
 abstract class InMemoryShuffledInputProviderBuilder protected ()
     extends ShuffledInputProviderBuilder {
-  def this(inputs: js.Array[js.Array[NDArray]]) = this()
+  def this(inputs: js.Array[js.Array[_ <: NDArray]]) = this()
   protected var inputs: js.Array[js.Array[NDArray]] = js.native
   protected var shuffledIndices: Uint32Array        = js.native
   protected var numInputs: Double                   = js.native
@@ -58,12 +58,16 @@ abstract class InMemoryShuffledInputProviderBuilder protected ()
 
 @js.native
 @JSImport("deeplearn", "InCPUMemoryShuffledInputProviderBuilder")
-class InCPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
+class InCPUMemoryShuffledInputProviderBuilder protected ()
+    extends InMemoryShuffledInputProviderBuilder {
+  def this(inputs: js.Array[js.Array[_ <: NDArray]]) = this()
   def getInputProvider(inputId: Double): InputProvider = js.native
 }
 
 @js.native
 @JSImport("deeplearn", "InGPUMemoryShuffledInputProviderBuilder")
-class InGPUMemoryShuffledInputProviderBuilder extends InMemoryShuffledInputProviderBuilder {
+class InGPUMemoryShuffledInputProviderBuilder protected ()
+    extends InMemoryShuffledInputProviderBuilder {
+  def this(inputs: js.Array[js.Array[_ <: NDArray]]) = this()
   def getInputProvider(inputId: Double): InputProvider = js.native
 }

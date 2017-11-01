@@ -287,8 +287,8 @@ object Array4D extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
-object Ndarray extends js.Object {
+@JSImport("deeplearn", "ndarray")
+object NDarrayModule extends js.Object {
   def GPGPU: GPGPUContext                                                      = js.native
   def TEXTURE_MANAGER: TextureManager                                          = js.native
   def initializeGPU(gpgpu: GPGPUContext, textureManager: TextureManager): Unit = js.native

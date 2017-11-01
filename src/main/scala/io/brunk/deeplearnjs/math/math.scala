@@ -321,7 +321,7 @@ object MatrixOrientation extends js.Object {
 }
 
 @js.native
-@JSImport("deeplearn", JSImport.Namespace)
+@JSImport("deeplearn", "math")
 object Math extends js.Object {
   type ScopeResultImmediate = js.Array[NDArray] | NDArray | Unit
   type ScopeResult          = ScopeResultImmediate | Promise[ScopeResultImmediate]
