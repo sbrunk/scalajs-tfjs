@@ -62,7 +62,7 @@ lazy val commonSettings =
     organization := "io.brunk",
     organizationName := "Sören Brunk",
     startYear := Some(2017),
-    licenses += ("MIT", url("https://opensource.org/licenses/MIT")),
+    licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",
