@@ -24,9 +24,11 @@ lazy val example =
     .settings(
       libraryDependencies ++= Seq(
         library.scalajsDom,
+        "org.scala-lang.modules" %% "scala-async" % "0.9.6"
       ),
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
-      scalaJSUseMainModuleInitializer := true
+      scalaJSUseMainModuleInitializer := true,
+      mainClass in Compile := Some("example.Intro")
     )
     .dependsOn(`scala-js-deeplearnjs`)
 
