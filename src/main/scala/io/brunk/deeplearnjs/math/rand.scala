@@ -17,16 +17,31 @@
 package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobalScope
-object Broadcast_util extends js.Object {
-  def getBroadcastDims(inShape: js.Array[Double], outShape: js.Array[Double]): js.Array[Double] =
-    js.native
-  def getReductionAxes(inShape: js.Array[Double], outShape: js.Array[Double]): js.Array[Double] =
-    js.native
-  def broadcastDimsAreOuter(dims: js.Array[Double]): Boolean = js.native
-  def assertAndGetBroadcastShape(shapeA: js.Array[Double],
-                                 shapeB: js.Array[Double]): js.Array[Double] = js.native
+package rand {
+
+  @js.native
+  trait RandGauss extends js.Object {
+    def nextValue(): Double = js.native
+  }
+
+  @js.native
+  trait RandNormalDataTypes extends js.Object {
+    var float32: Float32Array = js.native
+    var int32: Int32Array     = js.native
+  }
+
+  @js.native
+  @JSGlobal
+  class MPRandGauss protected () extends RandGauss {
+    def this(mean: Double,
+             stdDeviation: Double,
+             dtype: String = ???,
+             truncated: Boolean = ???,
+             seed: Double = ???) = this()
+    def nextValue(): Double = js.native
+  }
+
 }

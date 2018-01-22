@@ -31,6 +31,10 @@ abstract class Optimizer protected () extends js.Object {
   protected var learningRate: Double                                  = js.native
   protected var variableNodes: js.Array[VariableNode]                 = js.native
   protected var specifiedVariableNodes: js.Array[VariableNode] | Null = js.native
+  def minimize[D <: DataType](f: js.Function0[Scalar[D]],
+                              returnCost: Boolean = ???): Scalar[D] | Null = js.native
+  def computeGradients[D <: DataType](f: js.Function0[Scalar[D]]): js.Any  = js.native
+  def applyGradients(variableGradients: NamedVariableMap): Unit
   def beforeBatch(math: NDArrayMath,
                   batchSize: Double,
                   runtime: SessionRuntime,
@@ -49,5 +53,5 @@ abstract class Optimizer protected () extends js.Object {
   protected var variableGradients: TensorArrayMap = js.native
   protected var prevBatchSize: Double             = js.native
   protected var one: Scalar                       = js.native
-  protected var c: Scalar                         = js.native
+  protected var cGraph: Scalar                    = js.native
 }

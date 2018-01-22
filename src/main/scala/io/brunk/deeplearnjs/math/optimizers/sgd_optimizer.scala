@@ -28,6 +28,7 @@ import scala.scalajs.js.annotation._
 class SGDOptimizer protected () extends Optimizer {
   def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
   //protected var learningRate: Double = js.native
+  def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
   def afterBatch(math: NDArrayMath,
                  batchSize: Double,
                  runtime: SessionRuntime,

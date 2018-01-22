@@ -23,25 +23,31 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("deeplearn", "conv_util")
 object Conv_util extends js.Object {
-  type ConvInfo = js.Any
-  def computeConvInfo(inShape: js.Tuple3[Double, Double, Double],
-                      filterHeight: Double,
-                      filterWidth: Double,
-                      outDepth: Double,
-                      strideHeight: Double,
-                      strideWidth: Double,
-                      pad: String | Double): ConvInfo = js.native
+  type PadInfo    = js.Any
+  type Conv2DInfo = js.Any
+  def computePool2DInfo(inShape: js.Tuple4[Double, Double, Double, Double],
+                        filterSize: js.Tuple2[Double, Double] | Double,
+                        strides: Double | js.Tuple2[Double, Double],
+                        pad: String | Double,
+                        roundingMode: String = ???,
+                        dataFormat: String = ???): Conv2DInfo = js.native
+  def computeConv2DInfo(inShape: js.Tuple4[Double, Double, Double, Double],
+                        filterShape: js.Tuple4[Double, Double, Double, Double],
+                        strides: Double | js.Tuple2[Double, Double],
+                        pad: String | Double,
+                        roundingMode: String = ???,
+                        depthwise: Boolean = ???,
+                        dataFormat: String = ???): Conv2DInfo = js.native
   def computeOutputShape3D(inShape: js.Tuple3[Double, Double, Double],
                            fieldSize: Double,
                            outDepth: Double,
                            stride: Double,
-                           zeroPad: Double = ???): js.Tuple3[Double, Double, Double] = js.native
+                           zeroPad: Double = ???,
+                           roundingMode: String = ???): js.Tuple3[Double, Double, Double] =
+    js.native
   def computeDefaultPad(inputShape: js.Tuple3[Double, Double, Double],
                         fieldSize: Double,
                         stride: Double): Double = js.native
-  def computeTexShapeFrom3D(
-      shapeRowColDepth: js.Tuple3[Double, Double, Double]
-  ): js.Tuple2[Double, Double] = js.native
   def computeWeightsShape4D(inputDepth: Double,
                             outputDepth: Double,
                             filterHeight: Double,

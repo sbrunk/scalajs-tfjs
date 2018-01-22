@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package io.brunk.deeplearnjs.math
+package io.brunk.deeplearnjs
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobalScope
-object Broadcast_util extends js.Object {
-  def getBroadcastDims(inShape: js.Array[Double], outShape: js.Array[Double]): js.Array[Double] =
-    js.native
-  def getReductionAxes(inShape: js.Array[Double], outShape: js.Array[Double]): js.Array[Double] =
-    js.native
-  def broadcastDimsAreOuter(dims: js.Array[Double]): Boolean = js.native
-  def assertAndGetBroadcastShape(shapeA: js.Array[Double],
-                                 shapeB: js.Array[Double]): js.Array[Double] = js.native
+package model {
+
+  @js.native
+  trait Model extends js.Object {
+    def load(): Promise[Unit | js.Array[Unit]] = js.native
+    def predict(input: NDArray): NDArray       = js.native
+    def dispose(): Unit                        = js.native
+  }
+
 }

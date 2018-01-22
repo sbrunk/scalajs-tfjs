@@ -23,6 +23,7 @@ import scala.scalajs.js.annotation._
 trait ActivationFunction extends js.Object {
   def output[T <: NDArray](math: NDArrayMath, input: T): T
   def der[T <: NDArray](math: NDArrayMath, input: T, output: T): T
+  def dispose(): Unit
 }
 
 @js.native
@@ -30,6 +31,7 @@ trait ActivationFunction extends js.Object {
 class TanHFunc extends ActivationFunction {
   def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
   def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                     = js.native
 }
 
 @js.native
@@ -37,6 +39,16 @@ class TanHFunc extends ActivationFunction {
 class ReLUFunc extends ActivationFunction {
   def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
   def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                     = js.native
+}
+
+@js.native
+@JSGlobal
+class LeakyReluFunc protected () extends ActivationFunction {
+  def this(alpha: Double) = this()
+  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                     = js.native
 }
 
 @js.native
@@ -44,6 +56,7 @@ class ReLUFunc extends ActivationFunction {
 class SigmoidFunc extends ActivationFunction {
   def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
   def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                     = js.native
 }
 
 @js.native
@@ -51,4 +64,13 @@ class SigmoidFunc extends ActivationFunction {
 class SquareFunc extends ActivationFunction {
   def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
   def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                     = js.native
+}
+
+@js.native
+@JSGlobal
+class EluFunc extends ActivationFunction {
+  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                     = js.native
 }
