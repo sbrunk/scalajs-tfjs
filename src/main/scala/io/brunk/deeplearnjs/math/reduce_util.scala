@@ -14,20 +14,26 @@
  * limitations under the License.
  */
 
-package io.brunk.deeplearnjs.graph.ops
-
-import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
-import io.brunk.deeplearnjs.math.NDArrayMath
+package io.brunk.deeplearnjs.math
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
+import js.annotation._
+import js.|
 
-@js.native
-@JSGlobal
-class Concat3D protected () extends Operation {
-  def this(x1Tensor: Tensor, x2Tensor: Tensor, axis: Double, yTensor: Tensor) = this()
-  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
-  def backProp(math: NDArrayMath,
-               inferenceArrays: TensorArrayMap,
-               gradientArrays: SummedTensorArrayMap): Unit = js.native
+package reduce_util {
+
+  @js.native
+  trait ReduceInfo extends js.Object {
+    var windowSize: Double = js.native
+    var batchSize: Double  = js.native
+    var inSize: Double     = js.native
+  }
+
+  @js.native
+  @JSGlobalScope
+  object Reduce_util extends js.Object {
+    val PARALLELIZE_THRESHOLD: Double                    = js.native
+    def computeOptimalWindowSize(inSize: Double): Double = js.native
+  }
+
 }
