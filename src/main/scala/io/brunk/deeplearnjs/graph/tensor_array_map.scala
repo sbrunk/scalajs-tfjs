@@ -32,7 +32,18 @@ abstract class TensorArrayMapBase extends js.Object {
   def size(): Double                                          = js.native
   def dispose(): Unit                                         = js.native
   def hasNullArray(tensor: Tensor): Boolean                   = js.native
-  protected var dict: js.Any                                  = js.native
+  protected var dict: TensorArrayMapBase.Dict                 = js.native
+}
+
+object TensorArrayMapBase {
+
+  @js.native
+  trait Dict extends js.Object {
+    @JSBracketAccess
+    def apply(tensorID: Double): NDArray | Null = js.native
+    @JSBracketAccess
+    def update(tensorID: Double, v: NDArray | Null): Unit = js.native
+  }
 }
 
 @js.native

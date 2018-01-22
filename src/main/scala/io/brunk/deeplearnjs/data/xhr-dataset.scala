@@ -34,12 +34,23 @@ trait NDArrayInfo extends js.Object {
 trait XhrDatasetConfig extends js.Object {
   var data: js.Array[NDArrayInfo]
   var labelClassNames: js.Array[String]
-  var modelConfigs: js.Dictionary[XhrModelConfig]
+  var modelConfigs: XhrDatasetConfig.ModelConfigs
+}
+
+object XhrDatasetConfig {
+
+  @js.native
+  trait ModelConfigs extends js.Object {
+    @JSBracketAccess
+    def apply(modelName: String): XhrModelConfig
+    @JSBracketAccess
+    def update(modelName: String, v: XhrModelConfig): Unit
+  }
 }
 
 @js.native
 trait XhrModelConfig extends js.Object {
-  var path: String
+  var path: String = js.native
 }
 
 @js.native

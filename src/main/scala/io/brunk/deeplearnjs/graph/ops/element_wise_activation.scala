@@ -42,6 +42,12 @@ class ReLU protected () extends ElementWiseActivation {
 
 @js.native
 @JSGlobal
+class LeakyReLU protected () extends ElementWiseActivation {
+  def this(xTensor: Tensor, yTensor: Tensor, alpha: Double) = this()
+}
+
+@js.native
+@JSGlobal
 class TanH protected () extends ElementWiseActivation {
   def this(xTensor: Tensor, yTensor: Tensor) = this()
 }
@@ -56,4 +62,20 @@ class Sigmoid protected () extends ElementWiseActivation {
 @JSGlobal
 class Square protected () extends ElementWiseActivation {
   def this(xTensor: Tensor, yTensor: Tensor) = this()
+}
+
+@js.native
+@JSGlobal
+class Elu protected () extends ElementWiseActivation {
+  def this(xTensor: Tensor, yTensor: Tensor) = this()
+}
+
+@js.native
+@JSGlobal
+class PReLU protected () extends Operation {
+  def this(xTensor: Tensor, alphaTensor: Tensor, yTensor: Tensor) = this()
+  def feedForward(math: NDArrayMath, inferenceArrays: TensorArrayMap): Unit = js.native
+  def backProp(math: NDArrayMath,
+               inferenceArrays: TensorArrayMap,
+               gradientArrays: SummedTensorArrayMap): Unit = js.native
 }

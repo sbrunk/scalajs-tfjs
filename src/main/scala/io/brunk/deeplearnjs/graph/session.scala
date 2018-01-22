@@ -17,8 +17,8 @@
 package io.brunk.deeplearnjs.graph
 
 import io.brunk.deeplearnjs.graph.Session.FeedEntry
-import io.brunk.deeplearnjs.graph.optimizers.Optimizer
-import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath, Scalar }
+import io.brunk.deeplearnjs.math.optimizers.Optimizer
+import io.brunk.deeplearnjs.math.{NDArray, NDArrayMath, Scalar}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -27,7 +27,18 @@ import scala.scalajs.js.annotation._
 @JSGlobal
 class FeedDictionary protected () extends js.Object {
   def this(feedEntries: js.Array[FeedEntry] = ???) = this()
-  var dict: js.Any = js.native
+  var dict: FeedDictionary.Dict = js.native
+}
+
+object FeedDictionary {
+
+  @js.native
+  trait Dict extends js.Object {
+    @JSBracketAccess
+    def apply(tensorID: Double): FeedEntry = js.native
+    @JSBracketAccess
+    def update(tensorID: Double, v: FeedEntry): Unit = js.native
+  }
 }
 
 @js.native

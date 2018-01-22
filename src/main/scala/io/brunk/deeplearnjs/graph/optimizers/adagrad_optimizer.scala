@@ -16,9 +16,10 @@
 
 package io.brunk.deeplearnjs.graph.optimizers
 
-import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap }
+import io.brunk.deeplearnjs.graph.{Node, SummedTensorArrayMap, TensorArrayMap}
 import io.brunk.deeplearnjs.graph.Session.SessionRuntime
 import io.brunk.deeplearnjs.math.NDArrayMath
+import io.brunk.deeplearnjs.math.optimizers.Optimizer
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -28,6 +29,7 @@ import scala.scalajs.js.annotation._
 class AdagradOptimizer protected () extends Optimizer {
   def this(learningRate: Double, specifiedVariableList: js.Array[Node] = ???) = this()
   //protected var learningRate: Double = js.native
+  def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
   override def beforeBatch(math: NDArrayMath,
                            batchSize: Double,
                            runtime: SessionRuntime,

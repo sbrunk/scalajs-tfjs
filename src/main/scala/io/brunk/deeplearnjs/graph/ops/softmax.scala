@@ -48,6 +48,8 @@ class SoftmaxCrossEntropyCost protected () extends Operation {
 @js.native
 @JSGlobalScope
 object Softmax extends js.Object {
-  def crossEntropyCost(math: NDArrayMath, y: Array1D, target: Array1D, epsilon: Scalar): Scalar =
-    js.native
+  def crossEntropyCost(math: NDArrayMath,
+                       y: Array1D,
+                       target: Array1D,
+                       epsilon: Scalar): Scalar[String] = js.native
 }

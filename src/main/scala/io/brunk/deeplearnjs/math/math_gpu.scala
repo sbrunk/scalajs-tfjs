@@ -17,7 +17,7 @@
 package io.brunk.deeplearnjs.math
 
 import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
-import io.brunk.deeplearnjs.math.webgl.{ GPGPUContext, TextureManager }
+import io.brunk.deeplearnjs.math.backends.webgl.{ GPGPUContext, TextureManager }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._

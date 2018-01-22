@@ -14,12 +14,7 @@
  * limitations under the License.
  */
 
-package io.brunk.deeplearnjs
-
-import io.brunk.deeplearnjs.graph.Session.FeedEntry
-import io.brunk.deeplearnjs.graph.{Session, Tensor}
-import io.brunk.deeplearnjs.math.optimizers.Optimizer
-import io.brunk.deeplearnjs.math.{NDArray, NDArrayMath, Scalar}
+package io.brunk.deeplearnjs.graph
 
 import scala.scalajs.js
 import js.annotation._
@@ -75,7 +70,7 @@ class GraphRunner protected () extends js.Object {
             numPasses: Double = ???): Unit                          = js.native
   def stopInferring(): Unit                                         = js.native
   def isInferenceRunning(): Boolean                                 = js.native
-  def computeMetric(): Scalar                                       = js.native
+  def computeMetric(): Scalar[String]                               = js.native
   def getTotalBatchesTrained(): Double                              = js.native
   def getLastComputedMetric(): Scalar                               = js.native
   def setMath(math: NDArrayMath): Unit                              = js.native
@@ -83,3 +78,4 @@ class GraphRunner protected () extends js.Object {
   def setInferenceTensor(inferenceTensor: Tensor): Unit             = js.native
   def setInferenceExampleCount(inferenceExampleCount: Double): Unit = js.native
 }
+

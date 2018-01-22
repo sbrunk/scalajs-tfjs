@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.math
 
-import io.brunk.deeplearnjs.math.webgl.{ GPGPUContext, TextureManager, TextureType }
+import io.brunk.deeplearnjs.math.backends.webgl.{ GPGPUContext, TextureManager, TextureType }
 import org.scalajs.dom.ImageData
 import org.scalajs.dom.raw.{ HTMLCanvasElement, HTMLVideoElement, WebGLTexture }
 import org.w3c.dom.html.HTMLImageElement
