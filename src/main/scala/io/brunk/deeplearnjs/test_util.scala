@@ -27,11 +27,31 @@ import scala.scalajs.js.typedarray.Float32Array
 @js.native
 @JSImport("deeplearn", "test_util")
 object Test_util extends js.Object {
+  type MathIt    = js.Function2[String, js.Function1[NDArrayMath, Unit], Unit]
+  type It        = js.Function2[String, js.Function0[Unit] | Promise[Unit], Unit]
+  type MathTests = js.Function3[MathIt, MathIt, MathIt, Unit]
+  type Tests     = js.Function3[It, It, It, Unit]
   val TEST_EPSILON: js.Any = js.native
-  def expectArraysClose(actual: TypedArray | js.Array[Double],
-                        expected: TypedArray | js.Array[Double],
-                        epsilon: Double = ???): Unit                                  = js.native
+  def mean(values: TypedArray | js.Array[Double]): Double                            = js.native
+  def standardDeviation(values: TypedArray | js.Array[Double], mean: Double): Double = js.native
+  def kurtosis(values: TypedArray | js.Array[Double]): Double                        = js.native
+  def skewness(values: TypedArray | js.Array[Double]): Double                        = js.native
+  def jarqueBeraNormalityTest(a: NDArray | TypedArray | js.Array[Double]): Unit      = js.native
+  def expectArrayInMeanStdRange(actual: NDArray | TypedArray | js.Array[Double],
+                                expectedMean: Double,
+                                expectedStdDev: Double,
+                                epsilon: Double = ???): Unit = js.native
+  def expectArraysClose(actual: NDArray | TypedArray | js.Array[Double],
+                        expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean],
+                        epsilon: Double = ???): Unit
+  def expectArraysEqual(
+                         actual: NDArray | TypedArray | js.Array[Double],
+                         expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean]
+                       ): Unit      = js.native
   def expectNumbersClose(a: Double, e: Double, epsilon: Double = ???): Unit           = js.native
+  def expectValuesInRange(actual: NDArray | TypedArray | js.Array[Double],
+                          low: Double,
+                          high: Double): Unit
   def randomArrayInRange(n: Double, minValue: Double, maxValue: Double): Float32Array = js.native
   def makeIdentity(n: Double): Float32Array                                           = js.native
   def cpuMultiplyMatrix(a: Float32Array,
@@ -41,8 +61,6 @@ object Test_util extends js.Object {
                         bRow: Double,
                         bCol: Double): Float32Array           = js.native
   def cpuDotProduct(a: Float32Array, b: Float32Array): Double = js.native
-  type MathTests = js.Function1[js.Function2[String, js.Function1[NDArrayMath, Unit], Unit], Unit]
-  type Tests     = js.Function1[js.Function2[String, js.Function0[Unit], Unit], Unit]
   def describeMathCPU(name: String,
                       tests: js.Array[MathTests],
                       featuresList: js.Array[Features] = ???): Unit = js.native
@@ -58,13 +76,5 @@ object Test_util extends js.Object {
                        tests: js.Array[MathTests],
                        mathFactory: js.Function0[NDArrayMath],
                        features: Features = ???): Unit = js.native
-  def executeTests(
-      testName: String,
-      tests: js.Array[Tests],
-      features: Features = ???,
-      customBeforeEach: js.Function0[Unit] = ???,
-      customAfterEach: js.Function0[Unit] = ???,
-      customIt: js.Function2[String, js.Function0[Unit] | Promise[Unit], Unit] = ???
-  ): Unit                                            = js.native
   def assertIsNan(`val`: Double, dtype: DType): Unit = js.native
 }

@@ -38,6 +38,7 @@ trait Features extends js.Object {
   var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean
   var WEBGL_VERSION: Double
   var WEBGL_FLOAT_TEXTURE_ENABLED: Boolean
+  var WEBGL_GET_BUFFER_SUB_DATA_ASYNC_EXTENSION_ENABLED: Boolean
 }
 
 @js.native
@@ -51,6 +52,13 @@ trait URLProperty extends js.Object {
 class Environment protected () extends js.Object {
   def this(features: Features = ???) = this()
   def get[K <: String](feature: K): Boolean | Double = js.native
+  def getBestBackend(): MathBackend                                                   = js.native
+  def setFeatures(features: Features): Unit                                           = js.native
+  def reset(): Unit                                                                   = js.native
+  def setMath(math: NDArrayMath): Unit                                                = js.native
+  def getBackend(name: BackendType): MathBackend                                      = js.native
+  def registerBackend(name: BackendType, factory: js.Function0[MathBackend]): Boolean = js.native
+  def math: NDArrayMath                                                               = js.native
 }
 
 @js.native
