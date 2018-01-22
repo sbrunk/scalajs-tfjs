@@ -69,10 +69,10 @@ class NDArrayMath protected () extends NDArrayManager {
   def dotProduct(v1: Array1D, v2: Array1D): Scalar            = js.native
   def outerProduct(v1: Array1D, v2: Array1D): Array2D         = js.native
   def clone[T <: NDArray](x: T): T                            = js.native
-  def reshape[D <: DataType, R <: Rank, T <: js.Any](x: NDArray[D],
-                                                     newShape: js.Array[Double]): T = js.native
-  def cast[D <: DataType, R <: Rank](x: NDArray[DataType, R], newDType: D): js.Any  = js.native
-  def slice1D(x: Array1D, begin: Double, size: Double): Array1D                     = js.native
+  def reshape[D <: DataType, R <: Rank, T <: js.Any](x: NDArray[D], newShape: js.Array[Double]): T =
+    js.native
+  def cast[D <: DataType, R <: Rank](x: NDArray[DataType, R], newDType: D): js.Any = js.native
+  def slice1D(x: Array1D, begin: Double, size: Double): Array1D                    = js.native
   def slice2D(x: Array2D,
               begin: js.Tuple2[Double, Double],
               size: js.Tuple2[Double, Double]): Array2D = js.native
@@ -105,12 +105,12 @@ class NDArrayMath protected () extends NDArrayManager {
   def equal[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1], b: NDArray[D2]): T =
     js.native
   def equalStrict[T <: NDArray](a: T, b: T): NDArray[String] = js.native
-  def notEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1],
-                                                               b: NDArray[D2]): T = js.native
+  def notEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1], b: NDArray[D2]): T =
+    js.native
   def notEqualStrict[R <: Rank, D1 <: DataType, D2 <: D1](a: NDArray[D1, R],
                                                           b: NDArray[D2, R]): js.Any = js.native
-  def lessEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1],
-                                                                b: NDArray[D2]): T = js.native
+  def lessEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1], b: NDArray[D2]): T =
+    js.native
   def greater[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1], b: NDArray[D2]): T =
     js.native
   def greaterEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String]](a: NDArray[D1],
@@ -137,9 +137,8 @@ class NDArrayMath protected () extends NDArrayManager {
                                                           dim: Double = ???): O = js.native
   def switchDim[T <: NDArray](a: T, newDim: js.Array[Double]): T                = js.native
   def tile[D <: DataType, T <: NDArray[D]](x: T, reps: js.Array[Double]): T     = js.native
-  def pad1D(x: Array1D,
-            paddings: js.Tuple2[Double, Double],
-            constantValue: Double = ???): Array1D = js.native
+  def pad1D(x: Array1D, paddings: js.Tuple2[Double, Double], constantValue: Double = ???): Array1D =
+    js.native
   def pad2D(x: Array2D,
             paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]],
             constantValue: Double = ???): Array2D                    = js.native
@@ -310,9 +309,8 @@ class NDArrayMath protected () extends NDArrayManager {
              depth: Double,
              onValue: Double = ???,
              offValue: Double = ???): Array2D = js.native
-  def moments(x: NDArray,
-              axis: Double | js.Array[Double] = ???,
-              keepDims: Boolean = ???): js.Any = js.native
+  def moments(x: NDArray, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
+    js.native
   def norm[D <: DataType](x: NDArray[D],
                           ord: Double | String = ???,
                           axis: Double | js.Array[Double] = ???,
@@ -320,8 +318,8 @@ class NDArrayMath protected () extends NDArrayManager {
   def vjp[T <: NDArray | NamedArrayMap, R <: Rank](f: js.Function0[NDArray[DataType, R]],
                                                    x: T,
                                                    dy: NDArray[String, R]): T = js.native
-  def gradients[T <: NDArray | NamedArrayMap, D <: DataType](f: js.Function0[Scalar[D]],
-                                                             x: T): T      = js.native
+  def gradients[T <: NDArray | NamedArrayMap, D <: DataType](f: js.Function0[Scalar[D]], x: T): T =
+    js.native
   def variableGradients[D <: DataType](f: js.Function0[Scalar[D]]): js.Any = js.native
   def valueAndGradients[T <: NDArray | NamedArrayMap, D <: DataType](f: js.Function0[Scalar[D]],
                                                                      x: T): js.Any = js.native

@@ -78,4 +78,3 @@ class GraphRunner protected () extends js.Object {
   def setInferenceTensor(inferenceTensor: Tensor): Unit             = js.native
   def setInferenceExampleCount(inferenceExampleCount: Double): Unit = js.native
 }
-

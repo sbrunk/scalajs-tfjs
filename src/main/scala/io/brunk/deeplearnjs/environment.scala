@@ -51,7 +51,7 @@ trait URLProperty extends js.Object {
 @JSImport("deeplearn", "Environment")
 class Environment protected () extends js.Object {
   def this(features: Features = ???) = this()
-  def get[K <: String](feature: K): Boolean | Double = js.native
+  def get[K <: String](feature: K): Boolean | Double                                  = js.native
   def getBestBackend(): MathBackend                                                   = js.native
   def setFeatures(features: Features): Unit                                           = js.native
   def reset(): Unit                                                                   = js.native

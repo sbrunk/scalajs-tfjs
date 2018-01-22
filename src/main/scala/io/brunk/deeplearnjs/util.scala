@@ -30,14 +30,14 @@ object Util extends js.Object {
     js.Array[T] | js.Array[js.Array[T]] | js.Array[js.Array[js.Array[T]]] | js.Array[
       js.Array[js.Array[js.Array[T]]]
     ]
-  type ArrayData = TypedArray | RegularArray[Double] | RegularArray[Boolean]
+  type ArrayData        = TypedArray | RegularArray[Double] | RegularArray[Boolean]
   type NamedArrayMap    = js.Dictionary[NDArray]
   type NamedVariableMap = js.Dictionary[Variable]
   def shuffle(array: js.Array[js.Any] | Uint32Array | Int32Array | Float32Array): Unit = js.native
   def clamp(min: Double, x: Double, max: Double): Double                               = js.native
   def randUniform(a: Double, b: Double): Double                                        = js.native
-  def distSquared(a: FlatVector, b: FlatVector): Double = js.native
-  def assert(expr: Boolean, msg: String): Unit          = js.native
+  def distSquared(a: FlatVector, b: FlatVector): Double                                = js.native
+  def assert(expr: Boolean, msg: String): Unit                                         = js.native
   def assertShapesMatch(shapeA: js.Array[Double],
                         shapeB: js.Array[Double],
                         errorMessagePrefix: String = ???): Unit = js.native
@@ -60,11 +60,11 @@ object Util extends js.Object {
                   maxCounter: Double = ???): Promise[Unit]                            = js.native
   def getQueryParams(queryString: String): js.Dictionary[String]                      = js.native
   def inferFromImplicitShape(shape: js.Array[Double], size: Double): js.Array[Double] = js.native
-  val NAN_INT32: Double                              = js.native
-  val NAN_BOOL: Double                               = js.native
-  val NAN_FLOAT32: Double                            = js.native
-  def getNaN(dtype: DType): Double                   = js.native
-  def isValNaN(`val`: Double, dtype: DType): Boolean = js.native
+  val NAN_INT32: Double                                                               = js.native
+  val NAN_BOOL: Double                                                                = js.native
+  val NAN_FLOAT32: Double                                                             = js.native
+  def getNaN(dtype: DType): Double                                                    = js.native
+  def isValNaN(`val`: Double, dtype: DType): Boolean                                  = js.native
   def squeezeShape(shape: js.Array[Double], axis: js.Array[Double] = ???): js.Any     = js.native
   def getTypedArrayFromDType[D <: DataType](dtype: D, size: Double): js.Any           = js.native
   def isNDArrayInList(ndarray: NDArray, ndarrayList: js.Array[NDArray]): Boolean      = js.native

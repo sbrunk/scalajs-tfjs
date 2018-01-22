@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.graph.optimizers
 
-import io.brunk.deeplearnjs.graph.{Node, SummedTensorArrayMap, TensorArrayMap}
+import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap }
 import io.brunk.deeplearnjs.graph.Session.SessionRuntime
 import io.brunk.deeplearnjs.math.NDArrayMath
 import io.brunk.deeplearnjs.math.optimizers.Optimizer

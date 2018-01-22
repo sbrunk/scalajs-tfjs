@@ -31,7 +31,7 @@ object Test_util extends js.Object {
   type It        = js.Function2[String, js.Function0[Unit] | Promise[Unit], Unit]
   type MathTests = js.Function3[MathIt, MathIt, MathIt, Unit]
   type Tests     = js.Function3[It, It, It, Unit]
-  val TEST_EPSILON: js.Any = js.native
+  val TEST_EPSILON: js.Any                                                           = js.native
   def mean(values: TypedArray | js.Array[Double]): Double                            = js.native
   def standardDeviation(values: TypedArray | js.Array[Double], mean: Double): Double = js.native
   def kurtosis(values: TypedArray | js.Array[Double]): Double                        = js.native
@@ -45,10 +45,10 @@ object Test_util extends js.Object {
                         expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean],
                         epsilon: Double = ???): Unit
   def expectArraysEqual(
-                         actual: NDArray | TypedArray | js.Array[Double],
-                         expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean]
-                       ): Unit      = js.native
-  def expectNumbersClose(a: Double, e: Double, epsilon: Double = ???): Unit           = js.native
+      actual: NDArray | TypedArray | js.Array[Double],
+      expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean]
+  ): Unit                                                                   = js.native
+  def expectNumbersClose(a: Double, e: Double, epsilon: Double = ???): Unit = js.native
   def expectValuesInRange(actual: NDArray | TypedArray | js.Array[Double],
                           low: Double,
                           high: Double): Unit
@@ -76,5 +76,5 @@ object Test_util extends js.Object {
                        tests: js.Array[MathTests],
                        mathFactory: js.Function0[NDArrayMath],
                        features: Features = ???): Unit = js.native
-  def assertIsNan(`val`: Double, dtype: DType): Unit = js.native
+  def assertIsNan(`val`: Double, dtype: DType): Unit   = js.native
 }

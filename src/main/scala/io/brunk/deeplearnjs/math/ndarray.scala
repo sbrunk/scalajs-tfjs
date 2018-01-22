@@ -167,10 +167,10 @@ object Scalar extends js.Object {
 @js.native
 @JSImport("deeplearn", "Array1D")
 class Array1D[D <: DataType] extends NDArray[D, String] {
-  def get(i: Double): Double                         = js.native
-  def `val`(i: Double): Promise[Double]              = js.native
-  def add(value: Double, i: Double): Unit            = js.native
-  def locToIndex(loc: js.Tuple1[Double]): Double     = js.native
+  def get(i: Double): Double                     = js.native
+  def `val`(i: Double): Promise[Double]          = js.native
+  def add(value: Double, i: Double): Unit        = js.native
+  def locToIndex(loc: js.Tuple1[Double]): Double = js.native
   @JSName("indexToLoc")
   def indexToLoc(index: Double): js.Tuple1[Double]   = js.native
   def asType[D2 <: DataType](dtype: D2): Array1D[D2] = js.native
@@ -206,26 +206,24 @@ class Array2D[D <: DataType] protected () extends NDArray[D, String] {
            values: js.Any = ???,
            dataId: Double = ???,
            math: NDArrayMath = ???) = this()
-  def get(i: Double, j: Double): Double                    = js.native
-  def add(value: Double, i: Double, j: Double): Unit       = js.native
-  def `val`(i: Double, j: Double): Promise[Double]         = js.native
-  def locToIndex(locs: js.Tuple2[Double, Double]): Double  = js.native
+  def get(i: Double, j: Double): Double                   = js.native
+  def add(value: Double, i: Double, j: Double): Unit      = js.native
+  def `val`(i: Double, j: Double): Promise[Double]        = js.native
+  def locToIndex(locs: js.Tuple2[Double, Double]): Double = js.native
   @JSName("indexToLoc")
   def indexToLoc(index: Double): js.Tuple2[Double, Double] = js.native
   def asType[D2 <: DataType](dtype: D2): Array2D[D2]       = js.native
 }
-
-
 @js.native
 @JSImport("deeplearn", "Array2D")
 object Array2D extends js.Object {
   def `new`[D <: DataType](
-                            shape: js.Tuple2[Double, Double],
-                            values: js.Any | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[Boolean] | js.Array[
-                              js.Array[Boolean]
-                              ],
-                            dtype: D = ???
-                          ): Array2D[D] = js.native
+      shape: js.Tuple2[Double, Double],
+      values: js.Any | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[Boolean] | js.Array[
+        js.Array[Boolean]
+      ],
+      dtype: D = ???
+  ): Array2D[D] = js.native
   def ones[D <: DataType](shape: js.Tuple2[Double, Double], dtype: D = ???): Array2D[D] =
     js.native
   def zeros[D <: DataType](shape: js.Tuple2[Double, Double], dtype: D = ???): Array2D[D] =
@@ -254,10 +252,10 @@ class Array3D[D <: DataType] protected () extends NDArray[D, String] {
            values: js.Any = ???,
            dataId: Double = ???,
            math: NDArrayMath = ???) = this()
-  def get(i: Double, j: Double, k: Double): Double                 = js.native
-  def `val`(i: Double, j: Double, k: Double): Promise[Double]      = js.native
-  def add(value: Double, i: Double, j: Double, k: Double): Unit    = js.native
-  def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double  = js.native
+  def get(i: Double, j: Double, k: Double): Double                = js.native
+  def `val`(i: Double, j: Double, k: Double): Promise[Double]     = js.native
+  def add(value: Double, i: Double, j: Double, k: Double): Unit   = js.native
+  def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double = js.native
   @JSName("indexToLoc")
   def indexToLoc(index: Double): js.Tuple3[Double, Double, Double] = js.native
   def asType[D2 <: DataType](dtype: D2): Array3D[D2]               = js.native
@@ -269,7 +267,7 @@ object Array3D extends js.Object {
   def `new`[D <: DataType](shape: js.Tuple3[Double, Double, Double],
                            values: js.Any | js.Array[Double] | js.Array[
                              js.Array[js.Array[Double]]
-                             ] | js.Array[Boolean] | js.Array[js.Array[js.Array[Boolean]]],
+                           ] | js.Array[Boolean] | js.Array[js.Array[js.Array[Boolean]]],
                            dtype: D = ???): Array3D[D] = js.native
   def ones[D <: DataType](shape: js.Tuple3[Double, Double, Double], dtype: D = ???): Array3D[D] =
     js.native
@@ -314,9 +312,9 @@ object Array4D extends js.Object {
   def `new`[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
                            values: js.Any | js.Array[Double] | js.Array[
                              js.Array[js.Array[js.Array[Double]]]
-                             ] | js.Array[Boolean] | js.Array[
+                           ] | js.Array[Boolean] | js.Array[
                              js.Array[js.Array[js.Array[Boolean]]]
-                             ],
+                           ],
                            dtype: D = ???): Array4D[D] = js.native
   def ones[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
                           dtype: D = ???): Array4D[D] = js.native
