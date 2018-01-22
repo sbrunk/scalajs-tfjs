@@ -17,73 +17,67 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package pool {
+@js.native
+trait PoolNode extends KernelNode {
+  var inputAndArgs: PoolInputConfig                                     = js.native
+  var output: Array4D                                                   = js.native
+  var gradient: js.Function2[Array4D, Array4D, PoolGradientInputArrays] = js.native
+}
 
-  @js.native
-  trait PoolNode extends KernelNode {
-    var inputAndArgs: PoolInputConfig                                     = js.native
-    var output: Array4D                                                   = js.native
-    var gradient: js.Function2[Array4D, Array4D, PoolGradientInputArrays] = js.native
-  }
+@js.native
+trait PoolInputConfig extends KernelInputConfig {
+  var inputs: PoolInputArrays    = js.native
+  var args: PoolInputConfig.Args = js.native
+}
 
-  @js.native
-  trait PoolInputConfig extends KernelInputConfig {
-    var inputs: PoolInputArrays    = js.native
-    var args: PoolInputConfig.Args = js.native
-  }
-
-  object PoolInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var convInfo: Conv2DInfo = js.native
-    }
-  }
+object PoolInputConfig {
 
   @js.native
-  trait PoolInputArrays extends NamedArrayMap {
-    var x: Array4D = js.native
+  trait Args extends js.Object {
+    var convInfo: Conv2DInfo = js.native
   }
+}
+
+@js.native
+trait PoolInputArrays extends NamedArrayMap {
+  var x: Array4D = js.native
+}
+
+@js.native
+trait PoolGradientInputArrays extends TapeNodeInputGradientArrays {
+  var x: js.Function0[Array4D] = js.native
+}
+
+@js.native
+trait PoolBackpropNode extends KernelNode {
+  var inputAndArgs: PoolInputConfig                                             = js.native
+  var output: Array4D                                                           = js.native
+  var gradient: js.Function2[Array4D, Array4D, PoolBackpropGradientInputArrays] = js.native
+}
+
+@js.native
+trait PoolBackpropInputConfig extends KernelInputConfig {
+  var inputs: PoolBackpropInputArrays    = js.native
+  var args: PoolBackpropInputConfig.Args = js.native
+}
+
+object PoolBackpropInputConfig {
 
   @js.native
-  trait PoolGradientInputArrays extends TapeNodeInputGradientArrays {
-    var x: js.Function0[Array4D] = js.native
+  trait Args extends js.Object {
+    var convInfo: Conv2DInfo = js.native
   }
+}
 
-  @js.native
-  trait PoolBackpropNode extends KernelNode {
-    var inputAndArgs: PoolInputConfig                                             = js.native
-    var output: Array4D                                                           = js.native
-    var gradient: js.Function2[Array4D, Array4D, PoolBackpropGradientInputArrays] = js.native
-  }
+@js.native
+trait PoolBackpropInputArrays extends NamedArrayMap {
+  var dy: Array4D = js.native
+  var x: Array4D  = js.native
+}
 
-  @js.native
-  trait PoolBackpropInputConfig extends KernelInputConfig {
-    var inputs: PoolBackpropInputArrays    = js.native
-    var args: PoolBackpropInputConfig.Args = js.native
-  }
-
-  object PoolBackpropInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var convInfo: Conv2DInfo = js.native
-    }
-  }
-
-  @js.native
-  trait PoolBackpropInputArrays extends NamedArrayMap {
-    var dy: Array4D = js.native
-    var x: Array4D  = js.native
-  }
-
-  @js.native
-  trait PoolBackpropGradientInputArrays extends TapeNodeInputGradientArrays {
-    var dy: js.Function0[Array4D] = js.native
-    var x: js.Function0[Array4D]  = js.native
-  }
-
+@js.native
+trait PoolBackpropGradientInputArrays extends TapeNodeInputGradientArrays {
+  var dy: js.Function0[Array4D] = js.native
+  var x: js.Function0[Array4D]  = js.native
 }

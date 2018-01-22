@@ -22,6 +22,8 @@ import js.|
 
 package model {
 
+  import scala.scalajs.js.Promise
+
   @js.native
   trait Model extends js.Object {
     def load(): Promise[Unit | js.Array[Unit]] = js.native

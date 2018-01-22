@@ -16,8 +16,14 @@
 
 package io.brunk.deeplearnjs.math
 
-import io.brunk.deeplearnjs.math.Conv_util.ConvInfo
-import io.brunk.deeplearnjs.math.Math.{ ScopeResult, ScopeResultImmediate }
+import io.brunk.deeplearnjs.Environment.BackendType
+import io.brunk.deeplearnjs.Util.{ NamedArrayMap, NamedVariableMap }
+import io.brunk.deeplearnjs.math.NdarrayModule.{ DataType, Rank }
+import io.brunk.deeplearnjs.math.backends.{ BackendEngine, MathBackend }
+import io.brunk.deeplearnjs.math.backends.backend.MathBackend
+import io.brunk.deeplearnjs.math.backends.tape_util.Tape_util.{ ScopeResult, ScopeResultImmediate }
+import io.brunk.deeplearnjs.math.backends.types.MatrixOrientation
+import org.scalajs.dom.{ ImageData, html }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -46,7 +52,7 @@ class NDArrayMath protected () extends NDArrayManager {
   def register(a: NDArray | Variable): Unit               = js.native
   def registerVariable(v: Variable): Unit                 = js.native
   def writePixels(dataId: Double,
-                  pixels: ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,
+                  pixels: ImageData | html.Image | html.Canvas | html.Video,
                   numChannels: Double): Unit                                         = js.native
   def write[D <: DataType](dataId: Double, values: js.Any): Unit                     = js.native
   def readSync[D <: DataType](dataId: Double): js.Any                                = js.native

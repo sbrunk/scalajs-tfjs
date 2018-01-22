@@ -16,6 +16,10 @@
 
 package io.brunk.deeplearnjs
 
+import io.brunk.deeplearnjs.Environment.BackendType
+import io.brunk.deeplearnjs.math.NDArrayMath
+import io.brunk.deeplearnjs.math.backends.MathBackend
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -64,6 +68,7 @@ class Environment protected () extends js.Object {
 @js.native
 @JSImport("deeplearn", "environment")
 object Environment extends js.Object {
+  type BackendType = String
   val URL_PROPERTIES: js.Array[URLProperty]          = js.native
   def ENV: Environment                               = js.native
   def setEnvironment(environment: Environment): Unit = js.native

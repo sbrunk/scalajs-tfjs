@@ -17,47 +17,41 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package logical {
+@js.native
+trait DualInputArrays extends NamedArrayMap {
+  var a: NDArray = js.native
+  var b: NDArray = js.native
+}
 
-  @js.native
-  trait DualInputArrays extends NamedArrayMap {
-    var a: NDArray = js.native
-    var b: NDArray = js.native
-  }
+@js.native
+trait DualGradientInputArrays extends TapeNodeInputGradientArrays {
+  var a: js.Function0[NDArray] = js.native
+  var b: js.Function0[NDArray] = js.native
+}
 
-  @js.native
-  trait DualGradientInputArrays extends TapeNodeInputGradientArrays {
-    var a: js.Function0[NDArray] = js.native
-    var b: js.Function0[NDArray] = js.native
-  }
+@js.native
+trait EqualNode extends KernelNode {
+  var inputAndArgs: EqualInputConfig = js.native
+  var output: NDArray[String]        = js.native
+  var gradient: js.Function2[NDArray[String], NDArray[String], DualGradientInputArrays] =
+    js.native
+}
 
-  @js.native
-  trait EqualNode extends KernelNode {
-    var inputAndArgs: EqualInputConfig = js.native
-    var output: NDArray[String]        = js.native
-    var gradient: js.Function2[NDArray[String], NDArray[String], DualGradientInputArrays] =
-      js.native
-  }
+@js.native
+trait EqualInputConfig extends KernelInputConfig {
+  var inputs: DualInputArrays = js.native
+}
 
-  @js.native
-  trait EqualInputConfig extends KernelInputConfig {
-    var inputs: DualInputArrays = js.native
-  }
+@js.native
+trait LogicalOrNode extends KernelNode {
+  var inputAndArgs: LogicalOrInputConfig = js.native
+  var output: NDArray[String]            = js.native
+  var gradient: js.Function2[NDArray[String], NDArray[String], DualGradientInputArrays] =
+    js.native
+}
 
-  @js.native
-  trait LogicalOrNode extends KernelNode {
-    var inputAndArgs: LogicalOrInputConfig = js.native
-    var output: NDArray[String]            = js.native
-    var gradient: js.Function2[NDArray[String], NDArray[String], DualGradientInputArrays] =
-      js.native
-  }
-
-  @js.native
-  trait LogicalOrInputConfig extends KernelInputConfig {
-    var inputs: DualInputArrays = js.native
-  }
-
+@js.native
+trait LogicalOrInputConfig extends KernelInputConfig {
+  var inputs: DualInputArrays = js.native
 }

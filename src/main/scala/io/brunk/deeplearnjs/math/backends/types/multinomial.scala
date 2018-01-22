@@ -17,42 +17,36 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package multinomial {
+@js.native
+trait MultinomialNode extends KernelNode {
+  var inputAndArgs: MultinomialInputConfig = js.native
+  var output: Array2D[String]              = js.native
+  var gradient: js.Function2[Array2D[String], Array2D[String], MultinomialGradientInputArrays] =
+    js.native
+}
 
-  @js.native
-  trait MultinomialNode extends KernelNode {
-    var inputAndArgs: MultinomialInputConfig = js.native
-    var output: Array2D[String]              = js.native
-    var gradient: js.Function2[Array2D[String], Array2D[String], MultinomialGradientInputArrays] =
-      js.native
-  }
+@js.native
+trait MultinomialInputConfig extends KernelInputConfig {
+  var inputs: MultinomialInputArrays    = js.native
+  var args: MultinomialInputConfig.Args = js.native
+}
 
-  @js.native
-  trait MultinomialInputConfig extends KernelInputConfig {
-    var inputs: MultinomialInputArrays    = js.native
-    var args: MultinomialInputConfig.Args = js.native
-  }
-
-  object MultinomialInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var numSamples: Double = js.native
-      var seed: Double       = js.native
-    }
-  }
+object MultinomialInputConfig {
 
   @js.native
-  trait MultinomialInputArrays extends NamedArrayMap {
-    var probs: Array2D = js.native
+  trait Args extends js.Object {
+    var numSamples: Double = js.native
+    var seed: Double       = js.native
   }
+}
 
-  @js.native
-  trait MultinomialGradientInputArrays extends TapeNodeInputGradientArrays {
-    var probs: js.Function0[Array2D] = js.native
-  }
+@js.native
+trait MultinomialInputArrays extends NamedArrayMap {
+  var probs: Array2D = js.native
+}
 
+@js.native
+trait MultinomialGradientInputArrays extends TapeNodeInputGradientArrays {
+  var probs: js.Function0[Array2D] = js.native
 }

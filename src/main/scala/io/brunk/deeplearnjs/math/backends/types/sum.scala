@@ -17,41 +17,35 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package sum {
+@js.native
+trait SumNode[D <: DataType] extends KernelNode {
+  var inputAndArgs: SumInputConfig[D] = js.native
+  var output: NDArray[js.Any]         = js.native
+  var gradient: js.Function2[NDArray[js.Any], NDArray[js.Any], SumGradientInputArrays[D]] =
+    js.native
+}
 
-  @js.native
-  trait SumNode[D <: DataType] extends KernelNode {
-    var inputAndArgs: SumInputConfig[D] = js.native
-    var output: NDArray[js.Any]         = js.native
-    var gradient: js.Function2[NDArray[js.Any], NDArray[js.Any], SumGradientInputArrays[D]] =
-      js.native
-  }
+@js.native
+trait SumInputConfig[D <: DataType] extends KernelInputConfig {
+  var inputs: SumInputArrays[D] = js.native
+  var args: SumInputConfig.Args = js.native
+}
 
-  @js.native
-  trait SumInputConfig[D <: DataType] extends KernelInputConfig {
-    var inputs: SumInputArrays[D] = js.native
-    var args: SumInputConfig.Args = js.native
-  }
-
-  object SumInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var axes: js.Array[Double] = js.native
-    }
-  }
+object SumInputConfig {
 
   @js.native
-  trait SumInputArrays[D <: DataType] extends NamedArrayMap {
-    var x: NDArray[D] = js.native
+  trait Args extends js.Object {
+    var axes: js.Array[Double] = js.native
   }
+}
 
-  @js.native
-  trait SumGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
-    var x: js.Function0[NDArray[D]] = js.native
-  }
+@js.native
+trait SumInputArrays[D <: DataType] extends NamedArrayMap {
+  var x: NDArray[D] = js.native
+}
 
+@js.native
+trait SumGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
+  var x: js.Function0[NDArray[D]] = js.native
 }

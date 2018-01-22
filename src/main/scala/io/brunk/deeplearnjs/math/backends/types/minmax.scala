@@ -17,95 +17,89 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package minmax {
+@js.native
+trait MinNode[D <: DataType] extends KernelNode {
+  var inputAndArgs: MinInputConfig[D]                                           = js.native
+  var output: NDArray[D]                                                        = js.native
+  var gradient: js.Function2[NDArray[D], NDArray[D], MinGradientInputArrays[D]] = js.native
+}
 
-  @js.native
-  trait MinNode[D <: DataType] extends KernelNode {
-    var inputAndArgs: MinInputConfig[D]                                           = js.native
-    var output: NDArray[D]                                                        = js.native
-    var gradient: js.Function2[NDArray[D], NDArray[D], MinGradientInputArrays[D]] = js.native
-  }
+@js.native
+trait MinimumNode[D <: DataType] extends KernelNode {
+  var inputAndArgs: MinimumInputConfig[D]                    = js.native
+  var output: NDArray[D]                                     = js.native
+  var gradient: js.Function2[NDArray[D], NDArray[D], js.Any] = js.native
+}
 
-  @js.native
-  trait MinimumNode[D <: DataType] extends KernelNode {
-    var inputAndArgs: MinimumInputConfig[D]                    = js.native
-    var output: NDArray[D]                                     = js.native
-    var gradient: js.Function2[NDArray[D], NDArray[D], js.Any] = js.native
-  }
+@js.native
+trait MinimumInputConfig[D <: DataType] extends KernelInputConfig {
+  var inputs: MinimumInputConfig.Inputs = js.native
+}
 
-  @js.native
-  trait MinimumInputConfig[D <: DataType] extends KernelInputConfig {
-    var inputs: MinimumInputConfig.Inputs = js.native
-  }
-
-  object MinimumInputConfig {
-
-    @js.native
-    trait Inputs extends js.Object {
-      var a: NDArray[D] = js.native
-      var b: NDArray[D] = js.native
-    }
-  }
+object MinimumInputConfig {
 
   @js.native
-  trait MinInputConfig[D <: DataType] extends KernelInputConfig {
-    var inputs: MinInputArrays[D] = js.native
+  trait Inputs extends js.Object {
+    var a: NDArray[D] = js.native
+    var b: NDArray[D] = js.native
   }
+}
+
+@js.native
+trait MinInputConfig[D <: DataType] extends KernelInputConfig {
+  var inputs: MinInputArrays[D] = js.native
+}
+
+@js.native
+trait MinInputArrays[D <: DataType] extends NamedArrayMap {
+  var x: NDArray[D] = js.native
+}
+
+@js.native
+trait MinGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
+  var x: js.Function0[NDArray[D]] = js.native
+}
+
+@js.native
+trait MaxNode[D <: DataType] extends KernelNode {
+  var inputAndArgs: MaxInputConfig[D]                                           = js.native
+  var output: NDArray[D]                                                        = js.native
+  var gradient: js.Function2[NDArray[D], NDArray[D], MaxGradientInputArrays[D]] = js.native
+}
+
+@js.native
+trait MaximumNode[D <: DataType] extends KernelNode {
+  var inputAndArgs: MaximumInputConfig[D]                    = js.native
+  var output: NDArray[D]                                     = js.native
+  var gradient: js.Function2[NDArray[D], NDArray[D], js.Any] = js.native
+}
+
+@js.native
+trait MaximumInputConfig[D <: DataType] extends KernelInputConfig {
+  var inputs: MaximumInputConfig.Inputs = js.native
+}
+
+object MaximumInputConfig {
 
   @js.native
-  trait MinInputArrays[D <: DataType] extends NamedArrayMap {
-    var x: NDArray[D] = js.native
+  trait Inputs extends js.Object {
+    var a: NDArray[D] = js.native
+    var b: NDArray[D] = js.native
   }
+}
 
-  @js.native
-  trait MinGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
-    var x: js.Function0[NDArray[D]] = js.native
-  }
+@js.native
+trait MaxInputConfig[D <: DataType] extends KernelInputConfig {
+  var inputs: MaxInputArrays[D] = js.native
+}
 
-  @js.native
-  trait MaxNode[D <: DataType] extends KernelNode {
-    var inputAndArgs: MaxInputConfig[D]                                           = js.native
-    var output: NDArray[D]                                                        = js.native
-    var gradient: js.Function2[NDArray[D], NDArray[D], MaxGradientInputArrays[D]] = js.native
-  }
+@js.native
+trait MaxInputArrays[D <: DataType] extends NamedArrayMap {
+  var x: NDArray[D] = js.native
+}
 
-  @js.native
-  trait MaximumNode[D <: DataType] extends KernelNode {
-    var inputAndArgs: MaximumInputConfig[D]                    = js.native
-    var output: NDArray[D]                                     = js.native
-    var gradient: js.Function2[NDArray[D], NDArray[D], js.Any] = js.native
-  }
-
-  @js.native
-  trait MaximumInputConfig[D <: DataType] extends KernelInputConfig {
-    var inputs: MaximumInputConfig.Inputs = js.native
-  }
-
-  object MaximumInputConfig {
-
-    @js.native
-    trait Inputs extends js.Object {
-      var a: NDArray[D] = js.native
-      var b: NDArray[D] = js.native
-    }
-  }
-
-  @js.native
-  trait MaxInputConfig[D <: DataType] extends KernelInputConfig {
-    var inputs: MaxInputArrays[D] = js.native
-  }
-
-  @js.native
-  trait MaxInputArrays[D <: DataType] extends NamedArrayMap {
-    var x: NDArray[D] = js.native
-  }
-
-  @js.native
-  trait MaxGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
-    var x: js.Function0[NDArray[D]] = js.native
-  }
-
+@js.native
+trait MaxGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
+  var x: js.Function0[NDArray[D]] = js.native
 }

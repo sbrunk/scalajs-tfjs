@@ -17,35 +17,29 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package cast {
+@js.native
+trait CastNode extends KernelNode {
+  var inputAndArgs: CastInputConfig                    = js.native
+  var output: NDArray                                  = js.native
+  var gradient: js.Function2[NDArray, NDArray, js.Any] = js.native
+}
+
+@js.native
+trait CastInputConfig extends KernelInputConfig {
+  var inputs: CastInputConfig.Inputs = js.native
+  var args: CastInputConfig.Args     = js.native
+}
+
+object CastInputConfig {
 
   @js.native
-  trait CastNode extends KernelNode {
-    var inputAndArgs: CastInputConfig                    = js.native
-    var output: NDArray                                  = js.native
-    var gradient: js.Function2[NDArray, NDArray, js.Any] = js.native
+  trait Inputs extends js.Object {
+    var x: NDArray = js.native
   }
 
   @js.native
-  trait CastInputConfig extends KernelInputConfig {
-    var inputs: CastInputConfig.Inputs = js.native
-    var args: CastInputConfig.Args     = js.native
+  trait Args extends js.Object {
+    var newDType: DataType = js.native
   }
-
-  object CastInputConfig {
-
-    @js.native
-    trait Inputs extends js.Object {
-      var x: NDArray = js.native
-    }
-
-    @js.native
-    trait Args extends js.Object {
-      var newDType: DataType = js.native
-    }
-  }
-
 }

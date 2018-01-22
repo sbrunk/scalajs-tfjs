@@ -17,35 +17,29 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package reshape {
+@js.native
+trait ReshapeNode extends KernelNode {
+  var inputAndArgs: ReshapeInputConfig                 = js.native
+  var output: NDArray                                  = js.native
+  var gradient: js.Function2[NDArray, NDArray, js.Any] = js.native
+}
+
+@js.native
+trait ReshapeInputConfig extends KernelInputConfig {
+  var inputs: ReshapeInputConfig.Inputs = js.native
+  var args: ReshapeInputConfig.Args     = js.native
+}
+
+object ReshapeInputConfig {
 
   @js.native
-  trait ReshapeNode extends KernelNode {
-    var inputAndArgs: ReshapeInputConfig                 = js.native
-    var output: NDArray                                  = js.native
-    var gradient: js.Function2[NDArray, NDArray, js.Any] = js.native
+  trait Inputs extends js.Object {
+    var x: NDArray = js.native
   }
 
   @js.native
-  trait ReshapeInputConfig extends KernelInputConfig {
-    var inputs: ReshapeInputConfig.Inputs = js.native
-    var args: ReshapeInputConfig.Args     = js.native
+  trait Args extends js.Object {
+    var newShape: js.Array[Double] = js.native
   }
-
-  object ReshapeInputConfig {
-
-    @js.native
-    trait Inputs extends js.Object {
-      var x: NDArray = js.native
-    }
-
-    @js.native
-    trait Args extends js.Object {
-      var newShape: js.Array[Double] = js.native
-    }
-  }
-
 }

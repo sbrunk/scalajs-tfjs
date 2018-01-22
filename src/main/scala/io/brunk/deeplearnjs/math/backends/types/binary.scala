@@ -17,33 +17,27 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package binary {
+@js.native
+trait BinaryNode extends KernelNode {
+  var inputAndArgs: BinaryInputConfig                                     = js.native
+  var output: NDArray                                                     = js.native
+  var gradient: js.Function2[NDArray, NDArray, BinaryInputGradientArrays] = js.native
+}
 
-  @js.native
-  trait BinaryNode extends KernelNode {
-    var inputAndArgs: BinaryInputConfig                                     = js.native
-    var output: NDArray                                                     = js.native
-    var gradient: js.Function2[NDArray, NDArray, BinaryInputGradientArrays] = js.native
-  }
+@js.native
+trait BinaryInputConfig extends KernelInputConfig {
+  var inputs: BinaryInputArrays = js.native
+}
 
-  @js.native
-  trait BinaryInputConfig extends KernelInputConfig {
-    var inputs: BinaryInputArrays = js.native
-  }
+@js.native
+trait BinaryInputArrays extends NamedArrayMap {
+  var a: NDArray = js.native
+  var b: NDArray = js.native
+}
 
-  @js.native
-  trait BinaryInputArrays extends NamedArrayMap {
-    var a: NDArray = js.native
-    var b: NDArray = js.native
-  }
-
-  @js.native
-  trait BinaryInputGradientArrays extends TapeNodeInputGradientArrays {
-    var a: js.Function0[NDArray] = js.native
-    var b: js.Function0[NDArray] = js.native
-  }
-
+@js.native
+trait BinaryInputGradientArrays extends TapeNodeInputGradientArrays {
+  var a: js.Function0[NDArray] = js.native
+  var b: js.Function0[NDArray] = js.native
 }

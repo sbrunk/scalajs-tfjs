@@ -17,33 +17,27 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package pow {
+@js.native
+trait PowNode[T <: NDArray] extends KernelNode {
+  var inputAndArgs: PowInputConfig[T]                         = js.native
+  var output: T                                               = js.native
+  var gradient: js.Function2[T, T, PowGradientInputArrays[T]] = js.native
+}
 
-  @js.native
-  trait PowNode[T <: NDArray] extends KernelNode {
-    var inputAndArgs: PowInputConfig[T]                         = js.native
-    var output: T                                               = js.native
-    var gradient: js.Function2[T, T, PowGradientInputArrays[T]] = js.native
-  }
+@js.native
+trait PowInputConfig[T <: NDArray] extends KernelInputConfig {
+  var inputs: PowInputArrays[T] = js.native
+}
 
-  @js.native
-  trait PowInputConfig[T <: NDArray] extends KernelInputConfig {
-    var inputs: PowInputArrays[T] = js.native
-  }
+@js.native
+trait PowInputArrays[T <: NDArray] extends NamedArrayMap {
+  var a: T               = js.native
+  var b: NDArray[String] = js.native
+}
 
-  @js.native
-  trait PowInputArrays[T <: NDArray] extends NamedArrayMap {
-    var a: T               = js.native
-    var b: NDArray[String] = js.native
-  }
-
-  @js.native
-  trait PowGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
-    var a: js.Function0[T]               = js.native
-    var b: js.Function0[NDArray[String]] = js.native
-  }
-
+@js.native
+trait PowGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
+  var a: js.Function0[T]               = js.native
+  var b: js.Function0[NDArray[String]] = js.native
 }

@@ -16,6 +16,9 @@
 
 package io.brunk.deeplearnjs
 
+import io.brunk.deeplearnjs.math.{ DType, NDArray, Variable }
+import io.brunk.deeplearnjs.math.NdarrayModule.DataType
+
 import scala.scalajs.js
 import js.annotation._
 import js.{ Promise, | }

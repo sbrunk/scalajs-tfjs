@@ -16,6 +16,10 @@
 
 package io.brunk.deeplearnjs.graph
 
+import io.brunk.deeplearnjs.graph.Session.FeedEntry
+import io.brunk.deeplearnjs.math.optimizers.Optimizer
+import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath, Scalar }
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

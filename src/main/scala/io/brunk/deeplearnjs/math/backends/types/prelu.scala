@@ -17,33 +17,27 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package prelu {
+@js.native
+trait PReLUNode[T <: NDArray] extends KernelNode {
+  var inputAndArgs: PReLUInputConfig[T]                         = js.native
+  var output: T                                                 = js.native
+  var gradient: js.Function2[T, T, PReLUGradientInputArrays[T]] = js.native
+}
 
-  @js.native
-  trait PReLUNode[T <: NDArray] extends KernelNode {
-    var inputAndArgs: PReLUInputConfig[T]                         = js.native
-    var output: T                                                 = js.native
-    var gradient: js.Function2[T, T, PReLUGradientInputArrays[T]] = js.native
-  }
+@js.native
+trait PReLUInputConfig[T <: NDArray] extends KernelInputConfig {
+  var inputs: PReLUInputArrays[T] = js.native
+}
 
-  @js.native
-  trait PReLUInputConfig[T <: NDArray] extends KernelInputConfig {
-    var inputs: PReLUInputArrays[T] = js.native
-  }
+@js.native
+trait PReLUInputArrays[T <: NDArray] extends NamedArrayMap {
+  var x: T     = js.native
+  var alpha: T = js.native
+}
 
-  @js.native
-  trait PReLUInputArrays[T <: NDArray] extends NamedArrayMap {
-    var x: T     = js.native
-    var alpha: T = js.native
-  }
-
-  @js.native
-  trait PReLUGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
-    var x: js.Function0[T]     = js.native
-    var alpha: js.Function0[T] = js.native
-  }
-
+@js.native
+trait PReLUGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
+  var x: js.Function0[T]     = js.native
+  var alpha: js.Function0[T] = js.native
 }

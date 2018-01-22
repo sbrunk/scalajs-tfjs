@@ -17,73 +17,67 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package pad {
+@js.native
+trait Pad1DNode extends KernelNode {
+  var inputAndArgs: Pad1DInputConfig                                     = js.native
+  var output: Array1D                                                    = js.native
+  var gradient: js.Function2[Array1D, Array1D, Pad1DGradientInputArrays] = js.native
+}
 
-  @js.native
-  trait Pad1DNode extends KernelNode {
-    var inputAndArgs: Pad1DInputConfig                                     = js.native
-    var output: Array1D                                                    = js.native
-    var gradient: js.Function2[Array1D, Array1D, Pad1DGradientInputArrays] = js.native
-  }
+@js.native
+trait Pad1DInputConfig extends KernelInputConfig {
+  var inputs: Pad1DInputArrays    = js.native
+  var args: Pad1DInputConfig.Args = js.native
+}
 
-  @js.native
-  trait Pad1DInputConfig extends KernelInputConfig {
-    var inputs: Pad1DInputArrays    = js.native
-    var args: Pad1DInputConfig.Args = js.native
-  }
-
-  object Pad1DInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var paddings: js.Tuple2[Double, Double] = js.native
-      var constantValue: Double               = js.native
-    }
-  }
+object Pad1DInputConfig {
 
   @js.native
-  trait Pad1DInputArrays extends NamedArrayMap {
-    var x: Array1D = js.native
+  trait Args extends js.Object {
+    var paddings: js.Tuple2[Double, Double] = js.native
+    var constantValue: Double               = js.native
   }
+}
+
+@js.native
+trait Pad1DInputArrays extends NamedArrayMap {
+  var x: Array1D = js.native
+}
+
+@js.native
+trait Pad1DGradientInputArrays extends TapeNodeInputGradientArrays {
+  var x: js.Function0[Array1D] = js.native
+}
+
+@js.native
+trait Pad2DNode extends KernelNode {
+  var inputAndArgs: Pad2DInputConfig                                     = js.native
+  var output: Array2D                                                    = js.native
+  var gradient: js.Function2[Array2D, Array2D, Pad2DGradientInputArrays] = js.native
+}
+
+@js.native
+trait Pad2DInputConfig extends KernelInputConfig {
+  var inputs: Pad2DInputArrays    = js.native
+  var args: Pad2DInputConfig.Args = js.native
+}
+
+object Pad2DInputConfig {
 
   @js.native
-  trait Pad1DGradientInputArrays extends TapeNodeInputGradientArrays {
-    var x: js.Function0[Array1D] = js.native
+  trait Args extends js.Object {
+    var paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
+    var constantValue: Double                                                     = js.native
   }
+}
 
-  @js.native
-  trait Pad2DNode extends KernelNode {
-    var inputAndArgs: Pad2DInputConfig                                     = js.native
-    var output: Array2D                                                    = js.native
-    var gradient: js.Function2[Array2D, Array2D, Pad2DGradientInputArrays] = js.native
-  }
+@js.native
+trait Pad2DInputArrays extends NamedArrayMap {
+  var x: Array2D = js.native
+}
 
-  @js.native
-  trait Pad2DInputConfig extends KernelInputConfig {
-    var inputs: Pad2DInputArrays    = js.native
-    var args: Pad2DInputConfig.Args = js.native
-  }
-
-  object Pad2DInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
-      var constantValue: Double                                                     = js.native
-    }
-  }
-
-  @js.native
-  trait Pad2DInputArrays extends NamedArrayMap {
-    var x: Array2D = js.native
-  }
-
-  @js.native
-  trait Pad2DGradientInputArrays extends TapeNodeInputGradientArrays {
-    var x: js.Function0[Array2D] = js.native
-  }
-
+@js.native
+trait Pad2DGradientInputArrays extends TapeNodeInputGradientArrays {
+  var x: js.Function0[Array2D] = js.native
 }

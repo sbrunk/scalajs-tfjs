@@ -16,6 +16,7 @@
 
 package io.brunk.deeplearnjs.math.optimizers
 
+import io.brunk.deeplearnjs.Util.NamedVariableMap
 import io.brunk.deeplearnjs.graph.Session.SessionRuntime
 import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap }
 import io.brunk.deeplearnjs.math.NDArrayMath

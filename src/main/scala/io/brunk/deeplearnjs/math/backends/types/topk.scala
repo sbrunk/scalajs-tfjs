@@ -17,72 +17,66 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package topk {
+@js.native
+trait TopKValuesNode[D <: DataType, T <: NDArray[D]] extends KernelNode {
+  var inputAndArgs: TopKValuesInputConfig[T]                                           = js.native
+  var output: Array1D[D]                                                               = js.native
+  var gradient: js.Function2[Array1D[D], Array1D[D], TopKValuesGradientInputArrays[T]] = js.native
+}
 
-  @js.native
-  trait TopKValuesNode[D <: DataType, T <: NDArray[D]] extends KernelNode {
-    var inputAndArgs: TopKValuesInputConfig[T]                                           = js.native
-    var output: Array1D[D]                                                               = js.native
-    var gradient: js.Function2[Array1D[D], Array1D[D], TopKValuesGradientInputArrays[T]] = js.native
-  }
+@js.native
+trait TopKValuesInputConfig[T <: NDArray] extends KernelInputConfig {
+  var inputs: TopKValuesInputArrays[T] = js.native
+  var args: TopKValuesInputConfig.Args = js.native
+}
 
-  @js.native
-  trait TopKValuesInputConfig[T <: NDArray] extends KernelInputConfig {
-    var inputs: TopKValuesInputArrays[T] = js.native
-    var args: TopKValuesInputConfig.Args = js.native
-  }
-
-  object TopKValuesInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var k: Double = js.native
-    }
-  }
+object TopKValuesInputConfig {
 
   @js.native
-  trait TopKValuesInputArrays[T <: NDArray] extends NamedArrayMap {
-    var x: T = js.native
+  trait Args extends js.Object {
+    var k: Double = js.native
   }
+}
+
+@js.native
+trait TopKValuesInputArrays[T <: NDArray] extends NamedArrayMap {
+  var x: T = js.native
+}
+
+@js.native
+trait TopKValuesGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
+  var x: js.Function0[T] = js.native
+}
+
+@js.native
+trait TopKIndicesNode extends KernelNode {
+  var inputAndArgs: TopKIndicesInputConfig = js.native
+  var output: Array1D[String]              = js.native
+  var gradient: js.Function2[Array1D[String], Array1D[String], TopKIndicesGradientInputArrays] =
+    js.native
+}
+
+@js.native
+trait TopKIndicesInputConfig extends KernelInputConfig {
+  var inputs: TopKIndicesInputArrays    = js.native
+  var args: TopKIndicesInputConfig.Args = js.native
+}
+
+object TopKIndicesInputConfig {
 
   @js.native
-  trait TopKValuesGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
-    var x: js.Function0[T] = js.native
+  trait Args extends js.Object {
+    var k: Double = js.native
   }
+}
 
-  @js.native
-  trait TopKIndicesNode extends KernelNode {
-    var inputAndArgs: TopKIndicesInputConfig = js.native
-    var output: Array1D[String]              = js.native
-    var gradient: js.Function2[Array1D[String], Array1D[String], TopKIndicesGradientInputArrays] =
-      js.native
-  }
+@js.native
+trait TopKIndicesInputArrays extends NamedArrayMap {
+  var x: NDArray = js.native
+}
 
-  @js.native
-  trait TopKIndicesInputConfig extends KernelInputConfig {
-    var inputs: TopKIndicesInputArrays    = js.native
-    var args: TopKIndicesInputConfig.Args = js.native
-  }
-
-  object TopKIndicesInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var k: Double = js.native
-    }
-  }
-
-  @js.native
-  trait TopKIndicesInputArrays extends NamedArrayMap {
-    var x: NDArray = js.native
-  }
-
-  @js.native
-  trait TopKIndicesGradientInputArrays extends TapeNodeInputGradientArrays {
-    var x: js.Function0[NDArray] = js.native
-  }
-
+@js.native
+trait TopKIndicesGradientInputArrays extends TapeNodeInputGradientArrays {
+  var x: js.Function0[NDArray] = js.native
 }

@@ -17,41 +17,35 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import scala.scalajs.js
-import js.annotation._
-import js.|
 
-package resize_bilinear {
+@js.native
+trait ResizeBilinear3DNode extends KernelNode {
+  var inputAndArgs: ResizeBilinear3DInputConfig                                     = js.native
+  var output: Array3D                                                               = js.native
+  var gradient: js.Function2[Array3D, Array3D, ResizeBilinear3DGradientInputArrays] = js.native
+}
 
-  @js.native
-  trait ResizeBilinear3DNode extends KernelNode {
-    var inputAndArgs: ResizeBilinear3DInputConfig                                     = js.native
-    var output: Array3D                                                               = js.native
-    var gradient: js.Function2[Array3D, Array3D, ResizeBilinear3DGradientInputArrays] = js.native
-  }
+@js.native
+trait ResizeBilinear3DInputConfig extends KernelInputConfig {
+  var inputs: ResizeBilinear3DInputArrays    = js.native
+  var args: ResizeBilinear3DInputConfig.Args = js.native
+}
 
-  @js.native
-  trait ResizeBilinear3DInputConfig extends KernelInputConfig {
-    var inputs: ResizeBilinear3DInputArrays    = js.native
-    var args: ResizeBilinear3DInputConfig.Args = js.native
-  }
-
-  object ResizeBilinear3DInputConfig {
-
-    @js.native
-    trait Args extends js.Object {
-      var newShape2D: js.Tuple2[Double, Double] = js.native
-      var alignCorners: Boolean                 = js.native
-    }
-  }
+object ResizeBilinear3DInputConfig {
 
   @js.native
-  trait ResizeBilinear3DInputArrays extends NamedArrayMap {
-    var x: Array3D = js.native
+  trait Args extends js.Object {
+    var newShape2D: js.Tuple2[Double, Double] = js.native
+    var alignCorners: Boolean                 = js.native
   }
+}
 
-  @js.native
-  trait ResizeBilinear3DGradientInputArrays extends TapeNodeInputGradientArrays {
-    var x: js.Function0[Array3D] = js.native
-  }
+@js.native
+trait ResizeBilinear3DInputArrays extends NamedArrayMap {
+  var x: Array3D = js.native
+}
 
+@js.native
+trait ResizeBilinear3DGradientInputArrays extends TapeNodeInputGradientArrays {
+  var x: js.Function0[Array3D] = js.native
 }
