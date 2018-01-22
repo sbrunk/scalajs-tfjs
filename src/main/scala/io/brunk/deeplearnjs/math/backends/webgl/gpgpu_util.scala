@@ -23,7 +23,7 @@ import js.|
 package gpgpu_util {
 
   @js.native
-  @JSGlobalScope
+  @JSImport("deeplearn", "gpgpu_util")
   object Gpgpu_util extends js.Object {
     def getWebGLContextAttributes(): WebGLContextAttributes                        = js.native
     def createWebGLContext(canvas: HTMLCanvasElement = ???): WebGLRenderingContext = js.native

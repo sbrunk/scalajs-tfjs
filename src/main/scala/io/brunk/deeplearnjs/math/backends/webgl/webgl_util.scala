@@ -39,7 +39,7 @@ package webgl_util {
   }
 
   @js.native
-  @JSGlobalScope
+  @JSImport("deeplearn", "webgl_util")
   object Webgl_util extends js.Object {
     def createWebGLRenderingContext(attributes: WebGLContextAttributes): WebGLRenderingContext =
       js.native

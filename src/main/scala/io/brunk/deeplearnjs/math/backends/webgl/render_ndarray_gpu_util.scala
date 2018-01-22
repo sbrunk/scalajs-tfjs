@@ -23,7 +23,7 @@ import js.|
 package render_ndarray_gpu_util {
 
   @js.native
-  @JSGlobalScope
+  @JSImport("deeplearn", "render_ndarray_gpu_util")
   object Render_ndarray_gpu_util extends js.Object {
     def getRenderRGBShader(gpgpu: GPGPUContext, destinationWidth: Double): WebGLProgram = js.native
     def renderToCanvas(gpgpu: GPGPUContext,
