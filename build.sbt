@@ -68,11 +68,12 @@ lazy val commonSettings =
       "-deprecation",
       "-language:_",
       "-target:jvm-1.8",
-      "-encoding", "UTF-8"
+      "-encoding", "UTF-8",
+      "-P:scalajs:sjsDefinedByDefault"
     ),
     unmanagedSourceDirectories.in(Compile) := Seq(scalaSource.in(Compile).value),
     unmanagedSourceDirectories.in(Test) := Seq(scalaSource.in(Test).value),
-    wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
+    //wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
 )
 
 lazy val gitSettings =
