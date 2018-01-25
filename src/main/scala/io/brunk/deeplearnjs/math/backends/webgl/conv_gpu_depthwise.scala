@@ -22,6 +22,9 @@ import js.|
 
 package conv_gpu_depthwise {
 
+  import io.brunk.deeplearnjs.math.Conv_util.Conv2DInfo
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class DepthwiseConv2DProgram protected () extends GPGPUProgram {

@@ -22,6 +22,11 @@ import js.|
 
 package tex_util {
 
+  import io.brunk.deeplearnjs.math.DataType
+  import org.scalajs.dom.webgl
+
+  import scala.scalajs.js.typedarray.{ Float32Array, Uint8Array }
+
   @js.native
   sealed trait TextureType extends js.Object {}
 
@@ -36,7 +41,7 @@ package tex_util {
 
   @js.native
   trait TextureData extends js.Object {
-    var texture: WebGLTexture               = js.native
+    var texture: webgl.Texture              = js.native
     var shape: js.Array[Double]             = js.native
     var texShape: js.Tuple2[Double, Double] = js.native
     var textureType: TextureType            = js.native

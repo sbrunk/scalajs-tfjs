@@ -22,6 +22,11 @@ import js.|
 
 package webgl_util {
 
+  import org.scalajs.dom.raw.HTMLCanvasElement
+  import org.scalajs.dom.webgl
+
+  import scala.scalajs.js.typedarray.{ Float32Array, Uint16Array }
+
   @js.native
   trait WebGLContextAttributes extends js.Object {
     var alpha: Boolean                        = js.native
@@ -41,64 +46,65 @@ package webgl_util {
   @js.native
   @JSImport("deeplearn", "webgl_util")
   object Webgl_util extends js.Object {
-    def createWebGLRenderingContext(attributes: WebGLContextAttributes): WebGLRenderingContext =
+    def createWebGLRenderingContext(attributes: webgl.ContextAttributes): webgl.RenderingContext =
       js.native
     def createWebGLRenderingContextFromCanvas(
         canvas: HTMLCanvasElement,
-        attributes: WebGLContextAttributes
-    ): WebGLRenderingContext                                                          = js.native
-    def callAndCheck[T](gl: WebGLRenderingContext, func: js.Function0[T]): T          = js.native
-    def enableDebugWebGLErrorChecking(enabled: Boolean): Unit                         = js.native
-    def checkWebGLError(gl: WebGLRenderingContext): Unit                              = js.native
-    def getWebGLErrorMessage(gl: WebGLRenderingContext, status: Double): String       = js.native
-    def getExtensionOrThrow(gl: WebGLRenderingContext, extensionName: String): js.Any = js.native
-    def createVertexShader(gl: WebGLRenderingContext, vertexShaderSource: String): WebGLShader =
+        attributes: webgl.ContextAttributes
+    ): webgl.RenderingContext                                                          = js.native
+    def callAndCheck[T](gl: webgl.RenderingContext, func: js.Function0[T]): T          = js.native
+    def enableDebugWebGLErrorChecking(enabled: Boolean): Unit                          = js.native
+    def checkWebGLError(gl: webgl.RenderingContext): Unit                              = js.native
+    def getWebGLErrorMessage(gl: webgl.RenderingContext, status: Double): String       = js.native
+    def getExtensionOrThrow(gl: webgl.RenderingContext, extensionName: String): js.Any = js.native
+    def createVertexShader(gl: webgl.RenderingContext, vertexShaderSource: String): webgl.Shader =
       js.native
-    def createFragmentShader(gl: WebGLRenderingContext, fragmentShaderSource: String): WebGLShader =
+    def createFragmentShader(gl: webgl.RenderingContext,
+                             fragmentShaderSource: String): webgl.Shader =
       js.native
-    def createProgram(gl: WebGLRenderingContext): WebGLProgram                  = js.native
-    def linkProgram(gl: WebGLRenderingContext, program: WebGLProgram): Unit     = js.native
-    def validateProgram(gl: WebGLRenderingContext, program: WebGLProgram): Unit = js.native
-    def createStaticVertexBuffer(gl: WebGLRenderingContext, data: Float32Array): WebGLBuffer =
+    def createProgram(gl: webgl.RenderingContext): webgl.Program                  = js.native
+    def linkProgram(gl: webgl.RenderingContext, program: webgl.Program): Unit     = js.native
+    def validateProgram(gl: webgl.RenderingContext, program: webgl.Program): Unit = js.native
+    def createStaticVertexBuffer(gl: webgl.RenderingContext, data: Float32Array): webgl.Buffer =
       js.native
-    def createStaticIndexBuffer(gl: WebGLRenderingContext, data: Uint16Array): WebGLBuffer =
+    def createStaticIndexBuffer(gl: webgl.RenderingContext, data: Uint16Array): webgl.Buffer =
       js.native
-    def queryMaxTextureSize(gl: WebGLRenderingContext): Double = js.native
-    def getChannelsPerTexture(): Double                        = js.native
-    def createTexture(gl: WebGLRenderingContext): WebGLTexture = js.native
-    def validateTextureSize(gl: WebGLRenderingContext, width: Double, height: Double): Unit =
+    def queryMaxTextureSize(gl: webgl.RenderingContext): Double  = js.native
+    def getChannelsPerTexture(): Double                          = js.native
+    def createTexture(gl: webgl.RenderingContext): webgl.Texture = js.native
+    def validateTextureSize(gl: webgl.RenderingContext, width: Double, height: Double): Unit =
       js.native
-    def createFramebuffer(gl: WebGLRenderingContext): WebGLFramebuffer = js.native
-    def bindVertexBufferToProgramAttribute(gl: WebGLRenderingContext,
-                                           program: WebGLProgram,
+    def createFramebuffer(gl: webgl.RenderingContext): webgl.Framebuffer = js.native
+    def bindVertexBufferToProgramAttribute(gl: webgl.RenderingContext,
+                                           program: webgl.Program,
                                            attribute: String,
-                                           buffer: WebGLBuffer,
+                                           buffer: webgl.Buffer,
                                            arrayEntriesPerItem: Double,
                                            itemStrideInBytes: Double,
                                            itemOffsetInBytes: Double,
                                            attribLocations: js.Dictionary[Double] = ???): Unit =
       js.native
-    def bindTextureUnit(gl: WebGLRenderingContext,
-                        texture: WebGLTexture,
-                        textureUnit: Double): Unit                              = js.native
-    def unbindTextureUnit(gl: WebGLRenderingContext, textureUnit: Double): Unit = js.native
-    def getProgramUniformLocationOrThrow(gl: WebGLRenderingContext,
-                                         program: WebGLProgram,
-                                         uniformName: String): WebGLUniformLocation = js.native
-    def bindTextureToProgramUniformSampler(gl: WebGLRenderingContext,
-                                           program: WebGLProgram,
-                                           texture: WebGLTexture,
-                                           uniformSamplerLocation: WebGLUniformLocation,
+    def bindTextureUnit(gl: webgl.RenderingContext,
+                        texture: webgl.Texture,
+                        textureUnit: Double): Unit                               = js.native
+    def unbindTextureUnit(gl: webgl.RenderingContext, textureUnit: Double): Unit = js.native
+    def getProgramUniformLocationOrThrow(gl: webgl.RenderingContext,
+                                         program: webgl.Program,
+                                         uniformName: String): webgl.UniformLocation = js.native
+    def bindTextureToProgramUniformSampler(gl: webgl.RenderingContext,
+                                           program: webgl.Program,
+                                           texture: webgl.Texture,
+                                           uniformSamplerLocation: webgl.UniformLocation,
                                            textureUnit: Double): Unit = js.native
-    def bindCanvasToFramebuffer(gl: WebGLRenderingContext): Unit      = js.native
-    def bindColorTextureToFramebuffer(gl: WebGLRenderingContext,
-                                      texture: WebGLTexture,
-                                      framebuffer: WebGLFramebuffer): Unit = js.native
-    def unbindColorTextureFromFramebuffer(gl: WebGLRenderingContext,
-                                          framebuffer: WebGLFramebuffer): Unit        = js.native
-    def validateFramebuffer(gl: WebGLRenderingContext): Unit                          = js.native
-    def getFramebufferErrorMessage(gl: WebGLRenderingContext, status: Double): String = js.native
-    def getTextureShapeFromLogicalShape(gl: WebGLRenderingContext,
+    def bindCanvasToFramebuffer(gl: webgl.RenderingContext): Unit     = js.native
+    def bindColorTextureToFramebuffer(gl: webgl.RenderingContext,
+                                      texture: webgl.Texture,
+                                      framebuffer: webgl.Framebuffer): Unit = js.native
+    def unbindColorTextureFromFramebuffer(gl: webgl.RenderingContext,
+                                          framebuffer: webgl.Framebuffer): Unit        = js.native
+    def validateFramebuffer(gl: webgl.RenderingContext): Unit                          = js.native
+    def getFramebufferErrorMessage(gl: webgl.RenderingContext, status: Double): String = js.native
+    def getTextureShapeFromLogicalShape(gl: webgl.RenderingContext,
                                         logShape: js.Array[Double]): js.Tuple2[Double, Double] =
       js.native
   }

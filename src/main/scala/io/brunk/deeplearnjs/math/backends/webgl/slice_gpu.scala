@@ -22,6 +22,10 @@ import js.|
 
 package slice_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+  import org.scalajs.dom.webgl
+
   @js.native
   @JSGlobal
   class SliceProgram protected () extends GPGPUProgram {
@@ -30,10 +34,10 @@ package slice_gpu {
     var outputShape: js.Array[Double]   = js.native
     var userCode: String                = js.native
     var rank: Double                    = js.native
-    var startLoc: WebGLUniformLocation  = js.native
+    var startLoc: webgl.UniformLocation = js.native
     def getCustomSetupFunc(
         start: js.Array[Double]
-    ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+    ): js.Function2[GPGPUContext, webgl.Program, Unit] = js.native
   }
 
 }

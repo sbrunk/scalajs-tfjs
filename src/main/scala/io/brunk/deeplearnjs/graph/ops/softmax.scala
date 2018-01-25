@@ -51,5 +51,5 @@ object Softmax extends js.Object {
   def crossEntropyCost(math: NDArrayMath,
                        y: Array1D[DataType],
                        target: Array1D[DataType],
-                       epsilon: Scalar[DataType]): Scalar[DataType][String] = js.native
+                       epsilon: Scalar[DataType]): Scalar[String] = js.native
 }

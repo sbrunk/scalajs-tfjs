@@ -22,6 +22,10 @@ import js.|
 
 package copy_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+  import org.scalajs.dom.webgl
+
   @js.native
   @JSGlobal
   class Copy2DProgram protected () extends GPGPUProgram {
@@ -33,7 +37,7 @@ package copy_gpu {
         sourceStart: js.Tuple2[Double, Double],
         destStart: js.Tuple2[Double, Double],
         destSize: js.Tuple2[Double, Double]
-    ): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+    ): js.Function2[GPGPUContext, webgl.Program, Unit] = js.native
   }
 
 }

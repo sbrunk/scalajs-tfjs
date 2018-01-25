@@ -22,15 +22,20 @@ import js.|
 
 package onehot_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+  import org.scalajs.dom.webgl
+
   @js.native
   @JSGlobal
   class OneHotProgram protected () extends GPGPUProgram {
     def this(numIndices: Double, depth: Double, onValue: Double, offValue: Double) = this()
-    var variableNames: js.Array[String]                                                  = js.native
-    var outputShape: js.Array[Double]                                                    = js.native
-    var userCode: String                                                                 = js.native
-    var seedLoc: WebGLUniformLocation                                                    = js.native
-    def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+    var variableNames: js.Array[String] = js.native
+    var outputShape: js.Array[Double]   = js.native
+    var userCode: String                = js.native
+    var seedLoc: webgl.UniformLocation  = js.native
+    def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, webgl.Program, Unit] =
+      js.native
   }
 
 }

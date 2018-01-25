@@ -22,6 +22,12 @@ import js.|
 
 package mulmat_packed_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.types.MatrixOrientation
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
+  import org.scalajs.dom.webgl
+
+  import scala.scalajs.js.typedarray.Float32Array
+
   @js.native
   @JSGlobalScope
   object Mulmat_packed_gpu extends js.Object {
@@ -29,10 +35,10 @@ package mulmat_packed_gpu {
                                 aOrientation: MatrixOrientation,
                                 bOrientation: MatrixOrientation): String = js.native
     def multiplyMatrixPacked(gpgpu: GPGPUContext,
-                             multiplyProgram: WebGLProgram,
-                             a: WebGLTexture,
-                             b: WebGLTexture,
-                             result: WebGLTexture,
+                             multiplyProgram: webgl.Program,
+                             a: webgl.Texture,
+                             b: webgl.Texture,
+                             result: webgl.Texture,
                              resultShapeRowCol: js.Tuple2[Double, Double]): Unit = js.native
     def uploadMultiplyMatrixPackedDownload(a: Float32Array,
                                            aShapeRowCol: js.Tuple2[Double, Double],

@@ -22,6 +22,8 @@ import js.|
 
 package lrn_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class LRNProgram protected () extends GPGPUProgram {

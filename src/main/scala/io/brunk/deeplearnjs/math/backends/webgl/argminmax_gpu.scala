@@ -22,6 +22,9 @@ import js.|
 
 package argminmax_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+  import io.brunk.deeplearnjs.math.reduce_util.ReduceInfo
+
   @js.native
   @JSGlobal
   class ArgMinMaxProgram protected () extends GPGPUProgram {

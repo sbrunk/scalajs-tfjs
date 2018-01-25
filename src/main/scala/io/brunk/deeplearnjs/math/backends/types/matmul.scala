@@ -17,19 +17,19 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
-import io.brunk.deeplearnjs.math.Array2D
+import io.brunk.deeplearnjs.math.{ Array2D, DataType }
 import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
-import io.brunk.deeplearnjs.math.backends.tape_types.KernelInputConfig
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
 @js.native
 trait MatMulNode extends KernelNode {
-  var inputAndArgs: MatMulInputConfig                                     = js.native
-  var output: Array2D                                                     = js.native
-  var gradient: js.Function2[Array2D, Array2D, MatMulGradientInputArrays] = js.native
+  var inputAndArgs: MatMulInputConfig = js.native
+  var output: Array2D[DataType]       = js.native
+  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], MatMulGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -49,14 +49,14 @@ object MatMulInputConfig {
 
 @js.native
 trait MatMulInputArrays extends NamedArrayMap {
-  var a: Array2D = js.native
-  var b: Array2D = js.native
+  var a: Array2D[DataType] = js.native
+  var b: Array2D[DataType] = js.native
 }
 
 @js.native
 trait MatMulGradientInputArrays extends TapeNodeInputGradientArrays {
-  var a: js.Function0[Array2D] = js.native
-  var b: js.Function0[Array2D] = js.native
+  var a: js.Function0[Array2D[DataType]] = js.native
+  var b: js.Function0[Array2D[DataType]] = js.native
 }
 
 @js.native

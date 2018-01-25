@@ -22,16 +22,19 @@ import js.|
 
 package render_ndarray_gpu_util {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
+  import org.scalajs.dom.webgl
+
   @js.native
   @JSImport("deeplearn", "render_ndarray_gpu_util")
   object Render_ndarray_gpu_util extends js.Object {
-    def getRenderRGBShader(gpgpu: GPGPUContext, destinationWidth: Double): WebGLProgram = js.native
+    def getRenderRGBShader(gpgpu: GPGPUContext, destinationWidth: Double): webgl.Program = js.native
     def renderToCanvas(gpgpu: GPGPUContext,
-                       renderShader: WebGLProgram,
-                       sourceTex: WebGLTexture): Unit = js.native
+                       renderShader: webgl.Program,
+                       sourceTex: webgl.Texture): Unit = js.native
     def renderToFramebuffer(gpgpu: GPGPUContext,
-                            renderShader: WebGLProgram,
-                            sourceTex: WebGLTexture): Unit = js.native
+                            renderShader: webgl.Program,
+                            sourceTex: webgl.Texture): Unit = js.native
   }
 
 }

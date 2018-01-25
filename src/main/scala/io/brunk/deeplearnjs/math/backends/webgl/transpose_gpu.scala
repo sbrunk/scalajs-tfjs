@@ -22,6 +22,8 @@ import js.|
 
 package transpose_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class TransposeProgram protected () extends GPGPUProgram {

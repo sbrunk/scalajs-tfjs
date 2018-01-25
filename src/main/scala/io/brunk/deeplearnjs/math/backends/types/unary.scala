@@ -17,7 +17,7 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
 

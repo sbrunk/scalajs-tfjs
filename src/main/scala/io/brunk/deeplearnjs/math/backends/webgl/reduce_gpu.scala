@@ -22,6 +22,9 @@ import js.|
 
 package reduce_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+  import io.brunk.deeplearnjs.math.reduce_util.ReduceInfo
+
   @js.native
   @JSGlobal
   class ReduceProgram protected () extends GPGPUProgram {

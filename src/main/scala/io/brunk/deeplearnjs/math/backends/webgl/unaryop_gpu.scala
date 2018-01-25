@@ -22,6 +22,8 @@ import js.|
 
 package unaryop_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class UnaryOpProgram protected () extends GPGPUProgram {

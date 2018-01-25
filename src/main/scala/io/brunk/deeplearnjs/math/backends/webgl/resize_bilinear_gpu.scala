@@ -22,6 +22,8 @@ import js.|
 
 package resize_bilinear_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class ResizeBilinear3DProgram protected () extends GPGPUProgram {

@@ -118,8 +118,8 @@ object Node {
 @JSImport("deeplearn", "VariableNode")
 class VariableNode protected () extends Node {
   def this(graph: Graph, name: String, data: NDArray[DataType, Rank]) = this()
-  var data: NDArray    = js.native
-  def validate(): Unit = js.native
+  var data: NDArray[DataType, Rank] = js.native
+  def validate(): Unit              = js.native
 }
 
 @js.native

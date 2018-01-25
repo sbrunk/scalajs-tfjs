@@ -22,6 +22,9 @@ import js.|
 
 package avg_pool_backprop_gpu {
 
+  import io.brunk.deeplearnjs.math.Conv_util.Conv2DInfo
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class AvgPool2DBackpropProgram protected () extends GPGPUProgram {

@@ -17,7 +17,6 @@
 package io.brunk.deeplearnjs.math.backends
 
 import io.brunk.deeplearnjs.math.Conv_util.Conv2DInfo
-import io.brunk.deeplearnjs.math.NdarrayModule.DataType
 import io.brunk.deeplearnjs.math._
 import io.brunk.deeplearnjs.math.backends.types.MatrixOrientation
 import org.scalajs.dom.{ ImageData, html }

@@ -18,7 +18,6 @@ package io.brunk.deeplearnjs.math.backends
 
 import io.brunk.deeplearnjs.math._
 import io.brunk.deeplearnjs.math.Conv_util.Conv2DInfo
-import io.brunk.deeplearnjs.math.NdarrayModule.{ DataType, Rank }
 import io.brunk.deeplearnjs.math.backends.types.MatrixOrientation
 import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
 import io.brunk.deeplearnjs.math.backends.webgl.tex_util.TextureData
@@ -106,9 +105,10 @@ class MathBackendWebGL protected () extends MathBackend {
     js.native
   def pad2D(x: Array2D[DataType],
             paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]],
-            constantValue: Double): Array2D[DataType]                                   = js.native
-  def transpose[D <: DataType, T <: NDArray[D, Rank]](x: T, perm: js.Array[Double]): T  = js.native
-  def sum[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[js.Any]  = js.native
+            constantValue: Double): Array2D[DataType]                                  = js.native
+  def transpose[D <: DataType, T <: NDArray[D, Rank]](x: T, perm: js.Array[Double]): T = js.native
+  def sum[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[js.Any, Rank] =
+    js.native
   def argMin(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[String, Rank] = js.native
   def argMax(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[String, Rank] = js.native
   def equal(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
@@ -123,9 +123,9 @@ class MathBackendWebGL protected () extends MathBackend {
     js.native
   def logicalOr(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
     js.native
-  def topKValues[D <: DataType, T <: NDArray[D, Rank]](x: T, k: Double): Array1D[DataType][D] =
+  def topKValues[D <: DataType, T <: NDArray[D, Rank]](x: T, k: Double): Array1D[D] =
     js.native
-  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[DataType][String]      = js.native
+  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[String]                = js.native
   def min[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]  = js.native
   def minimum[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank] = js.native
   def max[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]  = js.native
@@ -177,10 +177,10 @@ class MathBackendWebGL protected () extends MathBackend {
   def conv2dDerBias(dy: Array4D[DataType]): Array1D[DataType]  = js.native
   def depthwiseConv2D(x: Array4D[DataType],
                       filter: Array4D[DataType],
-                      convInfo: Conv2DInfo): Array4D[DataType]                       = js.native
-  def maxPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType]         = js.native
-  def minPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType]         = js.native
-  def avgPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType][String] = js.native
+                      convInfo: Conv2DInfo): Array4D[DataType]               = js.native
+  def maxPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType] = js.native
+  def minPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType] = js.native
+  def avgPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[String]   = js.native
   def maxPoolBackprop(dy: Array4D[DataType],
                       x: Array4D[DataType],
                       convInfo: Conv2DInfo): Array4D[DataType] = js.native
@@ -190,9 +190,8 @@ class MathBackendWebGL protected () extends MathBackend {
   def resizeBilinear3D(x: Array3D[DataType],
                        newShape2D: js.Tuple2[Double, Double],
                        alignCorners: Boolean): Array3D[DataType] = js.native
-  def multinomial(probs: Array2D[DataType],
-                  numSamples: Double,
-                  seed: Double): Array2D[DataType][String] = js.native
+  def multinomial(probs: Array2D[DataType], numSamples: Double, seed: Double): Array2D[String] =
+    js.native
   def oneHot(indices: Array1D[DataType],
              depth: Double,
              onValue: Double,

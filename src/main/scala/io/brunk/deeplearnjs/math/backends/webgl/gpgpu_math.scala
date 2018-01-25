@@ -22,6 +22,12 @@ import js.|
 
 package gpgpu_math {
 
+  import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_context.GPGPUContext
+  import io.brunk.deeplearnjs.math.backends.webgl.shader_compiler.Shader_compiler.ShapeInfo
+  import io.brunk.deeplearnjs.math.backends.webgl.tex_util.TextureData
+  import org.scalajs.dom.webgl
+
   @js.native
   trait GPGPUProgram extends js.Object {
     var variableNames: js.Array[String] = js.native
@@ -32,7 +38,7 @@ package gpgpu_math {
 
   @js.native
   trait GPGPUBinary extends js.Object {
-    var webGLProgram: WebGLProgram                         = js.native
+    var webGLProgram: webgl.Program                        = js.native
     var program: GPGPUProgram                              = js.native
     var uniformLocations: GPGPUBinary.UniformLocations     = js.native
     var attributeLocations: GPGPUBinary.AttributeLocations = js.native
@@ -47,9 +53,9 @@ package gpgpu_math {
     @js.native
     trait UniformLocations extends js.Object {
       @JSBracketAccess
-      def apply(name: String): WebGLUniformLocation = js.native
+      def apply(name: String): webgl.UniformLocation = js.native
       @JSBracketAccess
-      def update(name: String, v: WebGLUniformLocation): Unit = js.native
+      def update(name: String, v: webgl.UniformLocation): Unit = js.native
     }
 
     @js.native
@@ -80,7 +86,7 @@ package gpgpu_math {
         binary: GPGPUBinary,
         inputs: js.Array[ArrayData[T]],
         output: ArrayData[K],
-        customSetup: js.Function2[GPGPUContext, WebGLProgram, Unit] = ???
+        customSetup: js.Function2[GPGPUContext, webgl.Program, Unit] = ???
     ): Unit = js.native
     def makeShaderKey(program: GPGPUProgram,
                       inputs: js.Array[ArrayData[NDArray[DataType, Rank]]],

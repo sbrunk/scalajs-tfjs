@@ -22,56 +22,63 @@ import js.|
 
 package gpgpu_util {
 
+  import io.brunk.deeplearnjs.math.backends.webgl.webgl_util.WebGLContextAttributes
+  import org.scalajs.dom.webgl
+  import org.scalajs.dom.{ ImageData, html }
+
+  import scala.scalajs.js.Promise
+  import scala.scalajs.js.typedarray.Float32Array
+
   @js.native
   @JSImport("deeplearn", "gpgpu_util")
   object Gpgpu_util extends js.Object {
-    def getWebGLContextAttributes(): WebGLContextAttributes                        = js.native
-    def createWebGLContext(canvas: HTMLCanvasElement = ???): WebGLRenderingContext = js.native
-    def createVertexShader(gl: WebGLRenderingContext): WebGLShader                 = js.native
-    def createVertexBuffer(gl: WebGLRenderingContext): WebGLBuffer                 = js.native
-    def createIndexBuffer(gl: WebGLRenderingContext): WebGLBuffer                  = js.native
-    def createMatrixTexture(gl: WebGLRenderingContext,
+    def getWebGLContextAttributes(): webgl.ContextAttributes                  = js.native
+    def createWebGLContext(canvas: html.Canvas = ???): webgl.RenderingContext = js.native
+    def createVertexShader(gl: webgl.RenderingContext): webgl.Shader          = js.native
+    def createVertexBuffer(gl: webgl.RenderingContext): webgl.Buffer          = js.native
+    def createIndexBuffer(gl: webgl.RenderingContext): webgl.Buffer           = js.native
+    def createMatrixTexture(gl: webgl.RenderingContext,
                             rows: Double,
-                            columns: Double): WebGLTexture = js.native
-    def createColorMatrixTexture(gl: WebGLRenderingContext,
+                            columns: Double): webgl.Texture = js.native
+    def createColorMatrixTexture(gl: webgl.RenderingContext,
                                  rows: Double,
-                                 columns: Double): WebGLTexture = js.native
-    def createPackedMatrixTexture(gl: WebGLRenderingContext,
+                                 columns: Double): webgl.Texture = js.native
+    def createPackedMatrixTexture(gl: webgl.RenderingContext,
                                   rows: Double,
-                                  columns: Double): WebGLTexture = js.native
-    def bindVertexProgramAttributeStreams(gl: WebGLRenderingContext,
-                                          program: WebGLProgram,
-                                          vertexBuffer: WebGLBuffer,
+                                  columns: Double): webgl.Texture = js.native
+    def bindVertexProgramAttributeStreams(gl: webgl.RenderingContext,
+                                          program: webgl.Program,
+                                          vertexBuffer: webgl.Buffer,
                                           attribLocations: js.Dictionary[Double] = ???): Unit =
       js.native
     def uploadPixelDataToTexture(
-        gl: WebGLRenderingContext,
-        texture: WebGLTexture,
-        pixels: ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement
+        gl: webgl.RenderingContext,
+        texture: webgl.Texture,
+        pixels: ImageData | html.Image | html.Canvas | html.Video
     ): Unit = js.native
-    def uploadMatrixToTexture(gl: WebGLRenderingContext,
-                              texture: WebGLTexture,
+    def uploadMatrixToTexture(gl: webgl.RenderingContext,
+                              texture: webgl.Texture,
                               rows: Double,
                               columns: Double,
                               matrix: Float32Array,
                               numChannels: Double): Unit = js.native
-    def uploadMatrixToPackedTexture(gl: WebGLRenderingContext,
-                                    texture: WebGLTexture,
+    def uploadMatrixToPackedTexture(gl: webgl.RenderingContext,
+                                    texture: webgl.Texture,
                                     rows: Double,
                                     columns: Double,
                                     matrix: Float32Array): Unit = js.native
-    def downloadMatrixFromOutputTextureAsync(gl: WebGLRenderingContext,
+    def downloadMatrixFromOutputTextureAsync(gl: webgl.RenderingContext,
                                              getBufferSubDataAsyncExtension: js.Any,
                                              rows: Double,
                                              columns: Double): Promise[Float32Array] = js.native
-    def downloadMatrixFromOutputTexture(gl: WebGLRenderingContext,
+    def downloadMatrixFromOutputTexture(gl: webgl.RenderingContext,
                                         rows: Double,
                                         columns: Double): Float32Array = js.native
-    def downloadMatrixFromRGBAColorTexture(gl: WebGLRenderingContext,
+    def downloadMatrixFromRGBAColorTexture(gl: webgl.RenderingContext,
                                            rows: Double,
                                            columns: Double,
                                            channels: Double): Float32Array = js.native
-    def downloadMatrixFromPackedOutputTexture(gl: WebGLRenderingContext,
+    def downloadMatrixFromPackedOutputTexture(gl: webgl.RenderingContext,
                                               rows: Double,
                                               columns: Double): Float32Array = js.native
   }

@@ -30,10 +30,10 @@ import scala.scalajs.js.{ Promise, | }
 @js.native
 trait LSTMCell extends js.Object {
   def apply(
-      data: Array2D[DataType][DataType],
-      c: Array2D[DataType][DataType],
-      h: Array2D[DataType][DataType]
-  ): js.Tuple2[Array2D[DataType][DataType], Array2D[DataType][DataType]]
+      data: Array2D[DataType],
+      c: Array2D[DataType],
+      h: Array2D[DataType]
+  ): js.Tuple2[Array2D[DataType], Array2D[DataType]]
 }
 
 @js.native
@@ -68,56 +68,47 @@ class NDArrayMath protected () extends NDArrayManager {
   def keep[T <: NDArray[DataType, Rank]](result: T): T  = js.native
   def track[T <: NDArray[DataType, Rank]](result: T): T = js.native
   def dispose(): Unit                                   = js.native
-  def matMul(a: Array2D[DataType][DataType],
-             b: Array2D[DataType][DataType],
+  def matMul(a: Array2D[DataType],
+             b: Array2D[DataType],
              aOrientation: MatrixOrientation = ???,
-             bOrientation: MatrixOrientation = ???): Array2D[DataType][DataType] = js.native
-  def vectorTimesMatrix(v: Array1D[DataType][DataType],
-                        matrix: Array2D[DataType][DataType]): Array1D[DataType][DataType] =
+             bOrientation: MatrixOrientation = ???): Array2D[DataType] = js.native
+  def vectorTimesMatrix(v: Array1D[DataType], matrix: Array2D[DataType]): Array1D[DataType] =
     js.native
-  def matrixTimesVector(matrix: Array2D[DataType][DataType],
-                        v: Array1D[DataType][DataType]): Array1D[DataType][DataType] = js.native
-  def dotProduct(v1: Array1D[DataType][DataType],
-                 v2: Array1D[DataType][DataType]): Scalar[DataType] =
+  def matrixTimesVector(matrix: Array2D[DataType], v: Array1D[DataType]): Array1D[DataType] =
     js.native
-  def outerProduct(v1: Array1D[DataType][DataType],
-                   v2: Array1D[DataType][DataType]): Array2D[DataType][DataType] = js.native
-  def clone[T <: NDArray[DataType, Rank]](x: T): T                               = js.native
+  def dotProduct(v1: Array1D[DataType], v2: Array1D[DataType]): Scalar[DataType] =
+    js.native
+  def outerProduct(v1: Array1D[DataType], v2: Array1D[DataType]): Array2D[DataType] = js.native
+  def clone[T <: NDArray[DataType, Rank]](x: T): T                                  = js.native
   def reshape[D <: DataType, R <: Rank, T <: js.Any](x: NDArray[D, Rank],
                                                      newShape: js.Array[Double]): T =
     js.native
-  def cast[D <: DataType, R <: Rank](x: NDArray[DataType, R], newDType: D): js.Any = js.native
-  def slice1D(x: Array1D[DataType][DataType],
-              begin: Double,
-              size: Double): Array1D[DataType][DataType] = js.native
-  def slice2D(x: Array2D[DataType][DataType],
+  def cast[D <: DataType, R <: Rank](x: NDArray[DataType, R], newDType: D): js.Any  = js.native
+  def slice1D(x: Array1D[DataType], begin: Double, size: Double): Array1D[DataType] = js.native
+  def slice2D(x: Array2D[DataType],
               begin: js.Tuple2[Double, Double],
-              size: js.Tuple2[Double, Double]): Array2D[DataType][DataType] = js.native
-  def slice3D(x: Array3D[DataType][DataType],
+              size: js.Tuple2[Double, Double]): Array2D[DataType] = js.native
+  def slice3D(x: Array3D[DataType],
               begin: js.Tuple3[Double, Double, Double],
-              size: js.Tuple3[Double, Double, Double]): Array3D[DataType][DataType] = js.native
-  def slice4D(x: Array4D[DataType][DataType],
+              size: js.Tuple3[Double, Double, Double]): Array3D[DataType] = js.native
+  def slice4D(x: Array4D[DataType],
               begin: js.Tuple4[Double, Double, Double, Double],
-              size: js.Tuple4[Double, Double, Double, Double]): Array4D[DataType][DataType] =
+              size: js.Tuple4[Double, Double, Double, Double]): Array4D[DataType] =
     js.native
-  def reverse1D(x: Array1D[DataType][DataType]): Array1D[DataType][DataType] = js.native
-  def reverse2D(x: Array2D[DataType][DataType],
-                axis: Double | js.Array[Double]): Array2D[DataType][DataType] = js.native
-  def reverse3D(x: Array3D[DataType][DataType],
-                axis: Double | js.Array[Double]): Array3D[DataType][DataType] = js.native
-  def reverse4D(x: Array4D[DataType][DataType],
-                axis: Double | js.Array[Double]): Array4D[DataType][DataType] = js.native
-  def concat1D(a: Array1D[DataType][DataType],
-               b: Array1D[DataType][DataType]): Array1D[DataType][DataType] = js.native
-  def concat2D(a: Array2D[DataType][DataType],
-               b: Array2D[DataType][DataType],
-               axis: Double): Array2D[DataType][DataType] = js.native
-  def concat3D(a: Array3D[DataType][DataType],
-               b: Array3D[DataType][DataType],
-               axis: Double): Array3D[DataType][DataType] = js.native
-  def concat4D(a: Array4D[DataType][DataType],
-               b: Array4D[DataType][DataType],
-               axis: Double): Array4D[DataType][DataType] = js.native
+  def reverse1D(x: Array1D[DataType]): Array1D[DataType] = js.native
+  def reverse2D(x: Array2D[DataType], axis: Double | js.Array[Double]): Array2D[DataType] =
+    js.native
+  def reverse3D(x: Array3D[DataType], axis: Double | js.Array[Double]): Array3D[DataType] =
+    js.native
+  def reverse4D(x: Array4D[DataType], axis: Double | js.Array[Double]): Array4D[DataType] =
+    js.native
+  def concat1D(a: Array1D[DataType], b: Array1D[DataType]): Array1D[DataType] = js.native
+  def concat2D(a: Array2D[DataType], b: Array2D[DataType], axis: Double): Array2D[DataType] =
+    js.native
+  def concat3D(a: Array3D[DataType], b: Array3D[DataType], axis: Double): Array3D[DataType] =
+    js.native
+  def concat4D(a: Array4D[DataType], b: Array4D[DataType], axis: Double): Array4D[DataType] =
+    js.native
   def logSumExp[T <: NDArray[String, Rank]](input: NDArray[DataType, Rank],
                                             axis: Double | js.Array[Double] = ???,
                                             keepDims: Boolean = ???): T = js.native
@@ -174,13 +165,13 @@ class NDArrayMath protected () extends NDArrayManager {
                                                                 dim: Double = ???): O = js.native
   def switchDim[T <: NDArray[DataType, Rank]](a: T, newDim: js.Array[Double]): T      = js.native
   def tile[D <: DataType, T <: NDArray[D, Rank]](x: T, reps: js.Array[Double]): T     = js.native
-  def pad1D(x: Array1D[DataType][DataType],
+  def pad1D(x: Array1D[DataType],
             paddings: js.Tuple2[Double, Double],
-            constantValue: Double = ???): Array1D[DataType][DataType] =
+            constantValue: Double = ???): Array1D[DataType] =
     js.native
-  def pad2D(x: Array2D[DataType][DataType],
+  def pad2D(x: Array2D[DataType],
             paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]],
-            constantValue: Double = ???): Array2D[DataType][DataType]                = js.native
+            constantValue: Double = ???): Array2D[DataType]                          = js.native
   def transpose[T <: NDArray[DataType, Rank]](x: T, perm: js.Array[Double] = ???): T = js.native
   def scalarPlusArray[T <: NDArray[DataType, Rank]](c: Scalar[DataType], a: T): T    = js.native
   def scalarMinusArray[T <: NDArray[DataType, Rank]](c: Scalar[DataType], a: T): T   = js.native
@@ -360,7 +351,7 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def multinomial(probabilities: Array1D[DataType] | Array2D[DataType],
                   numSamples: Double,
-                  seed: Double = ???): Array1D[DataType][String] | Array2D[DataType][String] =
+                  seed: Double = ???): Array1D[String] | Array2D[String] =
     js.native
   def oneHot(indices: Array1D[DataType],
              depth: Double,

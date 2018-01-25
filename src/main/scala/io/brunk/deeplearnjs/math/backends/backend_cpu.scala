@@ -85,9 +85,9 @@ class MathBackendCPU extends MathBackend {
     js.native
   def logicalOr(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
     js.native
-  def topKValues[D <: DataType, T <: NDArray[D, Rank]](x: T, k: Double): Array1D[DataType][D] =
+  def topKValues[D <: DataType, T <: NDArray[D, Rank]](x: T, k: Double): Array1D[D] =
     js.native
-  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[DataType][String]      = js.native
+  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[String]                = js.native
   def min[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]  = js.native
   def minimum[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank] = js.native
   def max[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]  = js.native
@@ -144,7 +144,7 @@ class MathBackendCPU extends MathBackend {
             constantValue: Double): Array2D[DataType]                                  = js.native
   def transpose[D <: DataType, T <: NDArray[D, Rank]](x: T, perm: js.Array[Double]): T = js.native
   def maxPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType]           = js.native
-  def maxPoolPositions(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType][String] =
+  def maxPoolPositions(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[String] =
     js.native
   def maxPoolBackprop(dy: Array4D[DataType],
                       x: Array4D[DataType],
@@ -186,7 +186,7 @@ class MathBackendCPU extends MathBackend {
                                    normRegion: String): Array4D[DataType] = js.native
   def multinomial(probabilities: Array2D[DataType],
                   numSamples: Double,
-                  seed: Double): Array2D[DataType][String] =
+                  seed: Double): Array2D[String] =
     js.native
   def oneHot(indices: Array1D[DataType],
              depth: Double,

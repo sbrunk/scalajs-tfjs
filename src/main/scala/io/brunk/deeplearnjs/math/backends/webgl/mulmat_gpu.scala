@@ -22,6 +22,9 @@ import js.|
 
 package mulmat_gpu {
 
+  import io.brunk.deeplearnjs.math.backends.types.MatrixOrientation
+  import io.brunk.deeplearnjs.math.backends.webgl.gpgpu_math.GPGPUProgram
+
   @js.native
   @JSGlobal
   class MatMulProgram protected () extends GPGPUProgram {
