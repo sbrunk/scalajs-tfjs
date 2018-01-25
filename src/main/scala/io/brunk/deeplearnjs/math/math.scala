@@ -21,6 +21,7 @@ import io.brunk.deeplearnjs.Util.{ NamedArrayMap, NamedVariableMap }
 import io.brunk.deeplearnjs.math.backends.Tape_util.{ ScopeResult, ScopeResultImmediate }
 import io.brunk.deeplearnjs.math.backends.{ BackendEngine, MathBackend }
 import io.brunk.deeplearnjs.math.backends.types.MatrixOrientation
+import io.brunk.deeplearnjs.math.types.SumTypes
 import org.scalajs.dom.{ ImageData, html }
 
 import scala.scalajs.js
@@ -370,7 +371,7 @@ class NDArrayMath protected () extends NDArrayManager {
   def norm[D <: DataType](x: NDArray[D, Rank],
                           ord: Double | String = ???,
                           axis: Double | js.Array[Double] = ???,
-                          keepDims: Boolean = ???): NDArray[D | js.Any] = js.native
+                          keepDims: Boolean = ???): NDArray[D | js.Any, Rank] = js.native
   def vjp[T <: NDArray[DataType, Rank] | NamedArrayMap, R <: Rank](
       f: js.Function0[NDArray[DataType, R]],
       x: T,

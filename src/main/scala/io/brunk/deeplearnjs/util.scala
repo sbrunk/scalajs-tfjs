@@ -32,8 +32,14 @@ object Util extends js.Object {
     js.Array[T] | js.Array[js.Array[T]] | js.Array[js.Array[js.Array[T]]] | js.Array[
       js.Array[js.Array[js.Array[T]]]
     ]
-  type ArrayData        = TypedArray | RegularArray[Double] | RegularArray[Boolean]
-  type NamedArrayMap    = js.Dictionary[NDArray[DataType, Rank]]
+  type ArrayData = TypedArray | RegularArray[Double] | RegularArray[Boolean]
+  //type NamedArrayMap    = js.Dictionary[NDArray[DataType, Rank]]
+  trait NamedArrayMap extends js.Object {
+    @JSBracketAccess
+    def apply(name: String): NDArray[DataType, Rank] = js.native
+    @JSBracketAccess
+    def update(name: String, v: NDArray[DataType, Rank]): Unit = js.native
+  }
   type NamedVariableMap = js.Dictionary[Variable[DataType, Rank]]
   def shuffle(array: js.Array[js.Any] | Uint32Array | Int32Array | Float32Array): Unit = js.native
   def clamp(min: Double, x: Double, max: Double): Double                               = js.native

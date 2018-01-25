@@ -72,8 +72,15 @@ object KernelInputConfig {
 @js.native
 @JSGlobalScope
 object Tape_types extends js.Object {
-  type Tape                        = js.Array[TapeNode[TapeNodeOutput]]
-  type TapeNodeOutput              = NDArray[DataType, Rank] | NamedArrayMap
-  type TapeNodeType                = String
-  type TapeNodeInputGradientArrays = js.Dictionary[js.Function0[NDArray[DataType, Rank]]]
+  type Tape           = js.Array[TapeNode[TapeNodeOutput]]
+  type TapeNodeOutput = NDArray[DataType, Rank] | NamedArrayMap
+  type TapeNodeType   = String
+  //type TapeNodeInputGradientArrays = js.Dictionary[js.Function0[NDArray[DataType, Rank]]]
+  @js.native
+  trait TapeNodeInputGradientArrays extends js.Object {
+    @JSBracketAccess
+    def apply(inputName: String): js.Function0[NDArray[DataType, Rank]] = js.native
+    @JSBracketAccess
+    def update(inputName: String, v: js.Function0[NDArray[DataType, Rank]]): Unit = js.native
+  }
 }

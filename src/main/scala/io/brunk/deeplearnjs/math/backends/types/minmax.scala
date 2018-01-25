@@ -84,13 +84,13 @@ trait MaximumNode[D <: DataType] extends KernelNode {
 
 @js.native
 trait MaximumInputConfig[D <: DataType] extends KernelInputConfig {
-  var inputs: MaximumInputConfig.Inputs = js.native
+  var inputs: MaximumInputConfig.Inputs[D] = js.native
 }
 
 object MaximumInputConfig {
 
   @js.native
-  trait Inputs extends js.Object {
+  trait Inputs[D <: DataType] extends js.Object {
     var a: NDArray[D, Rank] = js.native
     var b: NDArray[D, Rank] = js.native
   }
