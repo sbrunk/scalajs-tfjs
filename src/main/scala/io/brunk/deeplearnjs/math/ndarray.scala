@@ -39,6 +39,11 @@ object SupportedType {
   val float32 = "float32".asInstanceOf[SupportedType { type DataType = Float32 }]
 }
 
+@js. native
+sealed trait Tuple1[+T1] extends js.Object {
+  @JSName("0") val _1: T1 = js.native
+}
+
 @js.native
 sealed trait DType extends js.Object {}
 
@@ -78,7 +83,7 @@ trait NDArrayData[D <: DataType] extends js.Object {
 @js.native
 trait ShapeMap extends js.Object {
   var `0`: js.Array[Double]                          = js.native
-  var `1`: js.Tuple1[Double]                         = js.native
+  var `1`: Tuple1[Double]                         = js.native
   var `2`: js.Tuple2[Double, Double]                 = js.native
   var `3`: js.Tuple3[Double, Double, Double]         = js.native
   var `4`: js.Tuple4[Double, Double, Double, Double] = js.native
@@ -183,9 +188,9 @@ class Array1D[D <: DataType] extends NDArray[D, String] {
   def get(i: Double): Double                     = js.native
   def `val`(i: Double): Promise[Double]          = js.native
   def add(value: Double, i: Double): Unit        = js.native
-  def locToIndex(loc: js.Tuple1[Double]): Double = js.native
+  def locToIndex(loc: Tuple1[Double]): Double = js.native
   @JSName("indexToLoc")
-  def indexToLoc(index: Double): js.Tuple1[Double]   = js.native
+  def indexToLoc(index: Double): Tuple1[Double]   = js.native
   def asType[D2 <: DataType](dtype: D2): Array1D[D2] = js.native
 }
 
@@ -194,18 +199,18 @@ class Array1D[D <: DataType] extends NDArray[D, String] {
 object Array1D extends js.Object {
   def `new`[D <: DataType](values: js.Any | js.Array[Double] | js.Array[Boolean],
                            dtype: D = ???): Array1D[D]                          = js.native
-  def ones[D <: DataType](shape: js.Tuple1[Double], dtype: D = ???): Array1D[D] = js.native
-  def randNormal[D <: String](shape: js.Tuple1[Double],
+  def ones[D <: DataType](shape: Tuple1[Double], dtype: D = ???): Array1D[D] = js.native
+  def randNormal[D <: String](shape: Tuple1[Double],
                               mean: Double = ???,
                               stdDev: Double = ???,
                               dtype: D = ???,
                               seed: Double = ???): Array1D[D] = js.native
-  def randTruncatedNormal[D <: String](shape: js.Tuple1[Double],
+  def randTruncatedNormal[D <: String](shape: Tuple1[Double],
                                        mean: Double = ???,
                                        stdDev: Double = ???,
                                        dtype: D = ???,
                                        seed: Double = ???): Array1D[D] = js.native
-  def randUniform[D <: DataType](shape: js.Tuple1[Double],
+  def randUniform[D <: DataType](shape: Tuple1[Double],
                                  a: Double,
                                  b: Double,
                                  dtype: D = ???): Array1D[D] = js.native
@@ -369,5 +374,5 @@ object Variable extends js.Object {
 @js.native
 @JSImport("deeplearn", "ndarray")
 object NdarrayModule extends js.Object {
-  val variable: Variable.variable.type = js.native
+  //val variable: Variable.variable[DataType, Rank] = js.native
 }
