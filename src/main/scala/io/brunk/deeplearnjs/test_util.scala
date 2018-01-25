@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs
 
-import io.brunk.deeplearnjs.Util.{ DType, TypedArray }
+import io.brunk.deeplearnjs.Util.TypedArray
 import io.brunk.deeplearnjs.math._
 
 import scala.scalajs.js
@@ -46,7 +46,7 @@ object Test_util extends js.Object {
       actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
       expected: NDArray[DataType, Rank] | TypedArray | js.Array[Double] | js.Array[Boolean],
       epsilon: Double = ???
-  ): Unit
+  ): Unit = js.native
   def expectArraysEqual(
       actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
       expected: NDArray[DataType, Rank] | TypedArray | js.Array[Double] | js.Array[Boolean]
@@ -54,7 +54,7 @@ object Test_util extends js.Object {
   def expectNumbersClose(a: Double, e: Double, epsilon: Double = ???): Unit = js.native
   def expectValuesInRange(actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
                           low: Double,
-                          high: Double): Unit
+                          high: Double): Unit                                         = js.native
   def randomArrayInRange(n: Double, minValue: Double, maxValue: Double): Float32Array = js.native
   def makeIdentity(n: Double): Float32Array                                           = js.native
   def cpuMultiplyMatrix(a: Float32Array,

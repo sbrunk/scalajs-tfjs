@@ -38,21 +38,21 @@ trait LSTMCell extends js.Object {
 
 @js.native
 trait NDArrayManager extends js.Object {
-  def getNumArrays(): Double                     = js.native
-  def register(a: NDArray[DataType, Rank]): Unit = js.native
-  def registerVariable(v: Variable): Unit        = js.native
+  def getNumArrays(): Double                              = js.native
+  def register(a: NDArray[DataType, Rank]): Unit          = js.native
+  def registerVariable(v: Variable[DataType, Rank]): Unit = js.native
 }
 
 @js.native
 @JSImport("deeplearn", "NDArrayMath")
 class NDArrayMath protected () extends NDArrayManager {
   def this(backend: BackendType | MathBackend, safeMode: Boolean) = this()
-  protected var backendEngine: BackendEngine                              = js.native
-  var registeredVariables: NamedVariableMap                               = js.native
-  def time(query: js.Function0[NDArray[DataType, Rank]]): Promise[Double] = js.native
-  def getNumArrays(): Double                                              = js.native
-  def register(a: NDArray[DataType, Rank] | Variable): Unit               = js.native
-  def registerVariable(v: Variable): Unit                                 = js.native
+  protected var backendEngine: BackendEngine                                = js.native
+  var registeredVariables: NamedVariableMap                                 = js.native
+  def time(query: js.Function0[NDArray[DataType, Rank]]): Promise[Double]   = js.native
+  def getNumArrays(): Double                                                = js.native
+  def register(a: NDArray[DataType, Rank] | Variable[DataType, Rank]): Unit = js.native
+  def registerVariable(v: Variable[DataType, Rank]): Unit                   = js.native
   def writePixels(dataId: Double,
                   pixels: ImageData | html.Image | html.Canvas | html.Video,
                   numChannels: Double): Unit                                         = js.native
@@ -112,9 +112,9 @@ class NDArrayMath protected () extends NDArrayManager {
   def logSumExp[T <: NDArray[String, Rank]](input: NDArray[DataType, Rank],
                                             axis: Double | js.Array[Double] = ???,
                                             keepDims: Boolean = ???): T = js.native
-  def sum[D <: DataType, T <: NDArray[js.Any]](x: NDArray[D, Rank],
-                                               axis: Double | js.Array[Double] = ???,
-                                               keepDims: Boolean = ???): T = js.native
+  def sum[D <: DataType, T <: NDArray[js.Any, Rank]](x: NDArray[D, Rank],
+                                                     axis: Double | js.Array[Double] = ???,
+                                                     keepDims: Boolean = ???): T = js.native
   def mean(x: NDArray[DataType, Rank],
            axis: Double | js.Array[Double] = ???,
            keepDims: Boolean = ???): NDArray[String, Rank] = js.native
@@ -124,23 +124,23 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def argMaxEquals(x1: NDArray[DataType, Rank], x2: NDArray[DataType, Rank]): Scalar[String] =
     js.native
-  def equal[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1],
-                                                                  b: NDArray[D2]): T =
+  def equal[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
+                                                                  b: NDArray[D2, Rank]): T =
     js.native
   def equalStrict[T <: NDArray[DataType, Rank]](a: T, b: T): NDArray[String, Rank] = js.native
-  def notEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1],
-                                                                     b: NDArray[D2]): T =
+  def notEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
+                                                                     b: NDArray[D2, Rank]): T =
     js.native
   def notEqualStrict[R <: Rank, D1 <: DataType, D2 <: D1](a: NDArray[D1, R],
                                                           b: NDArray[D2, R]): js.Any = js.native
-  def lessEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1],
-                                                                      b: NDArray[D2]): T =
+  def lessEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
+                                                                      b: NDArray[D2, Rank]): T =
     js.native
-  def greater[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1],
-                                                                    b: NDArray[D2]): T =
+  def greater[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
+                                                                    b: NDArray[D2, Rank]): T =
     js.native
-  def greaterEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1],
-                                                                         b: NDArray[D2]): T =
+  def greaterEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
+                                                                         b: NDArray[D2, Rank]): T =
     js.native
   def logicalOr(a: NDArray[String, Rank], b: NDArray[String, Rank]): NDArray[String, Rank] =
     js.native
@@ -148,12 +148,14 @@ class NDArrayMath protected () extends NDArrayManager {
   def min[D <: DataType, T <: NDArray[D, Rank]](x: NDArray[D, Rank],
                                                 axis: Double | js.Array[Double] = ???,
                                                 keepDims: Boolean = ???): T = js.native
-  def minimum[D1 <: DataType, D2 <: D1, T <: NDArray[D1]](a: NDArray[D1], b: NDArray[D2]): T =
+  def minimum[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
+                                                                b: NDArray[D2, Rank]): T =
     js.native
   def max[D <: DataType, T <: NDArray[D, Rank]](x: NDArray[D, Rank],
                                                 axis: Double | js.Array[Double] = ???,
                                                 keepDims: Boolean = ???): T = js.native
-  def maximum[D1 <: DataType, D2 <: D1, T <: NDArray[D1]](a: NDArray[D1], b: NDArray[D2]): T =
+  def maximum[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
+                                                                b: NDArray[D2, Rank]): T =
     js.native
   def softmax[D <: DataType, R <: Rank](logits: NDArray[D, R], dim: Double = ???): js.Any =
     js.native
@@ -177,19 +179,23 @@ class NDArrayMath protected () extends NDArrayManager {
   def scalarMinusArray[T <: NDArray[DataType, Rank]](c: Scalar[DataType], a: T): T   = js.native
   def arrayMinusScalar[T <: NDArray[DataType, Rank]](a: T, c: Scalar[DataType]): T   = js.native
   def neg[T <: NDArray[DataType, Rank]](x: T): T                                     = js.native
-  def add[D1 <: DataType, D2 <: D1, T <: NDArray[D1]](a: NDArray[D1], b: NDArray[D2]): T =
+  def add[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
+                                                            b: NDArray[D2, Rank]): T =
     js.native
   def addStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
-  def subtract[D1 <: DataType, D2 <: D1, T <: NDArray[D1]](a: NDArray[D1], b: NDArray[D2]): T =
+  def subtract[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
+                                                                 b: NDArray[D2, Rank]): T =
     js.native
   def pow[D <: DataType, T <: NDArray[D, Rank]](a: NDArray[D, Rank], b: NDArray[String, Rank]): T =
     js.native
   def powStrict[D <: DataType](a: NDArray[D, Rank], b: NDArray[String, Rank]): NDArray[D, Rank] =
     js.native
-  def sub[D1 <: DataType, D2 <: D1, T <: NDArray[D1]](a: NDArray[D1], b: NDArray[D2]): T =
+  def sub[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
+                                                            b: NDArray[D2, Rank]): T =
     js.native
   def subStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
-  def multiply[D1 <: DataType, D2 <: D1, T <: NDArray[D1]](a: NDArray[D1], b: NDArray[D2]): T =
+  def multiply[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
+                                                                 b: NDArray[D2, Rank]): T =
     js.native
   def elementWiseMul[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
   def multiplyStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
