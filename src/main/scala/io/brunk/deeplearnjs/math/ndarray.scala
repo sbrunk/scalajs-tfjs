@@ -16,7 +16,6 @@
 
 package io.brunk.deeplearnjs.math
 
-import io.brunk.deeplearnjs.math.NdarrayModule.{ DataType, Rank }
 import org.scalajs.dom.ImageData
 import org.scalajs.dom.raw.{ HTMLCanvasElement, HTMLVideoElement, WebGLTexture }
 import org.w3c.dom.html.HTMLImageElement
@@ -25,6 +24,20 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import scala.scalajs.js.typedarray.{ Float32Array, Int32Array, Uint8Array }
 import scala.scalajs.js.{ Promise, | }
+
+sealed trait DataType
+sealed trait Float32 extends DataType
+
+sealed trait Rank
+
+@ScalaJSDefined
+trait SupportedType extends js.Any {
+  type D <: DataType
+}
+
+object SupportedType {
+  val float32 = "float32".asInstanceOf[SupportedType { type DataType = Float32 }]
+}
 
 @js.native
 sealed trait DType extends js.Object {}
@@ -89,7 +102,7 @@ class NDArray[D <: DataType, R <: Rank] protected () extends js.Object {
   var strides: js.Array[Double]                                                      = js.native
   protected var math: NDArrayMath                                                    = js.native
   def reshape[R2 <: Rank](newShape: js.Array[Double]): js.Any                        = js.native
-  def squeeze[T <: NDArray[D]](axis: js.Array[Double] = ???): T                      = js.native
+  def squeeze[T <: NDArray[D, Rank]](axis: js.Array[Double] = ???): T                = js.native
   def flatten(): Array1D[D]                                                          = js.native
   def asScalar(): Scalar[D]                                                          = js.native
   def as1D(): Array1D[D]                                                             = js.native
@@ -118,9 +131,9 @@ class NDArray[D <: DataType, R <: Rank] protected () extends js.Object {
 object NDArray extends js.Object {
   def ones[D <: DataType, R <: Rank](shape: js.Array[Double], dtype: D = ???): js.Any  = js.native
   def zeros[D <: DataType, R <: Rank](shape: js.Array[Double], dtype: D = ???): js.Any = js.native
-  def onesLike[T <: NDArray](another: T): T                                            = js.native
-  def zerosLike[T <: NDArray](another: T): T                                           = js.native
-  def like[T <: NDArray](another: T): T                                                = js.native
+  def onesLike[T <: NDArray[DataType, Rank]](another: T): T                            = js.native
+  def zerosLike[T <: NDArray[DataType, Rank]](another: T): T                           = js.native
+  def like[T <: NDArray[DataType, Rank]](another: T): T                                = js.native
   def make[D <: DataType, R <: Rank](shape: js.Array[Double],
                                      data: NDArrayData[D],
                                      dtype: D = ???,
@@ -356,7 +369,5 @@ object Variable extends js.Object {
 @js.native
 @JSImport("deeplearn", "ndarray")
 object NdarrayModule extends js.Object {
-  type DataType = String
-  type Rank     = String
   val variable: Variable.variable.type = js.native
 }

@@ -18,7 +18,7 @@ package io.brunk.deeplearnjs.graph
 
 import io.brunk.deeplearnjs.graph.Session.FeedEntry
 import io.brunk.deeplearnjs.math.optimizers.Optimizer
-import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath, Scalar }
+import io.brunk.deeplearnjs.math._
 
 import scala.scalajs.js
 import js.annotation._
@@ -26,15 +26,16 @@ import js.|
 
 @js.native
 trait GraphRunnerEventObserver extends js.Object {
-  var batchesTrainedCallback: js.Function1[Double, Unit] = js.native
-  var avgCostCallback: js.Function1[Scalar, Unit]        = js.native
-  var metricCallback: js.Function1[NDArray, Unit]        = js.native
+  var batchesTrainedCallback: js.Function1[Double, Unit]          = js.native
+  var avgCostCallback: js.Function1[Scalar[DataType], Unit]       = js.native
+  var metricCallback: js.Function1[NDArray[DataType, Rank], Unit] = js.native
   var inferenceExamplesCallback
-    : js.Function2[js.Array[js.Array[FeedEntry]], js.Array[NDArray], Unit] = js.native
-  var inferenceExamplesPerSecCallback: js.Function1[Double, Unit]          = js.native
-  var trainExamplesPerSecCallback: js.Function1[Double, Unit]              = js.native
-  var totalTimeCallback: js.Function1[Double, Unit]                        = js.native
-  var doneTrainingCallback: js.Function0[Unit]                             = js.native
+    : js.Function2[js.Array[js.Array[FeedEntry]], js.Array[NDArray[DataType, Rank]], Unit] =
+    js.native
+  var inferenceExamplesPerSecCallback: js.Function1[Double, Unit] = js.native
+  var trainExamplesPerSecCallback: js.Function1[Double, Unit]     = js.native
+  var totalTimeCallback: js.Function1[Double, Unit]               = js.native
+  var doneTrainingCallback: js.Function0[Unit]                    = js.native
 }
 
 @js.native
@@ -76,7 +77,7 @@ class GraphRunner protected () extends js.Object {
   def isInferenceRunning(): Boolean                                 = js.native
   def computeMetric(): Scalar[String]                               = js.native
   def getTotalBatchesTrained(): Double                              = js.native
-  def getLastComputedMetric(): Scalar                               = js.native
+  def getLastComputedMetric(): Scalar[DataType]                     = js.native
   def setMath(math: NDArrayMath): Unit                              = js.native
   def setSession(session: Session): Unit                            = js.native
   def setInferenceTensor(inferenceTensor: Tensor): Unit             = js.native

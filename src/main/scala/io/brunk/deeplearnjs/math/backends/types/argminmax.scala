@@ -16,13 +16,19 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait ArgMaxNode extends KernelNode {
   var inputAndArgs: ArgMaxInputConfig = js.native
-  var output: NDArray[String]         = js.native
-  var gradient: js.Function2[NDArray[String], NDArray[String], ArgMaxGradientInputArrays] =
+  var output: NDArray[String, Rank]   = js.native
+  var gradient
+    : js.Function2[NDArray[String, Rank], NDArray[String, Rank], ArgMaxGradientInputArrays] =
     js.native
 }
 
@@ -42,19 +48,20 @@ object ArgMaxInputConfig {
 
 @js.native
 trait ArgMaxInputArrays extends NamedArrayMap {
-  var x: NDArray = js.native
+  var x: NDArray[DataType, Rank] = js.native
 }
 
 @js.native
 trait ArgMaxGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[NDArray] = js.native
+  var x: js.Function0[NDArray[DataType, Rank]] = js.native
 }
 
 @js.native
 trait ArgMinNode extends KernelNode {
   var inputAndArgs: ArgMinInputConfig = js.native
-  var output: NDArray[String]         = js.native
-  var gradient: js.Function2[NDArray[String], NDArray[String], ArgMinGradientInputArrays] =
+  var output: NDArray[String, Rank]   = js.native
+  var gradient
+    : js.Function2[NDArray[String, Rank], NDArray[String, Rank], ArgMinGradientInputArrays] =
     js.native
 }
 
@@ -74,10 +81,10 @@ object ArgMinInputConfig {
 
 @js.native
 trait ArgMinInputArrays extends NamedArrayMap {
-  var x: NDArray = js.native
+  var x: NDArray[DataType, Rank] = js.native
 }
 
 @js.native
 trait ArgMinGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[NDArray] = js.native
+  var x: js.Function0[NDArray[DataType, Rank]] = js.native
 }

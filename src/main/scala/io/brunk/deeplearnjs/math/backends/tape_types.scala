@@ -17,7 +17,7 @@
 package io.brunk.deeplearnjs.math.backends
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 import io.brunk.deeplearnjs.math.backends.Tape_types.{
   TapeNodeInputGradientArrays,
   TapeNodeOutput,
@@ -30,12 +30,14 @@ import scala.scalajs.js.|
 
 @js.native
 trait TapeNode[T <: TapeNodeOutput] extends js.Object {
-  var id: Double                                                                      = js.native
-  var `type`: TapeNodeType                                                            = js.native
-  var name: String                                                                    = js.native
-  var inputAndArgs: TapeNodeInputConfig                                               = js.native
-  var output: T                                                                       = js.native
-  var gradient: js.Function2[NDArray | NamedArrayMap, T, TapeNodeInputGradientArrays] = js.native
+  var id: Double                        = js.native
+  var `type`: TapeNodeType              = js.native
+  var name: String                      = js.native
+  var inputAndArgs: TapeNodeInputConfig = js.native
+  var output: T                         = js.native
+  var gradient
+    : js.Function2[NDArray[DataType, Rank] | NamedArrayMap, T, TapeNodeInputGradientArrays] =
+    js.native
 }
 
 @js.native
@@ -44,10 +46,10 @@ trait TapeNodeInputConfig extends js.Object {
 }
 
 @js.native
-trait KernelNode extends TapeNode[NDArray] {
+trait KernelNode extends TapeNode[NDArray[DataType, Rank]] {
   var kernel: String                  = js.native
   var inputAndArgs: KernelInputConfig = js.native
-  var output: NDArray                 = js.native
+  var output: NDArray[DataType, Rank] = js.native
 }
 
 @js.native
@@ -71,7 +73,7 @@ object KernelInputConfig {
 @JSGlobalScope
 object Tape_types extends js.Object {
   type Tape                        = js.Array[TapeNode[TapeNodeOutput]]
-  type TapeNodeOutput              = NDArray | NamedArrayMap
+  type TapeNodeOutput              = NDArray[DataType, Rank] | NamedArrayMap
   type TapeNodeType                = String
-  type TapeNodeInputGradientArrays = js.Dictionary[js.Function0[NDArray]]
+  type TapeNodeInputGradientArrays = js.Dictionary[js.Function0[NDArray[DataType, Rank]]]
 }

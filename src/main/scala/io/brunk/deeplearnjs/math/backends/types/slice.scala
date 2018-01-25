@@ -16,13 +16,19 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math._
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+
 import scala.scalajs.js
 
 @js.native
 trait Slice1DNode extends KernelNode {
-  var inputAndArgs: Slice1DInputConfig                                     = js.native
-  var output: Array1D                                                      = js.native
-  var gradient: js.Function2[Array1D, Array1D, Slice1DGradientInputArrays] = js.native
+  var inputAndArgs: Slice1DInputConfig = js.native
+  var output: Array1D[DataType]        = js.native
+  var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Slice1DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -42,19 +48,20 @@ object Slice1DInputConfig {
 
 @js.native
 trait Slice1DInputArrays extends NamedArrayMap {
-  var x: Array1D = js.native
+  var x: Array1D[DataType] = js.native
 }
 
 @js.native
 trait Slice1DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array1D] = js.native
+  var x: js.Function0[Array1D[DataType]] = js.native
 }
 
 @js.native
 trait Slice2DNode extends KernelNode {
-  var inputAndArgs: Slice2DInputConfig                                     = js.native
-  var output: Array2D                                                      = js.native
-  var gradient: js.Function2[Array2D, Array2D, Slice2DGradientInputArrays] = js.native
+  var inputAndArgs: Slice2DInputConfig = js.native
+  var output: Array2D[DataType]        = js.native
+  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Slice2DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -74,19 +81,20 @@ object Slice2DInputConfig {
 
 @js.native
 trait Slice2DInputArrays extends NamedArrayMap {
-  var x: Array2D = js.native
+  var x: Array2D[DataType] = js.native
 }
 
 @js.native
 trait Slice2DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array2D] = js.native
+  var x: js.Function0[Array2D[DataType]] = js.native
 }
 
 @js.native
 trait Slice3DNode extends KernelNode {
-  var inputAndArgs: Slice3DInputConfig                                     = js.native
-  var output: Array3D                                                      = js.native
-  var gradient: js.Function2[Array3D, Array3D, Slice3DGradientInputArrays] = js.native
+  var inputAndArgs: Slice3DInputConfig = js.native
+  var output: Array3D[DataType]        = js.native
+  var gradient: js.Function2[Array3D[DataType], Array3D[DataType], Slice3DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -106,19 +114,20 @@ object Slice3DInputConfig {
 
 @js.native
 trait Slice3DInputArrays extends NamedArrayMap {
-  var x: Array3D = js.native
+  var x: Array3D[DataType] = js.native
 }
 
 @js.native
 trait Slice3DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array3D] = js.native
+  var x: js.Function0[Array3D[DataType]] = js.native
 }
 
 @js.native
 trait Slice4DNode extends KernelNode {
-  var inputAndArgs: Slice4DInputConfig                                     = js.native
-  var output: Array4D                                                      = js.native
-  var gradient: js.Function2[Array4D, Array4D, Slice4DGradientInputArrays] = js.native
+  var inputAndArgs: Slice4DInputConfig = js.native
+  var output: Array4D[DataType]        = js.native
+  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Slice4DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -138,10 +147,10 @@ object Slice4DInputConfig {
 
 @js.native
 trait Slice4DInputArrays extends NamedArrayMap {
-  var x: Array4D = js.native
+  var x: Array4D[DataType] = js.native
 }
 
 @js.native
 trait Slice4DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array4D] = js.native
+  var x: js.Function0[Array4D[DataType]] = js.native
 }

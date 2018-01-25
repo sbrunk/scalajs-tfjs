@@ -16,13 +16,19 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ Array1D, Array2D, Array3D, Array4D, DataType }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait Concat1DNode extends KernelNode {
-  var inputAndArgs: Concat1DInputConfig                                = js.native
-  var output: Array1D                                                  = js.native
-  var gradient: js.Function2[Array1D, Array1D, Concat1DGradientArrays] = js.native
+  var inputAndArgs: Concat1DInputConfig = js.native
+  var output: Array1D[DataType]         = js.native
+  var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Concat1DGradientArrays] =
+    js.native
 }
 
 @js.native
@@ -32,21 +38,22 @@ trait Concat1DInputConfig extends KernelInputConfig {
 
 @js.native
 trait Concat1DInputArrays extends NamedArrayMap {
-  var a: Array1D = js.native
-  var b: Array1D = js.native
+  var a: Array1D[DataType] = js.native
+  var b: Array1D[DataType] = js.native
 }
 
 @js.native
 trait Concat1DGradientArrays extends TapeNodeInputGradientArrays {
-  var a: js.Function0[Array1D] = js.native
-  var b: js.Function0[Array1D] = js.native
+  var a: js.Function0[Array1D[DataType]] = js.native
+  var b: js.Function0[Array1D[DataType]] = js.native
 }
 
 @js.native
 trait Concat2DNode extends KernelNode {
-  var inputAndArgs: Concat2DInputConfig                                = js.native
-  var output: Array2D                                                  = js.native
-  var gradient: js.Function2[Array2D, Array2D, Concat2DGradientArrays] = js.native
+  var inputAndArgs: Concat2DInputConfig = js.native
+  var output: Array2D[DataType]         = js.native
+  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Concat2DGradientArrays] =
+    js.native
 }
 
 @js.native
@@ -65,21 +72,22 @@ object Concat2DInputConfig {
 
 @js.native
 trait Concat2DInputArrays extends NamedArrayMap {
-  var a: Array2D = js.native
-  var b: Array2D = js.native
+  var a: Array2D[DataType] = js.native
+  var b: Array2D[DataType] = js.native
 }
 
 @js.native
 trait Concat2DGradientArrays extends TapeNodeInputGradientArrays {
-  var a: js.Function0[Array2D] = js.native
-  var b: js.Function0[Array2D] = js.native
+  var a: js.Function0[Array2D[DataType]] = js.native
+  var b: js.Function0[Array2D[DataType]] = js.native
 }
 
 @js.native
 trait Concat3DNode extends KernelNode {
-  var inputAndArgs: Concat3DInputConfig                                = js.native
-  var output: Array3D                                                  = js.native
-  var gradient: js.Function2[Array3D, Array3D, Concat3DGradientArrays] = js.native
+  var inputAndArgs: Concat3DInputConfig = js.native
+  var output: Array3D[DataType]         = js.native
+  var gradient: js.Function2[Array3D[DataType], Array3D[DataType], Concat3DGradientArrays] =
+    js.native
 }
 
 @js.native
@@ -98,21 +106,22 @@ object Concat3DInputConfig {
 
 @js.native
 trait Concat3DInputArrays extends NamedArrayMap {
-  var a: Array3D = js.native
-  var b: Array3D = js.native
+  var a: Array3D[DataType] = js.native
+  var b: Array3D[DataType] = js.native
 }
 
 @js.native
 trait Concat3DGradientArrays extends TapeNodeInputGradientArrays {
-  var a: js.Function0[Array3D] = js.native
-  var b: js.Function0[Array3D] = js.native
+  var a: js.Function0[Array3D[DataType]] = js.native
+  var b: js.Function0[Array3D[DataType]] = js.native
 }
 
 @js.native
 trait Concat4DNode extends KernelNode {
-  var inputAndArgs: Concat4DInputConfig                                = js.native
-  var output: Array4D                                                  = js.native
-  var gradient: js.Function2[Array4D, Array4D, Concat4DGradientArrays] = js.native
+  var inputAndArgs: Concat4DInputConfig = js.native
+  var output: Array4D[DataType]         = js.native
+  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Concat4DGradientArrays] =
+    js.native
 }
 
 @js.native
@@ -131,12 +140,12 @@ object Concat4DInputConfig {
 
 @js.native
 trait Concat4DInputArrays extends NamedArrayMap {
-  var a: Array4D = js.native
-  var b: Array4D = js.native
+  var a: Array4D[DataType] = js.native
+  var b: Array4D[DataType] = js.native
 }
 
 @js.native
 trait Concat4DGradientArrays extends TapeNodeInputGradientArrays {
-  var a: js.Function0[Array4D] = js.native
-  var b: js.Function0[Array4D] = js.native
+  var a: js.Function0[Array4D[DataType]] = js.native
+  var b: js.Function0[Array4D[DataType]] = js.native
 }

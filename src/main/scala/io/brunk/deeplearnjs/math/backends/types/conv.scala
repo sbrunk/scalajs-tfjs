@@ -16,13 +16,20 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ Array1D, Array4D, DataType }
+import io.brunk.deeplearnjs.math.Conv_util.Conv2DInfo
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait Conv2DNode extends KernelNode {
-  var inputAndArgs: Conv2DInputConfig                                     = js.native
-  var output: Array4D                                                     = js.native
-  var gradient: js.Function2[Array4D, Array4D, Conv2DGradientInputArrays] = js.native
+  var inputAndArgs: Conv2DInputConfig = js.native
+  var output: Array4D[DataType]       = js.native
+  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Conv2DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -41,23 +48,25 @@ object Conv2DInputConfig {
 
 @js.native
 trait Conv2DInputArrays extends NamedArrayMap {
-  var x: Array4D      = js.native
-  var filter: Array4D = js.native
-  var bias: Array1D   = js.native
+  var x: Array4D[DataType]      = js.native
+  var filter: Array4D[DataType] = js.native
+  var bias: Array1D[DataType]   = js.native
 }
 
 @js.native
 trait Conv2DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array4D]      = js.native
-  var filter: js.Function0[Array4D] = js.native
-  var bias: js.Function0[Array1D]   = js.native
+  var x: js.Function0[Array4D[DataType]]      = js.native
+  var filter: js.Function0[Array4D[DataType]] = js.native
+  var bias: js.Function0[Array1D[DataType]]   = js.native
 }
 
 @js.native
 trait Conv2DDerInputNode extends KernelNode {
-  var inputAndArgs: Conv2DDerInputInputConfig                                     = js.native
-  var output: Array4D                                                             = js.native
-  var gradient: js.Function2[Array4D, Array4D, Conv2DDerInputGradientInputArrays] = js.native
+  var inputAndArgs: Conv2DDerInputInputConfig = js.native
+  var output: Array4D[DataType]               = js.native
+  var gradient
+    : js.Function2[Array4D[DataType], Array4D[DataType], Conv2DDerInputGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -76,21 +85,23 @@ object Conv2DDerInputInputConfig {
 
 @js.native
 trait Conv2DDerInputInputArrays extends NamedArrayMap {
-  var dy: Array4D     = js.native
-  var filter: Array4D = js.native
+  var dy: Array4D[DataType]     = js.native
+  var filter: Array4D[DataType] = js.native
 }
 
 @js.native
 trait Conv2DDerInputGradientInputArrays extends TapeNodeInputGradientArrays {
-  var dy: js.Function0[Array4D]     = js.native
-  var filter: js.Function0[Array4D] = js.native
+  var dy: js.Function0[Array4D[DataType]]     = js.native
+  var filter: js.Function0[Array4D[DataType]] = js.native
 }
 
 @js.native
 trait Conv2DDerFilterNode extends KernelNode {
-  var inputAndArgs: Conv2DDerFilterInputConfig                                     = js.native
-  var output: Array4D                                                              = js.native
-  var gradient: js.Function2[Array4D, Array4D, Conv2DDerFilterGradientInputArrays] = js.native
+  var inputAndArgs: Conv2DDerFilterInputConfig = js.native
+  var output: Array4D[DataType]                = js.native
+  var gradient
+    : js.Function2[Array4D[DataType], Array4D[DataType], Conv2DDerFilterGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -109,21 +120,23 @@ object Conv2DDerFilterInputConfig {
 
 @js.native
 trait Conv2DDerFilterInputArrays extends NamedArrayMap {
-  var x: Array4D  = js.native
-  var dy: Array4D = js.native
+  var x: Array4D[DataType]  = js.native
+  var dy: Array4D[DataType] = js.native
 }
 
 @js.native
 trait Conv2DDerFilterGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array4D]  = js.native
-  var dy: js.Function0[Array4D] = js.native
+  var x: js.Function0[Array4D[DataType]]  = js.native
+  var dy: js.Function0[Array4D[DataType]] = js.native
 }
 
 @js.native
 trait Conv2DDerBiasNode extends KernelNode {
-  var inputAndArgs: Conv2DDerBiasInputConfig                                     = js.native
-  var output: Array1D                                                            = js.native
-  var gradient: js.Function2[Array1D, Array1D, Conv2DDerBiasGradientInputArrays] = js.native
+  var inputAndArgs: Conv2DDerBiasInputConfig = js.native
+  var output: Array1D[DataType]              = js.native
+  var gradient
+    : js.Function2[Array1D[DataType], Array1D[DataType], Conv2DDerBiasGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -133,19 +146,21 @@ trait Conv2DDerBiasInputConfig extends KernelInputConfig {
 
 @js.native
 trait Conv2DDerBiasInputArrays extends NamedArrayMap {
-  var dy: Array4D = js.native
+  var dy: Array4D[DataType] = js.native
 }
 
 @js.native
 trait Conv2DDerBiasGradientInputArrays extends TapeNodeInputGradientArrays {
-  var dy: js.Function0[Array4D] = js.native
+  var dy: js.Function0[Array4D[DataType]] = js.native
 }
 
 @js.native
 trait DepthwiseConv2DNode extends KernelNode {
-  var inputAndArgs: DepthwiseConv2DInputConfig                                     = js.native
-  var output: Array4D                                                              = js.native
-  var gradient: js.Function2[Array4D, Array4D, DepthwiseConv2DGradientInputArrays] = js.native
+  var inputAndArgs: DepthwiseConv2DInputConfig = js.native
+  var output: Array4D[DataType]                = js.native
+  var gradient
+    : js.Function2[Array4D[DataType], Array4D[DataType], DepthwiseConv2DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -164,12 +179,12 @@ object DepthwiseConv2DInputConfig {
 
 @js.native
 trait DepthwiseConv2DInputArrays extends NamedArrayMap {
-  var x: Array4D      = js.native
-  var filter: Array4D = js.native
+  var x: Array4D[DataType]      = js.native
+  var filter: Array4D[DataType] = js.native
 }
 
 @js.native
 trait DepthwiseConv2DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array4D]      = js.native
-  var filter: js.Function0[Array4D] = js.native
+  var x: js.Function0[Array4D[DataType]]      = js.native
+  var filter: js.Function0[Array4D[DataType]] = js.native
 }

@@ -16,13 +16,19 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ Array1D, Array2D, DataType }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait Pad1DNode extends KernelNode {
-  var inputAndArgs: Pad1DInputConfig                                     = js.native
-  var output: Array1D                                                    = js.native
-  var gradient: js.Function2[Array1D, Array1D, Pad1DGradientInputArrays] = js.native
+  var inputAndArgs: Pad1DInputConfig = js.native
+  var output: Array1D[DataType]      = js.native
+  var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Pad1DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -42,19 +48,20 @@ object Pad1DInputConfig {
 
 @js.native
 trait Pad1DInputArrays extends NamedArrayMap {
-  var x: Array1D = js.native
+  var x: Array1D[DataType] = js.native
 }
 
 @js.native
 trait Pad1DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array1D] = js.native
+  var x: js.Function0[Array1D[DataType]] = js.native
 }
 
 @js.native
 trait Pad2DNode extends KernelNode {
-  var inputAndArgs: Pad2DInputConfig                                     = js.native
-  var output: Array2D                                                    = js.native
-  var gradient: js.Function2[Array2D, Array2D, Pad2DGradientInputArrays] = js.native
+  var inputAndArgs: Pad2DInputConfig = js.native
+  var output: Array2D[DataType]      = js.native
+  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Pad2DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -74,10 +81,10 @@ object Pad2DInputConfig {
 
 @js.native
 trait Pad2DInputArrays extends NamedArrayMap {
-  var x: Array2D = js.native
+  var x: Array2D[DataType] = js.native
 }
 
 @js.native
 trait Pad2DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array2D] = js.native
+  var x: js.Function0[Array2D[DataType]] = js.native
 }

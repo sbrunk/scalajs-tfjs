@@ -22,6 +22,8 @@ import scala.scalajs.js.annotation._
 @js.native
 @JSGlobalScope
 object Slice_util extends js.Object {
-  def assertParamsValid(input: NDArray, begin: js.Array[Double], size: js.Array[Double]): Unit =
+  def assertParamsValid(input: NDArray[DataType, Rank],
+                        begin: js.Array[Double],
+                        size: js.Array[Double]): Unit =
     js.native
 }

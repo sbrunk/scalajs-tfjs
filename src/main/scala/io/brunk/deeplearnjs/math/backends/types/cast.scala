@@ -16,13 +16,16 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait CastNode extends KernelNode {
-  var inputAndArgs: CastInputConfig                    = js.native
-  var output: NDArray                                  = js.native
-  var gradient: js.Function2[NDArray, NDArray, js.Any] = js.native
+  var inputAndArgs: CastInputConfig                                                    = js.native
+  var output: NDArray[DataType, Rank]                                                  = js.native
+  var gradient: js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], js.Any] = js.native
 }
 
 @js.native
@@ -35,7 +38,7 @@ object CastInputConfig {
 
   @js.native
   trait Inputs extends js.Object {
-    var x: NDArray = js.native
+    var x: NDArray[DataType, Rank] = js.native
   }
 
   @js.native

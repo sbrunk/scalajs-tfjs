@@ -16,6 +16,11 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
@@ -42,10 +47,10 @@ object SumInputConfig {
 
 @js.native
 trait SumInputArrays[D <: DataType] extends NamedArrayMap {
-  var x: NDArray[D] = js.native
+  var x: NDArray[D, Rank] = js.native
 }
 
 @js.native
 trait SumGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
-  var x: js.Function0[NDArray[D]] = js.native
+  var x: js.Function0[NDArray[D, Rank]] = js.native
 }

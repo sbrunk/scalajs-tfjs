@@ -21,56 +21,56 @@ import scala.scalajs.js.annotation._
 
 @js.native
 trait ActivationFunction extends js.Object {
-  def output[T <: NDArray](math: NDArrayMath, input: T): T
-  def der[T <: NDArray](math: NDArrayMath, input: T, output: T): T
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, input: T): T
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, input: T, output: T): T
   def dispose(): Unit
 }
 
 @js.native
 @JSGlobal
 class TanHFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  def dispose(): Unit                                     = js.native
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                                     = js.native
 }
 
 @js.native
 @JSGlobal
 class ReLUFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  def dispose(): Unit                                     = js.native
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                                     = js.native
 }
 
 @js.native
 @JSGlobal
 class LeakyReluFunc protected () extends ActivationFunction {
   def this(alpha: Double) = this()
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  def dispose(): Unit                                     = js.native
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                                     = js.native
 }
 
 @js.native
 @JSGlobal
 class SigmoidFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  def dispose(): Unit                                     = js.native
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                                     = js.native
 }
 
 @js.native
 @JSGlobal
 class SquareFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  def dispose(): Unit                                     = js.native
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                                     = js.native
 }
 
 @js.native
 @JSGlobal
 class EluFunc extends ActivationFunction {
-  def output[T <: NDArray](math: NDArrayMath, x: T): T    = js.native
-  def der[T <: NDArray](math: NDArrayMath, x: T, y: T): T = js.native
-  def dispose(): Unit                                     = js.native
+  def output[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T): T    = js.native
+  def der[T <: NDArray[DataType, Rank]](math: NDArrayMath, x: T, y: T): T = js.native
+  def dispose(): Unit                                                     = js.native
 }

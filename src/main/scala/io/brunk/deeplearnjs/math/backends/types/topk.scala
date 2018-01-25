@@ -16,17 +16,22 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.{ Array1D, DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
-trait TopKValuesNode[D <: DataType, T <: NDArray[D]] extends KernelNode {
+trait TopKValuesNode[D <: DataType, T <: NDArray[D, Rank]] extends KernelNode {
   var inputAndArgs: TopKValuesInputConfig[T]                                           = js.native
   var output: Array1D[D]                                                               = js.native
   var gradient: js.Function2[Array1D[D], Array1D[D], TopKValuesGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait TopKValuesInputConfig[T <: NDArray] extends KernelInputConfig {
+trait TopKValuesInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: TopKValuesInputArrays[T] = js.native
   var args: TopKValuesInputConfig.Args = js.native
 }
@@ -40,12 +45,13 @@ object TopKValuesInputConfig {
 }
 
 @js.native
-trait TopKValuesInputArrays[T <: NDArray] extends NamedArrayMap {
+trait TopKValuesInputArrays[T <: NDArray[DataType, Rank]] extends NamedArrayMap {
   var x: T = js.native
 }
 
 @js.native
-trait TopKValuesGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
+trait TopKValuesGradientInputArrays[T <: NDArray[DataType, Rank]]
+    extends TapeNodeInputGradientArrays {
   var x: js.Function0[T] = js.native
 }
 
@@ -73,10 +79,10 @@ object TopKIndicesInputConfig {
 
 @js.native
 trait TopKIndicesInputArrays extends NamedArrayMap {
-  var x: NDArray = js.native
+  var x: NDArray[DataType, Rank] = js.native
 }
 
 @js.native
 trait TopKIndicesGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[NDArray] = js.native
+  var x: js.Function0[NDArray[DataType, Rank]] = js.native
 }

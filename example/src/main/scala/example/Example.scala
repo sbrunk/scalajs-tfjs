@@ -28,8 +28,8 @@ object Example {
 
     val math = new NDArrayMathGPU()
 
-    val a: NDArray = Array1D.`new`(new Int32Array(js.Array(1, 2, 3)))
-    val b: NDArray = Scalar.`new`(2)
+    val a: NDArray[DataType, Rank] = Array1D.`new`(new Int32Array(js.Array(1, 2, 3)))
+    val b: NDArray[DataType, Rank] = Scalar[DataType].`new`(2)
 
     val result = math.add(a, b)
 

@@ -16,39 +16,44 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+
 import scala.scalajs.js
 
 @js.native
-trait UnaryNode[T <: NDArray] extends KernelNode {
+trait UnaryNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: UnaryInputConfig[T]                         = js.native
   var output: T                                                 = js.native
   var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait UnaryInputConfig[T <: NDArray] extends KernelInputConfig {
+trait UnaryInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: UnaryInputArrays[T] = js.native
 }
 
 @js.native
-trait UnaryInputArrays[T <: NDArray] extends NamedArrayMap {
+trait UnaryInputArrays[T <: NDArray[DataType, Rank]] extends NamedArrayMap {
   var x: T = js.native
 }
 
 @js.native
-trait UnaryGradientInputArrays[T <: NDArray] extends TapeNodeInputGradientArrays {
+trait UnaryGradientInputArrays[T <: NDArray[DataType, Rank]] extends TapeNodeInputGradientArrays {
   var x: js.Function0[T] = js.native
 }
 
 @js.native
-trait LeakyReluNode[T <: NDArray] extends KernelNode {
+trait LeakyReluNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: LeakyReluInputConfig[T]                     = js.native
   var output: T                                                 = js.native
   var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait LeakyReluInputConfig[T <: NDArray] extends KernelInputConfig {
+trait LeakyReluInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: UnaryInputArrays[T]     = js.native
   var args: LeakyReluInputConfig.Args = js.native
 }
@@ -62,14 +67,14 @@ object LeakyReluInputConfig {
 }
 
 @js.native
-trait StepNode[T <: NDArray] extends KernelNode {
+trait StepNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: StepInputConfig[T]                          = js.native
   var output: T                                                 = js.native
   var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait StepInputConfig[T <: NDArray] extends KernelInputConfig {
+trait StepInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: UnaryInputArrays[T] = js.native
   var args: StepInputConfig.Args  = js.native
 }
@@ -83,14 +88,14 @@ object StepInputConfig {
 }
 
 @js.native
-trait ClipNode[T <: NDArray] extends KernelNode {
+trait ClipNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: ClipInputConfig[T]                          = js.native
   var output: T                                                 = js.native
   var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait ClipInputConfig[T <: NDArray] extends KernelInputConfig {
+trait ClipInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: UnaryInputArrays[T] = js.native
   var args: ClipInputConfig.Args  = js.native
 }
@@ -105,14 +110,14 @@ object ClipInputConfig {
 }
 
 @js.native
-trait TransposeNode[T <: NDArray] extends KernelNode {
+trait TransposeNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: TransposeInputConfig[T]                     = js.native
   var output: T                                                 = js.native
   var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait TransposeInputConfig[T <: NDArray] extends KernelInputConfig {
+trait TransposeInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: UnaryInputArrays[T]     = js.native
   var args: TransposeInputConfig.Args = js.native
 }
@@ -126,14 +131,14 @@ object TransposeInputConfig {
 }
 
 @js.native
-trait TileNode[T <: NDArray] extends KernelNode {
+trait TileNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: TileInputConfig[T]                          = js.native
   var output: T                                                 = js.native
   var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
 @js.native
-trait TileInputConfig[T <: NDArray] extends KernelInputConfig {
+trait TileInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputConfig {
   var inputs: UnaryInputArrays[T] = js.native
   var args: TileInputConfig.Args  = js.native
 }

@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.data
 
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 
 import scala.scalajs.js
 import scala.scalajs.js.Promise
@@ -57,9 +57,9 @@ trait XhrModelConfig extends js.Object {
 @JSImport("deeplearn", "XhrDataset")
 class XhrDataset protected () extends InMemoryDataset {
   def this(xhrDatasetConfig: XhrDatasetConfig) = this()
-  protected var xhrDatasetConfig: XhrDatasetConfig                      = js.native
-  def getNDArray[T <: NDArray](info: NDArrayInfo): Promise[js.Array[T]] = js.native
-  def fetchData(): Promise[Unit]                                        = js.native
+  protected var xhrDatasetConfig: XhrDatasetConfig                                      = js.native
+  def getNDArray[T <: NDArray[DataType, Rank]](info: NDArrayInfo): Promise[js.Array[T]] = js.native
+  def fetchData(): Promise[Unit]                                                        = js.native
 }
 
 @js.native

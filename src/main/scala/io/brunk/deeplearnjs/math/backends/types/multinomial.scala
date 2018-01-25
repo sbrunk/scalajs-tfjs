@@ -16,6 +16,11 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ Array2D, DataType }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
@@ -43,10 +48,10 @@ object MultinomialInputConfig {
 
 @js.native
 trait MultinomialInputArrays extends NamedArrayMap {
-  var probs: Array2D = js.native
+  var probs: Array2D[DataType] = js.native
 }
 
 @js.native
 trait MultinomialGradientInputArrays extends TapeNodeInputGradientArrays {
-  var probs: js.Function0[Array2D] = js.native
+  var probs: js.Function0[Array2D[DataType]] = js.native
 }

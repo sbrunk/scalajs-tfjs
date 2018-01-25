@@ -16,33 +16,39 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait MinNode[D <: DataType] extends KernelNode {
-  var inputAndArgs: MinInputConfig[D]                                           = js.native
-  var output: NDArray[D]                                                        = js.native
-  var gradient: js.Function2[NDArray[D], NDArray[D], MinGradientInputArrays[D]] = js.native
+  var inputAndArgs: MinInputConfig[D] = js.native
+  var output: NDArray[D, Rank]        = js.native
+  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MinGradientInputArrays[D]] =
+    js.native
 }
 
 @js.native
 trait MinimumNode[D <: DataType] extends KernelNode {
-  var inputAndArgs: MinimumInputConfig[D]                    = js.native
-  var output: NDArray[D]                                     = js.native
-  var gradient: js.Function2[NDArray[D], NDArray[D], js.Any] = js.native
+  var inputAndArgs: MinimumInputConfig[D]                                = js.native
+  var output: NDArray[D, Rank]                                           = js.native
+  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
 }
 
 @js.native
 trait MinimumInputConfig[D <: DataType] extends KernelInputConfig {
-  var inputs: MinimumInputConfig.Inputs = js.native
+  var inputs: MinimumInputConfig.Inputs[D] = js.native
 }
 
 object MinimumInputConfig {
 
   @js.native
-  trait Inputs extends js.Object {
-    var a: NDArray[D] = js.native
-    var b: NDArray[D] = js.native
+  trait Inputs[D <: DataType] extends js.Object {
+    var a: NDArray[D, Rank] = js.native
+    var b: NDArray[D, Rank] = js.native
   }
 }
 
@@ -53,26 +59,27 @@ trait MinInputConfig[D <: DataType] extends KernelInputConfig {
 
 @js.native
 trait MinInputArrays[D <: DataType] extends NamedArrayMap {
-  var x: NDArray[D] = js.native
+  var x: NDArray[D, Rank] = js.native
 }
 
 @js.native
 trait MinGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
-  var x: js.Function0[NDArray[D]] = js.native
+  var x: js.Function0[NDArray[D, Rank]] = js.native
 }
 
 @js.native
 trait MaxNode[D <: DataType] extends KernelNode {
-  var inputAndArgs: MaxInputConfig[D]                                           = js.native
-  var output: NDArray[D]                                                        = js.native
-  var gradient: js.Function2[NDArray[D], NDArray[D], MaxGradientInputArrays[D]] = js.native
+  var inputAndArgs: MaxInputConfig[D] = js.native
+  var output: NDArray[D, Rank]        = js.native
+  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MaxGradientInputArrays[D]] =
+    js.native
 }
 
 @js.native
 trait MaximumNode[D <: DataType] extends KernelNode {
-  var inputAndArgs: MaximumInputConfig[D]                    = js.native
-  var output: NDArray[D]                                     = js.native
-  var gradient: js.Function2[NDArray[D], NDArray[D], js.Any] = js.native
+  var inputAndArgs: MaximumInputConfig[D]                                = js.native
+  var output: NDArray[D, Rank]                                           = js.native
+  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
 }
 
 @js.native
@@ -84,8 +91,8 @@ object MaximumInputConfig {
 
   @js.native
   trait Inputs extends js.Object {
-    var a: NDArray[D] = js.native
-    var b: NDArray[D] = js.native
+    var a: NDArray[D, Rank] = js.native
+    var b: NDArray[D, Rank] = js.native
   }
 }
 
@@ -96,10 +103,10 @@ trait MaxInputConfig[D <: DataType] extends KernelInputConfig {
 
 @js.native
 trait MaxInputArrays[D <: DataType] extends NamedArrayMap {
-  var x: NDArray[D] = js.native
+  var x: NDArray[D, Rank] = js.native
 }
 
 @js.native
 trait MaxGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays {
-  var x: js.Function0[NDArray[D]] = js.native
+  var x: js.Function0[NDArray[D, Rank]] = js.native
 }

@@ -62,7 +62,7 @@ package gpgpu_math {
   }
 
   @js.native
-  trait ArrayData[T <: NDArray] extends js.Object {
+  trait ArrayData[T <: NDArray[DataType, Rank]] extends js.Object {
     var array: T             = js.native
     var texData: TextureData = js.native
   }
@@ -70,19 +70,21 @@ package gpgpu_math {
   @js.native
   @JSGlobalScope
   object Gpgpu_math extends js.Object {
-    def compileProgram[T <: NDArray, K <: NDArray](gpgpu: GPGPUContext,
-                                                   program: GPGPUProgram,
-                                                   inputs: js.Array[ArrayData[T]],
-                                                   output: ArrayData[K]): GPGPUBinary = js.native
-    def runProgram[T <: NDArray, K <: NDArray](
+    def compileProgram[T <: NDArray[DataType, Rank], K <: NDArray[DataType, Rank]](
+        gpgpu: GPGPUContext,
+        program: GPGPUProgram,
+        inputs: js.Array[ArrayData[T]],
+        output: ArrayData[K]
+    ): GPGPUBinary = js.native
+    def runProgram[T <: NDArray[DataType, Rank], K <: NDArray[DataType, Rank]](
         binary: GPGPUBinary,
         inputs: js.Array[ArrayData[T]],
         output: ArrayData[K],
         customSetup: js.Function2[GPGPUContext, WebGLProgram, Unit] = ???
     ): Unit = js.native
     def makeShaderKey(program: GPGPUProgram,
-                      inputs: js.Array[ArrayData[NDArray]],
-                      output: ArrayData[NDArray]): String = js.native
+                      inputs: js.Array[ArrayData[NDArray[DataType, Rank]]],
+                      output: ArrayData[NDArray[DataType, Rank]]): String = js.native
   }
 
 }

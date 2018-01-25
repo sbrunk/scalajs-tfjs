@@ -16,13 +16,19 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ Array4D, DataType }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait LRN4DNode extends KernelNode {
-  var inputAndArgs: LRN4DInputConfig                                     = js.native
-  var output: Array4D                                                    = js.native
-  var gradient: js.Function2[Array4D, Array4D, LRN4DGradientInputArrays] = js.native
+  var inputAndArgs: LRN4DInputConfig = js.native
+  var output: Array4D[DataType]      = js.native
+  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], LRN4DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -45,10 +51,10 @@ object LRN4DInputConfig {
 
 @js.native
 trait LRN4DInputArrays extends NamedArrayMap {
-  var x: Array4D = js.native
+  var x: Array4D[DataType] = js.native
 }
 
 @js.native
 trait LRN4DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array4D] = js.native
+  var x: js.Function0[Array4D[DataType]] = js.native
 }

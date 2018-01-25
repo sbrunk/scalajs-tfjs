@@ -17,7 +17,7 @@
 package io.brunk.deeplearnjs
 
 import io.brunk.deeplearnjs.Util.{ DType, TypedArray }
-import io.brunk.deeplearnjs.math.{ DType, NDArrayMath }
+import io.brunk.deeplearnjs.math._
 
 import scala.scalajs.js
 import js.annotation._
@@ -36,20 +36,23 @@ object Test_util extends js.Object {
   def standardDeviation(values: TypedArray | js.Array[Double], mean: Double): Double = js.native
   def kurtosis(values: TypedArray | js.Array[Double]): Double                        = js.native
   def skewness(values: TypedArray | js.Array[Double]): Double                        = js.native
-  def jarqueBeraNormalityTest(a: NDArray | TypedArray | js.Array[Double]): Unit      = js.native
-  def expectArrayInMeanStdRange(actual: NDArray | TypedArray | js.Array[Double],
+  def jarqueBeraNormalityTest(a: NDArray[DataType, Rank] | TypedArray | js.Array[Double]): Unit =
+    js.native
+  def expectArrayInMeanStdRange(actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
                                 expectedMean: Double,
                                 expectedStdDev: Double,
                                 epsilon: Double = ???): Unit = js.native
-  def expectArraysClose(actual: NDArray | TypedArray | js.Array[Double],
-                        expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean],
-                        epsilon: Double = ???): Unit
+  def expectArraysClose(
+      actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
+      expected: NDArray[DataType, Rank] | TypedArray | js.Array[Double] | js.Array[Boolean],
+      epsilon: Double = ???
+  ): Unit
   def expectArraysEqual(
-      actual: NDArray | TypedArray | js.Array[Double],
-      expected: NDArray | TypedArray | js.Array[Double] | js.Array[Boolean]
+      actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
+      expected: NDArray[DataType, Rank] | TypedArray | js.Array[Double] | js.Array[Boolean]
   ): Unit                                                                   = js.native
   def expectNumbersClose(a: Double, e: Double, epsilon: Double = ???): Unit = js.native
-  def expectValuesInRange(actual: NDArray | TypedArray | js.Array[Double],
+  def expectValuesInRange(actual: NDArray[DataType, Rank] | TypedArray | js.Array[Double],
                           low: Double,
                           high: Double): Unit
   def randomArrayInRange(n: Double, minValue: Double, maxValue: Double): Float32Array = js.native

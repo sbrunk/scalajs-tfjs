@@ -22,13 +22,15 @@ import js.|
 
 package model {
 
+  import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+
   import scala.scalajs.js.Promise
 
   @js.native
   trait Model extends js.Object {
-    def load(): Promise[Unit | js.Array[Unit]] = js.native
-    def predict(input: NDArray): NDArray       = js.native
-    def dispose(): Unit                        = js.native
+    def load(): Promise[Unit | js.Array[Unit]]                           = js.native
+    def predict(input: NDArray[DataType, Rank]): NDArray[DataType, Rank] = js.native
+    def dispose(): Unit                                                  = js.native
   }
 
 }

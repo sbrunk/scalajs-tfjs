@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.math.backends
 
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 import io.brunk.deeplearnjs.math.backends.Tape_types.Tape
 
 import scala.scalajs.js
@@ -26,13 +26,20 @@ import scala.scalajs.js.{ Promise, | }
 @js.native
 @JSGlobalScope
 object Tape_util extends js.Object {
-  def getFilteredNodesXToY(tape: Tape, xs: js.Array[NDArray], y: NDArray): Tape = js.native
+  def getFilteredNodesXToY(tape: Tape,
+                           xs: js.Array[NDArray[DataType, Rank]],
+                           y: NDArray[DataType, Rank]): Tape = js.native
   def backpropagateGradients(arrayAccumulatedGradientMap: js.Any, filteredTape: Tape): Unit =
     js.native
-  def computeInputs(tape: Tape): js.Dictionary[NDArray] = js.native
-  type ScopeResultImmediate = Unit | NDArray | js.Array[NDArray] | js.Dictionary[NDArray]
-  type ScopeResult          = ScopeResultImmediate | Promise[ScopeResultImmediate]
-  def extractNDArraysFromScopeResult(result: ScopeResultImmediate): js.Array[NDArray] = js.native
+  def computeInputs(tape: Tape): js.Dictionary[NDArray[DataType, Rank]] = js.native
+  type ScopeResultImmediate =
+    Unit | NDArray[DataType, Rank] | js.Array[NDArray[DataType, Rank]] | js.Dictionary[
+      NDArray[DataType, Rank]
+    ]
+  type ScopeResult = ScopeResultImmediate | Promise[ScopeResultImmediate]
+  def extractNDArraysFromScopeResult(
+      result: ScopeResultImmediate
+  ): js.Array[NDArray[DataType, Rank]] = js.native
   def stripUndefinedInputsFromInputConfig(config: TapeNodeInputConfig): TapeNodeInputConfig =
     js.native
 }

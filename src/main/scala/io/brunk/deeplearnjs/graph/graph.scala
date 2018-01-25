@@ -18,7 +18,7 @@ package io.brunk.deeplearnjs.graph
 
 import io.brunk.deeplearnjs.Initializer
 import io.brunk.deeplearnjs.graph.Graph.ArrayData
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -41,7 +41,7 @@ class GraphLayers protected () extends js.Object {
 @JSImport("deeplearn", "Graph")
 class Graph extends js.Object {
   var layers: GraphLayers                                                            = js.native
-  def variable(name: String, data: NDArray): Tensor                                  = js.native
+  def variable(name: String, data: NDArray[DataType, Rank]): Tensor                  = js.native
   def placeholder(name: String, shape: js.Array[Double]): Tensor                     = js.native
   def constant(value: ArrayData): Tensor                                             = js.native
   def reshape(x: Tensor, shape: js.Array[Double]): Tensor                            = js.native
@@ -117,7 +117,7 @@ object Node {
 @js.native
 @JSImport("deeplearn", "VariableNode")
 class VariableNode protected () extends Node {
-  def this(graph: Graph, name: String, data: NDArray) = this()
+  def this(graph: Graph, name: String, data: NDArray[DataType, Rank]) = this()
   var data: NDArray    = js.native
   def validate(): Unit = js.native
 }
@@ -132,9 +132,9 @@ class PlaceholderNode protected () extends Node {
 @js.native
 @JSImport("deeplearn", "ConstantNode")
 class ConstantNode protected () extends Node {
-  def this(graph: Graph, data: NDArray) = this()
-  var data: NDArray    = js.native
-  def validate(): Unit = js.native
+  def this(graph: Graph, data: NDArray[DataType, Rank]) = this()
+  var data: NDArray[DataType, Rank] = js.native
+  def validate(): Unit              = js.native
 }
 
 @js.native
@@ -549,7 +549,8 @@ object ArgMaxEqualsNode extends js.Object {
 @js.native
 @JSImport("deeplearn", "graph")
 object Graph extends js.Object {
-  type ArrayData = NDArray | Double | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[
-    js.Array[js.Array[Double]]
-  ] | js.Array[js.Array[js.Array[js.Array[Double]]]]
+  type ArrayData =
+    NDArray[DataType, Rank] | Double | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[
+      js.Array[js.Array[Double]]
+    ] | js.Array[js.Array[js.Array[js.Array[Double]]]]
 }

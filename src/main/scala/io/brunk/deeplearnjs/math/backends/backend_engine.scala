@@ -17,8 +17,7 @@
 package io.brunk.deeplearnjs.math.backends
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
-import io.brunk.deeplearnjs.math.{ NDArray, Scalar }
-import io.brunk.deeplearnjs.math.NdarrayModule.{ DataType, Rank }
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank, Scalar }
 import io.brunk.deeplearnjs.math.backends.Tape_util.{ ScopeResult, ScopeResultImmediate }
 
 import scala.scalajs.js
@@ -36,17 +35,19 @@ class BackendEngine protected () extends js.Object {
   def customGradient[D <: DataType, R <: Rank](f: js.Function0[js.Any],
                                                inputs: NamedArrayMap,
                                                name: String): NDArray[D, R] = js.native
-  def gradients(f: js.Function0[Scalar],
-                xs: js.Array[NDArray],
-                returnValue: Boolean): js.Array[NDArray] | js.Any = js.native
-  def vjp[T <: NDArray](f: js.Function0[T], xs: js.Array[NDArray], dy: T): js.Array[NDArray] =
+  def gradients(f: js.Function0[Scalar[DataType]],
+                xs: js.Array[NDArray[DataType, Rank]],
+                returnValue: Boolean): js.Array[NDArray[DataType, Rank]] | js.Any = js.native
+  def vjp[T <: NDArray[DataType, Rank]](f: js.Function0[T],
+                                        xs: js.Array[NDArray[DataType, Rank]],
+                                        dy: T): js.Array[NDArray[DataType, Rank]] =
     js.native
   def scope[T <: ScopeResult](name: String,
                               scopeFn: js.Function2[js.Function, js.Function, T],
                               gradientsMode: Boolean): T                   = js.native
   def startScope(gradientsMode: Boolean): Unit                             = js.native
   def endScope(result: ScopeResultImmediate, gradientsMode: Boolean): Unit = js.native
-  def keep[T <: NDArray](result: T): T                                     = js.native
-  def track[D <: DataType, T <: NDArray[D]](result: T): T                  = js.native
+  def keep[T <: NDArray[DataType, Rank]](result: T): T                     = js.native
+  def track[D <: DataType, T <: NDArray[D, Rank]](result: T): T            = js.native
   def getBackend(): MathBackend                                            = js.native
 }

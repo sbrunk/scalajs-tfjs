@@ -16,35 +16,43 @@
 
 package io.brunk.deeplearnjs
 
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 @js.native
 trait Initializer extends js.Object {
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank]
 }
 
 @js.native
 @JSImport("deeplearn", "VarianceScalingInitializer")
 class VarianceScalingInitializer protected () extends Initializer {
   def this(scale: Double = ???, mode: String = ???, distribution: String = ???) = this()
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
 @js.native
 @JSImport("deeplearn", "ZerosInitializer")
 class ZerosInitializer extends Initializer {
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
 @js.native
 @JSImport("deeplearn", "OnesInitializer")
 class OnesInitializer extends Initializer {
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
@@ -52,15 +60,19 @@ class OnesInitializer extends Initializer {
 @JSImport("deeplearn", "ConstantInitializer")
 class ConstantInitializer protected () extends Initializer {
   def this(value: Double = ???) = this()
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
 @js.native
 @JSImport("deeplearn", "NDArrayInitializer")
 class NDArrayInitializer protected () extends Initializer {
-  def this(ndarray: NDArray) = this()
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def this(ndarray: NDArray[DataType, Rank]) = this()
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
@@ -68,7 +80,9 @@ class NDArrayInitializer protected () extends Initializer {
 @JSImport("deeplearn", "RandomNormalInitializer")
 class RandomNormalInitializer protected () extends Initializer {
   def this(mean: Double = ???, stdev: Double = ???) = this()
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
@@ -76,7 +90,9 @@ class RandomNormalInitializer protected () extends Initializer {
 @JSImport("deeplearn", "RandomTruncatedNormalInitializer")
 class RandomTruncatedNormalInitializer protected () extends Initializer {
   def this(mean: Double = ???, stdev: Double = ???) = this()
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }
 
@@ -84,6 +100,8 @@ class RandomTruncatedNormalInitializer protected () extends Initializer {
 @JSImport("deeplearn", "RandomUniformInitializer")
 class RandomUniformInitializer protected () extends Initializer {
   def this(minval: Double = ???, maxval: Double = ???) = this()
-  def initialize(weightsShape: js.Array[Double], inputUnits: Double, outputUnits: Double): NDArray =
+  def initialize(weightsShape: js.Array[Double],
+                 inputUnits: Double,
+                 outputUnits: Double): NDArray[DataType, Rank] =
     js.native
 }

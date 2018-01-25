@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.data
 
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -34,16 +34,17 @@ trait DataStats extends js.Object {
 @JSImport("deeplearn", "InMemoryDataset")
 abstract class InMemoryDataset protected () extends js.Object {
   def this(dataShapes: js.Array[js.Array[Double]]) = this()
-  protected var dataShapes: js.Array[js.Array[Double]]      = js.native
-  protected var dataset: js.Array[js.Array[NDArray]] | Null = js.native
-  def getDataShape(dataIndex: Double): js.Array[Double]     = js.native
+  protected var dataShapes: js.Array[js.Array[Double]]                      = js.native
+  protected var dataset: js.Array[js.Array[NDArray[DataType, Rank]]] | Null = js.native
+  def getDataShape(dataIndex: Double): js.Array[Double]                     = js.native
   def fetchData(): Promise[Unit]
-  def getData(): js.Array[js.Array[NDArray]] | Null = js.native
-  def getStats(): js.Array[DataStats]               = js.native
+  def getData(): js.Array[js.Array[NDArray[DataType, Rank]]] | Null = js.native
+  def getStats(): js.Array[DataStats]                               = js.native
   def normalizeWithinBounds(dataIndex: Double, lowerBound: Double, upperBound: Double): Unit =
     js.native
   def removeNormalization(dataIndex: Double): Unit = js.native
-  def unnormalizeExamples(examples: js.Array[NDArray], dataIndex: Double): js.Array[NDArray] =
+  def unnormalizeExamples(examples: js.Array[NDArray[DataType, Rank]],
+                          dataIndex: Double): js.Array[NDArray[DataType, Rank]] =
     js.native
   def dispose(): Unit = js.native
 }

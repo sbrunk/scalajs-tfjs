@@ -16,13 +16,20 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
+import io.brunk.deeplearnjs.math.{ Array3D, DataType }
+import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
+import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
+
 import scala.scalajs.js
 
 @js.native
 trait ResizeBilinear3DNode extends KernelNode {
-  var inputAndArgs: ResizeBilinear3DInputConfig                                     = js.native
-  var output: Array3D                                                               = js.native
-  var gradient: js.Function2[Array3D, Array3D, ResizeBilinear3DGradientInputArrays] = js.native
+  var inputAndArgs: ResizeBilinear3DInputConfig = js.native
+  var output: Array3D[DataType]                 = js.native
+  var gradient
+    : js.Function2[Array3D[DataType], Array3D[DataType], ResizeBilinear3DGradientInputArrays] =
+    js.native
 }
 
 @js.native
@@ -42,10 +49,10 @@ object ResizeBilinear3DInputConfig {
 
 @js.native
 trait ResizeBilinear3DInputArrays extends NamedArrayMap {
-  var x: Array3D = js.native
+  var x: Array3D[DataType] = js.native
 }
 
 @js.native
 trait ResizeBilinear3DGradientInputArrays extends TapeNodeInputGradientArrays {
-  var x: js.Function0[Array3D] = js.native
+  var x: js.Function0[Array3D[DataType]] = js.native
 }
