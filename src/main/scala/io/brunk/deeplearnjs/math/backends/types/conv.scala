@@ -28,8 +28,7 @@ import scala.scalajs.js
 trait Conv2DNode extends KernelNode {
   var inputAndArgs: Conv2DInputConfig = js.native
   var output: Array4D[DataType]       = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Conv2DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Conv2DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -41,7 +40,7 @@ trait Conv2DInputConfig extends KernelInputConfig {
 object Conv2DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var convInfo: Conv2DInfo = js.native
   }
 }
@@ -64,9 +63,7 @@ trait Conv2DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Conv2DDerInputNode extends KernelNode {
   var inputAndArgs: Conv2DDerInputInputConfig = js.native
   var output: Array4D[DataType]               = js.native
-  var gradient
-    : js.Function2[Array4D[DataType], Array4D[DataType], Conv2DDerInputGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Conv2DDerInputGradientInputArrays] = js.native
 }
 
 @js.native
@@ -78,7 +75,7 @@ trait Conv2DDerInputInputConfig extends KernelInputConfig {
 object Conv2DDerInputInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var convInfo: Conv2DInfo = js.native
   }
 }
@@ -99,9 +96,7 @@ trait Conv2DDerInputGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Conv2DDerFilterNode extends KernelNode {
   var inputAndArgs: Conv2DDerFilterInputConfig = js.native
   var output: Array4D[DataType]                = js.native
-  var gradient
-    : js.Function2[Array4D[DataType], Array4D[DataType], Conv2DDerFilterGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Conv2DDerFilterGradientInputArrays] = js.native
 }
 
 @js.native
@@ -113,7 +108,7 @@ trait Conv2DDerFilterInputConfig extends KernelInputConfig {
 object Conv2DDerFilterInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var convInfo: Conv2DInfo = js.native
   }
 }
@@ -134,9 +129,7 @@ trait Conv2DDerFilterGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Conv2DDerBiasNode extends KernelNode {
   var inputAndArgs: Conv2DDerBiasInputConfig = js.native
   var output: Array1D[DataType]              = js.native
-  var gradient
-    : js.Function2[Array1D[DataType], Array1D[DataType], Conv2DDerBiasGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Conv2DDerBiasGradientInputArrays] = js.native
 }
 
 @js.native
@@ -158,9 +151,7 @@ trait Conv2DDerBiasGradientInputArrays extends TapeNodeInputGradientArrays {
 trait DepthwiseConv2DNode extends KernelNode {
   var inputAndArgs: DepthwiseConv2DInputConfig = js.native
   var output: Array4D[DataType]                = js.native
-  var gradient
-    : js.Function2[Array4D[DataType], Array4D[DataType], DepthwiseConv2DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], DepthwiseConv2DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -172,7 +163,7 @@ trait DepthwiseConv2DInputConfig extends KernelInputConfig {
 object DepthwiseConv2DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var convInfo: Conv2DInfo = js.native
   }
 }

@@ -18,16 +18,16 @@ package io.brunk.deeplearnjs.math.backends.types
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
 import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
-import io.brunk.deeplearnjs.math.{ Array1D, DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math._
 import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 
 import scala.scalajs.js
 
 @js.native
 trait TopKValuesNode[D <: DataType, T <: NDArray[D, Rank]] extends KernelNode {
-  var inputAndArgs: TopKValuesInputConfig[T]                                           = js.native
-  var output: Array1D[D]                                                               = js.native
-  var gradient: js.Function2[Array1D[D], Array1D[D], TopKValuesGradientInputArrays[T]] = js.native
+  var inputAndArgs: TopKValuesInputConfig[T] = js.native
+  var output: Array1D[D]                     = js.native
+  // var gradient: js.Function2[Array1D[D], Array1D[D], TopKValuesGradientInputArrays[T]] = js.native
 }
 
 @js.native
@@ -39,7 +39,7 @@ trait TopKValuesInputConfig[T <: NDArray[DataType, Rank]] extends KernelInputCon
 object TopKValuesInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var k: Double = js.native
   }
 }
@@ -58,9 +58,9 @@ trait TopKValuesGradientInputArrays[T <: NDArray[DataType, Rank]]
 @js.native
 trait TopKIndicesNode extends KernelNode {
   var inputAndArgs: TopKIndicesInputConfig = js.native
-  var output: Array1D[String]              = js.native
-  var gradient: js.Function2[Array1D[String], Array1D[String], TopKIndicesGradientInputArrays] =
-    js.native
+  var output: Array1D[Int32]               = js.native
+  // var gradient: js.Function2[Array1D[String], Array1D[String], TopKIndicesGradientInputArrays] =
+  js.native
 }
 
 @js.native
@@ -72,7 +72,7 @@ trait TopKIndicesInputConfig extends KernelInputConfig {
 object TopKIndicesInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var k: Double = js.native
   }
 }

@@ -31,7 +31,7 @@ package binaryop_gpu {
     var variableNames: js.Array[String] = js.native
     var outputShape: js.Array[Double]   = js.native
     var userCode: String                = js.native
-    var supportsBroadcasting: Boolean   = js.native
+    //var supportsBroadcasting: Boolean   = js.native
   }
 
   @js.native

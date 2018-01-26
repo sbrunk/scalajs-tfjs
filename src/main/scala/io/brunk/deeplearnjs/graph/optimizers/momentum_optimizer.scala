@@ -31,7 +31,7 @@ class MomentumOptimizer protected () extends SGDOptimizer {
   def this(learningRate: Double, momentum: Double, specifiedVariableList: js.Array[Node] = ???) =
     this()
   //protected var learningRate: Double = js.native
-  def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
+  override def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
   override def beforeBatch(math: NDArrayMath,
                            batchSize: Double,
                            runtime: SessionRuntime,

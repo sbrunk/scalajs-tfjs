@@ -30,32 +30,32 @@ import scala.scalajs.js.|
 
 @js.native
 trait TapeNode[T <: TapeNodeOutput] extends js.Object {
-  var id: Double                        = js.native
-  var `type`: TapeNodeType              = js.native
-  var name: String                      = js.native
-  var inputAndArgs: TapeNodeInputConfig = js.native
-  var output: T                         = js.native
-  var gradient
-    : js.Function2[NDArray[DataType, Rank] | NamedArrayMap, T, TapeNodeInputGradientArrays] =
-    js.native
+  var id: Double
+  var `type`: TapeNodeType
+  var name: String
+  var inputAndArgs: TapeNodeInputConfig
+  var output: T
+  var gradient: js.Function2[NDArray[DataType, Rank] | NamedArrayMap,
+                             T,
+                             TapeNodeInputGradientArrays]
 }
 
 @js.native
 trait TapeNodeInputConfig extends js.Object {
-  var inputs: NamedArrayMap = js.native
+  var inputs: NamedArrayMap
 }
 
 @js.native
 trait KernelNode extends TapeNode[NDArray[DataType, Rank]] {
-  var kernel: String                  = js.native
-  var inputAndArgs: KernelInputConfig = js.native
-  var output: NDArray[DataType, Rank] = js.native
+  var kernel: String
+  var inputAndArgs: KernelInputConfig
+  var output: NDArray[DataType, Rank]
 }
 
 @js.native
 trait KernelInputConfig extends TapeNodeInputConfig {
-  var inputs: NamedArrayMap        = js.native
-  var args: KernelInputConfig.Args = js.native
+  var inputs: NamedArrayMap
+  var args: KernelInputConfig.Args
 }
 
 object KernelInputConfig {

@@ -27,15 +27,14 @@ import scala.scalajs.js
 trait MinNode[D <: DataType] extends KernelNode {
   var inputAndArgs: MinInputConfig[D] = js.native
   var output: NDArray[D, Rank]        = js.native
-  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MinGradientInputArrays[D]] =
-    js.native
+  // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MinGradientInputArrays[D]] = js.native
 }
 
 @js.native
 trait MinimumNode[D <: DataType] extends KernelNode {
-  var inputAndArgs: MinimumInputConfig[D]                                = js.native
-  var output: NDArray[D, Rank]                                           = js.native
-  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
+  var inputAndArgs: MinimumInputConfig[D] = js.native
+  var output: NDArray[D, Rank]            = js.native
+  // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
 }
 
 @js.native
@@ -71,15 +70,14 @@ trait MinGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays 
 trait MaxNode[D <: DataType] extends KernelNode {
   var inputAndArgs: MaxInputConfig[D] = js.native
   var output: NDArray[D, Rank]        = js.native
-  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MaxGradientInputArrays[D]] =
-    js.native
+  // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MaxGradientInputArrays[D]] = js.native
 }
 
 @js.native
 trait MaximumNode[D <: DataType] extends KernelNode {
-  var inputAndArgs: MaximumInputConfig[D]                                = js.native
-  var output: NDArray[D, Rank]                                           = js.native
-  var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
+  var inputAndArgs: MaximumInputConfig[D] = js.native
+  var output: NDArray[D, Rank]            = js.native
+  // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
 }
 
 @js.native
@@ -90,7 +88,7 @@ trait MaximumInputConfig[D <: DataType] extends KernelInputConfig {
 object MaximumInputConfig {
 
   @js.native
-  trait Inputs[D <: DataType] extends js.Object {
+  trait Inputs[D <: DataType] extends NamedArrayMap {
     var a: NDArray[D, Rank] = js.native
     var b: NDArray[D, Rank] = js.native
   }

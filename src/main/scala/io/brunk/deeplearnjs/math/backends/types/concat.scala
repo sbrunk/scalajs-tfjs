@@ -27,8 +27,7 @@ import scala.scalajs.js
 trait Concat1DNode extends KernelNode {
   var inputAndArgs: Concat1DInputConfig = js.native
   var output: Array1D[DataType]         = js.native
-  var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Concat1DGradientArrays] =
-    js.native
+  // var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Concat1DGradientArrays] = js.native
 }
 
 @js.native
@@ -52,8 +51,7 @@ trait Concat1DGradientArrays extends TapeNodeInputGradientArrays {
 trait Concat2DNode extends KernelNode {
   var inputAndArgs: Concat2DInputConfig = js.native
   var output: Array2D[DataType]         = js.native
-  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Concat2DGradientArrays] =
-    js.native
+  // var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Concat2DGradientArrays] = js.native
 }
 
 @js.native
@@ -65,7 +63,7 @@ trait Concat2DInputConfig extends KernelInputConfig {
 object Concat2DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var axis: Double = js.native
   }
 }
@@ -86,8 +84,7 @@ trait Concat2DGradientArrays extends TapeNodeInputGradientArrays {
 trait Concat3DNode extends KernelNode {
   var inputAndArgs: Concat3DInputConfig = js.native
   var output: Array3D[DataType]         = js.native
-  var gradient: js.Function2[Array3D[DataType], Array3D[DataType], Concat3DGradientArrays] =
-    js.native
+  // var gradient: js.Function2[Array3D[DataType], Array3D[DataType], Concat3DGradientArrays] = js.native
 }
 
 @js.native
@@ -99,7 +96,7 @@ trait Concat3DInputConfig extends KernelInputConfig {
 object Concat3DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var axis: Double = js.native
   }
 }
@@ -120,8 +117,7 @@ trait Concat3DGradientArrays extends TapeNodeInputGradientArrays {
 trait Concat4DNode extends KernelNode {
   var inputAndArgs: Concat4DInputConfig = js.native
   var output: Array4D[DataType]         = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Concat4DGradientArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Concat4DGradientArrays] = js.native
 }
 
 @js.native
@@ -133,7 +129,7 @@ trait Concat4DInputConfig extends KernelInputConfig {
 object Concat4DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var axis: Double = js.native
   }
 }

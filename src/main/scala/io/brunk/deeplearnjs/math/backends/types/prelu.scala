@@ -25,9 +25,9 @@ import scala.scalajs.js
 
 @js.native
 trait PReLUNode[T <: NDArray[DataType, Rank]] extends KernelNode {
-  var inputAndArgs: PReLUInputConfig[T]                         = js.native
-  var output: T                                                 = js.native
-  var gradient: js.Function2[T, T, PReLUGradientInputArrays[T]] = js.native
+  var inputAndArgs: PReLUInputConfig[T] = js.native
+  var output: T                         = js.native
+  // var gradient: js.Function2[T, T, PReLUGradientInputArrays[T]] = js.native
 }
 
 @js.native

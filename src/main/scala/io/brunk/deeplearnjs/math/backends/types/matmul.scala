@@ -28,8 +28,7 @@ import scala.scalajs.js.annotation._
 trait MatMulNode extends KernelNode {
   var inputAndArgs: MatMulInputConfig = js.native
   var output: Array2D[DataType]       = js.native
-  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], MatMulGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array2D[DataType], Array2D[DataType], MatMulGradientInputArrays] = js.native
 }
 
 @js.native
@@ -41,7 +40,7 @@ trait MatMulInputConfig extends KernelInputConfig {
 object MatMulInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var aOrientation: MatrixOrientation = js.native
     var bOrientation: MatrixOrientation = js.native
   }

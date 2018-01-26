@@ -28,8 +28,7 @@ import scala.scalajs.js
 trait PoolNode extends KernelNode {
   var inputAndArgs: PoolInputConfig = js.native
   var output: Array4D[DataType]     = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], PoolGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], PoolGradientInputArrays] = js.native
 }
 
 @js.native
@@ -41,7 +40,7 @@ trait PoolInputConfig extends KernelInputConfig {
 object PoolInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var convInfo: Conv2DInfo = js.native
   }
 }
@@ -60,9 +59,7 @@ trait PoolGradientInputArrays extends TapeNodeInputGradientArrays {
 trait PoolBackpropNode extends KernelNode {
   var inputAndArgs: PoolInputConfig = js.native
   var output: Array4D[DataType]     = js.native
-  var gradient
-    : js.Function2[Array4D[DataType], Array4D[DataType], PoolBackpropGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], PoolBackpropGradientInputArrays] = js.native
 }
 
 @js.native
@@ -74,7 +71,7 @@ trait PoolBackpropInputConfig extends KernelInputConfig {
 object PoolBackpropInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var convInfo: Conv2DInfo = js.native
   }
 }

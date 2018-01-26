@@ -27,9 +27,7 @@ import scala.scalajs.js
 trait BinaryNode extends KernelNode {
   var inputAndArgs: BinaryInputConfig = js.native
   var output: NDArray[DataType, Rank] = js.native
-  var gradient
-    : js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], BinaryInputGradientArrays] =
-    js.native
+  // var gradient: js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], BinaryInputGradientArrays] = js.native
 }
 
 @js.native

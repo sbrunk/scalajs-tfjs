@@ -27,8 +27,7 @@ import scala.scalajs.js
 trait Pad1DNode extends KernelNode {
   var inputAndArgs: Pad1DInputConfig = js.native
   var output: Array1D[DataType]      = js.native
-  var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Pad1DGradientInputArrays] =
-    js.native
+  //var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Pad1DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -40,7 +39,7 @@ trait Pad1DInputConfig extends KernelInputConfig {
 object Pad1DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var paddings: js.Tuple2[Double, Double] = js.native
     var constantValue: Double               = js.native
   }
@@ -60,8 +59,7 @@ trait Pad1DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Pad2DNode extends KernelNode {
   var inputAndArgs: Pad2DInputConfig = js.native
   var output: Array2D[DataType]      = js.native
-  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Pad2DGradientInputArrays] =
-    js.native
+  //var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Pad2DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -73,7 +71,7 @@ trait Pad2DInputConfig extends KernelInputConfig {
 object Pad2DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
     var constantValue: Double                                                     = js.native
   }

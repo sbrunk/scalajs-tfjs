@@ -39,9 +39,9 @@ trait LSTMCell extends js.Object {
 
 @js.native
 trait NDArrayManager extends js.Object {
-  def getNumArrays(): Double                              = js.native
-  def register(a: NDArray[DataType, Rank]): Unit          = js.native
-  def registerVariable(v: Variable[DataType, Rank]): Unit = js.native
+  def getNumArrays(): Double
+  def register(a: NDArray[DataType, Rank]): Unit
+  def registerVariable(v: Variable[DataType, Rank]): Unit
 }
 
 @js.native

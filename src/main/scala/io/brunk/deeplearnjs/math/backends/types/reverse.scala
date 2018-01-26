@@ -27,8 +27,7 @@ import scala.scalajs.js
 trait Reverse4DNode extends KernelNode {
   var inputAndArgs: Reverse4DInputConfig = js.native
   var output: Array4D[DataType]          = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Reverse4DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Reverse4DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -40,7 +39,7 @@ trait Reverse4DInputConfig extends KernelInputConfig {
 object Reverse4DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var axis: js.Array[Double] = js.native
   }
 }

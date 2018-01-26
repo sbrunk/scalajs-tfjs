@@ -34,6 +34,7 @@ object Util extends js.Object {
     ]
   type ArrayData = TypedArray | RegularArray[Double] | RegularArray[Boolean]
   //type NamedArrayMap    = js.Dictionary[NDArray[DataType, Rank]]
+  @js.native
   trait NamedArrayMap extends js.Object {
     @JSBracketAccess
     def apply(name: String): NDArray[DataType, Rank] = js.native

@@ -18,17 +18,19 @@ package io.brunk.deeplearnjs.math.backends.types
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
 import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
-import io.brunk.deeplearnjs.math.{ Array1D, Array2D, DataType }
+import io.brunk.deeplearnjs.math._
 import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 @js.native
 trait OneHotNode extends KernelNode {
   var inputAndArgs: OneHotInputConfig = js.native
-  var output: Array2D[DataType]       = js.native
-  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], OneHotGradientInputArrays] =
-    js.native
+  var output: Array2D[DataType]
+  //var gradient
+  //  : js.Function2[Array2D[DataType] | NamedArrayMap, Array2D[DataType], OneHotGradientInputArrays] =
+  //  js.native
 }
 
 @js.native
@@ -40,7 +42,7 @@ trait OneHotInputConfig extends KernelInputConfig {
 object OneHotInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var depth: Double    = js.native
     var onValue: Double  = js.native
     var offValue: Double = js.native

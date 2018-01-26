@@ -17,11 +17,12 @@
 package io.brunk.deeplearnjs.math.backends.types
 
 import io.brunk.deeplearnjs.Util.NamedArrayMap
-import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
+import io.brunk.deeplearnjs.math.{ Bool, DataType, NDArray, Rank }
 import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 import io.brunk.deeplearnjs.math.backends.Tape_types.TapeNodeInputGradientArrays
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 @js.native
 trait DualInputArrays extends NamedArrayMap {
@@ -38,10 +39,8 @@ trait DualGradientInputArrays extends TapeNodeInputGradientArrays {
 @js.native
 trait EqualNode extends KernelNode {
   var inputAndArgs: EqualInputConfig = js.native
-  var output: NDArray[String, Rank]  = js.native
-  var gradient
-    : js.Function2[NDArray[String, Rank], NDArray[String, Rank], DualGradientInputArrays] =
-    js.native
+  var output: NDArray[Bool, Rank]    = js.native
+  //var gradient: js.Function2[NDArray[Bool, Rank], NDArray[Bool, Rank], DualGradientInputArrays] = js.native
 }
 
 @js.native
@@ -52,10 +51,8 @@ trait EqualInputConfig extends KernelInputConfig {
 @js.native
 trait LogicalOrNode extends KernelNode {
   var inputAndArgs: LogicalOrInputConfig = js.native
-  var output: NDArray[String, Rank]      = js.native
-  var gradient
-    : js.Function2[NDArray[String, Rank], NDArray[String, Rank], DualGradientInputArrays] =
-    js.native
+  var output: NDArray[Bool, Rank]        = js.native
+  //var gradient: js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], DualGradientInputArrays] = js.native
 }
 
 @js.native

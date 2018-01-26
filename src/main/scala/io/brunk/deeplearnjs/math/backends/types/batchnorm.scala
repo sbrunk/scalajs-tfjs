@@ -28,8 +28,7 @@ import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 trait BatchNorm4DNode extends KernelNode {
   var inputAndArgs: BatchNorm4DInputConfig = js.native
   var output: Array4D[DataType]            = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], BatchNorm4DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], BatchNorm4DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -41,7 +40,7 @@ trait BatchNorm4DInputConfig extends KernelInputConfig {
 object BatchNorm4DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var varianceEpsilon: Double = js.native
   }
 }
@@ -68,8 +67,7 @@ trait BatchNorm4DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait BatchNorm3DNode extends KernelNode {
   var inputAndArgs: BatchNorm3DInputConfig = js.native
   var output: Array3D[DataType]            = js.native
-  var gradient: js.Function2[Array3D[DataType], Array3D[DataType], BatchNorm3DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array3D[DataType], Array3D[DataType], BatchNorm3DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -81,7 +79,7 @@ trait BatchNorm3DInputConfig extends KernelInputConfig {
 object BatchNorm3DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var varianceEpsilon: Double = js.native
   }
 }
@@ -108,8 +106,7 @@ trait BatchNorm3DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait BatchNorm2DNode extends KernelNode {
   var inputAndArgs: BatchNorm2DInputConfig = js.native
   var output: Array2D[DataType]            = js.native
-  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], BatchNorm2DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array2D[DataType], Array2D[DataType], BatchNorm2DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -121,7 +118,7 @@ trait BatchNorm2DInputConfig extends KernelInputConfig {
 object BatchNorm2DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var varianceEpsilon: Double = js.native
   }
 }

@@ -27,8 +27,7 @@ import scala.scalajs.js
 trait LRN4DNode extends KernelNode {
   var inputAndArgs: LRN4DInputConfig = js.native
   var output: Array4D[DataType]      = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], LRN4DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], LRN4DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -40,7 +39,7 @@ trait LRN4DInputConfig extends KernelInputConfig {
 object LRN4DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var radius: Double     = js.native
     var bias: Double       = js.native
     var alpha: Double      = js.native

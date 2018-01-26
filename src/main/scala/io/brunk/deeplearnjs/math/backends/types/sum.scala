@@ -27,9 +27,7 @@ import scala.scalajs.js
 trait SumNode[D <: DataType] extends KernelNode {
   var inputAndArgs: SumInputConfig[D] = js.native
   var output: NDArray[js.Any, Rank]   = js.native
-  var gradient
-    : js.Function2[NDArray[js.Any, Rank], NDArray[js.Any, Rank], SumGradientInputArrays[D]] =
-    js.native
+  // var gradient: js.Function2[NDArray[js.Any, Rank], NDArray[js.Any, Rank], SumGradientInputArrays[D]] = js.native
 }
 
 @js.native
@@ -41,7 +39,7 @@ trait SumInputConfig[D <: DataType] extends KernelInputConfig {
 object SumInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var axes: js.Array[Double] = js.native
   }
 }

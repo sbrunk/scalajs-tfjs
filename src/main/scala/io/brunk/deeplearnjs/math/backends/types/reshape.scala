@@ -16,6 +16,7 @@
 
 package io.brunk.deeplearnjs.math.backends.types
 
+import io.brunk.deeplearnjs.Util.NamedArrayMap
 import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 import io.brunk.deeplearnjs.math.backends.{ KernelInputConfig, KernelNode }
 
@@ -23,9 +24,9 @@ import scala.scalajs.js
 
 @js.native
 trait ReshapeNode extends KernelNode {
-  var inputAndArgs: ReshapeInputConfig                                                 = js.native
-  var output: NDArray[DataType, Rank]                                                  = js.native
-  var gradient: js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], js.Any] = js.native
+  var inputAndArgs: ReshapeInputConfig = js.native
+  var output: NDArray[DataType, Rank]  = js.native
+  // var gradient: js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], js.Any] = js.native
 }
 
 @js.native
@@ -37,12 +38,12 @@ trait ReshapeInputConfig extends KernelInputConfig {
 object ReshapeInputConfig {
 
   @js.native
-  trait Inputs extends js.Object {
+  trait Inputs extends NamedArrayMap {
     var x: NDArray[DataType, Rank] = js.native
   }
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var newShape: js.Array[Double] = js.native
   }
 }

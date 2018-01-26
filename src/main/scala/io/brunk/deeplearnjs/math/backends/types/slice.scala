@@ -27,8 +27,7 @@ import scala.scalajs.js
 trait Slice1DNode extends KernelNode {
   var inputAndArgs: Slice1DInputConfig = js.native
   var output: Array1D[DataType]        = js.native
-  var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Slice1DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array1D[DataType], Array1D[DataType], Slice1DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -40,7 +39,7 @@ trait Slice1DInputConfig extends KernelInputConfig {
 object Slice1DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var begin: Double = js.native
     var size: Double  = js.native
   }
@@ -60,8 +59,7 @@ trait Slice1DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Slice2DNode extends KernelNode {
   var inputAndArgs: Slice2DInputConfig = js.native
   var output: Array2D[DataType]        = js.native
-  var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Slice2DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array2D[DataType], Array2D[DataType], Slice2DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -73,7 +71,7 @@ trait Slice2DInputConfig extends KernelInputConfig {
 object Slice2DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var begin: js.Tuple2[Double, Double] = js.native
     var size: js.Tuple2[Double, Double]  = js.native
   }
@@ -93,8 +91,7 @@ trait Slice2DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Slice3DNode extends KernelNode {
   var inputAndArgs: Slice3DInputConfig = js.native
   var output: Array3D[DataType]        = js.native
-  var gradient: js.Function2[Array3D[DataType], Array3D[DataType], Slice3DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array3D[DataType], Array3D[DataType], Slice3DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -106,7 +103,7 @@ trait Slice3DInputConfig extends KernelInputConfig {
 object Slice3DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var begin: js.Tuple3[Double, Double, Double] = js.native
     var size: js.Tuple3[Double, Double, Double]  = js.native
   }
@@ -126,8 +123,7 @@ trait Slice3DGradientInputArrays extends TapeNodeInputGradientArrays {
 trait Slice4DNode extends KernelNode {
   var inputAndArgs: Slice4DInputConfig = js.native
   var output: Array4D[DataType]        = js.native
-  var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Slice4DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array4D[DataType], Array4D[DataType], Slice4DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -139,7 +135,7 @@ trait Slice4DInputConfig extends KernelInputConfig {
 object Slice4DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var begin: js.Tuple4[Double, Double, Double, Double] = js.native
     var size: js.Tuple4[Double, Double, Double, Double]  = js.native
   }

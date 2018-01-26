@@ -30,22 +30,22 @@ package gpgpu_math {
 
   @js.native
   trait GPGPUProgram extends js.Object {
-    var variableNames: js.Array[String] = js.native
-    var outputShape: js.Array[Double]   = js.native
-    var userCode: String                = js.native
-    var supportsBroadcasting: Boolean   = js.native
+    var variableNames: js.Array[String]
+    var outputShape: js.Array[Double]
+    var userCode: String
+    var supportsBroadcasting: Boolean | Unit = js.native
   }
 
   @js.native
   trait GPGPUBinary extends js.Object {
-    var webGLProgram: webgl.Program                        = js.native
-    var program: GPGPUProgram                              = js.native
-    var uniformLocations: GPGPUBinary.UniformLocations     = js.native
-    var attributeLocations: GPGPUBinary.AttributeLocations = js.native
-    var gpgpu: GPGPUContext                                = js.native
-    var source: String                                     = js.native
-    var inShapeInfos: js.Array[ShapeInfo]                  = js.native
-    var outShapeInfo: ShapeInfo                            = js.native
+    var webGLProgram: webgl.Program
+    var program: GPGPUProgram
+    var uniformLocations: GPGPUBinary.UniformLocations
+    var attributeLocations: GPGPUBinary.AttributeLocations
+    var gpgpu: GPGPUContext
+    var source: String
+    var inShapeInfos: js.Array[ShapeInfo]
+    var outShapeInfo: ShapeInfo
   }
 
   object GPGPUBinary {
@@ -69,8 +69,8 @@ package gpgpu_math {
 
   @js.native
   trait ArrayData[T <: NDArray[DataType, Rank]] extends js.Object {
-    var array: T             = js.native
-    var texData: TextureData = js.native
+    var array: T
+    var texData: TextureData
   }
 
   @js.native

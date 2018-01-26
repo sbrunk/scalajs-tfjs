@@ -27,9 +27,7 @@ import scala.scalajs.js
 trait ResizeBilinear3DNode extends KernelNode {
   var inputAndArgs: ResizeBilinear3DInputConfig = js.native
   var output: Array3D[DataType]                 = js.native
-  var gradient
-    : js.Function2[Array3D[DataType], Array3D[DataType], ResizeBilinear3DGradientInputArrays] =
-    js.native
+  // var gradient: js.Function2[Array3D[DataType], Array3D[DataType], ResizeBilinear3DGradientInputArrays] = js.native
 }
 
 @js.native
@@ -41,7 +39,7 @@ trait ResizeBilinear3DInputConfig extends KernelInputConfig {
 object ResizeBilinear3DInputConfig {
 
   @js.native
-  trait Args extends js.Object {
+  trait Args extends KernelInputConfig.Args {
     var newShape2D: js.Tuple2[Double, Double] = js.native
     var alignCorners: Boolean                 = js.native
   }
