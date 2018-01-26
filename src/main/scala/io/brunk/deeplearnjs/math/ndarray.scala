@@ -51,7 +51,7 @@ object Rank {
 object DataType {
   val float32 = "float32".asInstanceOf[Float32]
   val int32   = "int32".asInstanceOf[Int32]
-  val bool   = "bool".asInstanceOf[Bool]
+  val bool    = "bool".asInstanceOf[Bool]
 }
 
 @js.native
@@ -143,7 +143,7 @@ class NDArray[+D <: DataType, +R <: Rank] protected () extends js.Object {
   def data(): Promise[js.Any]                                                        = js.native
   def dataSync(): js.Any                                                             = js.native
   def dispose(): Unit                                                                = js.native
-  def equals(t: NDArray[D, R]): Boolean                                              = js.native
+  def equals[D1 >: D <: DataType, R1 >: R <: Rank](t: NDArray[D1, R1]): Boolean      = js.native
 }
 
 @js.native
@@ -160,7 +160,7 @@ object NDArray extends js.Object {
                                      math: NDArrayMath = ???): js.Any = js.native
   def fromPixels(pixels: ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,
                  numChannels: Double = ???,
-                 math: NDArrayMath = ???): Array3D[String] = js.native
+                 math: NDArrayMath = ???): Array3D[Int32] = js.native
   def rand[D <: DataType, R <: Rank](shape: js.Array[Double],
                                      randFunction: js.Function0[Double],
                                      dtype: D = ???): js.Any = js.native
@@ -183,12 +183,12 @@ object NDArray extends js.Object {
 @js.native
 @JSImport("deeplearn", "Scalar")
 class Scalar[+D <: DataType] extends NDArray[D, Zero] {
-  def get(): Double                                 = js.native
-  def `val`(): Promise[Double]                      = js.native
-  def add(value: Double): Unit                      = js.native
-  def asType[D2 <: DataType](dtype: D2): Scalar[D2] = js.native
-  def locToIndex(loc: js.Array[Double]): Double     = js.native
-  def indexToLoc(index: Double): js.Array[Double]   = js.native
+  def get(): Double                                          = js.native
+  def `val`(): Promise[Double]                               = js.native
+  def add(value: Double): Unit                               = js.native
+  override def asType[D2 <: DataType](dtype: D2): Scalar[D2] = js.native
+  def locToIndex(loc: js.Array[Double]): Double              = js.native
+  override def indexToLoc(index: Double): js.Array[Double]   = js.native
 }
 
 @js.native
@@ -205,8 +205,8 @@ class Array1D[+D <: DataType] extends NDArray[D, One] {
   def add(value: Double, i: Double): Unit     = js.native
   def locToIndex(loc: Tuple1[Double]): Double = js.native
   @JSName("indexToLoc")
-  def indexToLoc(index: Double): Tuple1[Double]      = js.native
-  def asType[D2 <: DataType](dtype: D2): Array1D[D2] = js.native
+  override def indexToLoc(index: Double): Tuple1[Double]      = js.native
+  override def asType[D2 <: DataType](dtype: D2): Array1D[D2] = js.native
 }
 
 @js.native
@@ -215,16 +215,18 @@ object Array1D extends js.Object {
   def `new`[D <: DataType](values: js.Any | js.Array[Double] | js.Array[Boolean],
                            dtype: D = ???): Array1D[D]                       = js.native
   def ones[D <: DataType](shape: Tuple1[Double], dtype: D = ???): Array1D[D] = js.native
-  def randNormal[D <: String](shape: Tuple1[Double],
-                              mean: Double = ???,
-                              stdDev: Double = ???,
-                              dtype: D = ???,
-                              seed: Double = ???): Array1D[D] = js.native
-  def randTruncatedNormal[D <: String](shape: Tuple1[Double],
-                                       mean: Double = ???,
-                                       stdDev: Double = ???,
-                                       dtype: D = ???,
-                                       seed: Double = ???): Array1D[D] = js.native
+  def randNormal[D <: DataType](shape: Tuple1[Double],
+                                mean: Double = ???,
+                                stdDev: Double = ???,
+                                dtype: D = ???,
+                                seed: Double = ???): Array1D[D] =
+    js.native // TODO RandNormalDataTypes
+  def randTruncatedNormal[D <: DataType](shape: Tuple1[Double],
+                                         mean: Double = ???,
+                                         stdDev: Double = ???,
+                                         dtype: D = ???,
+                                         seed: Double = ???): Array1D[D] =
+    js.native // TODO RandNormalDataTypes
   def randUniform[D <: DataType](shape: Tuple1[Double],
                                  a: Double,
                                  b: Double,
@@ -244,8 +246,8 @@ class Array2D[+D <: DataType] protected () extends NDArray[D, Two] {
   def `val`(i: Double, j: Double): Promise[Double]        = js.native
   def locToIndex(locs: js.Tuple2[Double, Double]): Double = js.native
   @JSName("indexToLoc")
-  def indexToLoc(index: Double): js.Tuple2[Double, Double] = js.native
-  def asType[D2 <: DataType](dtype: D2): Array2D[D2]       = js.native
+  override def indexToLoc(index: Double): js.Tuple2[Double, Double] = js.native
+  override def asType[D2 <: DataType](dtype: D2): Array2D[D2]       = js.native
 }
 @js.native
 @JSImport("deeplearn", "Array2D")
@@ -261,16 +263,18 @@ object Array2D extends js.Object {
     js.native
   def zeros[D <: DataType](shape: js.Tuple2[Double, Double], dtype: D = ???): Array2D[D] =
     js.native
-  def randNormal[D <: String](shape: js.Tuple2[Double, Double],
-                              mean: Double = ???,
-                              stdDev: Double = ???,
-                              dtype: D = ???,
-                              seed: Double = ???): Array2D[D] = js.native
-  def randTruncatedNormal[D <: String](shape: js.Tuple2[Double, Double],
-                                       mean: Double = ???,
-                                       stdDev: Double = ???,
-                                       dtype: D = ???,
-                                       seed: Double = ???): Array2D[D] = js.native
+  def randNormal[D <: DataType](shape: js.Tuple2[Double, Double],
+                                mean: Double = ???,
+                                stdDev: Double = ???,
+                                dtype: D = ???,
+                                seed: Double = ???): Array2D[D] =
+    js.native // TODO RandNormalDataTypes
+  def randTruncatedNormal[D <: DataType](shape: js.Tuple2[Double, Double],
+                                         mean: Double = ???,
+                                         stdDev: Double = ???,
+                                         dtype: D = ???,
+                                         seed: Double = ???): Array2D[D] =
+    js.native // TODO RandNormalDataTypes
   def randUniform[D <: DataType](shape: js.Tuple2[Double, Double],
                                  a: Double,
                                  b: Double,
@@ -290,8 +294,8 @@ class Array3D[+D <: DataType] protected () extends NDArray[D, Three] {
   def add(value: Double, i: Double, j: Double, k: Double): Unit   = js.native
   def locToIndex(locs: js.Tuple3[Double, Double, Double]): Double = js.native
   @JSName("indexToLoc")
-  def indexToLoc(index: Double): js.Tuple3[Double, Double, Double] = js.native
-  def asType[D2 <: DataType](dtype: D2): Array3D[D2]               = js.native
+  override def indexToLoc(index: Double): js.Tuple3[Double, Double, Double] = js.native
+  override def asType[D2 <: DataType](dtype: D2): Array3D[D2]               = js.native
 }
 
 @js.native
@@ -306,16 +310,18 @@ object Array3D extends js.Object {
     js.native
   def zeros[D <: DataType](shape: js.Tuple3[Double, Double, Double], dtype: D = ???): Array3D[D] =
     js.native
-  def randNormal[D <: String](shape: js.Tuple3[Double, Double, Double],
-                              mean: Double = ???,
-                              stdDev: Double = ???,
-                              dtype: D = ???,
-                              seed: Double = ???): Array3D[D] = js.native
-  def randTruncatedNormal[D <: String](shape: js.Tuple3[Double, Double, Double],
-                                       mean: Double = ???,
-                                       stdDev: Double = ???,
-                                       dtype: D = ???,
-                                       seed: Double = ???): Array3D[D] = js.native
+  def randNormal[D <: DataType](shape: js.Tuple3[Double, Double, Double],
+                                mean: Double = ???,
+                                stdDev: Double = ???,
+                                dtype: D = ???,
+                                seed: Double = ???): Array3D[D] =
+    js.native // TODO RandNormalDataTypes
+  def randTruncatedNormal[D <: DataType](shape: js.Tuple3[Double, Double, Double],
+                                         mean: Double = ???,
+                                         stdDev: Double = ???,
+                                         dtype: D = ???,
+                                         seed: Double = ???): Array3D[D] =
+    js.native // TODO RandNormalDataTypes
   def randUniform[D <: DataType](shape: js.Tuple3[Double, Double, Double],
                                  a: Double,
                                  b: Double,
@@ -335,8 +341,8 @@ class Array4D[+D <: DataType] protected () extends NDArray[D, Four] {
   def add(value: Double, i: Double, j: Double, k: Double, l: Double): Unit = js.native
   def locToIndex(locs: js.Tuple4[Double, Double, Double, Double]): Double  = js.native
   @JSName("indexToLoc")
-  def indexToLoc(index: Double): js.Tuple4[Double, Double, Double, Double] = js.native
-  def asType[D2 <: DataType](dtype: D2): Array4D[D2]                       = js.native
+  override def indexToLoc(index: Double): js.Tuple4[Double, Double, Double, Double] = js.native
+  override def asType[D2 <: DataType](dtype: D2): Array4D[D2]                       = js.native
 }
 
 @js.native
@@ -353,16 +359,18 @@ object Array4D extends js.Object {
                           dtype: D = ???): Array4D[D] = js.native
   def zeros[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
                            dtype: D = ???): Array4D[D] = js.native
-  def randNormal[D <: String](shape: js.Tuple4[Double, Double, Double, Double],
-                              mean: Double = ???,
-                              stdDev: Double = ???,
-                              dtype: D = ???,
-                              seed: Double = ???): Array4D[D] = js.native
-  def randTruncatedNormal[D <: String](shape: js.Tuple4[Double, Double, Double, Double],
-                                       mean: Double = ???,
-                                       stdDev: Double = ???,
-                                       dtype: D = ???,
-                                       seed: Double = ???): Array4D[D] = js.native
+  def randNormal[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
+                                mean: Double = ???,
+                                stdDev: Double = ???,
+                                dtype: D = ???,
+                                seed: Double = ???): Array4D[D] =
+    js.native // TODO RandNormalDataTypes
+  def randTruncatedNormal[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
+                                         mean: Double = ???,
+                                         stdDev: Double = ???,
+                                         dtype: D = ???,
+                                         seed: Double = ???): Array4D[D] =
+    js.native // TODO RandNormalDataTypes
   def randUniform[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
                                  a: Double,
                                  b: Double,

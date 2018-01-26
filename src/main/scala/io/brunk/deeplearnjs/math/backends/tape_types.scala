@@ -72,8 +72,9 @@ object KernelInputConfig {
 @js.native
 @JSGlobalScope
 object Tape_types extends js.Object {
-  type Tape           = js.Array[TapeNode[TapeNodeOutput]]
-  type TapeNodeOutput = NDArray[DataType, Rank] | NamedArrayMap
+  type Tape = js.Array[TapeNode[TapeNodeOutput]]
+  //type TapeNodeOutput = NDArray[DataType, Rank] | NamedArrayMap
+  type TapeNodeOutput = NDArray[DataType, Rank]
   type TapeNodeType   = String
   //type TapeNodeInputGradientArrays = js.Dictionary[js.Function0[NDArray[DataType, Rank]]]
   @js.native

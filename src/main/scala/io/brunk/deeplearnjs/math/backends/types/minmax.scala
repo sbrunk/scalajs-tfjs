@@ -45,7 +45,7 @@ trait MinimumInputConfig[D <: DataType] extends KernelInputConfig {
 object MinimumInputConfig {
 
   @js.native
-  trait Inputs[D <: DataType] extends js.Object {
+  trait Inputs[D <: DataType] extends NamedArrayMap {
     var a: NDArray[D, Rank] = js.native
     var b: NDArray[D, Rank] = js.native
   }

@@ -107,35 +107,35 @@ class MathBackendWebGL protected () extends MathBackend {
             paddings: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]],
             constantValue: Double): Array2D[DataType]                                  = js.native
   def transpose[D <: DataType, T <: NDArray[D, Rank]](x: T, perm: js.Array[Double]): T = js.native
-  def sum[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[js.Any, Rank] =
+  def sum[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank] =
+    js.native // TODO SumTypes
+  def argMin(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[Int32, Rank] = js.native
+  def argMax(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[Int32, Rank] = js.native
+  def equal(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank] =
     js.native
-  def argMin(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[String, Rank] = js.native
-  def argMax(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[String, Rank] = js.native
-  def equal(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
+  def notEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank] =
     js.native
-  def notEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
+  def lessEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank] =
     js.native
-  def lessEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
+  def greater(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank] =
     js.native
-  def greater(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
+  def greaterEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank] =
     js.native
-  def greaterEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
-    js.native
-  def logicalOr(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
+  def logicalOr(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank] =
     js.native
   def topKValues[D <: DataType, T <: NDArray[D, Rank]](x: T, k: Double): Array1D[D] =
     js.native
-  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[String]                = js.native
+  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[Int32]                 = js.native
   def min[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]  = js.native
   def minimum[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank] = js.native
   def max[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]  = js.native
   def maximum[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank] = js.native
-  def divide(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank] =
+  def divide(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Float32, Rank] =
     js.native
   def add[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank] = js.native
   def subtract[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank] =
     js.native
-  def pow[T <: NDArray[DataType, Rank]](a: T, b: NDArray[String, Rank]): T  = js.native
+  def pow[T <: NDArray[DataType, Rank]](a: T, b: NDArray[Int32, Rank]): T   = js.native
   def ceil[T <: NDArray[DataType, Rank]](x: T): T                           = js.native
   def floor[T <: NDArray[DataType, Rank]](x: T): T                          = js.native
   def exp[T <: NDArray[DataType, Rank]](x: T): T                            = js.native
@@ -149,7 +149,7 @@ class MathBackendWebGL protected () extends MathBackend {
   def leakyRelu[T <: NDArray[DataType, Rank]](x: T, alpha: Double): T       = js.native
   def prelu[T <: NDArray[DataType, Rank]](a: T, b: T): T                    = js.native
   def preluDer[T <: NDArray[DataType, Rank]](a: T, b: T): T                 = js.native
-  def int[R <: Rank](x: NDArray[DataType, R]): NDArray[String, R]           = js.native
+  def int[R <: Rank](x: NDArray[DataType, R]): NDArray[Int32, R]            = js.native
   def clip[T <: NDArray[DataType, Rank]](x: T, min: Double, max: Double): T = js.native
   def abs[T <: NDArray[DataType, Rank]](x: T): T                            = js.native
   def sigmoid[T <: NDArray[DataType, Rank]](x: T): T                        = js.native
@@ -180,7 +180,7 @@ class MathBackendWebGL protected () extends MathBackend {
                       convInfo: Conv2DInfo): Array4D[DataType]               = js.native
   def maxPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType] = js.native
   def minPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType] = js.native
-  def avgPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[String]   = js.native
+  def avgPool(x: Array4D[DataType], convInfo: Conv2DInfo): Array4D[DataType] = js.native
   def maxPoolBackprop(dy: Array4D[DataType],
                       x: Array4D[DataType],
                       convInfo: Conv2DInfo): Array4D[DataType] = js.native
@@ -190,7 +190,7 @@ class MathBackendWebGL protected () extends MathBackend {
   def resizeBilinear3D(x: Array3D[DataType],
                        newShape2D: js.Tuple2[Double, Double],
                        alignCorners: Boolean): Array3D[DataType] = js.native
-  def multinomial(probs: Array2D[DataType], numSamples: Double, seed: Double): Array2D[String] =
+  def multinomial(probs: Array2D[DataType], numSamples: Double, seed: Double): Array2D[Int32] =
     js.native
   def oneHot(indices: Array1D[DataType],
              depth: Double,

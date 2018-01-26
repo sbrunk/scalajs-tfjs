@@ -48,12 +48,13 @@ trait NDArrayManager extends js.Object {
 @JSImport("deeplearn", "NDArrayMath")
 class NDArrayMath protected () extends NDArrayManager {
   def this(backend: BackendType | MathBackend, safeMode: Boolean) = this()
-  protected var backendEngine: BackendEngine                                = js.native
-  var registeredVariables: NamedVariableMap                                 = js.native
-  def time(query: js.Function0[NDArray[DataType, Rank]]): Promise[Double]   = js.native
-  def getNumArrays(): Double                                                = js.native
-  def register(a: NDArray[DataType, Rank] | Variable[DataType, Rank]): Unit = js.native
-  def registerVariable(v: Variable[DataType, Rank]): Unit                   = js.native
+  protected var backendEngine: BackendEngine                              = js.native
+  var registeredVariables: NamedVariableMap                               = js.native
+  def time(query: js.Function0[NDArray[DataType, Rank]]): Promise[Double] = js.native
+  def getNumArrays(): Double                                              = js.native
+  //def register(a: NDArray[DataType, Rank] | Variable[DataType, Rank]): Unit = js.native
+  def register(a: NDArray[DataType, Rank]): Unit          = js.native
+  def registerVariable(v: Variable[DataType, Rank]): Unit = js.native
   def writePixels(dataId: Double,
                   pixels: ImageData | html.Image | html.Canvas | html.Video,
                   numChannels: Double): Unit                                         = js.native
@@ -110,40 +111,41 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def concat4D(a: Array4D[DataType], b: Array4D[DataType], axis: Double): Array4D[DataType] =
     js.native
-  def logSumExp[T <: NDArray[String, Rank]](input: NDArray[DataType, Rank],
-                                            axis: Double | js.Array[Double] = ???,
-                                            keepDims: Boolean = ???): T = js.native
-  def sum[D <: DataType, T <: NDArray[js.Any, Rank]](x: NDArray[D, Rank],
-                                                     axis: Double | js.Array[Double] = ???,
-                                                     keepDims: Boolean = ???): T = js.native
+  def logSumExp[T <: NDArray[Float32, Rank]](input: NDArray[DataType, Rank],
+                                             axis: Double | js.Array[Double] = ???,
+                                             keepDims: Boolean = ???): T = js.native
+  def sum[D <: DataType, T <: NDArray[D, Rank]](x: NDArray[D, Rank],
+                                                axis: Double | js.Array[Double] = ???,
+                                                keepDims: Boolean = ???): T =
+    js.native // TODO SumTypes
   def mean(x: NDArray[DataType, Rank],
            axis: Double | js.Array[Double] = ???,
-           keepDims: Boolean = ???): NDArray[String, Rank] = js.native
-  def argMin[T <: NDArray[String, Rank]](x: NDArray[DataType, Rank], axis: Double = ???): T =
+           keepDims: Boolean = ???): NDArray[Float32, Rank] = js.native
+  def argMin[T <: NDArray[Int32, Rank]](x: NDArray[DataType, Rank], axis: Double = ???): T =
     js.native
-  def argMax[T <: NDArray[String, Rank]](x: NDArray[DataType, Rank], axis: Double = ???): T =
+  def argMax[T <: NDArray[Int32, Rank]](x: NDArray[DataType, Rank], axis: Double = ???): T =
     js.native
-  def argMaxEquals(x1: NDArray[DataType, Rank], x2: NDArray[DataType, Rank]): Scalar[String] =
+  def argMaxEquals(x1: NDArray[DataType, Rank], x2: NDArray[DataType, Rank]): Scalar[Bool] =
     js.native
-  def equal[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
-                                                                  b: NDArray[D2, Rank]): T =
+  def equal[D1 <: DataType, D2 <: D1, T <: NDArray[Bool, Rank]](a: NDArray[D1, Rank],
+                                                                b: NDArray[D2, Rank]): T =
     js.native
-  def equalStrict[T <: NDArray[DataType, Rank]](a: T, b: T): NDArray[String, Rank] = js.native
-  def notEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
-                                                                     b: NDArray[D2, Rank]): T =
+  def equalStrict[T <: NDArray[DataType, Rank]](a: T, b: T): NDArray[Bool, Rank] = js.native
+  def notEqual[D1 <: DataType, D2 <: D1, T <: NDArray[Bool, Rank]](a: NDArray[D1, Rank],
+                                                                   b: NDArray[D2, Rank]): T =
     js.native
   def notEqualStrict[R <: Rank, D1 <: DataType, D2 <: D1](a: NDArray[D1, R],
                                                           b: NDArray[D2, R]): js.Any = js.native
-  def lessEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
-                                                                      b: NDArray[D2, Rank]): T =
-    js.native
-  def greater[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
+  def lessEqual[D1 <: DataType, D2 <: D1, T <: NDArray[Bool, Rank]](a: NDArray[D1, Rank],
                                                                     b: NDArray[D2, Rank]): T =
     js.native
-  def greaterEqual[D1 <: DataType, D2 <: D1, T <: NDArray[String, Rank]](a: NDArray[D1, Rank],
-                                                                         b: NDArray[D2, Rank]): T =
+  def greater[D1 <: DataType, D2 <: D1, T <: NDArray[Bool, Rank]](a: NDArray[D1, Rank],
+                                                                  b: NDArray[D2, Rank]): T =
     js.native
-  def logicalOr(a: NDArray[String, Rank], b: NDArray[String, Rank]): NDArray[String, Rank] =
+  def greaterEqual[D1 <: DataType, D2 <: D1, T <: NDArray[Bool, Rank]](a: NDArray[D1, Rank],
+                                                                       b: NDArray[D2, Rank]): T =
+    js.native
+  def logicalOr(a: NDArray[Bool, Rank], b: NDArray[Bool, Rank]): NDArray[Bool, Rank] =
     js.native
   def topK(x: NDArray[DataType, Rank], k: Double): js.Any = js.native
   def min[D <: DataType, T <: NDArray[D, Rank]](x: NDArray[D, Rank],
@@ -163,11 +165,11 @@ class NDArrayMath protected () extends NDArrayManager {
   def softmaxCrossEntropyWithLogits[R <: Rank,
                                     A <: NDArray[DataType, R],
                                     B <: NDArray[DataType, R],
-                                    O <: NDArray[String, Rank]](labels: A,
-                                                                logits: B,
-                                                                dim: Double = ???): O = js.native
-  def switchDim[T <: NDArray[DataType, Rank]](a: T, newDim: js.Array[Double]): T      = js.native
-  def tile[D <: DataType, T <: NDArray[D, Rank]](x: T, reps: js.Array[Double]): T     = js.native
+                                    O <: NDArray[Float32, Rank]](labels: A,
+                                                                 logits: B,
+                                                                 dim: Double = ???): O = js.native
+  def switchDim[T <: NDArray[DataType, Rank]](a: T, newDim: js.Array[Double]): T       = js.native
+  def tile[D <: DataType, T <: NDArray[D, Rank]](x: T, reps: js.Array[Double]): T      = js.native
   def pad1D(x: Array1D[DataType],
             paddings: js.Tuple2[Double, Double],
             constantValue: Double = ???): Array1D[DataType] =
@@ -187,9 +189,9 @@ class NDArrayMath protected () extends NDArrayManager {
   def subtract[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
                                                                  b: NDArray[D2, Rank]): T =
     js.native
-  def pow[D <: DataType, T <: NDArray[D, Rank]](a: NDArray[D, Rank], b: NDArray[String, Rank]): T =
+  def pow[D <: DataType, T <: NDArray[D, Rank]](a: NDArray[D, Rank], b: NDArray[Int32, Rank]): T =
     js.native
-  def powStrict[D <: DataType](a: NDArray[D, Rank], b: NDArray[String, Rank]): NDArray[D, Rank] =
+  def powStrict[D <: DataType](a: NDArray[D, Rank], b: NDArray[Int32, Rank]): NDArray[D, Rank] =
     js.native
   def sub[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
                                                             b: NDArray[D2, Rank]): T =
@@ -200,8 +202,8 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def elementWiseMul[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
   def multiplyStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
-  def divide[T <: NDArray[String, Rank]](a: NDArray[DataType, Rank],
-                                         b: NDArray[DataType, Rank]): T =
+  def divide[T <: NDArray[Float32, Rank]](a: NDArray[DataType, Rank],
+                                          b: NDArray[DataType, Rank]): T =
     js.native
   def divideStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T                        = js.native
   def scalarDividedByArray[T <: NDArray[DataType, Rank]](c: Scalar[DataType], a: T): T = js.native
@@ -301,11 +303,12 @@ class NDArrayMath protected () extends NDArrayManager {
                                             strides: js.Tuple2[Double, Double] | Double,
                                             pad: String | Double,
                                             dimRoundingMode: String = ???): T = js.native
-  def avgPool[R <: String](x: NDArray[String, R],
-                           filterSize: js.Tuple2[Double, Double] | Double,
-                           strides: js.Tuple2[Double, Double] | Double,
-                           pad: String | Double,
-                           dimRoundingMode: String = ???): js.Any = js.native
+// TODO make union types as type param in NDArray work
+//  def avgPool[R <: Three | Four](x: NDArray[Int32 | Float32, R],
+//                                 filterSize: js.Tuple2[Double, Double] | Double,
+//                                 strides: js.Tuple2[Double, Double] | Double,
+//                                 pad: String | Double,
+//                                 dimRoundingMode: String = ???): js.Any = js.native
   def resizeBilinear3D(x: Array3D[DataType],
                        newShape2D: js.Tuple2[Double, Double],
                        alignCorners: Boolean = ???): Array3D[DataType] = js.native
@@ -358,7 +361,7 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def multinomial(probabilities: Array1D[DataType] | Array2D[DataType],
                   numSamples: Double,
-                  seed: Double = ???): Array1D[String] | Array2D[String] =
+                  seed: Double = ???): Array1D[Int32] | Array2D[Int32] =
     js.native
   def oneHot(indices: Array1D[DataType],
              depth: Double,
@@ -371,11 +374,12 @@ class NDArrayMath protected () extends NDArrayManager {
   def norm[D <: DataType](x: NDArray[D, Rank],
                           ord: Double | String = ???,
                           axis: Double | js.Array[Double] = ???,
-                          keepDims: Boolean = ???): NDArray[D | js.Any, Rank] = js.native
+                          keepDims: Boolean = ???): NDArray[D /*| js.Any*/, Rank] =
+    js.native // TODO SumTypes
   def vjp[T <: NDArray[DataType, Rank] | NamedArrayMap, R <: Rank](
       f: js.Function0[NDArray[DataType, R]],
       x: T,
-      dy: NDArray[String, R]
+      dy: NDArray[Float32, R]
   ): T = js.native
   def gradients[T <: NDArray[DataType, Rank] | NamedArrayMap, D <: DataType](
       f: js.Function0[Scalar[D]],

@@ -43,7 +43,7 @@ trait MathBackend extends NDArrayStorage {
              b: Array2D[DataType],
              aOrientation: MatrixOrientation,
              bOrientation: MatrixOrientation): Array2D[DataType]
-  def clone[T <: NDArray[DataType, Rank]](ndarray: T): T
+  def clone[D <: DataType, T <: NDArray[D, Rank]](x: T): T
   def slice1D(x: Array1D[DataType], begin: Double, size: Double): Array1D[DataType]
   def slice2D(x: Array2D[DataType],
               begin: js.Tuple2[Double, Double],
@@ -63,25 +63,25 @@ trait MathBackend extends NDArrayStorage {
   def add[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank]
   def subtract[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank]
   def multiply[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank]
-  def divide[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[String, Rank]
-  def sum[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[js.Any, Rank]
-  def argMin(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[String, Rank]
-  def argMax(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[String, Rank]
-  def equal(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank]
-  def notEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank]
-  def lessEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank]
-  def greater(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank]
-  def greaterEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank]
-  def logicalOr(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[String, Rank]
+  def divide(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Float32, Rank]
+  def sum[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank] // TODO SumTypes
+  def argMin(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[Int32, Rank]
+  def argMax(x: NDArray[DataType, Rank], axes: js.Array[Double]): NDArray[Int32, Rank]
+  def equal(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank]
+  def notEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank]
+  def lessEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank]
+  def greater(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank]
+  def greaterEqual(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank]
+  def logicalOr(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Bool, Rank]
   def topKValues[D <: DataType, T <: NDArray[D, Rank]](x: T, k: Double): Array1D[D]
-  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[String]
+  def topKIndices(x: NDArray[DataType, Rank], k: Double): Array1D[Int32]
   def min[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]
   def minimum[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank]
   def max[D <: DataType](x: NDArray[D, Rank], axes: js.Array[Double]): NDArray[D, Rank]
   def maximum[D <: DataType](a: NDArray[D, Rank], b: NDArray[D, Rank]): NDArray[D, Rank]
   def ceil[T <: NDArray[DataType, Rank]](x: T): T
   def floor[T <: NDArray[DataType, Rank]](x: T): T
-  def pow[T <: NDArray[DataType, Rank]](a: T, b: NDArray[String, Rank]): T
+  def pow[T <: NDArray[DataType, Rank]](a: T, b: NDArray[Int32, Rank]): T
   def exp[T <: NDArray[DataType, Rank]](x: T): T
   def log[T <: NDArray[DataType, Rank]](x: T): T
   def sqrt[T <: NDArray[DataType, Rank]](x: T): T
@@ -93,7 +93,7 @@ trait MathBackend extends NDArrayStorage {
   def leakyRelu[T <: NDArray[DataType, Rank]](x: T, alpha: Double): T
   def prelu[T <: NDArray[DataType, Rank]](x: T, alpha: T): T
   def preluDer[T <: NDArray[DataType, Rank]](x: T, alpha: T): T
-  def int[R <: Rank](x: NDArray[DataType, R]): NDArray[String, R]
+  def int[R <: Rank](x: NDArray[DataType, R]): NDArray[Int32, R]
   def clip[T <: NDArray[DataType, Rank]](x: T, min: Double, max: Double): T
   def abs[T <: NDArray[DataType, Rank]](x: T): T
   def sigmoid[T <: NDArray[DataType, Rank]](x: T): T
@@ -167,7 +167,7 @@ trait MathBackend extends NDArrayStorage {
                                    normRegion: String): Array4D[DataType]
   def multinomial(probabilities: Array2D[DataType],
                   numSamples: Double,
-                  seed: Double): Array2D[String]
+                  seed: Double): Array2D[Int32]
   def oneHot(indices: Array1D[DataType],
              depth: Double,
              onValue: Double,
