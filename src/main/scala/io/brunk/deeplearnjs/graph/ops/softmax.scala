@@ -17,7 +17,7 @@
 package io.brunk.deeplearnjs.graph.ops
 
 import io.brunk.deeplearnjs.graph.{ SummedTensorArrayMap, Tensor, TensorArrayMap }
-import io.brunk.deeplearnjs.math.{ Array1D, DataType, NDArrayMath, Scalar }
+import io.brunk.deeplearnjs.math._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -51,5 +51,5 @@ object Softmax extends js.Object {
   def crossEntropyCost(math: NDArrayMath,
                        y: Array1D[DataType],
                        target: Array1D[DataType],
-                       epsilon: Scalar[DataType]): Scalar[String] = js.native
+                       epsilon: Scalar[DataType]): Scalar[Float32] = js.native
 }

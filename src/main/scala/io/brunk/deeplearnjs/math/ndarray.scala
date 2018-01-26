@@ -25,21 +25,36 @@ import scala.scalajs.js.annotation._
 import scala.scalajs.js.typedarray.{ Float32Array, Int32Array, Uint8Array }
 import scala.scalajs.js.{ Promise, | }
 
-sealed trait DataType
-sealed trait Float32 extends DataType
+sealed trait DataType extends js.Any
+sealed trait Float32  extends DataType
+sealed trait Int32    extends DataType
+sealed trait Bool     extends DataType
 
-sealed trait Rank
+sealed trait Rank   extends js.Any
+sealed trait Zero   extends Rank
+sealed trait One    extends Rank
+sealed trait Two    extends Rank
+sealed trait Three  extends Rank
+sealed trait Four   extends Rank
+sealed trait Higher extends Rank
 
-@ScalaJSDefined
-trait SupportedType extends js.Any {
-  type D <: DataType
+object Rank {
+  val zero   = "0".asInstanceOf[Zero]
+  val one    = "1".asInstanceOf[One]
+  val two    = "2".asInstanceOf[One]
+  val three  = "3".asInstanceOf[One]
+  val four   = "4".asInstanceOf[One]
+  val higher = "higher".asInstanceOf[One]
+
 }
 
-object SupportedType {
-  val float32 = "float32".asInstanceOf[SupportedType { type DataType = Float32 }]
+object DataType {
+  val float32 = "float32".asInstanceOf[Float32]
+  val int32   = "int32".asInstanceOf[Int32]
+  val bool   = "bool".asInstanceOf[Bool]
 }
 
-@js. native
+@js.native
 sealed trait Tuple1[+T1] extends js.Object {
   @JSName("0") val _1: T1 = js.native
 }
@@ -71,7 +86,7 @@ trait RankMap[D <: DataType] extends js.Object {
   var `2`: Array2D[D]            = js.native
   var `3`: Array3D[D]            = js.native
   var `4`: Array4D[D]            = js.native
-  var higher: NDArray[D, String] = js.native
+  var higher: NDArray[D, Higher] = js.native
 }
 
 @js.native
@@ -83,7 +98,7 @@ trait NDArrayData[D <: DataType] extends js.Object {
 @js.native
 trait ShapeMap extends js.Object {
   var `0`: js.Array[Double]                          = js.native
-  var `1`: Tuple1[Double]                         = js.native
+  var `1`: Tuple1[Double]                            = js.native
   var `2`: js.Tuple2[Double, Double]                 = js.native
   var `3`: js.Tuple3[Double, Double, Double]         = js.native
   var `4`: js.Tuple4[Double, Double, Double, Double] = js.native
@@ -92,7 +107,7 @@ trait ShapeMap extends js.Object {
 
 @js.native
 @JSImport("deeplearn", "NDArray")
-class NDArray[D <: DataType, R <: Rank] protected () extends js.Object {
+class NDArray[+D <: DataType, +R <: Rank] protected () extends js.Object {
   def this(shape: js.Array[Double],
            dtype: D,
            values: js.Any = ???,
@@ -102,12 +117,12 @@ class NDArray[D <: DataType, R <: Rank] protected () extends js.Object {
   var dataId: Double                                                                 = js.native
   var shape: js.Any                                                                  = js.native
   var size: Double                                                                   = js.native
-  var dtype: D                                                                       = js.native
-  var rankType: R                                                                    = js.native
+  def dtype: D                                                                       = js.native
+  def rankType: R                                                                    = js.native
   var strides: js.Array[Double]                                                      = js.native
   protected var math: NDArrayMath                                                    = js.native
   def reshape[R2 <: Rank](newShape: js.Array[Double]): js.Any                        = js.native
-  def squeeze[T <: NDArray[D, Rank]](axis: js.Array[Double] = ???): T                = js.native
+  def squeeze[T >: NDArray[D, Rank]](axis: js.Array[Double] = ???): T                = js.native
   def flatten(): Array1D[D]                                                          = js.native
   def asScalar(): Scalar[D]                                                          = js.native
   def as1D(): Array1D[D]                                                             = js.native
@@ -167,7 +182,7 @@ object NDArray extends js.Object {
 
 @js.native
 @JSImport("deeplearn", "Scalar")
-class Scalar[D <: DataType] extends NDArray[D, String] {
+class Scalar[+D <: DataType] extends NDArray[D, Zero] {
   def get(): Double                                 = js.native
   def `val`(): Promise[Double]                      = js.native
   def add(value: Double): Unit                      = js.native
@@ -184,13 +199,13 @@ object Scalar extends js.Object {
 
 @js.native
 @JSImport("deeplearn", "Array1D")
-class Array1D[D <: DataType] extends NDArray[D, String] {
-  def get(i: Double): Double                     = js.native
-  def `val`(i: Double): Promise[Double]          = js.native
-  def add(value: Double, i: Double): Unit        = js.native
+class Array1D[+D <: DataType] extends NDArray[D, One] {
+  def get(i: Double): Double                  = js.native
+  def `val`(i: Double): Promise[Double]       = js.native
+  def add(value: Double, i: Double): Unit     = js.native
   def locToIndex(loc: Tuple1[Double]): Double = js.native
   @JSName("indexToLoc")
-  def indexToLoc(index: Double): Tuple1[Double]   = js.native
+  def indexToLoc(index: Double): Tuple1[Double]      = js.native
   def asType[D2 <: DataType](dtype: D2): Array1D[D2] = js.native
 }
 
@@ -198,7 +213,7 @@ class Array1D[D <: DataType] extends NDArray[D, String] {
 @JSImport("deeplearn", "Array1D")
 object Array1D extends js.Object {
   def `new`[D <: DataType](values: js.Any | js.Array[Double] | js.Array[Boolean],
-                           dtype: D = ???): Array1D[D]                          = js.native
+                           dtype: D = ???): Array1D[D]                       = js.native
   def ones[D <: DataType](shape: Tuple1[Double], dtype: D = ???): Array1D[D] = js.native
   def randNormal[D <: String](shape: Tuple1[Double],
                               mean: Double = ???,
@@ -218,7 +233,7 @@ object Array1D extends js.Object {
 
 @js.native
 @JSImport("deeplearn", "Array2D")
-class Array2D[D <: DataType] protected () extends NDArray[D, String] {
+class Array2D[+D <: DataType] protected () extends NDArray[D, Two] {
   def this(shape: js.Tuple2[Double, Double],
            dtype: D,
            values: js.Any = ???,
@@ -264,7 +279,7 @@ object Array2D extends js.Object {
 
 @js.native
 @JSImport("deeplearn", "Array3D")
-class Array3D[D <: DataType] protected () extends NDArray[D, String] {
+class Array3D[+D <: DataType] protected () extends NDArray[D, Three] {
   def this(shape: js.Tuple3[Double, Double, Double],
            dtype: D,
            values: js.Any = ???,
@@ -309,7 +324,7 @@ object Array3D extends js.Object {
 
 @js.native
 @JSImport("deeplearn", "Array4D")
-class Array4D[D <: DataType] protected () extends NDArray[D, String] {
+class Array4D[+D <: DataType] protected () extends NDArray[D, Four] {
   def this(shape: js.Tuple4[Double, Double, Double, Double],
            dtype: D,
            values: js.Any = ???,

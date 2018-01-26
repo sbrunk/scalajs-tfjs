@@ -75,7 +75,7 @@ class GraphRunner protected () extends js.Object {
             numPasses: Double = ???): Unit                          = js.native
   def stopInferring(): Unit                                         = js.native
   def isInferenceRunning(): Boolean                                 = js.native
-  def computeMetric(): Scalar[String]                               = js.native
+  def computeMetric(): Scalar[Float32]                              = js.native
   def getTotalBatchesTrained(): Double                              = js.native
   def getLastComputedMetric(): Scalar[DataType]                     = js.native
   def setMath(math: NDArrayMath): Unit                              = js.native
