@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.graph
 
-import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath }
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, NDArrayMath, Rank }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -25,25 +25,36 @@ import scala.scalajs.js.|
 @js.native
 @JSGlobal
 abstract class TensorArrayMapBase extends js.Object {
-  def get(tensor: Tensor, skipChecks: Boolean = ???): NDArray = js.native
-  def delete(tensor: Tensor): Unit                            = js.native
-  def nullify(tensor: Tensor): Unit                           = js.native
-  def disposeArray(tensor: Tensor): Unit                      = js.native
-  def size(): Double                                          = js.native
-  def dispose(): Unit                                         = js.native
-  def hasNullArray(tensor: Tensor): Boolean                   = js.native
-  protected var dict: js.Any                                  = js.native
+  def get(tensor: Tensor, skipChecks: Boolean = ???): NDArray[DataType, Rank] = js.native
+  def delete(tensor: Tensor): Unit                                            = js.native
+  def nullify(tensor: Tensor): Unit                                           = js.native
+  def disposeArray(tensor: Tensor): Unit                                      = js.native
+  def size(): Double                                                          = js.native
+  def dispose(): Unit                                                         = js.native
+  def hasNullArray(tensor: Tensor): Boolean                                   = js.native
+  protected var dict: TensorArrayMapBase.Dict                                 = js.native
+}
+
+object TensorArrayMapBase {
+
+  @js.native
+  trait Dict extends js.Object {
+    @JSBracketAccess
+    def apply(tensorID: Double): NDArray[DataType, Rank] | Null = js.native
+    @JSBracketAccess
+    def update(tensorID: Double, v: NDArray[DataType, Rank] | Null): Unit = js.native
+  }
 }
 
 @js.native
 @JSGlobal
 class TensorArrayMap extends TensorArrayMapBase {
-  def set(tensor: Tensor, array: NDArray | Null): Unit = js.native
+  def set(tensor: Tensor, array: NDArray[DataType, Rank] | Null): Unit = js.native
 }
 
 @js.native
 @JSGlobal
 class SummedTensorArrayMap protected () extends TensorArrayMapBase {
   def this(math: NDArrayMath) = this()
-  def add(tensor: Tensor, array: NDArray): Unit = js.native
+  def add(tensor: Tensor, array: NDArray[DataType, Rank]): Unit = js.native
 }

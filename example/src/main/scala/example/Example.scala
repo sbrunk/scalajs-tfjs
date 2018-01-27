@@ -16,7 +16,7 @@
 
 package example
 
-import io.brunk.deeplearnjs.{ Util, Version }
+import io.brunk.deeplearnjs.{ Environment, Version }
 import io.brunk.deeplearnjs.math._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -26,12 +26,14 @@ import scala.scalajs.js.typedarray.Int32Array
 object Example {
   def main(args: Array[String]): Unit = {
 
-    val math = new NDArrayMathGPU()
+    println(s"deeplearnjs version: ${Version.version}")
 
-    val a: NDArray = Array1D.`new`(new Int32Array(js.Array(1, 2, 3)))
-    val b: NDArray = Scalar.`new`(2)
+    val math = Environment.ENV.math
 
-    val result = math.add(a, b)
+    val a: Array1D[Int32] = Array1D.`new`(new Int32Array(js.Array(1, 2, 3)), DataType.int32)
+    val b: Scalar[Int32]  = Scalar.`new`(2, DataType.int32)
+
+    val result: NDArray[Int32, Rank] = math.add(a, b)
 
     // Option 1: With async/await.
     // Caveat: in non-Chrome browsers you need to put this in an async function.

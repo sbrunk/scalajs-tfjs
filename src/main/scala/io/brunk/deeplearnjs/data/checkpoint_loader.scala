@@ -17,7 +17,7 @@
 package io.brunk.deeplearnjs.data
 
 import io.brunk.deeplearnjs.data.Checkpoint_loader.CheckpointManifest
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 
 import scala.scalajs.js
 import scala.scalajs.js.Promise
@@ -33,9 +33,9 @@ trait CheckpointVariable extends js.Object {
 @JSImport("deeplearn", "CheckpointLoader")
 class CheckpointLoader protected () extends js.Object {
   def this(urlPath: String) = this()
-  def getCheckpointManifest(): Promise[CheckpointManifest] = js.native
-  def getAllVariables(): Promise[js.Dictionary[NDArray]]   = js.native
-  def getVariable(varName: String): Promise[NDArray]       = js.native
+  def getCheckpointManifest(): Promise[CheckpointManifest]               = js.native
+  def getAllVariables(): Promise[js.Dictionary[NDArray[DataType, Rank]]] = js.native
+  def getVariable(varName: String): Promise[NDArray[DataType, Rank]]     = js.native
 }
 
 @js.native

@@ -17,8 +17,8 @@
 package io.brunk.deeplearnjs.graph
 
 import io.brunk.deeplearnjs.graph.Session.FeedEntry
-import io.brunk.deeplearnjs.graph.optimizers.Optimizer
-import io.brunk.deeplearnjs.math.{ NDArray, NDArrayMath, Scalar }
+import io.brunk.deeplearnjs.math.optimizers.Optimizer
+import io.brunk.deeplearnjs.math._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -27,7 +27,18 @@ import scala.scalajs.js.annotation._
 @JSGlobal
 class FeedDictionary protected () extends js.Object {
   def this(feedEntries: js.Array[FeedEntry] = ???) = this()
-  var dict: js.Any = js.native
+  var dict: FeedDictionary.Dict = js.native
+}
+
+object FeedDictionary {
+
+  @js.native
+  trait Dict extends js.Object {
+    @JSBracketAccess
+    def apply(tensorID: Double): FeedEntry = js.native
+    @JSBracketAccess
+    def update(tensorID: Double, v: FeedEntry): Unit = js.native
+  }
 }
 
 @js.native
@@ -48,16 +59,17 @@ object CostReduction extends js.Object {
 class Session protected () extends js.Object {
   def this(graph: Graph, math: NDArrayMath) = this()
   def dispose(): Unit = js.native
-  def evalAll(tensors: js.Array[Tensor], feedEntries: js.Array[FeedEntry]): js.Array[NDArray] =
+  def evalAll(tensors: js.Array[Tensor],
+              feedEntries: js.Array[FeedEntry]): js.Array[NDArray[DataType, Rank]] =
     js.native
-  def eval(tensor: Tensor, feedEntries: js.Array[FeedEntry]): NDArray = js.native
+  def eval(tensor: Tensor, feedEntries: js.Array[FeedEntry]): NDArray[DataType, Rank] = js.native
   def train(costTensor: Tensor,
             feedEntries: js.Array[FeedEntry],
             batchSize: Double,
             optimizer: Optimizer,
-            costReduction: CostReduction = ???): Scalar = js.native
-  var activationArrayMap: TensorArrayMap                = js.native
-  var gradientArrayMap: SummedTensorArrayMap            = js.native
+            costReduction: CostReduction = ???): Scalar[DataType] = js.native
+  var activationArrayMap: TensorArrayMap                          = js.native
+  var gradientArrayMap: SummedTensorArrayMap                      = js.native
 }
 
 @js.native

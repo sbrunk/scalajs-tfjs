@@ -37,4 +37,8 @@ object Axis_util extends js.Object {
     js.native
   def assertAxesAreInnerMostDims(msg: String, axes: js.Array[Double], rank: Double): Unit =
     js.native
+  def getAxesPermutation(axes: js.Array[Double], rank: Double): js.Array[Double] | Null =
+    js.native
+  def getUndoAxesPermutation(axes: js.Array[Double]): js.Array[Double]  = js.native
+  def getInnerMostAxes(numAxes: Double, rank: Double): js.Array[Double] = js.native
 }

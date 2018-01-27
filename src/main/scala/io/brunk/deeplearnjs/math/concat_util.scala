@@ -24,7 +24,18 @@ import scala.scalajs.js.annotation._
 object Concat_util extends js.Object {
   def assertParams(aShape: js.Array[Double], bShape: js.Array[Double], axis: Double): Unit =
     js.native
+  def computeOutShape1D(x1Shape: js.Array[Double], x2Shape: js.Array[Double]): js.Array[Double] =
+    js.native
   def computeOutShape(x1Shape: js.Array[Double],
                       x2Shape: js.Array[Double],
                       axis: Double): js.Array[Double] = js.native
+  def computeGradientSliceShapes2D(x1TensorShape: js.Array[Double],
+                                   yTensorShape: js.Array[Double],
+                                   axis: Double): js.Any = js.native
+  def computeGradientSliceShapes3D(x1Shape: js.Array[Double],
+                                   yShape: js.Array[Double],
+                                   axis: Double): js.Any = js.native
+  def computeGradientSliceShapes4D(x1TensorShape: js.Array[Double],
+                                   yTensorShape: js.Array[Double],
+                                   axis: Double): js.Any = js.native
 }

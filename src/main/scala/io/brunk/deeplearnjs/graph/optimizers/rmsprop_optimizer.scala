@@ -16,9 +16,11 @@
 
 package io.brunk.deeplearnjs.graph.optimizers
 
+import io.brunk.deeplearnjs.Util.NamedVariableMap
 import io.brunk.deeplearnjs.graph.{ Node, SummedTensorArrayMap, TensorArrayMap }
 import io.brunk.deeplearnjs.graph.Session.SessionRuntime
 import io.brunk.deeplearnjs.math.NDArrayMath
+import io.brunk.deeplearnjs.math.optimizers.Optimizer
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
@@ -29,6 +31,7 @@ class RMSPropOptimizer protected () extends Optimizer {
   def this(learningRate: Double, gamma: Double, specifiedVariableList: js.Array[Node] = ???) =
     this()
   //var learningRate: Double = js.native
+  def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
   override def beforeBatch(math: NDArrayMath,
                            batchSize: Double,
                            runtime: SessionRuntime,

@@ -16,6 +16,8 @@
 
 package io.brunk.deeplearnjs
 
+import io.brunk.deeplearnjs.math._
+
 import scala.scalajs.js
 import js.annotation._
 import js.{ Promise, | }
@@ -31,16 +33,24 @@ object Util extends js.Object {
       js.Array[js.Array[js.Array[T]]]
     ]
   type ArrayData = TypedArray | RegularArray[Double] | RegularArray[Boolean]
+  //type NamedArrayMap    = js.Dictionary[NDArray[DataType, Rank]]
+  @js.native
+  trait NamedArrayMap extends js.Object {
+    @JSBracketAccess
+    def apply(name: String): NDArray[DataType, Rank] = js.native
+    @JSBracketAccess
+    def update(name: String, v: NDArray[DataType, Rank]): Unit = js.native
+  }
+  type NamedVariableMap = js.Dictionary[Variable[DataType, Rank]]
   def shuffle(array: js.Array[js.Any] | Uint32Array | Int32Array | Float32Array): Unit = js.native
   def clamp(min: Double, x: Double, max: Double): Double                               = js.native
   def randUniform(a: Double, b: Double): Double                                        = js.native
-  def randGauss(mean: Double = ???, stdDev: Double = ???, truncated: Boolean = ???): Double =
-    js.native
-  def distSquared(a: FlatVector, b: FlatVector): Double = js.native
-  def assert(expr: Boolean, msg: String): Unit          = js.native
+  def distSquared(a: FlatVector, b: FlatVector): Double                                = js.native
+  def assert(expr: Boolean, msg: String): Unit                                         = js.native
   def assertShapesMatch(shapeA: js.Array[Double],
                         shapeB: js.Array[Double],
-                        errorMessagePrefix: String = ???): Unit = js.native
+                        errorMessagePrefix: String = ???): Unit                      = js.native
+  def assertTypesMatch(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): Unit = js.native
   def flatten(arr: Double | Boolean | RegularArray[Double] | RegularArray[Boolean],
               ret: js.Array[Double | Boolean] = ???): js.Array[Double | Boolean] = js.native
   def inferShape(
@@ -59,10 +69,22 @@ object Util extends js.Object {
                   maxCounter: Double = ???): Promise[Unit]                            = js.native
   def getQueryParams(queryString: String): js.Dictionary[String]                      = js.native
   def inferFromImplicitShape(shape: js.Array[Double], size: Double): js.Array[Double] = js.native
-  type DType = String
-  val NAN_INT32: Double                              = js.native
-  val NAN_BOOL: Double                               = js.native
-  val NAN_FLOAT32: Double                            = js.native
-  def getNaN(dtype: DType): Double                   = js.native
-  def isValNaN(`val`: Double, dtype: DType): Boolean = js.native
+  val NAN_INT32: Double                                                               = js.native
+  val NAN_BOOL: Double                                                                = js.native
+  val NAN_FLOAT32: Double                                                             = js.native
+  def getNaN(dtype: DType): Double                                                    = js.native
+  def isValNaN(`val`: Double, dtype: DType): Boolean                                  = js.native
+  def squeezeShape(shape: js.Array[Double], axis: js.Array[Double] = ???): js.Any     = js.native
+  def getTypedArrayFromDType[D <: DataType](dtype: D, size: Double): js.Any           = js.native
+  def isNDArrayInList(ndarray: NDArray[DataType, Rank],
+                      ndarrayList: js.Array[NDArray[DataType, Rank]]): Boolean = js.native
+  def checkForNaN(vals: TypedArray, dtype: DataType, name: String): Unit       = js.native
+  def flattenNameArrayMap(nameArrayMap: NDArray[DataType, Rank] | NamedArrayMap,
+                          keys: js.Array[String] = ???): js.Array[NDArray[DataType, Rank]] =
+    js.native
+  def unflattenToNameArrayMap(keys: js.Array[String],
+                              flatArrays: js.Array[NDArray[DataType, Rank]]): NamedArrayMap =
+    js.native
+  def hasEncodingLoss(oldType: DataType, newType: DataType): Boolean = js.native
+  def nextFrame(): Promise[Unit]                                     = js.native
 }

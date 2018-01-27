@@ -16,7 +16,7 @@
 
 package io.brunk.deeplearnjs.data
 
-import io.brunk.deeplearnjs.math.NDArray
+import io.brunk.deeplearnjs.math.{ DataType, NDArray, Rank }
 
 import scala.scalajs.js
 import scala.scalajs.js.Promise
@@ -34,21 +34,32 @@ trait NDArrayInfo extends js.Object {
 trait XhrDatasetConfig extends js.Object {
   var data: js.Array[NDArrayInfo]
   var labelClassNames: js.Array[String]
-  var modelConfigs: js.Dictionary[XhrModelConfig]
+  var modelConfigs: XhrDatasetConfig.ModelConfigs
+}
+
+object XhrDatasetConfig {
+
+  @js.native
+  trait ModelConfigs extends js.Object {
+    @JSBracketAccess
+    def apply(modelName: String): XhrModelConfig
+    @JSBracketAccess
+    def update(modelName: String, v: XhrModelConfig): Unit
+  }
 }
 
 @js.native
 trait XhrModelConfig extends js.Object {
-  var path: String
+  var path: String = js.native
 }
 
 @js.native
 @JSImport("deeplearn", "XhrDataset")
 class XhrDataset protected () extends InMemoryDataset {
   def this(xhrDatasetConfig: XhrDatasetConfig) = this()
-  protected var xhrDatasetConfig: XhrDatasetConfig                      = js.native
-  def getNDArray[T <: NDArray](info: NDArrayInfo): Promise[js.Array[T]] = js.native
-  def fetchData(): Promise[Unit]                                        = js.native
+  protected var xhrDatasetConfig: XhrDatasetConfig                                      = js.native
+  def getNDArray[T <: NDArray[DataType, Rank]](info: NDArrayInfo): Promise[js.Array[T]] = js.native
+  def fetchData(): Promise[Unit]                                                        = js.native
 }
 
 @js.native
