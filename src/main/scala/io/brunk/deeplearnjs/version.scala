@@ -21,8 +21,7 @@ import js.annotation._
 import js.|
 
 @js.native
-//@JSGlobalScope
-@JSImport("deeplearn", "version")
+@JSImport("deeplearn", JSImport.Namespace)
 object Version extends js.Object {
   val version: String = js.native
 }

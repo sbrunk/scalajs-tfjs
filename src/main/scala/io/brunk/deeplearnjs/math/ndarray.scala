@@ -194,7 +194,8 @@ class Scalar[+D <: DataType] extends NDArray[D, Zero] {
 @js.native
 @JSImport("deeplearn", "Scalar")
 object Scalar extends js.Object {
-  def `new`[D <: DataType](value: Double | Boolean, dtype: D = ???): Scalar[D] = js.native
+  def `new`[D <: DataType](value: Double | Boolean, dtype: D = DataType.float32): Scalar[D] =
+    js.native
 }
 
 @js.native
@@ -213,7 +214,7 @@ class Array1D[+D <: DataType] extends NDArray[D, One] {
 @JSImport("deeplearn", "Array1D")
 object Array1D extends js.Object {
   def `new`[D <: DataType](values: js.Any | js.Array[Double] | js.Array[Boolean],
-                           dtype: D = ???): Array1D[D]                       = js.native
+                           dtype: D = DataType.float32): Array1D[D]          = js.native
   def ones[D <: DataType](shape: Tuple1[Double], dtype: D = ???): Array1D[D] = js.native
   def randNormal[D <: DataType](shape: Tuple1[Double],
                                 mean: Double = ???,
@@ -257,7 +258,7 @@ object Array2D extends js.Object {
       values: js.Any | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[Boolean] | js.Array[
         js.Array[Boolean]
       ],
-      dtype: D = ???
+      dtype: D = DataType.float32
   ): Array2D[D] = js.native
   def ones[D <: DataType](shape: js.Tuple2[Double, Double], dtype: D = ???): Array2D[D] =
     js.native
@@ -305,7 +306,7 @@ object Array3D extends js.Object {
                            values: js.Any | js.Array[Double] | js.Array[
                              js.Array[js.Array[Double]]
                            ] | js.Array[Boolean] | js.Array[js.Array[js.Array[Boolean]]],
-                           dtype: D = ???): Array3D[D] = js.native
+                           dtype: D = DataType.float32): Array3D[D] = js.native
   def ones[D <: DataType](shape: js.Tuple3[Double, Double, Double], dtype: D = ???): Array3D[D] =
     js.native
   def zeros[D <: DataType](shape: js.Tuple3[Double, Double, Double], dtype: D = ???): Array3D[D] =
@@ -354,7 +355,7 @@ object Array4D extends js.Object {
                            ] | js.Array[Boolean] | js.Array[
                              js.Array[js.Array[js.Array[Boolean]]]
                            ],
-                           dtype: D = ???): Array4D[D] = js.native
+                           dtype: D = DataType.float32): Array4D[D] = js.native
   def ones[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
                           dtype: D = ???): Array4D[D] = js.native
   def zeros[D <: DataType](shape: js.Tuple4[Double, Double, Double, Double],
