@@ -39,7 +39,7 @@ trait DualGradientInputArrays extends TapeNodeInputGradientArrays {
 @js.native
 trait EqualNode extends KernelNode {
   var inputAndArgs: EqualInputConfig = js.native
-  var output: NDArray[Bool, Rank]    = js.native
+  // var output: NDArray[Bool, Rank]    = js.native
   //var gradient: js.Function2[NDArray[Bool, Rank], NDArray[Bool, Rank], DualGradientInputArrays] = js.native
 }
 
@@ -51,7 +51,7 @@ trait EqualInputConfig extends KernelInputConfig {
 @js.native
 trait LogicalOrNode extends KernelNode {
   var inputAndArgs: LogicalOrInputConfig = js.native
-  var output: NDArray[Bool, Rank]        = js.native
+  // var output: NDArray[Bool, Rank]        = js.native
   //var gradient: js.Function2[NDArray[DataType, Rank], NDArray[DataType, Rank], DualGradientInputArrays] = js.native
 }
 

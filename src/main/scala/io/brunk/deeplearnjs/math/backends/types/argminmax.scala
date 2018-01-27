@@ -26,7 +26,7 @@ import scala.scalajs.js
 @js.native
 trait ArgMaxNode extends KernelNode {
   var inputAndArgs: ArgMaxInputConfig = js.native
-  var output: NDArray[Int32, Rank]    = js.native
+  // var output: NDArray[Int32, Rank]    = js.native
   // var gradient: js.Function2[NDArray[String, Rank], NDArray[String, Rank], ArgMaxGradientInputArrays] = js.native
 }
 
@@ -57,7 +57,7 @@ trait ArgMaxGradientInputArrays extends TapeNodeInputGradientArrays {
 @js.native
 trait ArgMinNode extends KernelNode {
   var inputAndArgs: ArgMinInputConfig = js.native
-  var output: NDArray[Int32, Rank]    = js.native
+  // var output: NDArray[Int32, Rank]    = js.native
   // var gradient: js.Function2[NDArray[String, Rank], NDArray[String, Rank], ArgMinGradientInputArrays] = js.native
 }
 

@@ -26,14 +26,14 @@ import scala.scalajs.js
 @js.native
 trait MinNode[D <: DataType] extends KernelNode {
   var inputAndArgs: MinInputConfig[D] = js.native
-  var output: NDArray[D, Rank]        = js.native
+  // var output: NDArray[D, Rank]        = js.native
   // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MinGradientInputArrays[D]] = js.native
 }
 
 @js.native
 trait MinimumNode[D <: DataType] extends KernelNode {
   var inputAndArgs: MinimumInputConfig[D] = js.native
-  var output: NDArray[D, Rank]            = js.native
+  // var output: NDArray[D, Rank]            = js.native
   // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
 }
 
@@ -69,14 +69,14 @@ trait MinGradientInputArrays[D <: DataType] extends TapeNodeInputGradientArrays 
 @js.native
 trait MaxNode[D <: DataType] extends KernelNode {
   var inputAndArgs: MaxInputConfig[D] = js.native
-  var output: NDArray[D, Rank]        = js.native
+  // var output: NDArray[D, Rank]        = js.native
   // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], MaxGradientInputArrays[D]] = js.native
 }
 
 @js.native
 trait MaximumNode[D <: DataType] extends KernelNode {
   var inputAndArgs: MaximumInputConfig[D] = js.native
-  var output: NDArray[D, Rank]            = js.native
+  // var output: NDArray[D, Rank]            = js.native
   // var gradient: js.Function2[NDArray[D, Rank], NDArray[D, Rank], js.Any] = js.native
 }
 

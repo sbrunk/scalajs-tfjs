@@ -26,7 +26,7 @@ import scala.scalajs.js
 @js.native
 trait UnaryNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: UnaryInputConfig[T] = js.native
-  var output: T                         = js.native
+  // var output: T                         = js.native
   // var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
@@ -48,7 +48,7 @@ trait UnaryGradientInputArrays[T <: NDArray[DataType, Rank]] extends TapeNodeInp
 @js.native
 trait LeakyReluNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: LeakyReluInputConfig[T] = js.native
-  var output: T                             = js.native
+  // var output: T                             = js.native
   // var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
@@ -69,7 +69,7 @@ object LeakyReluInputConfig {
 @js.native
 trait StepNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: StepInputConfig[T] = js.native
-  var output: T                        = js.native
+  // var output: T                        = js.native
   // var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
@@ -90,7 +90,7 @@ object StepInputConfig {
 @js.native
 trait ClipNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: ClipInputConfig[T] = js.native
-  var output: T                        = js.native
+  // var output: T                        = js.native
   // var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
@@ -112,7 +112,7 @@ object ClipInputConfig {
 @js.native
 trait TransposeNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: TransposeInputConfig[T] = js.native
-  var output: T                             = js.native
+  // var output: T                             = js.native
   // var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 
@@ -133,7 +133,7 @@ object TransposeInputConfig {
 @js.native
 trait TileNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: TileInputConfig[T] = js.native
-  var output: T                        = js.native
+  // var output: T                        = js.native
   // var gradient: js.Function2[T, T, UnaryGradientInputArrays[T]] = js.native
 }
 

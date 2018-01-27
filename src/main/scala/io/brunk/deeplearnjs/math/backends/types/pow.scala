@@ -26,7 +26,7 @@ import scala.scalajs.js
 @js.native
 trait PowNode[T <: NDArray[DataType, Rank]] extends KernelNode {
   var inputAndArgs: PowInputConfig[T] = js.native
-  var output: T                       = js.native
+  // var output: T                       = js.native
   //var gradient: js.Function2[T, T, PowGradientInputArrays[T]] = js.native
 }
 
