@@ -114,9 +114,9 @@ class NDArrayMath protected () extends NDArrayManager {
   def logSumExp[T <: NDArray[Float32, Rank]](input: NDArray[DataType, Rank],
                                              axis: Double | js.Array[Double] = ???,
                                              keepDims: Boolean = ???): T = js.native
-  def sum[D <: DataType, T <: NDArray[D, Rank]](x: NDArray[D, Rank],
-                                                axis: Double | js.Array[Double] = ???,
-                                                keepDims: Boolean = ???): T =
+  def sum[D <: DataType](x: NDArray[D, Rank],
+                         axis: Double | js.Array[Double] = ???,
+                         keepDims: Boolean = ???): NDArray[D, Rank] =
     js.native // TODO SumTypes
   def mean(x: NDArray[DataType, Rank],
            axis: Double | js.Array[Double] = ???,
@@ -193,8 +193,8 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def powStrict[D <: DataType](a: NDArray[D, Rank], b: NDArray[Int32, Rank]): NDArray[D, Rank] =
     js.native
-  def sub[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
-                                                            b: NDArray[D2, Rank]): T =
+  def sub[D1 <: DataType, D2 >: D1 <: DataType](a: NDArray[D1, Rank],
+                                                b: NDArray[D2, Rank]): NDArray[D2, Rank] =
     js.native
   def subStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
   def multiply[D1 <: DataType, D2 <: D1, T <: NDArray[D1, Rank]](a: NDArray[D1, Rank],
@@ -202,8 +202,7 @@ class NDArrayMath protected () extends NDArrayManager {
     js.native
   def elementWiseMul[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
   def multiplyStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T = js.native
-  def divide[T <: NDArray[Float32, Rank]](a: NDArray[DataType, Rank],
-                                          b: NDArray[DataType, Rank]): T =
+  def divide(a: NDArray[DataType, Rank], b: NDArray[DataType, Rank]): NDArray[Float32, Rank] =
     js.native
   def divideStrict[T <: NDArray[DataType, Rank]](a: T, b: T): T                        = js.native
   def scalarDividedByArray[T <: NDArray[DataType, Rank]](c: Scalar[DataType], a: T): T = js.native

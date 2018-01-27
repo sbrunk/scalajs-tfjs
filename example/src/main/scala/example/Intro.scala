@@ -1,35 +1,33 @@
 package example
 
+import io.brunk.deeplearnjs.Environment
 import io.brunk.deeplearnjs.data.InCPUMemoryShuffledInputProviderBuilder
 import io.brunk.deeplearnjs.graph.Session.FeedEntry
-import io.brunk.deeplearnjs.graph.optimizers.SGDOptimizer
 import io.brunk.deeplearnjs.graph.{ CostReduction, Graph, Session }
-import io.brunk.deeplearnjs.math.Math.{ ScopeResult, ScopeResultImmediate }
-import io.brunk.deeplearnjs.math.{ Array1D, Array2D, NDArrayMathGPU, Scalar }
+import io.brunk.deeplearnjs.math.backends.Tape_util.ScopeResult
+import io.brunk.deeplearnjs.math.optimizers.SGDOptimizer
+import io.brunk.deeplearnjs.math.{ Array1D, Array2D, Float32, Scalar }
 
 import scala.async.Async.{ async, await }
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.{ Promise, | }
-import scala.scalajs.js.typedarray.{ Float32Array, TypedArray }
+import scala.scalajs.js.Promise
 
 object Intro {
   def main(args: Array[String]): Unit = {
 
-    //import FeedEntry, InCPUMemoryShuffledInputProviderBuilder, SGDOptimizer
-
     // This file parallels (some of) the code in the introduction tutorial.
 
     /**
-      * 'NDArrayMathGPU' section of tutorial
+      * 'NDArrayMath with WebGL backend' section of tutorial
       */
     def intro(): Future[Unit] = async {
       {
-        val math = new NDArrayMathGPU()
+        val math = Environment.ENV.math
 
-        val a = Array2D.`new`((2d, 2d), js.Array(1.0, 2.0, 3.0, 4.0))
-        val b = Array2D.`new`((2d, 2d), js.Array(0.0, 2.0, 4.0, 6.0))
+        val a: Array2D[Float32] = Array2D.`new`((2d, 2d), js.Array(1.0, 2.0, 3.0, 4.0))
+        val b: Array2D[Float32] = Array2D.`new`((2d, 2d), js.Array(0.0, 2.0, 4.0, 6.0))
 
         // Non-blocking math calls.
         val diff        = math.sub(a, b)
@@ -73,17 +71,17 @@ object Intro {
           */
         val learningRate = .00001
         val batchSize    = 3
-        val math         = new NDArrayMathGPU()
+        val math         = Environment.ENV.math
 
         val session   = new Session(g, math)
         val optimizer = new SGDOptimizer(learningRate)
 
-        val inputs: js.Array[Array1D] =
+        val inputs: js.Array[Array1D[Float32]] =
           js.Array(Array1D.`new`(js.Array(1.0, 2.0, 3.0)),
                    Array1D.`new`(js.Array(10.0, 20.0, 30.0)),
                    Array1D.`new`(js.Array(100.0, 200.0, 300.0)))
 
-        val labels: js.Array[Array1D] =
+        val labels: js.Array[Array1D[Float32]] =
           js.Array(Array1D.`new`(js.Array(4.0)),
                    Array1D.`new`(js.Array(40.0)),
                    Array1D.`new`(js.Array(400.0)))
@@ -103,13 +101,14 @@ object Intro {
         val NUM_BATCHES = 10
 
         var i = 0
-        while (i < NUM_BATCHES) { // TODO for (i <- 0 until NUM_BATCHES) { does not play well with async/await
+        while (i < NUM_BATCHES) { // (i <- 0 until NUM_BATCHES) { // TODO for loop does not play well with async/await
           // Wrap session.train in a scope so the cost gets cleaned up
           // automatically.
 
           import scala.scalajs.js.JSConverters._
 
           await {
+            // Wrap session.train in a scope so the cost gets cleaned up automatically.
             math
               .scope[ScopeResult] { (keep: js.Function, track: js.Function) =>
                 {
