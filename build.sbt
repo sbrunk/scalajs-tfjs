@@ -13,18 +13,18 @@ lazy val `scala-js-deeplearnjs` =
         library.scalaCheck % Test,
         library.scalaTest  % Test
       ),
-      npmDependencies in Test += "deeplearn" -> "0.4.2",
+      npmDependencies in Test += "deeplearn" -> "0.4.2"
     )
 
 lazy val example =
   project
     .in(file("example"))
-    .enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
+    .enablePlugins(AutomateHeaderPlugin, ScalaJSPlugin, ScalaJSBundlerPlugin)
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
+        library.scalaAsync,
         library.scalajsDom,
-        "org.scala-lang.modules" %% "scala-async" % "0.9.7"
       ),
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
       scalaJSUseMainModuleInitializer := true,
@@ -39,10 +39,12 @@ lazy val example =
 lazy val library =
   new {
     object Version {
+      val scalaAsync = "0.9.7"
       val scalaCheck = "1.13.5"
       val scalaTest  = "3.0.4"
       val scalajsDom = "0.9.3"
     }
+    val scalaAsync = "org.scala-lang.modules" %% "scala-async" % Version.scalaAsync
     val scalajsDom = "org.scala-js" %%%! "scalajs-dom" % Version.scalajsDom
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
     val scalaTest  = "org.scalatest"  %%%! "scalatest"  % Version.scalaTest
@@ -87,5 +89,5 @@ lazy val scalafmtSettings =
   Seq(
     scalafmtOnCompile := true,
     scalafmtOnCompile.in(Sbt) := false,
-    scalafmtVersion := "1.3.0"
+    scalafmtVersion := "1.4.0"
   )
