@@ -1,15 +1,33 @@
+/*
+ * Copyright 2017 Sören Brunk
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import Types._
+import Tape.NamedGradientMap
 
 @js.native
 trait TapeNode extends js.Object {
-  var id: Double = js.native
-  var name: String = js.native
-  var output: Tensor = js.native
-  var inputs: NamedTensorMap = js.native
+  var id: Double                                                        = js.native
+  var name: String                                                      = js.native
+  var output: Tensor                                                    = js.native
+  var inputs: NamedTensorMap                                            = js.native
   var gradient: js.Function1[Tensor | NamedTensorMap, NamedGradientMap] = js.native
 }
 
@@ -17,6 +35,13 @@ trait TapeNode extends js.Object {
 @JSGlobalScope
 object Tape extends js.Object {
   type NamedGradientMap = js.Dictionary[js.Function0[Tensor]]
-  def getFilteredNodesXToY(tape: js.Array[TapeNode], xs: js.Array[Tensor], y: Tensor): js.Array[TapeNode] = js.native
-  def backpropagateGradients(tensorAccumulatedGradientMap: js.Any, filteredTape: js.Array[TapeNode]): Unit = js.native
+  def getFilteredNodesXToY(
+      tape: js.Array[TapeNode],
+      xs: js.Array[Tensor],
+      y: Tensor
+  ): js.Array[TapeNode] = js.native
+  def backpropagateGradients(
+      tensorAccumulatedGradientMap: js.Any,
+      filteredTape: js.Array[TapeNode]
+  ): Unit = js.native
 }
