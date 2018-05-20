@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package globals {
-
 @js.native
 @JSGlobalScope
 object Globals extends js.Object {
@@ -19,6 +17,4 @@ object Globals extends js.Object {
   val valueAndGrads: Gradients.valueAndGrads.type = js.native
   val variableGrads: Gradients.variableGrads.type = js.native
   val customGrad: Gradients.customGrad.type = js.native
-}
-
 }

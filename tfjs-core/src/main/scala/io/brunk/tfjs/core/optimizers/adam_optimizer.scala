@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package adam_optimizer {
-
 @js.native
 @JSGlobal
 class AdamOptimizer protected () extends Optimizer {
@@ -24,6 +22,4 @@ class AdamOptimizer protected () extends Optimizer {
 object AdamOptimizer extends js.Object {
   var className: String = js.native
   def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T = js.native
-}
-
 }

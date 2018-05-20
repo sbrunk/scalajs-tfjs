@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package batchnorm_gpu {
-
 @js.native
 @JSGlobal
 class BatchNormProgram protected () extends GPGPUProgram {
@@ -14,6 +12,4 @@ class BatchNormProgram protected () extends GPGPUProgram {
   var outputShape: js.Array[Double] = js.native
   var userCode: String = js.native
   var supportsBroadcasting: Boolean = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package rmsprop_optimizer {
-
 @js.native
 @JSGlobal
 class RMSPropOptimizer protected () extends Optimizer {
@@ -24,6 +22,4 @@ class RMSPropOptimizer protected () extends Optimizer {
 object RMSPropOptimizer extends js.Object {
   var className: String = js.native
   def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T = js.native
-}
-
 }

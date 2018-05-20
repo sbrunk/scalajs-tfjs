@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package conv {
-
 @js.native
 @JSGlobal
 class ConvOps extends js.Object {
@@ -21,6 +19,4 @@ object ConvOps extends js.Object {
   def conv2dTranspose[T <: Tensor3D | Tensor4D](x: T, filter: Tensor4D, outputShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double], strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dimRoundingMode: String = ???): T = js.native
   def depthwiseConv2d[T <: Tensor3D | Tensor4D](x: T, filter: Tensor4D, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dataFormat: String = ???, dilations: js.Tuple2[Double, Double] | Double = ???, dimRoundingMode: String = ???): T = js.native
   def separableConv2d[T <: Tensor3D | Tensor4D](x: T, depthwiseFilter: Tensor4D, pointwiseFilter: Tensor4D, strides: js.Tuple2[Double, Double] | Double, pad: String, dilation: js.Tuple2[Double, Double] | Double = ???, dataFormat: String = ???): T = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package erf_util {
-
 @js.native
 @JSGlobalScope
 object Erf_util extends js.Object {
@@ -15,6 +13,4 @@ object Erf_util extends js.Object {
   val ERF_A3: Double = js.native
   val ERF_A4: Double = js.native
   val ERF_A5: Double = js.native
-}
-
 }

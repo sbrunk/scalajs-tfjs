@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package tex_util {
-
 @js.native
 sealed trait TextureType extends js.Object {
 }
@@ -49,6 +47,4 @@ object Tex_util extends js.Object {
   def getPackedRGBAArraySizeFromMatrixShape(rows: Double, columns: Double): Double = js.native
   def encodeMatrixToPackedRGBA(matrix: Float32Array, rows: Double, columns: Double, packedRGBA: Float32Array): Float32Array = js.native
   def decodeMatrixFromPackedRGBA(packedRGBA: Float32Array, rows: Double, columns: Double, matrix: Float32Array): Float32Array = js.native
-}
-
 }

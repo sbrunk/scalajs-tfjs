@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package transpose {
-
 @js.native
 @JSGlobal
 class TransposeOps extends js.Object {
@@ -15,6 +13,4 @@ class TransposeOps extends js.Object {
 @JSGlobal
 object TransposeOps extends js.Object {
   def transpose[T <: Tensor](x: T, perm: js.Array[Double] = ???): T = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package local_storage {
-
 @js.native
 @JSGlobal
 class BrowserLocalStorage protected () extends IOHandler {
@@ -42,6 +40,4 @@ object Local_storage extends js.Object {
   def purgeLocalStorageArtifacts(): js.Array[String] = js.native
   val localStorageRouter: IORouter = js.native
   def browserLocalStorage(modelPath: String): IOHandler = js.native
-}
-
 }

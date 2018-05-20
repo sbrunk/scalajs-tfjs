@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package tile_gpu {
-
 @js.native
 @JSGlobal
 class TileProgram protected () extends GPGPUProgram {
@@ -14,6 +12,4 @@ class TileProgram protected () extends GPGPUProgram {
   var outputShape: js.Array[Double] = js.native
   var userCode: String = js.native
   var rank: Double = js.native
-}
-
 }

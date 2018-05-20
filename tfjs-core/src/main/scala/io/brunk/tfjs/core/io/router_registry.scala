@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package router_registry {
-
 @js.native
 @JSGlobal
 class IORouterRegistry extends js.Object {
@@ -24,6 +22,4 @@ object IORouterRegistry extends js.Object {
 @JSGlobalScope
 object Router_registry extends js.Object {
   type IORouter = js.Function1[String, IOHandler]
-}
-
 }

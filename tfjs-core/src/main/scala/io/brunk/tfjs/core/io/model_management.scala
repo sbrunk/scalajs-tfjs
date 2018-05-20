@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package model_management {
-
 @js.native
 @JSGlobal
 class ModelStoreManagerRegistry extends js.Object {
@@ -26,6 +24,4 @@ object Model_management extends js.Object {
   def removeModel(url: String): Promise[ModelArtifactsInfo] = js.native
   def copyModel(sourceURL: String, destURL: String): Promise[ModelArtifactsInfo] = js.native
   def moveModel(sourceURL: String, destURL: String): Promise[ModelArtifactsInfo] = js.native
-}
-
 }

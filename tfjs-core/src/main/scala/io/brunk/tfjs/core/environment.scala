@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package environment {
-
 @js.native
 sealed trait Type extends js.Object {
 }
@@ -67,6 +65,4 @@ object Environment extends js.Object {
 object Environment extends js.Object {
   val URL_PROPERTIES: js.Array[URLProperty] = js.native
   def ENV: Environment = js.native
-}
-
 }

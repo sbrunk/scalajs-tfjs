@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package unary_ops {
-
 @js.native
 @JSGlobal
 class UnaryOps extends js.Object {
@@ -51,6 +49,4 @@ object UnaryOps extends js.Object {
   def atanh[T <: Tensor](x: T): T = js.native
   def erf[T <: Tensor](x: T): T = js.native
   def step[T <: Tensor](x: T, alpha: Double = ???): T = js.native
-}
-
 }

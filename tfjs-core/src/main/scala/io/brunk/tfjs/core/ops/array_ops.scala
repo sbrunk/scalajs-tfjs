@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package array_ops {
-
 @js.native
 @JSGlobal
 class ArrayOps extends js.Object {
@@ -54,6 +52,4 @@ object ArrayOps extends js.Object {
   def range(start: Double, stop: Double, step: Double = ???, dtype: String = ???): Tensor1D = js.native
   def buffer[R <: Rank](shape: js.Any, dtype: DataType = ???, values: TypedArray = ???): TensorBuffer[R] = js.native
   def print[T <: Tensor](x: T, verbose: Boolean = ???): Unit = js.native
-}
-
 }

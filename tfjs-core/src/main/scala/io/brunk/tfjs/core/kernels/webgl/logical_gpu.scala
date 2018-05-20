@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package logical_gpu {
-
 @js.native
 @JSGlobal
 class WhereProgram protected () extends GPGPUProgram {
@@ -13,6 +11,4 @@ class WhereProgram protected () extends GPGPUProgram {
   var variableNames: js.Array[String] = js.native
   var outputShape: js.Array[Double] = js.native
   var userCode: String = js.native
-}
-
 }

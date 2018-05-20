@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package sgd_optimizer {
-
 @js.native
 @JSGlobal
 class SGDOptimizer protected () extends Optimizer {
@@ -23,6 +21,4 @@ class SGDOptimizer protected () extends Optimizer {
 object SGDOptimizer extends js.Object {
   var className: String = js.native
   def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T = js.native
-}
-
 }

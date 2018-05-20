@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package loss_ops {
-
 @js.native
 sealed trait Reduction extends js.Object {
 }
@@ -35,6 +33,4 @@ object LossOps extends js.Object {
   def cosineDistance[T <: Tensor, O <: Tensor](labels: T, predictions: T, axis: Double, weights: Tensor = ???, reduction: Reduction = ???): O = js.native
   def hingeLoss[T <: Tensor, O <: Tensor](labels: T, predictions: T, weights: Tensor = ???, reduction: Reduction = ???): O = js.native
   def logLoss[T <: Tensor, O <: Tensor](labels: T, predictions: T, weights: Tensor = ???, epsilon: Double = ???, reduction: Reduction = ???): O = js.native
-}
-
 }

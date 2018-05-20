@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package util {
-
 @js.native
 @JSGlobalScope
 object Util extends js.Object {
@@ -43,6 +41,4 @@ object Util extends js.Object {
   def isFunction(f: js.Function): Boolean = js.native
   def extractTensorsFromContainer(result: TensorContainer): js.Array[Tensor] = js.native
   def extractTensorsFromAny(result: js.Any): js.Array[Tensor] = js.native
-}
-
 }

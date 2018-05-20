@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package gradients {
-
 @js.native
 @JSGlobal
 class Gradients extends js.Object {
@@ -21,6 +19,4 @@ object Gradients extends js.Object {
   def valueAndGrads[O <: Tensor](f: js.Function): js.Function2[js.Array[Tensor], O, js.Any] = js.native
   def variableGrads(f: js.Function0[Scalar], varList: js.Array[Variable] = ???): js.Any = js.native
   def customGrad[T <: Tensor](f: CustomGradientFunc[T]): js.Function = js.native
-}
-
 }

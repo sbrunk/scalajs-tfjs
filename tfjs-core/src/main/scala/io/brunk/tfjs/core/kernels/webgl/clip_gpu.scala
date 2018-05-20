@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package clip_gpu {
-
 @js.native
 @JSGlobal
 class ClipProgram protected () extends GPGPUProgram {
@@ -13,6 +11,4 @@ class ClipProgram protected () extends GPGPUProgram {
   var variableNames: js.Array[String] = js.native
   var userCode: String = js.native
   var outputShape: js.Array[Double] = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package reverse {
-
 @js.native
 @JSGlobal
 class ReverseOps extends js.Object {
@@ -19,6 +17,4 @@ object ReverseOps extends js.Object {
   def reverse3d(x: Tensor3D, axis: Double | js.Array[Double] = ???): Tensor3D = js.native
   def reverse4d(x: Tensor4D, axis: Double | js.Array[Double] = ???): Tensor4D = js.native
   def reverse[T <: Tensor](x: T, axis: Double | js.Array[Double] = ???): T = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package gpgpu_context {
-
 @js.native
 @JSGlobal
 class GPGPUContext protected () extends js.Object {
@@ -48,6 +46,4 @@ class GPGPUContext protected () extends js.Object {
   def beginQuery(): WebGLQuery = js.native
   def endQuery(): Unit = js.native
   def pollQueryTime(query: WebGLQuery): Promise[Double] = js.native
-}
-
 }

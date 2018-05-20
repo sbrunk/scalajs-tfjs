@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package webgl_util {
-
 @js.native
 @JSGlobalScope
 object Webgl_util extends js.Object {
@@ -40,6 +38,4 @@ object Webgl_util extends js.Object {
   def validateFramebuffer(gl: WebGLRenderingContext): Unit = js.native
   def getFramebufferErrorMessage(gl: WebGLRenderingContext, status: Double): String = js.native
   def getTextureShapeFromLogicalShape(gl: WebGLRenderingContext, logShape: js.Array[Double]): js.Tuple2[Double, Double] = js.native
-}
-
 }

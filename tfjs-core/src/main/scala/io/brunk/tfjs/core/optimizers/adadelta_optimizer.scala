@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package adadelta_optimizer {
-
 @js.native
 @JSGlobal
 class AdadeltaOptimizer protected () extends Optimizer {
@@ -23,6 +21,4 @@ class AdadeltaOptimizer protected () extends Optimizer {
 object AdadeltaOptimizer extends js.Object {
   var className: String = js.native
   def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package serialization {
-
 @js.native
 trait ConfigDict extends js.Object {
   @JSBracketAccess
@@ -56,6 +54,4 @@ object Serialization extends js.Object {
   type ConfigDictValue = Boolean | Double | String | Null | ConfigDictArray | ConfigDict
   type SerializableConstructor[T <: Serializable] = js.Any
   type FromConfigMethod[T <: Serializable] = js.Function2[SerializableConstructor[T], ConfigDict, T]
-}
-
 }

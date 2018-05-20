@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package axis_util {
-
 @js.native
 @JSGlobalScope
 object Axis_util extends js.Object {
@@ -18,6 +16,4 @@ object Axis_util extends js.Object {
   def getAxesPermutation(axes: js.Array[Double], rank: Double): js.Array[Double] | Null = js.native
   def getUndoAxesPermutation(axes: js.Array[Double]): js.Array[Double] = js.native
   def getInnerMostAxes(numAxes: Double, rank: Double): js.Array[Double] = js.native
-}
-
 }

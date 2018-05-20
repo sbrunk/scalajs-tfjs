@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package gpgpu_math {
-
 @js.native
 trait GPGPUProgram extends js.Object {
   var variableNames: js.Array[String] = js.native
@@ -48,6 +46,4 @@ object Gpgpu_math extends js.Object {
   def compileProgram[T <: Tensor, K <: Tensor](gpgpu: GPGPUContext, program: GPGPUProgram, inputs: js.Array[TensorData[T]], output: TensorData[K]): GPGPUBinary = js.native
   def runProgram[T <: Tensor, K <: Tensor](binary: GPGPUBinary, inputs: js.Array[TensorData[T]], output: TensorData[K], customSetup: js.Function2[GPGPUContext, WebGLProgram, Unit] = ???): Unit = js.native
   def makeShaderKey(program: GPGPUProgram, inputs: js.Array[TensorData[Tensor]], output: TensorData[Tensor]): String = js.native
-}
-
 }

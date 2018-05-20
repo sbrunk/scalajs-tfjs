@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package texture_manager {
-
 @js.native
 @JSGlobal
 class TextureManager protected () extends js.Object {
@@ -15,6 +13,4 @@ class TextureManager protected () extends js.Object {
   def getNumUsedTextures(): Double = js.native
   def getNumFreeTextures(): Double = js.native
   def dispose(): Unit = js.native
-}
-
 }

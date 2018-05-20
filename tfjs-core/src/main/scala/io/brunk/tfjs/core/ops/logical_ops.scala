@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package logical_ops {
-
 @js.native
 @JSGlobal
 class LogicalOps extends js.Object {
@@ -19,6 +17,4 @@ object LogicalOps extends js.Object {
   def logicalOr[T <: Tensor](a: Tensor, b: Tensor): T = js.native
   def logicalXor[T <: Tensor](a: Tensor, b: Tensor): T = js.native
   def where[T <: Tensor](condition: Tensor, a: T, b: T): T = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package rand {
-
 @js.native
 trait RandGauss extends js.Object {
   def nextValue(): Double = js.native
@@ -22,6 +20,4 @@ trait RandNormalDataTypes extends js.Object {
 class MPRandGauss protected () extends RandGauss {
   def this(mean: Double, stdDeviation: Double, dtype: String = ???, truncated: Boolean = ???, seed: Double = ???) = this()
   def nextValue(): Double = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package tape {
-
 @js.native
 trait TapeNode extends js.Object {
   var id: Double = js.native
@@ -21,6 +19,4 @@ object Tape extends js.Object {
   type NamedGradientMap = js.Dictionary[js.Function0[Tensor]]
   def getFilteredNodesXToY(tape: js.Array[TapeNode], xs: js.Array[Tensor], y: Tensor): js.Array[TapeNode] = js.native
   def backpropagateGradients(tensorAccumulatedGradientMap: js.Any, filteredTape: js.Array[TapeNode]): Unit = js.native
-}
-
 }

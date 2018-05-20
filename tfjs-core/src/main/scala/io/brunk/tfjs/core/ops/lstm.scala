@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package lstm {
-
 @js.native
 @JSGlobal
 class LSTMOps extends js.Object {
@@ -22,6 +20,4 @@ object LSTMOps extends js.Object {
 @JSGlobalScope
 object Lstm extends js.Object {
   type LSTMCellFunc = js.Any
-}
-
 }

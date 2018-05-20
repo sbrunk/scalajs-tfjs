@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package ops {
-
 @js.native
 @JSGlobal
 object losses extends js.Object {
@@ -189,6 +187,4 @@ object Ops extends js.Object {
   val softmax: SoftmaxOps.softmax.type = js.native
   val localResponseNormalization: LRNOps.localResponseNormalization.type = js.native
   val linalg: LinalgOps.type = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package backend_cpu {
-
 @js.native
 @JSGlobal
 class MathBackendCPU extends KernelBackend {
@@ -108,6 +106,4 @@ class MathBackendCPU extends KernelBackend {
   def multinomial(logits: Tensor2D, normalized: Boolean, numSamples: Double, seed: Double): Tensor2D = js.native
   def oneHot(indices: Tensor1D, depth: Double, onValue: Double, offValue: Double): Tensor2D = js.native
   def dispose(): Unit = js.native
-}
-
 }

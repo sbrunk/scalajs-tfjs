@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package io_utils {
-
 @js.native
 @JSGlobalScope
 object Io_utils extends js.Object {
@@ -18,6 +16,4 @@ object Io_utils extends js.Object {
   def concatenateArrayBuffers(buffers: js.Array[ArrayBuffer]): ArrayBuffer = js.native
   def basename(path: String): String = js.native
   def getModelArtifactsInfoForJSON(modelArtifacts: ModelArtifacts): ModelArtifactsInfo = js.native
-}
-
 }

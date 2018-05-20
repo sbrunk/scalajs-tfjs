@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package slice_gpu {
-
 @js.native
 @JSGlobal
 class SliceProgram protected () extends GPGPUProgram {
@@ -16,6 +14,4 @@ class SliceProgram protected () extends GPGPUProgram {
   var rank: Double = js.native
   var startLoc: WebGLUniformLocation = js.native
   def getCustomSetupFunc(start: js.Array[Double]): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
-}
-
 }

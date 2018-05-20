@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package gpgpu_util {
-
 @js.native
 @JSGlobalScope
 object Gpgpu_util extends js.Object {
@@ -25,6 +23,4 @@ object Gpgpu_util extends js.Object {
   def downloadMatrixFromOutputTexture(gl: WebGLRenderingContext, rows: Double, columns: Double): Float32Array = js.native
   def downloadMatrixFromRGBAColorTexture(gl: WebGLRenderingContext, rows: Double, columns: Double, channels: Double): Float32Array = js.native
   def downloadMatrixFromPackedOutputTexture(gl: WebGLRenderingContext, rows: Double, columns: Double): Float32Array = js.native
-}
-
 }

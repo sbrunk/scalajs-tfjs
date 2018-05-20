@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package types {
-
 @js.native
 sealed trait DType extends js.Object {
 }
@@ -90,6 +88,4 @@ object Types extends js.Object {
   def upcastType(typeA: DataType, typeB: DataType): DataType = js.native
   def sumOutType(`type`: DataType): String = js.native
   type TensorContainer = Unit | Tensor | String | Double | Boolean | TensorContainerObject | TensorContainerArray
-}
-
 }

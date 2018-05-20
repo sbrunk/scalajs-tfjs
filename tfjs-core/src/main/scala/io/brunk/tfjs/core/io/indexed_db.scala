@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package indexed_db {
-
 @js.native
 @JSGlobal
 class BrowserIndexedDB protected () extends IOHandler {
@@ -35,6 +33,4 @@ object Indexed_db extends js.Object {
   def deleteDatabase(): Promise[Unit] = js.native
   val indexedDBRouter: IORouter = js.native
   def browserIndexedDB(modelPath: String): IOHandler = js.native
-}
-
 }

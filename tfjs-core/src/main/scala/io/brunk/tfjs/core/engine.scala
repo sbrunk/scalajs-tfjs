@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package engine {
-
 @js.native
 trait TensorManager extends js.Object {
   def registerTensor(a: Tensor): Unit = js.native
@@ -51,6 +49,4 @@ object Engine extends js.Object {
   type CustomGradientFunc[T <: Tensor] = js.Function
   type MemoryInfo = js.Any
   type ScopeFn[T <: TensorContainer] = js.Function0[T]
-}
-
 }

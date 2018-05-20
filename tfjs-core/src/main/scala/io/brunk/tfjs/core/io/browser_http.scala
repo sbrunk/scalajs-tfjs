@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package browser_http {
-
 @js.native
 @JSGlobal
 class BrowserHTTPRequest protected () extends IOHandler {
@@ -27,6 +25,4 @@ object BrowserHTTPRequest extends js.Object {
 object Browser_http extends js.Object {
   val httpRequestRouter: IORouter = js.native
   def browserHTTPRequest(path: String, requestInit: RequestInit = ???): IOHandler = js.native
-}
-
 }

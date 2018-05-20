@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package momentum_optimizer {
-
 @js.native
 @JSGlobal
 class MomentumOptimizer protected () extends SGDOptimizer {
@@ -22,6 +20,4 @@ class MomentumOptimizer protected () extends SGDOptimizer {
 object MomentumOptimizer extends js.Object {
   var className: String = js.native
   def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package binary_ops {
-
 @js.native
 @JSGlobal
 class BinaryOps extends js.Object {
@@ -33,6 +31,4 @@ object BinaryOps extends js.Object {
   def squaredDifference[T <: Tensor](a: Tensor, b: Tensor): T = js.native
   def squaredDifferenceStrict[T <: Tensor](a: T, b: T): T = js.native
   def atan2[T <: Tensor](a: Tensor, b: Tensor): T = js.native
-}
-
 }

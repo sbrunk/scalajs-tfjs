@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package jasmine_util {
-
 @js.native
 @JSGlobalScope
 object Jasmine_util extends js.Object {
@@ -15,6 +13,4 @@ object Jasmine_util extends js.Object {
   def setBeforeEach(f: js.Function1[Features, Unit]): Unit = js.native
   def setAfterEach(f: js.Function1[Features, Unit]): Unit = js.native
   def setTestEnvFeatures(features: js.Array[Features]): Unit = js.native
-}
-
 }

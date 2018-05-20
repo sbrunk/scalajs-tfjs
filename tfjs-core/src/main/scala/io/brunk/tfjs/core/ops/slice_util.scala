@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package slice_util {
-
 @js.native
 @JSGlobalScope
 object Slice_util extends js.Object {
@@ -13,6 +11,4 @@ object Slice_util extends js.Object {
   def getStridedSlicedInfo(shape: js.Array[Double], begin: js.Array[Double], end: js.Array[Double], strides: js.Array[Double], beginMask: Double = ???, endMask: Double = ???): js.Tuple2[js.Array[Double], js.Array[Double]] = js.native
   def startForAxis(beginMask: Double, startIndices: js.Array[Double], strides: js.Array[Double], inputShape: js.Array[Double], axis: Double): Double = js.native
   def stopForAxis(endMask: Double, stopIndices: js.Array[Double], strides: js.Array[Double], inputShape: js.Array[Double], axis: Double): Double = js.native
-}
-
 }

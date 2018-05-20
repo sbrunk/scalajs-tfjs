@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package matmul {
-
 @js.native
 @JSGlobal
 class MatmulOps extends js.Object {
@@ -19,6 +17,4 @@ object MatmulOps extends js.Object {
   def matrixTimesVector(matrix: Tensor2D, v: Tensor1D): Tensor1D = js.native
   def dotProduct(v1: Tensor1D, v2: Tensor1D): Scalar = js.native
   def outerProduct(v1: Tensor1D, v2: Tensor1D): Tensor2D = js.native
-}
-
 }

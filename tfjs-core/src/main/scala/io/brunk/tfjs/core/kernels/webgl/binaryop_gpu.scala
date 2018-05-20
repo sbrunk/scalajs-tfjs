@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package binaryop_gpu {
-
 @js.native
 @JSGlobal
 class BinaryOpProgram protected () extends GPGPUProgram {
@@ -39,6 +37,4 @@ object Binaryop_gpu extends js.Object {
   val MOD: String = js.native
   val ATAN2: String = js.native
   val ELU_DER: String = js.native
-}
-
 }

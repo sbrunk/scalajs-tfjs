@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package types {
-
 @js.native
 @JSGlobal
 object DTYPE_VALUE_SIZE_MAP extends js.Object {
@@ -85,6 +83,4 @@ object Types extends js.Object {
   type WeightsManifestConfig = js.Array[WeightsManifestGroupConfig]
   type LoadHandler = js.Function0[Promise[ModelArtifacts]]
   type SaveHandler = js.Function1[ModelArtifacts, Promise[SaveResult]]
-}
-
 }

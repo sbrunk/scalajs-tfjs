@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package strided_slice {
-
 @js.native
 @JSGlobal
 class StridedSliceOps extends js.Object {
@@ -15,6 +13,4 @@ class StridedSliceOps extends js.Object {
 @JSGlobal
 object StridedSliceOps extends js.Object {
   def stridedSlice[T <: Tensor](x: T, begin: js.Array[Double], end: js.Array[Double], strides: js.Array[Double], beginMask: Double = ???, endMask: Double = ???): T = js.native
-}
-
 }

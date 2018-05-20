@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package unaryop_gpu {
-
 @js.native
 @JSGlobal
 class UnaryOpProgram protected () extends GPGPUProgram {
@@ -53,6 +51,4 @@ object Unaryop_gpu extends js.Object {
   val RECIPROCAL: String = js.native
   val LOGICAL_NOT: String = js.native
   val TO_INT: String = js.native
-}
-
 }

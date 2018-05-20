@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package backend_webgl {
-
 @js.native
 trait CPUTimerQuery extends js.Object {
   var startMs: Double = js.native
@@ -126,6 +124,4 @@ class MathBackendWebGL protected () extends KernelBackend {
   def oneHot(indices: Tensor1D, depth: Double, onValue: Double, offValue: Double): Tensor2D = js.native
   def getTextureManager(): TextureManager = js.native
   def dispose(): Unit = js.native
-}
-
 }

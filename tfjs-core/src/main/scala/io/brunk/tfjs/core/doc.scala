@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package doc {
-
 @js.native
 trait HeadingMap extends js.Object {
   var Tensors: String = js.native
@@ -31,6 +29,4 @@ object Doc extends js.Object {
   type Heading = String
   type Namespace = String
   def doc(info: DocInfo): js.Function = js.native
-}
-
 }

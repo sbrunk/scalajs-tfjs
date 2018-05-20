@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package train {
-
 @js.native
 @JSGlobal
 object train extends js.Object {
@@ -16,6 +14,4 @@ object train extends js.Object {
   var rmsprop: OptimizerConstructors.rmsprop.type = js.native
   var adamax: OptimizerConstructors.adamax.type = js.native
   var adam: OptimizerConstructors.adam.type = js.native
-}
-
 }

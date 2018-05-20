@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package profiler {
-
 @js.native
 @JSGlobal
 class Profiler protected () extends js.Object {
@@ -17,6 +15,4 @@ class Profiler protected () extends js.Object {
 @JSGlobal
 class Logger extends js.Object {
   def logKernelProfile(name: String, result: Tensor, vals: TypedArray, timeMs: Double): Unit = js.native
-}
-
 }

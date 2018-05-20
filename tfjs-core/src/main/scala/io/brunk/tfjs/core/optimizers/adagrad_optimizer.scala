@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package adagrad_optimizer {
-
 @js.native
 @JSGlobal
 class AdagradOptimizer protected () extends Optimizer {
@@ -21,6 +19,4 @@ class AdagradOptimizer protected () extends Optimizer {
 object AdagradOptimizer extends js.Object {
   var className: String = js.native
   def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T = js.native
-}
-
 }

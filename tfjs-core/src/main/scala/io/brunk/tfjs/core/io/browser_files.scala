@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package browser_files {
-
 @js.native
 @JSGlobal
 class BrowserDownloads protected () extends IOHandler {
@@ -25,6 +23,4 @@ object Browser_files extends js.Object {
   val browserDownloadsRouter: IORouter = js.native
   def browserDownloads(fileNamePrefix: String = ???): IOHandler = js.native
   def browserFiles(files: js.Array[File]): IOHandler = js.native
-}
-
 }

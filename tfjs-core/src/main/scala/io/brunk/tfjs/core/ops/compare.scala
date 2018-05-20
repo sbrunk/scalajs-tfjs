@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package compare {
-
 @js.native
 @JSGlobal
 class CompareOps extends js.Object {
@@ -26,6 +24,4 @@ object CompareOps extends js.Object {
   def greaterStrict[T <: Tensor](a: T, b: T): T = js.native
   def greaterEqual[T <: Tensor](a: Tensor, b: Tensor): T = js.native
   def greaterEqualStrict[T <: Tensor](a: T, b: T): T = js.native
-}
-
 }

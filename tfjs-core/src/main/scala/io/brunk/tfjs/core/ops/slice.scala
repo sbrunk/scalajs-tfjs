@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package slice {
-
 @js.native
 @JSGlobal
 class SliceOps extends js.Object {
@@ -19,6 +17,4 @@ object SliceOps extends js.Object {
   def slice3d(x: Tensor3D, begin: js.Tuple3[Double, Double, Double], size: js.Tuple3[Double, Double, Double]): Tensor3D = js.native
   def slice4d(x: Tensor4D, begin: js.Tuple4[Double, Double, Double, Double], size: js.Tuple4[Double, Double, Double, Double]): Tensor4D = js.native
   def slice[R <: Rank, T <: Tensor[R]](x: T, begin: Double | js.Array[Double], size: Double | js.Array[Double] = ???): T = js.native
-}
-
 }

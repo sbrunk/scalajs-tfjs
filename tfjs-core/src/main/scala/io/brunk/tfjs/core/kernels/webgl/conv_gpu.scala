@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package conv_gpu {
-
 @js.native
 @JSGlobal
 class Conv2DProgram protected () extends GPGPUProgram {
@@ -13,6 +11,4 @@ class Conv2DProgram protected () extends GPGPUProgram {
   var variableNames: js.Array[String] = js.native
   var outputShape: js.Array[Double] = js.native
   var userCode: String = js.native
-}
-
 }

@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package optimizer_constructors {
-
 @js.native
 @JSGlobal
 class OptimizerConstructors extends js.Object {
@@ -21,6 +19,4 @@ object OptimizerConstructors extends js.Object {
   def adadelta(learningRate: Double = ???, rho: Double = ???, epsilon: Double = ???): AdadeltaOptimizer = js.native
   def adamax(learningRate: Double = ???, beta1: Double = ???, beta2: Double = ???, epsilon: Double = ???, decay: Double = ???): AdamaxOptimizer = js.native
   def adagrad(learningRate: Double, initialAccumulatorValue: Double = ???): AdagradOptimizer = js.native
-}
-
 }

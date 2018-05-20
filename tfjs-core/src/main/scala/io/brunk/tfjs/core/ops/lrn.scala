@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package lrn {
-
 @js.native
 @JSGlobal
 class LRNOps extends js.Object {
@@ -15,6 +13,4 @@ class LRNOps extends js.Object {
 @JSGlobal
 object LRNOps extends js.Object {
   def localResponseNormalization[T <: Tensor3D | Tensor4D](x: T, radius: Double = ???, bias: Double = ???, alpha: Double = ???, beta: Double = ???): T = js.native
-}
-
 }

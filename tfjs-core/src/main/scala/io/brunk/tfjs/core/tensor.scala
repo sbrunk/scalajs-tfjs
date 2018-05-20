@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package tensor {
-
 @js.native
 trait TensorData extends js.Object {
   var dataId: DataId = js.native
@@ -200,6 +198,4 @@ object Tensor extends js.Object {
   type Tensor3D = Tensor[Rank.R3]
   type Tensor4D = Tensor[Rank.R4]
   val variable: Variable.variable.type = js.native
-}
-
 }

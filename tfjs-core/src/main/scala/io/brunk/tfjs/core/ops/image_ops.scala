@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package image_ops {
-
 @js.native
 @JSGlobal
 class ImageOps extends js.Object {
@@ -16,6 +14,4 @@ class ImageOps extends js.Object {
 object ImageOps extends js.Object {
   def resizeBilinear[T <: Tensor3D | Tensor4D](images: T, size: js.Tuple2[Double, Double], alignCorners: Boolean = ???): T = js.native
   def resizeNearestNeighbor[T <: Tensor3D | Tensor4D](images: T, size: js.Tuple2[Double, Double], alignCorners: Boolean = ???): T = js.native
-}
-
 }

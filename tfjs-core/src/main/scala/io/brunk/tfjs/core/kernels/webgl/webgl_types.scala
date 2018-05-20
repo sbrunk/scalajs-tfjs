@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package webgl_types {
-
 @js.native
 trait WebGLQuery extends js.Object {
 }
@@ -54,6 +52,4 @@ trait WebGLContextAttributes extends js.Object {
 @js.native
 trait WebGLLoseContextExtension extends js.Object {
   def loseContext(): Unit = js.native
-}
-
 }

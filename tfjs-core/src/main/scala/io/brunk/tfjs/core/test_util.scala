@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package test_util {
-
 @js.native
 @JSGlobal
 object ALL_ENVS extends js.Object {
@@ -28,6 +26,4 @@ object Test_util extends js.Object {
   def expectArraysEqual(actual: Tensor | TypedArray | js.Array[Double], expected: Tensor | TypedArray | js.Array[Double] | js.Array[Boolean]): Unit = js.native
   def expectNumbersClose(a: Double, e: Double, epsilon: Double = ???): Unit = js.native
   def expectValuesInRange(actual: Tensor | TypedArray | js.Array[Double], low: Double, high: Double): Unit = js.native
-}
-
 }

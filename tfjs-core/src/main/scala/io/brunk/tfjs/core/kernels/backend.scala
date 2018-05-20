@@ -4,8 +4,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-package backend {
-
 @js.native
 trait BackendTimingInfo extends js.Object {
   var kernelMs: Double = js.native
@@ -120,6 +118,4 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def oneHot(indices: Tensor1D, depth: Double, onValue: Double, offValue: Double): Tensor2D = js.native
   def cumsum(x: Tensor, axis: Double, exclusive: Boolean, reverse: Boolean): Tensor = js.native
   def dispose(): Unit = js.native
-}
-
 }
