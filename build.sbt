@@ -16,6 +16,34 @@ lazy val `scala-js-deeplearnjs` =
       npmDependencies in Test += "deeplearn" -> "0.4.2"
     )
 
+lazy val `scalajs-tfjs-core` =
+  project
+    .in(file("tfjs-core"))
+    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
+    .settings(settings)
+    .settings(
+      libraryDependencies ++= Seq(
+        library.scalajsDom,
+        library.scalaCheck % Test,
+        library.scalaTest  % Test
+      ),
+      npmDependencies in Test += "tfjs-core" -> "0.11.0"
+    )
+
+lazy val `tfjs-layers` =
+  project
+    .in(file("scalajs-tfjs-layers"))
+    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
+    .settings(settings)
+    .settings(
+      libraryDependencies ++= Seq(
+        library.scalajsDom,
+        library.scalaCheck % Test,
+        library.scalaTest  % Test
+      ),
+      npmDependencies in Test += "tfjs-layers" -> "0.6.1"
+    )
+
 lazy val example =
   project
     .in(file("example"))
