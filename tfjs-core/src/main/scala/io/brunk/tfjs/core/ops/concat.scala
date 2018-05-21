@@ -17,7 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.Tensor
-import io.brunk.tfjs.core.TensorModule.{Tensor1D, Tensor2D, Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.TensorModule._
 
 import scala.scalajs.js
 import js.annotation._
@@ -34,5 +34,5 @@ object ConcatOps extends js.Object {
   def concat2d(tensors: js.Array[Tensor2D], axis: Double): Tensor2D    = js.native
   def concat3d(tensors: js.Array[Tensor3D], axis: Double): Tensor3D    = js.native
   def concat4d(tensors: js.Array[Tensor4D], axis: Double): Tensor4D    = js.native
-  def concat[T <: Tensor](tensors: js.Array[T], axis: Double = ???): T = js.native
+  def concat[T <: TensorND](tensors: js.Array[T], axis: Double = ???): T = js.native
 }

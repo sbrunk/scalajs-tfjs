@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -29,23 +29,23 @@ class BinaryOps extends js.Object {}
 @js.native
 @JSGlobal
 object BinaryOps extends js.Object {
-  def add[T <: Tensor](a: Tensor, b: Tensor): T               = js.native
-  def addStrict[T <: Tensor](a: T, b: T): T                   = js.native
-  def sub[T <: Tensor](a: Tensor, b: Tensor): T               = js.native
-  def subStrict[T <: Tensor](a: T, b: T): T                   = js.native
-  def pow[T <: Tensor](base: T, exp: Tensor): T               = js.native
-  def powStrict[T <: Tensor](base: T, exp: Tensor): T         = js.native
-  def mul[T <: Tensor](a: Tensor, b: Tensor): T               = js.native
-  def mulStrict[T <: Tensor](a: T, b: T): T                   = js.native
-  def div[T <: Tensor](a: Tensor, b: Tensor): T               = js.native
-  def divStrict[T <: Tensor](a: T, b: T): T                   = js.native
-  def mod[T <: Tensor](a: Tensor, b: Tensor): T               = js.native
-  def modStrict[T <: Tensor](a: T, b: T): T                   = js.native
-  def minimum[T <: Tensor](a: Tensor, b: Tensor): T           = js.native
-  def minimumStrict[T <: Tensor](a: T, b: T): T               = js.native
-  def maximum[T <: Tensor](a: Tensor, b: Tensor): T           = js.native
-  def maximumStrict[T <: Tensor](a: T, b: T): T               = js.native
-  def squaredDifference[T <: Tensor](a: Tensor, b: Tensor): T = js.native
-  def squaredDifferenceStrict[T <: Tensor](a: T, b: T): T     = js.native
-  def atan2[T <: Tensor](a: Tensor, b: Tensor): T             = js.native
+  def add[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
+  def addStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def sub[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
+  def subStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def pow[T <: TensorND](base: T, exp: TensorND): T               = js.native
+  def powStrict[T <: TensorND](base: T, exp: TensorND): T         = js.native
+  def mul[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
+  def mulStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def div[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
+  def divStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def mod[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
+  def modStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def minimum[T <: TensorND](a: TensorND, b: TensorND): T           = js.native
+  def minimumStrict[T <: TensorND](a: T, b: T): T               = js.native
+  def maximum[T <: TensorND](a: TensorND, b: TensorND): T           = js.native
+  def maximumStrict[T <: TensorND](a: T, b: T): T               = js.native
+  def squaredDifference[T <: TensorND](a: TensorND, b: TensorND): T = js.native
+  def squaredDifferenceStrict[T <: TensorND](a: T, b: T): T     = js.native
+  def atan2[T <: TensorND](a: TensorND, b: TensorND): T             = js.native
 }

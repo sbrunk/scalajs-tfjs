@@ -19,8 +19,9 @@ package io.brunk.tfjs.core
 import scala.scalajs.js
 import js.annotation._
 import js.|
-import scala.scalajs.js.typedarray.{ Float32Array, Int32Array, Uint8Array }
+import scala.scalajs.js.typedarray.{Float32Array, Int32Array, Uint8Array}
 import Types.TensorContainer
+import TensorModule.TensorND
 
 sealed trait DataType extends js.Any
 object DataType {
@@ -148,10 +149,10 @@ object Types extends js.Object {
       js.Array[js.Array[js.Array[T]]]
     ]
   type ArrayData[D <: DataType] = js.Any | RegularArray[Double] | RegularArray[Boolean]
-  type NamedTensorMap           = js.Dictionary[Tensor]
-  type NamedVariableMap         = js.Dictionary[Variable]
+  type NamedTensorMap           = js.Dictionary[Tensor[Rank]]
+  type NamedVariableMap         = js.Dictionary[Variable[Rank]]
   def upcastType(typeA: DataType, typeB: DataType): DataType = js.native
   def sumOutType(`type`: DataType): String                   = js.native
   type TensorContainer =
-    Unit | Tensor | String | Double | Boolean | TensorContainerObject | TensorContainerArray
+    Unit | TensorND | String | Double | Boolean | TensorContainerObject | TensorContainerArray
 }

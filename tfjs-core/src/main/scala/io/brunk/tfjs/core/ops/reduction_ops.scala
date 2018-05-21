@@ -16,8 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
-import io.brunk.tfjs.core.TensorModule.Tensor1D
+import io.brunk.tfjs.core.TensorModule.{Tensor1D, TensorND}
 
 import scala.scalajs.js
 import js.annotation._
@@ -30,36 +29,36 @@ class ReductionOps extends js.Object {}
 @js.native
 @JSGlobal
 object ReductionOps extends js.Object {
-  def logSumExp[T <: Tensor](
-      x: Tensor,
+  def logSumExp[T <: TensorND](
+      x: TensorND,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
-  def sum[T <: Tensor](
-      x: Tensor,
+  def sum[T <: TensorND](
+      x: TensorND,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
-  def mean[T <: Tensor](
-      x: Tensor,
+  def mean[T <: TensorND](
+      x: TensorND,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
-  def min[T <: Tensor](
-      x: Tensor,
+  def min[T <: TensorND](
+      x: TensorND,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
-  def max[T <: Tensor](
-      x: Tensor,
+  def max[T <: TensorND](
+      x: TensorND,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T                                                      = js.native
-  def argMin[T <: Tensor](x: Tensor, axis: Double = ???): T = js.native
-  def argMax[T <: Tensor](x: Tensor, axis: Double = ???): T = js.native
-  def moments(x: Tensor, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
+  def argMin[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
+  def argMax[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
+  def moments(x: TensorND, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
     js.native
-  def unsortedSegmentSum[T <: Tensor](
+  def unsortedSegmentSum[T <: TensorND](
       x: T,
       segmentIds: Tensor1D,
       numSegments: Double,

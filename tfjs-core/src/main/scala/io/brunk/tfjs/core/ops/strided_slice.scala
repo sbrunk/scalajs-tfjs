@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -29,7 +30,7 @@ class StridedSliceOps extends js.Object {}
 @js.native
 @JSGlobal
 object StridedSliceOps extends js.Object {
-  def stridedSlice[T <: Tensor](
+  def stridedSlice[T <: TensorND](
       x: T,
       begin: js.Array[Double],
       end: js.Array[Double],

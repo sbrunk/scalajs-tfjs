@@ -17,7 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.Tensor
-import io.brunk.tfjs.core.TensorModule.{Tensor1D, Tensor2D, Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.TensorModule.{Tensor1D, Tensor2D, Tensor3D, Tensor4D, TensorND}
 
 import scala.scalajs.js
 import js.annotation._
@@ -34,5 +34,5 @@ object ReverseOps extends js.Object {
   def reverse2d(x: Tensor2D, axis: Double | js.Array[Double] = ???): Tensor2D = js.native
   def reverse3d(x: Tensor3D, axis: Double | js.Array[Double] = ???): Tensor3D = js.native
   def reverse4d(x: Tensor4D, axis: Double | js.Array[Double] = ???): Tensor4D = js.native
-  def reverse[T <: Tensor](x: T, axis: Double | js.Array[Double] = ???): T    = js.native
+  def reverse[T <: TensorND](x: T, axis: Double | js.Array[Double] = ???): T    = js.native
 }

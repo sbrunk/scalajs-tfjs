@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -30,9 +31,9 @@ class NormOps extends js.Object {}
 @JSGlobal
 object NormOps extends js.Object {
   def norm(
-      x: Tensor,
+      x: TensorND,
       ord: Double | String = ???,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
-  ): Tensor = js.native
+  ): TensorND = js.native
 }

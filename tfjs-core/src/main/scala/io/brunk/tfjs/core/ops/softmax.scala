@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -29,7 +29,7 @@ class SoftmaxOps extends js.Object {}
 @js.native
 @JSGlobal
 object SoftmaxOps extends js.Object {
-  def softmax[T <: Tensor](logits: T, dim: Double = ???): T = js.native
-  def softmaxCrossEntropy[T <: Tensor, O <: Tensor](labels: T, logits: T, dim: Double = ???): O =
+  def softmax[T <: TensorND](logits: T, dim: Double = ???): T = js.native
+  def softmaxCrossEntropy[T <: TensorND, O <: TensorND](labels: T, logits: T, dim: Double = ???): O =
     js.native
 }

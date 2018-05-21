@@ -21,12 +21,13 @@ import js.annotation._
 import js.{Promise, |}
 import scala.scalajs.js.typedarray.{Float32Array, Int32Array, Uint32Array}
 import Types._
+import TensorModule.TensorND
 
 @js.native
 @JSGlobalScope
 object Util extends js.Object {
   def assertArgumentsAreTensors(
-      args: js.Dictionary[Tensor | js.Array[Tensor]],
+      args: js.Dictionary[TensorND | js.Array[TensorND]],
       functionName: String
   ): Unit                                                                              = js.native
   def shuffle(array: js.Array[js.Any] | Uint32Array | Int32Array | Float32Array): Unit = js.native
@@ -39,8 +40,8 @@ object Util extends js.Object {
       shapeB: js.Array[Double],
       errorMessagePrefix: String = ???
   ): Unit                                          = js.native
-  def assertTypesMatch(a: Tensor, b: Tensor): Unit = js.native
-  def flatten[T <: Double | Boolean | Tensor | Promise[Double]](
+  def assertTypesMatch(a: TensorND, b: TensorND): Unit = js.native
+  def flatten[T <: Double | Boolean | TensorND | Promise[Double]](
       arr: T | RecursiveArray[T],
       ret: js.Array[T] = ???
   ): js.Array[T] = js.native
@@ -64,15 +65,15 @@ object Util extends js.Object {
   def inferFromImplicitShape(shape: js.Array[Double], size: Double): js.Array[Double] = js.native
   def squeezeShape(shape: js.Array[Double], axis: js.Array[Double] = ???): js.Any     = js.native
   def getTypedArrayFromDType[D <: DataType](dtype: D, size: Double): js.Any           = js.native
-  def isTensorInList(tensor: Tensor, tensorList: js.Array[Tensor]): Boolean           = js.native
+  def isTensorInList(tensor: TensorND, tensorList: js.Array[TensorND]): Boolean           = js.native
   def checkForNaN[D <: DataType](vals: js.Any, dtype: D, name: String): Unit          = js.native
   def flattenNameArrayMap(
-      nameArrayMap: Tensor | NamedTensorMap,
+      nameArrayMap: TensorND | NamedTensorMap,
       keys: js.Array[String] = ???
-  ): js.Array[Tensor] = js.native
+  ): js.Array[TensorND] = js.native
   def unflattenToNameArrayMap(
       keys: js.Array[String],
-      flatArrays: js.Array[Tensor]
+      flatArrays: js.Array[TensorND]
   ): NamedTensorMap                                                  = js.native
   def hasEncodingLoss(oldType: DataType, newType: DataType): Boolean = js.native
   def copyTypedArray[D <: DataType](
@@ -84,6 +85,6 @@ object Util extends js.Object {
   ): Boolean                                                                 = js.native
   def bytesPerElement(dtype: DataType): Double                               = js.native
   def isFunction(f: js.Function): Boolean                                    = js.native
-  def extractTensorsFromContainer(result: TensorContainer): js.Array[Tensor] = js.native
-  def extractTensorsFromAny(result: js.Any): js.Array[Tensor]                = js.native
+  def extractTensorsFromContainer(result: TensorContainer): js.Array[TensorND] = js.native
+  def extractTensorsFromAny(result: js.Any): js.Array[TensorND]                = js.native
 }

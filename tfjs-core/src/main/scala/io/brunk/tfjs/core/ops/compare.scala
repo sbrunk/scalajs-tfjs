@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -29,16 +29,16 @@ class CompareOps extends js.Object {}
 @js.native
 @JSGlobal
 object CompareOps extends js.Object {
-  def notEqual[T <: Tensor](a: Tensor, b: Tensor): T     = js.native
-  def notEqualStrict[T <: Tensor](a: T, b: T): T         = js.native
-  def less[T <: Tensor](a: Tensor, b: Tensor): T         = js.native
-  def lessStrict[T <: Tensor](a: T, b: T): T             = js.native
-  def equal[T <: Tensor](a: Tensor, b: Tensor): T        = js.native
-  def equalStrict[T <: Tensor](a: T, b: T): T            = js.native
-  def lessEqual[T <: Tensor](a: Tensor, b: Tensor): T    = js.native
-  def lessEqualStrict[T <: Tensor](a: T, b: T): T        = js.native
-  def greater[T <: Tensor](a: Tensor, b: Tensor): T      = js.native
-  def greaterStrict[T <: Tensor](a: T, b: T): T          = js.native
-  def greaterEqual[T <: Tensor](a: Tensor, b: Tensor): T = js.native
-  def greaterEqualStrict[T <: Tensor](a: T, b: T): T     = js.native
+  def notEqual[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
+  def notEqualStrict[T <: TensorND](a: T, b: T): T         = js.native
+  def less[T <: TensorND](a: TensorND, b: TensorND): T         = js.native
+  def lessStrict[T <: TensorND](a: T, b: T): T             = js.native
+  def equal[T <: TensorND](a: TensorND, b: TensorND): T        = js.native
+  def equalStrict[T <: TensorND](a: T, b: T): T            = js.native
+  def lessEqual[T <: TensorND](a: TensorND, b: TensorND): T    = js.native
+  def lessEqualStrict[T <: TensorND](a: T, b: T): T        = js.native
+  def greater[T <: TensorND](a: TensorND, b: TensorND): T      = js.native
+  def greaterStrict[T <: TensorND](a: T, b: T): T          = js.native
+  def greaterEqual[T <: TensorND](a: TensorND, b: TensorND): T = js.native
+  def greaterEqualStrict[T <: TensorND](a: T, b: T): T     = js.native
 }

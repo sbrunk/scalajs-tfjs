@@ -19,7 +19,7 @@ package io.brunk.tfjs.core
 import scala.scalajs.js
 import js.annotation._
 import js.{Promise, |}
-import TensorModule.{DataId, Scalar, Tensor1D, Tensor2D, Tensor3D, Tensor4D}
+import TensorModule.{DataId, Scalar, Tensor1D, Tensor2D, Tensor3D, Tensor4D, TensorND}
 import Types._
 
 @js.native
@@ -74,12 +74,12 @@ class Tensor[R <: Rank] protected () extends js.Object {
   def toBool(): this.type                                                          = js.native
   def print(verbose: Boolean = ???): Unit                                          = js.native
   def reshape[R2 <: Rank](newShape: js.Any): Tensor[R2]                            = js.native
-  def reshapeAs[T <: Tensor](x: T): T                                              = js.native
+  def reshapeAs[T <: TensorND](x: T): T                                              = js.native
   def expandDims[R2 <: Rank](axis: Double = ???): Tensor[R2]                       = js.native
-  def cumsum[T <: Tensor](axis: Double = ???, exclusive: Boolean = ???, reverse: Boolean = ???): T =
+  def cumsum[T <: TensorND](axis: Double = ???, exclusive: Boolean = ???, reverse: Boolean = ???): T =
     js.native
-  def squeeze[T <: Tensor](axis: js.Array[Double] = ???): T                       = js.native
-  def clone[T <: Tensor](`this`: T): T                                            = js.native
+  def squeeze[T <: TensorND](axis: js.Array[Double] = ???): T                       = js.native
+  def clone[T <: TensorND](`this`: T): T                                            = js.native
   def toString(verbose: Boolean = ???): String                                    = js.native
   def tile[T <: this.type](`this`: T, reps: js.Array[Double]): T                  = js.native
   def gather[T <: this.type](`this`: T, indices: Tensor1D, axis: Double = ???): T = js.native
@@ -89,17 +89,17 @@ class Tensor[R <: Rank] protected () extends js.Object {
       ord: Double | String = ???,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
-  ): Tensor = js.native
+  ): TensorND = js.native
   def slice[T <: Tensor[R]](
       `this`: T,
       begin: Double | js.Array[Double],
       size: Double | js.Array[Double] = ???
   ): T                                                                          = js.native
-  def reverse[T <: Tensor](`this`: T, axis: Double | js.Array[Double] = ???): T = js.native
-  def concat[T <: Tensor](`this`: T, x: T, axis: Double = ???): T               = js.native
-  def stack(x: Tensor, axis: Double = ???): Tensor                              = js.native
-  def unstack(x: Tensor, axis: Double = ???): js.Array[Tensor]                  = js.native
-  def pad[T <: Tensor](
+  def reverse[T <: TensorND](`this`: T, axis: Double | js.Array[Double] = ???): T = js.native
+  def concat[T <: TensorND](`this`: T, x: T, axis: Double = ???): T               = js.native
+  def stack(x: TensorND, axis: Double = ???): TensorND                              = js.native
+  def unstack(x: TensorND, axis: Double = ???): js.Array[TensorND]                  = js.native
+  def pad[T <: TensorND](
       `this`: T,
       paddings: js.Array[js.Tuple2[Double, Double]],
       constantValue: Double = ???
@@ -111,92 +111,92 @@ class Tensor[R <: Rank] protected () extends js.Object {
       scale: Tensor[R] | Tensor1D = ???,
       offset: Tensor[R] | Tensor1D = ???
   ): Tensor[R] = js.native
-  def logSumExp[T <: Tensor](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
+  def logSumExp[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
-  def sum[T <: Tensor](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
+  def sum[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
-  def mean[T <: Tensor](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
+  def mean[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
-  def min[T <: Tensor](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
+  def min[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
-  def max[T <: Tensor](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
+  def max[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
-  def argMin[T <: Tensor](axis: Double = ???): T                         = js.native
-  def argMax[T <: Tensor](axis: Double = ???): T                         = js.native
+  def argMin[T <: TensorND](axis: Double = ???): T                         = js.native
+  def argMax[T <: TensorND](axis: Double = ???): T                         = js.native
   def cast[T <: this.type](dtype: DataType): T                           = js.native
-  def add[T <: Tensor](x: Tensor): T                                     = js.native
+  def add[T <: TensorND](x: TensorND): T                                     = js.native
   def addStrict[T <: this.type](`this`: T, x: T): T                      = js.native
-  def sub[T <: Tensor](x: Tensor): T                                     = js.native
+  def sub[T <: TensorND](x: TensorND): T                                     = js.native
   def subStrict[T <: this.type](`this`: T, x: T): T                      = js.native
-  def pow[T <: Tensor](`this`: T, exp: Tensor): T                        = js.native
-  def powStrict(exp: Tensor): Tensor[R]                                  = js.native
-  def mul[T <: Tensor](x: Tensor): T                                     = js.native
+  def pow[T <: TensorND](`this`: T, exp: TensorND): T                        = js.native
+  def powStrict(exp: TensorND): Tensor[R]                                  = js.native
+  def mul[T <: TensorND](x: TensorND): T                                     = js.native
   def mulStrict[T <: this.type](`this`: T, x: T): T                      = js.native
-  def div[T <: Tensor](x: Tensor): T                                     = js.native
+  def div[T <: TensorND](x: TensorND): T                                     = js.native
   def divStrict[T <: this.type](`this`: T, x: T): T                      = js.native
-  def minimum[T <: Tensor](x: Tensor): T                                 = js.native
+  def minimum[T <: TensorND](x: TensorND): T                                 = js.native
   def minimumStrict[T <: this.type](`this`: T, x: T): T                  = js.native
-  def maximum[T <: Tensor](x: Tensor): T                                 = js.native
+  def maximum[T <: TensorND](x: TensorND): T                                 = js.native
   def maximumStrict[T <: this.type](`this`: T, x: T): T                  = js.native
-  def mod[T <: Tensor](x: Tensor): T                                     = js.native
+  def mod[T <: TensorND](x: TensorND): T                                     = js.native
   def modStrict[T <: this.type](`this`: T, x: T): T                      = js.native
-  def squaredDifference[T <: Tensor](x: Tensor): T                       = js.native
+  def squaredDifference[T <: TensorND](x: TensorND): T                       = js.native
   def squaredDifferenceStrict[T <: this.type](`this`: T, x: T): T        = js.native
-  def transpose[T <: Tensor](`this`: T, perm: js.Array[Double] = ???): T = js.native
-  def notEqual[T <: Tensor](x: Tensor): T                                = js.native
+  def transpose[T <: TensorND](`this`: T, perm: js.Array[Double] = ???): T = js.native
+  def notEqual[T <: TensorND](x: TensorND): T                                = js.native
   def notEqualStrict[T <: this.type](`this`: T, x: T): T                 = js.native
-  def less[T <: Tensor](x: Tensor): T                                    = js.native
+  def less[T <: TensorND](x: TensorND): T                                    = js.native
   def lessStrict[T <: this.type](`this`: T, x: T): T                     = js.native
-  def equal[T <: Tensor](x: Tensor): T                                   = js.native
+  def equal[T <: TensorND](x: TensorND): T                                   = js.native
   def equalStrict[T <: this.type](`this`: T, x: T): T                    = js.native
-  def lessEqual[T <: Tensor](x: Tensor): T                               = js.native
+  def lessEqual[T <: TensorND](x: TensorND): T                               = js.native
   def lessEqualStrict[T <: this.type](`this`: T, x: T): T                = js.native
-  def greater[T <: Tensor](x: Tensor): T                                 = js.native
+  def greater[T <: TensorND](x: TensorND): T                                 = js.native
   def greaterStrict[T <: this.type](`this`: T, x: T): T                  = js.native
-  def greaterEqual[T <: Tensor](x: Tensor): T                            = js.native
+  def greaterEqual[T <: TensorND](x: TensorND): T                            = js.native
   def greaterEqualStrict[T <: this.type](`this`: T, x: T): T             = js.native
-  def logicalAnd(x: Tensor): Tensor                                      = js.native
-  def logicalOr(x: Tensor): Tensor                                       = js.native
-  def logicalNot[T <: Tensor](`this`: T): T                              = js.native
-  def logicalXor(x: Tensor): Tensor                                      = js.native
-  def where(condition: Tensor, x: Tensor): Tensor                        = js.native
-  def neg[T <: Tensor](`this`: T): T                                     = js.native
-  def ceil[T <: Tensor](`this`: T): T                                    = js.native
-  def floor[T <: Tensor](`this`: T): T                                   = js.native
-  def sign[T <: Tensor](`this`: T): T                                    = js.native
-  def exp[T <: Tensor](`this`: T): T                                     = js.native
-  def expm1[T <: Tensor](`this`: T): T                                   = js.native
-  def log[T <: Tensor](`this`: T): T                                     = js.native
-  def log1p[T <: Tensor](`this`: T): T                                   = js.native
-  def sqrt[T <: Tensor](`this`: T): T                                    = js.native
-  def rsqrt[T <: Tensor](`this`: T): T                                   = js.native
-  def square[T <: Tensor](`this`: T): T                                  = js.native
-  def reciprocal[T <: Tensor](`this`: T): T                              = js.native
-  def abs[T <: Tensor](`this`: T): T                                     = js.native
+  def logicalAnd(x: TensorND): TensorND                                      = js.native
+  def logicalOr(x: TensorND): TensorND                                       = js.native
+  def logicalNot[T <: TensorND](`this`: T): T                              = js.native
+  def logicalXor(x: TensorND): TensorND                                      = js.native
+  def where(condition: TensorND, x: TensorND): TensorND                        = js.native
+  def neg[T <: TensorND](`this`: T): T                                     = js.native
+  def ceil[T <: TensorND](`this`: T): T                                    = js.native
+  def floor[T <: TensorND](`this`: T): T                                   = js.native
+  def sign[T <: TensorND](`this`: T): T                                    = js.native
+  def exp[T <: TensorND](`this`: T): T                                     = js.native
+  def expm1[T <: TensorND](`this`: T): T                                   = js.native
+  def log[T <: TensorND](`this`: T): T                                     = js.native
+  def log1p[T <: TensorND](`this`: T): T                                   = js.native
+  def sqrt[T <: TensorND](`this`: T): T                                    = js.native
+  def rsqrt[T <: TensorND](`this`: T): T                                   = js.native
+  def square[T <: TensorND](`this`: T): T                                  = js.native
+  def reciprocal[T <: TensorND](`this`: T): T                              = js.native
+  def abs[T <: TensorND](`this`: T): T                                     = js.native
   def clipByValue(min: Double, max: Double): Tensor[R]                   = js.native
-  def relu[T <: Tensor](`this`: T): T                                    = js.native
-  def elu[T <: Tensor](`this`: T): T                                     = js.native
-  def selu[T <: Tensor](`this`: T): T                                    = js.native
+  def relu[T <: TensorND](`this`: T): T                                    = js.native
+  def elu[T <: TensorND](`this`: T): T                                     = js.native
+  def selu[T <: TensorND](`this`: T): T                                    = js.native
   def leakyRelu(alpha: Double = ???): Tensor[R]                          = js.native
   def prelu(alpha: Tensor[R]): Tensor[R]                                 = js.native
-  def sigmoid[T <: Tensor](`this`: T): T                                 = js.native
-  def logSigmoid[T <: Tensor](`this`: T): T                              = js.native
-  def softplus[T <: Tensor](`this`: T): T                                = js.native
-  def sin[T <: Tensor](`this`: T): T                                     = js.native
-  def cos[T <: Tensor](`this`: T): T                                     = js.native
-  def tan[T <: Tensor](`this`: T): T                                     = js.native
-  def asin[T <: Tensor](`this`: T): T                                    = js.native
-  def acos[T <: Tensor](`this`: T): T                                    = js.native
-  def atan[T <: Tensor](`this`: T): T                                    = js.native
-  def sinh[T <: Tensor](`this`: T): T                                    = js.native
-  def cosh[T <: Tensor](`this`: T): T                                    = js.native
-  def tanh[T <: Tensor](`this`: T): T                                    = js.native
-  def asinh[T <: Tensor](`this`: T): T                                   = js.native
-  def acosh[T <: Tensor](`this`: T): T                                   = js.native
-  def atanh[T <: Tensor](`this`: T): T                                   = js.native
-  def erf[T <: Tensor](`this`: T): T                                     = js.native
-  def round[T <: Tensor](`this`: T): T                                   = js.native
-  def step[T <: Tensor](`this`: T, alpha: Double = ???): T               = js.native
+  def sigmoid[T <: TensorND](`this`: T): T                                 = js.native
+  def logSigmoid[T <: TensorND](`this`: T): T                              = js.native
+  def softplus[T <: TensorND](`this`: T): T                                = js.native
+  def sin[T <: TensorND](`this`: T): T                                     = js.native
+  def cos[T <: TensorND](`this`: T): T                                     = js.native
+  def tan[T <: TensorND](`this`: T): T                                     = js.native
+  def asin[T <: TensorND](`this`: T): T                                    = js.native
+  def acos[T <: TensorND](`this`: T): T                                    = js.native
+  def atan[T <: TensorND](`this`: T): T                                    = js.native
+  def sinh[T <: TensorND](`this`: T): T                                    = js.native
+  def cosh[T <: TensorND](`this`: T): T                                    = js.native
+  def tanh[T <: TensorND](`this`: T): T                                    = js.native
+  def asinh[T <: TensorND](`this`: T): T                                   = js.native
+  def acosh[T <: TensorND](`this`: T): T                                   = js.native
+  def atanh[T <: TensorND](`this`: T): T                                   = js.native
+  def erf[T <: TensorND](`this`: T): T                                     = js.native
+  def round[T <: TensorND](`this`: T): T                                   = js.native
+  def step[T <: TensorND](`this`: T, alpha: Double = ???): T               = js.native
   def softmax[T <: this.type](`this`: T, dim: Double = ???): T           = js.native
   def resizeBilinear[T <: Tensor3D | Tensor4D](
       `this`: T,
@@ -266,7 +266,7 @@ class Tensor[R <: Rank] protected () extends js.Object {
   ): T = js.native
   def variable(trainable: Boolean = ???, name: String = ???, dtype: DataType = ???): Variable[R] =
     js.native
-  def unsortedSegmentSum[T <: Tensor](
+  def unsortedSegmentSum[T <: TensorND](
       `this`: T,
       segmentIds: Tensor1D,
       numSegments: Double,
@@ -312,5 +312,6 @@ object TensorModule extends js.Object {
   type Tensor2D = Tensor[Rank.R2]
   type Tensor3D = Tensor[Rank.R3]
   type Tensor4D = Tensor[Rank.R4]
+  type TensorND = Tensor[Rank]
   //val variable: Variable.variable.type = js.native
 }

@@ -21,6 +21,7 @@ import js.annotation._
 import js.{Promise, |}
 import Types._
 import Engine._
+import TensorModule.TensorND
 
 @js.native
 @JSGlobal
@@ -35,6 +36,6 @@ object Tracking extends js.Object {
       gradMode: Boolean = ???
   ): T                                                 = js.native
   def dispose(container: js.Any): Unit                 = js.native
-  def keep[T <: Tensor](result: T): T                  = js.native
+  def keep[T <: TensorND](result: T): T                  = js.native
   def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native
 }

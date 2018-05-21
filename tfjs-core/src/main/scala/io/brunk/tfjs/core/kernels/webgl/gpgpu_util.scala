@@ -29,7 +29,7 @@ import scala.scalajs.js.typedarray.Float32Array
 @JSGlobalScope
 object Gpgpu_util extends js.Object {
   def getWebGLContextAttributes(): webgl.ContextAttributes                        = js.native
-  def createWebGLContext(canvas: HTMLCanvasElement = ???): webgl.RenderingContext = js.native
+  def createWebGLContext(canvas: html.Canvas = ???): webgl.RenderingContext = js.native
   def createVertexShader(gl: webgl.RenderingContext): webgl.Shader                 = js.native
   def createVertexBuffer(gl: webgl.RenderingContext): webgl.Buffer                 = js.native
   def createIndexBuffer(gl: webgl.RenderingContext): webgl.Buffer                  = js.native

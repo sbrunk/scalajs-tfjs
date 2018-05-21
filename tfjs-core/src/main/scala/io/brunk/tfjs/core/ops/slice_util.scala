@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -25,7 +26,7 @@ import js.|
 @js.native
 @JSGlobalScope
 object Slice_util extends js.Object {
-  def assertParamsValid(input: Tensor, begin: js.Array[Double], size: js.Array[Double]): Unit =
+  def assertParamsValid(input: TensorND, begin: js.Array[Double], size: js.Array[Double]): Unit =
     js.native
   def getStridedSlicedInfo(
       shape: js.Array[Double],

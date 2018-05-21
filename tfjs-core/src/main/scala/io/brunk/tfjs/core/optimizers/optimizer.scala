@@ -18,7 +18,7 @@ package io.brunk.tfjs.core.optimizers
 
 import io.brunk.tfjs.core.TensorModule.Scalar
 import io.brunk.tfjs.core.Types.NamedTensorMap
-import io.brunk.tfjs.core.Variable
+import io.brunk.tfjs.core.{Rank, Variable}
 
 import scala.scalajs.js
 import js.annotation._
@@ -30,9 +30,9 @@ abstract class Optimizer extends Serializable {
   def minimize(
       f: js.Function0[Scalar],
       returnCost: Boolean = ???,
-      varList: js.Array[Variable] = ???
+      varList: js.Array[Variable[Rank]] = ???
   ): Scalar | Null = js.native
-  def computeGradients(f: js.Function0[Scalar], varList: js.Array[Variable] = ???): js.Any =
+  def computeGradients(f: js.Function0[Scalar], varList: js.Array[Variable[Rank]] = ???): js.Any =
     js.native
   def applyGradients(variableGradients: NamedTensorMap): Unit
 }

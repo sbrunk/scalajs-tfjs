@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 import io.brunk.tfjs.core.Types.TypedArray
 
 import scala.scalajs.js
@@ -26,9 +27,9 @@ import js.|
 @js.native
 @JSGlobalScope
 object Rand_util extends js.Object {
-  def jarqueBeraNormalityTest(a: Tensor | TypedArray | js.Array[Double]): Unit = js.native
+  def jarqueBeraNormalityTest(a: TensorND | TypedArray | js.Array[Double]): Unit = js.native
   def expectArrayInMeanStdRange(
-      actual: Tensor | TypedArray | js.Array[Double],
+      actual: TensorND | TypedArray | js.Array[Double],
       expectedMean: Double,
       expectedStdDev: Double,
       epsilon: Double = ???

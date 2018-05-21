@@ -16,8 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
-import io.brunk.tfjs.core.TensorModule.Scalar
+import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
 
 import scala.scalajs.js
 import js.annotation._
@@ -30,7 +29,7 @@ class MovingAverageOps extends js.Object {}
 @js.native
 @JSGlobal
 object MovingAverageOps extends js.Object {
-  def movingAverage[T <: Tensor](
+  def movingAverage[T <: TensorND](
       v: T,
       x: T,
       decay: Double | Scalar,

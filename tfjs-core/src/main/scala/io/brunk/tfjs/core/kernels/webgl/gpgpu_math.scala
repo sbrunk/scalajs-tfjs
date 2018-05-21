@@ -17,6 +17,8 @@
 package io.brunk.tfjs.core.kernels.webgl
 
 import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.core.kernels.webgl.Shader_compiler.ShapeInfo
 
 import scala.scalajs.js
 import js.annotation._
@@ -34,7 +36,7 @@ trait GPGPUProgram extends js.Object {
 
 @js.native
 trait GPGPUBinary extends js.Object {
-  var webGLProgram: WebGLProgram                     = js.native
+  var webGLProgram: webgl.Program                     = js.native
   var program: GPGPUProgram                          = js.native
   var uniformLocations: GPGPUBinary.UniformLocations = js.native
   var gpgpu: GPGPUContext                            = js.native
@@ -55,7 +57,7 @@ object GPGPUBinary {
 }
 
 @js.native
-trait TensorData[T <: Tensor] extends js.Object {
+trait TensorData[T <: TensorND] extends js.Object {
   var tensor: T            = js.native
   var texData: TextureData = js.native
 }
@@ -63,13 +65,13 @@ trait TensorData[T <: Tensor] extends js.Object {
 @js.native
 @JSGlobalScope
 object Gpgpu_math extends js.Object {
-  def compileProgram[T <: Tensor, K <: Tensor](
+  def compileProgram[T <: TensorND, K <: TensorND](
       gpgpu: GPGPUContext,
       program: GPGPUProgram,
       inputs: js.Array[TensorData[T]],
       output: TensorData[K]
   ): GPGPUBinary = js.native
-  def runProgram[T <: Tensor, K <: Tensor](
+  def runProgram[T <: TensorND, K <: TensorND](
       binary: GPGPUBinary,
       inputs: js.Array[TensorData[T]],
       output: TensorData[K],
@@ -77,7 +79,7 @@ object Gpgpu_math extends js.Object {
   ): Unit = js.native
   def makeShaderKey(
       program: GPGPUProgram,
-      inputs: js.Array[TensorData[Tensor]],
-      output: TensorData[Tensor]
+      inputs: js.Array[TensorData[TensorND]],
+      output: TensorData[TensorND]
   ): String = js.native
 }

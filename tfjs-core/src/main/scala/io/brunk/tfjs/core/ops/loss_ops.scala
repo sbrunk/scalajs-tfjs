@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -43,40 +43,40 @@ class LossOps extends js.Object {}
 @js.native
 @JSGlobal
 object LossOps extends js.Object {
-  def computeWeightedLoss[T <: Tensor, O <: Tensor](
+  def computeWeightedLoss[T <: TensorND, O <: TensorND](
       losses: T,
-      weights: Tensor = ???,
+      weights: TensorND = ???,
       reduction: Reduction = ???
   ): O = js.native
-  def absoluteDifference[T <: Tensor, O <: Tensor](
+  def absoluteDifference[T <: TensorND, O <: TensorND](
       labels: T,
       predictions: T,
-      weights: Tensor = ???,
+      weights: TensorND = ???,
       reduction: Reduction = ???
   ): O = js.native
-  def meanSquaredError[T <: Tensor, O <: Tensor](
+  def meanSquaredError[T <: TensorND, O <: TensorND](
       labels: T,
       predictions: T,
-      weights: Tensor = ???,
+      weights: TensorND = ???,
       reduction: Reduction = ???
   ): O = js.native
-  def cosineDistance[T <: Tensor, O <: Tensor](
+  def cosineDistance[T <: TensorND, O <: TensorND](
       labels: T,
       predictions: T,
       axis: Double,
-      weights: Tensor = ???,
+      weights: TensorND = ???,
       reduction: Reduction = ???
   ): O = js.native
-  def hingeLoss[T <: Tensor, O <: Tensor](
+  def hingeLoss[T <: TensorND, O <: TensorND](
       labels: T,
       predictions: T,
-      weights: Tensor = ???,
+      weights: TensorND = ???,
       reduction: Reduction = ???
   ): O = js.native
-  def logLoss[T <: Tensor, O <: Tensor](
+  def logLoss[T <: TensorND, O <: TensorND](
       labels: T,
       predictions: T,
-      weights: Tensor = ???,
+      weights: TensorND = ???,
       epsilon: Double = ???,
       reduction: Reduction = ???
   ): O = js.native

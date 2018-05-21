@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 import scala.scalajs.js
 import js.annotation._
@@ -29,5 +29,5 @@ class TransposeOps extends js.Object {}
 @js.native
 @JSGlobal
 object TransposeOps extends js.Object {
-  def transpose[T <: Tensor](x: T, perm: js.Array[Double] = ???): T = js.native
+  def transpose[T <: TensorND](x: T, perm: js.Array[Double] = ???): T = js.native
 }

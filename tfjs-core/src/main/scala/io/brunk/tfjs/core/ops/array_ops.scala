@@ -55,9 +55,9 @@ object ArrayOps extends js.Object {
   def ones[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R]                = js.native
   def zeros[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R]               = js.native
   def fill[R <: Rank](shape: js.Any, value: Double, dtype: DataType = ???): Tensor[R] = js.native
-  def onesLike[T <: Tensor](x: T): T                                                  = js.native
-  def zerosLike[T <: Tensor](x: T): T                                                 = js.native
-  def clone[T <: Tensor](x: T): T                                                     = js.native
+  def onesLike[T <: TensorND](x: T): T                                                  = js.native
+  def zerosLike[T <: TensorND](x: T): T                                                 = js.native
+  def clone[T <: TensorND](x: T): T                                                     = js.native
   def eye(
       numRows: Double,
       numColumns: Double = ???,
@@ -109,11 +109,11 @@ object ArrayOps extends js.Object {
       img: Tensor2D | Tensor3D,
       canvas: html.Canvas = ???
   ): Promise[Uint8ClampedArray]                                           = js.native
-  def reshape[R2 <: Rank](x: Tensor, shape: js.Any): Tensor[R2]           = js.native
-  def squeeze[T <: Tensor](x: Tensor, axis: js.Array[Double] = ???): T    = js.native
-  def cast[T <: Tensor](x: T, dtype: DataType): T                         = js.native
-  def tile[T <: Tensor](x: T, reps: js.Array[Double]): T                  = js.native
-  def gather[T <: Tensor](x: T, indices: Tensor1D, axis: Double = ???): T = js.native
+  def reshape[R2 <: Rank](x: TensorND, shape: js.Any): Tensor[R2]           = js.native
+  def squeeze[T <: TensorND](x: TensorND, axis: js.Array[Double] = ???): T    = js.native
+  def cast[T <: TensorND](x: T, dtype: DataType): T                         = js.native
+  def tile[T <: TensorND](x: T, reps: js.Array[Double]): T                  = js.native
+  def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double = ???): T = js.native
   def pad1d(
       x: Tensor1D,
       paddings: js.Tuple2[Double, Double],
@@ -143,25 +143,25 @@ object ArrayOps extends js.Object {
       ],
       constantValue: Double = ???
   ): Tensor4D = js.native
-  def pad[T <: Tensor](
+  def pad[T <: TensorND](
       x: T,
       paddings: js.Array[js.Tuple2[Double, Double]],
       constantValue: Double = ???
   ): T                                                                     = js.native
-  def stack[T <: Tensor](tensors: js.Array[T], axis: Double = ???): Tensor = js.native
-  def unstack[T <: Tensor](value: T, axis: Double = ???): js.Array[Tensor] = js.native
-  def split[T <: Tensor](
+  def stack[T <: TensorND](tensors: js.Array[T], axis: Double = ???): TensorND = js.native
+  def unstack[T <: TensorND](value: T, axis: Double = ???): js.Array[TensorND] = js.native
+  def split[T <: TensorND](
       x: T,
       numOrSizeSplits: js.Array[Double] | Double,
       axis: Double = ???
   ): js.Array[T] = js.native
-  def cumsum[T <: Tensor](
-      x: Tensor,
+  def cumsum[T <: TensorND](
+      x: TensorND,
       axis: Double = ???,
       exclusive: Boolean = ???,
       reverse: Boolean = ???
   ): T                                                                  = js.native
-  def expandDims[R2 <: Rank](x: Tensor, axis: Double = ???): Tensor[R2] = js.native
+  def expandDims[R2 <: Rank](x: TensorND, axis: Double = ???): Tensor[R2] = js.native
   def linspace(start: Double, stop: Double, num: Double): Tensor1D      = js.native
   def range(start: Double, stop: Double, step: Double = ???, dtype: String = ???): Tensor1D =
     js.native
@@ -170,5 +170,5 @@ object ArrayOps extends js.Object {
       dtype: DataType = ???,
       values: TypedArray = ???
   ): TensorBuffer[R]                                         = js.native
-  def print[T <: Tensor](x: T, verbose: Boolean = ???): Unit = js.native
+  def print[T <: TensorND](x: T, verbose: Boolean = ???): Unit = js.native
 }
