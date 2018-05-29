@@ -26,7 +26,7 @@ import js.|
 
 @js.native
 @JSGlobal
-abstract class Optimizer extends Serializable {
+abstract class Optimizer extends io.brunk.tfjs.core.Serializable {
   def minimize(
       f: js.Function0[Scalar],
       returnCost: Boolean = ???,

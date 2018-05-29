@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.core.io
 
+import io.brunk.tfjs.core.io.Router_registry.IORouter
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -23,8 +25,8 @@ import js.|
 @js.native
 @JSGlobalScope
 object Io extends js.Object {
-  val registerSaveRouter: IORouterRegistry.registerSaveRouter.type = js.native
-  val registerLoadRouter: IORouterRegistry.registerLoadRouter.type = js.native
-  val getSaveHandlers: IORouterRegistry.getSaveHandlers.type       = js.native
-  val getLoadHandlers: IORouterRegistry.getLoadHandlers.type       = js.native
+  def registerSaveRouter(saveRouter: IORouter): Unit    = js.native
+  def registerLoadRouter(loadRouter: IORouter): Unit    = js.native
+  def getSaveHandlers(url: String): js.Array[IOHandler] = js.native
+  def getLoadHandlers(url: String): js.Array[IOHandler] = js.native
 }

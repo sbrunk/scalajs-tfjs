@@ -18,14 +18,15 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
+import Engine.MemoryInfo
 
 @js.native
 @JSGlobalScope
 object Index extends js.Object {
-  val setBackend: environment.Environment.setBackend.type             = js.native
-  val getBackend: environment.Environment.getBackend.type             = js.native
-  val disposeVariables: environment.Environment.disposeVariables.type = js.native
-  val memory: environment.Environment.memory.type                     = js.native
-  val nextFrame: BrowserUtil.nextFrame.type                           = js.native
+  def setBackend(backendType: String, safeMode: Boolean = ???): Unit = js.native
+  def getBackend(): String                                           = js.native
+  def disposeVariables(): Unit                                       = js.native
+  def memory(): MemoryInfo                                           = js.native
+  def nextFrame(): Promise[Unit] =       js.native
 }

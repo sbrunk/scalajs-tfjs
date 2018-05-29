@@ -19,7 +19,7 @@ package io.brunk.tfjs.core
 import scala.scalajs.js
 import js.annotation._
 import js.|
-import Serialization._
+import Serialization.{ConfigDictValue, SerializableConstructor, FromConfigMethod}
 
 @js.native
 trait ConfigDict extends js.Object {

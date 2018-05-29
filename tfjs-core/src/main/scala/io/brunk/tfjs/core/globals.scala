@@ -18,19 +18,29 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
+import TensorModule.{Scalar, TensorND}
+import Types.TensorContainer
+import Engine.{CustomGradientFunc, ScopeFn}
 
 @js.native
 @JSGlobalScope
 object Globals extends js.Object {
-  val tidy: Tracking.tidy.type                    = js.native
-  val keep: Tracking.keep.type                    = js.native
-  val dispose: Tracking.dispose.type              = js.native
-  val time: Tracking.time.type                    = js.native
-  val grad: Gradients.grad.type                   = js.native
-  val valueAndGrad: Gradients.valueAndGrad.type   = js.native
-  val grads: Gradients.grads.type                 = js.native
-  val valueAndGrads: Gradients.valueAndGrads.type = js.native
-  val variableGrads: Gradients.variableGrads.type = js.native
-  val customGrad: Gradients.customGrad.type       = js.native
+  def tidy[T <: TensorContainer](
+    nameOrFn: String | ScopeFn[T],
+    fn: ScopeFn[T] = ???,
+    gradMode: Boolean = ???
+  ): T                                                 = js.native
+  def dispose(container: js.Any): Unit                 = js.native
+  def keep[T <: TensorND](result: T): T                  = js.native
+  def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native
+  def grad[I <: TensorND, O <: TensorND](f: js.Function1[I, O]): js.Function2[I, O, I] = js.native
+  def grads[O <: TensorND](f: js.Function): js.Function2[js.Array[TensorND], O, js.Array[TensorND]] =
+    js.native
+  def valueAndGrad[I <: TensorND, O <: TensorND](f: js.Function1[I, O]): js.Function2[I, O, js.Any] =
+    js.native
+  def valueAndGrads[O <: TensorND](f: js.Function): js.Function2[js.Array[TensorND], O, js.Any] =
+    js.native
+  def variableGrads(f: js.Function0[Scalar], varList: js.Array[Variable[Rank]] = ???): js.Any = js.native
+  def customGrad[T <: TensorND](f: CustomGradientFunc[T]): js.Function                    = js.native
 }
