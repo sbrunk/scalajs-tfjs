@@ -32,7 +32,7 @@ lazy val `scalajs-tfjs-core` =
 
 lazy val `tfjs-layers` =
   project
-    .in(file("scalajs-tfjs-layers"))
+    .in(file("tfjs-layers"))
     .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
     .settings(settings)
     .settings(
