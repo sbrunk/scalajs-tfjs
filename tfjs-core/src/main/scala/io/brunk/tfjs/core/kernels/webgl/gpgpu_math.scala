@@ -28,21 +28,26 @@ import org.scalajs.dom.webgl
 
 @js.native
 trait GPGPUProgram extends js.Object {
-  var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double]   = js.native
-  var userCode: String                = js.native
-  var supportsBroadcasting: Boolean   = js.native
+  var variableNames: js.Array[String]
+  var outputShape: js.Array[Double]
+  var userCode: String
+  //var supportsBroadcasting: Boolean | Unit = js.native
+}
+
+@js.native
+trait SupportsBroadasting extends js.Object {
+  var supportsBroadcasting: Boolean = js.native
 }
 
 @js.native
 trait GPGPUBinary extends js.Object {
-  var webGLProgram: webgl.Program                     = js.native
-  var program: GPGPUProgram                          = js.native
-  var uniformLocations: GPGPUBinary.UniformLocations = js.native
-  var gpgpu: GPGPUContext                            = js.native
-  var source: String                                 = js.native
-  var inShapeInfos: js.Array[ShapeInfo]              = js.native
-  var outShapeInfo: ShapeInfo                        = js.native
+  var webGLProgram: webgl.Program
+  var program: GPGPUProgram
+  var uniformLocations: GPGPUBinary.UniformLocations
+  var gpgpu: GPGPUContext
+  var source: String
+  var inShapeInfos: js.Array[ShapeInfo]
+  var outShapeInfo: ShapeInfo
 }
 
 object GPGPUBinary {
@@ -58,8 +63,8 @@ object GPGPUBinary {
 
 @js.native
 trait TensorData[T <: TensorND] extends js.Object {
-  var tensor: T            = js.native
-  var texData: TextureData = js.native
+  var tensor: T
+  var texData: TextureData
 }
 
 @js.native

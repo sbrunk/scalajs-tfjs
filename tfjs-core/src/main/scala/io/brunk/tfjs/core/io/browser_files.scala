@@ -28,7 +28,7 @@ import scala.concurrent.Promise
 @JSGlobal
 class BrowserDownloads protected () extends IOHandler {
   def this(fileNamePrefix: String = ???) = this()
-  def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
 }
 
 @js.native

@@ -16,9 +16,8 @@
 
 package io.brunk.tfjs.core.optimizers
 
-import io.brunk.tfjs.core.ConfigDict
+import io.brunk.tfjs.core.{ConfigDict, NamedVariableMap}
 import io.brunk.tfjs.core.Serialization.SerializableConstructor
-import io.brunk.tfjs.core.Types.NamedVariableMap
 
 import scala.scalajs.js
 import js.annotation._
@@ -27,6 +26,7 @@ import js.|
 @js.native
 @JSGlobal
 class AdagradOptimizer protected () extends Optimizer {
+  override type T = NamedVariableMap
   def this(learningRate: Double, initialAccumulatorValue: Double = ???) = this()
   protected var learningRate: Double                            = js.native
   def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
@@ -38,6 +38,6 @@ class AdagradOptimizer protected () extends Optimizer {
 @JSGlobal
 object AdagradOptimizer extends js.Object {
   var className: String = js.native
-  def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T =
+  def fromConfig[T <: io.brunk.tfjs.core.Serializable](cls: SerializableConstructor[T], config: ConfigDict): T =
     js.native
 }

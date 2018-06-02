@@ -22,8 +22,6 @@ import js.{Promise, |}
 import Engine.MemoryInfo
 import kernels.BackendTimingInfo
 import kernels.KernelBackend
-import Types.NamedVariableMap
-import Types.NamedTensorMap
 import Engine.ForwardFunc
 import Types.TensorContainer
 import TensorModule.DataId
@@ -57,7 +55,7 @@ class Engine protected () extends TensorManager {
       inputs: I,
       backwardsFunc: js.Function2[T, js.Array[TensorND], js.Any] = ???
   ): T                                                                      = js.native
-  def registerTensor(a: TensorND | Variable[Rank]): Unit                            = js.native
+  def registerTensor(a: TensorND): Unit                            = js.native
   def registerVariable(v: Variable[Rank]): Unit                                   = js.native
   def disposeTensor(a: TensorND): Unit                                        = js.native
   def disposeVariables(): Unit                                              = js.native

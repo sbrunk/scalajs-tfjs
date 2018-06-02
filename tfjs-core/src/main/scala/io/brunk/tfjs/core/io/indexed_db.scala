@@ -29,8 +29,8 @@ class BrowserIndexedDB protected () extends IOHandler {
   def this(modelPath: String) = this()
   protected def indexedDB: IDBFactory                           = js.native
   protected def modelPath: String                               = js.native
-  def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
-  def load(): Promise[ModelArtifacts]                           = js.native
+  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  //def load(): Promise[ModelArtifacts]                           = js.native
 }
 
 @js.native

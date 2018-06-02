@@ -313,5 +313,6 @@ object TensorModule extends js.Object {
   type Tensor3D = Tensor[Rank.R3]
   type Tensor4D = Tensor[Rank.R4]
   type TensorND = Tensor[Rank]
+  type VariableND = Variable[Rank]
   //val variable: Variable.variable.type = js.native
 }

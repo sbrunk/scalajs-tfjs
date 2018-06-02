@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.Types.NamedTensorMap
+import io.brunk.tfjs.core.NamedTensorMap
 import io.brunk.tfjs.core.io.Types.WeightsManifestConfig
 import org.scalajs.dom.experimental.RequestInit
 

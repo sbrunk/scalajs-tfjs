@@ -23,13 +23,13 @@ import scala.scalajs.js.typedarray.{Float32Array, Int32Array}
 
 @js.native
 trait RandGauss extends js.Object {
-  def nextValue(): Double = js.native
+  def nextValue(): Double
 }
 
 @js.native
 trait RandNormalDataTypes extends js.Object {
-  var float32: Float32Array = js.native
-  var int32: Int32Array     = js.native
+  var float32: Float32Array
+  var int32: Int32Array
 }
 
 @js.native

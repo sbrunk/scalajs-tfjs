@@ -16,9 +16,8 @@
 
 package io.brunk.tfjs.core.optimizers
 
-import io.brunk.tfjs.core.ConfigDict
+import io.brunk.tfjs.core.{ConfigDict, NamedTensorMap, NamedVariableMap}
 import io.brunk.tfjs.core.Serialization.SerializableConstructor
-import io.brunk.tfjs.core.Types.NamedVariableMap
 
 import scala.scalajs.js
 import js.annotation._
@@ -27,18 +26,19 @@ import js.|
 @js.native
 @JSGlobal
 class MomentumOptimizer protected () extends SGDOptimizer {
+  override type T = NamedVariableMap
   def this(learningRate: Double, momentum: Double, useNesterov: Boolean = ???) = this()
-  protected var learningRate: Double                            = js.native
-  def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
-  def dispose(): Unit                                           = js.native
+//  protected var learningRate: Double                            = js.native
+  override def applyGradients(variableGradients: T): Unit = js.native
+//  def dispose(): Unit                                           = js.native
   def setMomentum(momentum: Double): Unit                       = js.native
-  def getConfig(): ConfigDict                                   = js.native
+//  def getConfig(): ConfigDict                                   = js.native
 }
 
 @js.native
 @JSGlobal
 object MomentumOptimizer extends js.Object {
   var className: String = js.native
-  def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T =
+  def fromConfig[T <: io.brunk.tfjs.core.Serializable](cls: SerializableConstructor[T], config: ConfigDict): T =
     js.native
 }

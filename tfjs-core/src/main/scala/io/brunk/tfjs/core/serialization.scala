@@ -52,7 +52,9 @@ class SerializationMap extends js.Object {
   var classNameMap: SerializationMap.ClassNameMap = js.native
 }
 
-object SerializationMap {
+@js.native
+@JSGlobal
+object SerializationMap extends js.Object {
 
   @js.native
   trait ClassNameMap extends js.Object {

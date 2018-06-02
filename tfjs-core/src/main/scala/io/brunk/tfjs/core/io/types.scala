@@ -16,12 +16,12 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.io.Types.{ LoadHandler, SaveHandler }
+import io.brunk.tfjs.core.io.Types.{LoadHandler, SaveHandler}
 import org.scalajs.dom.experimental.Response
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Date, Promise, | }
+import js.{Date, Promise, |}
 import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
@@ -86,15 +86,17 @@ trait ModelArtifacts extends js.Object {
 }
 
 @js.native
+// TODO find a better way to handle that save/load is optional than to have this "implemented" in the trait with js.native
+// Upstream IOHandler is just an interface
 trait IOHandler extends js.Object {
-  var save: SaveHandler = js.native
-  var load: LoadHandler = js.native
+  var save: SaveHandler | Unit = js.native
+  var load: LoadHandler | Unit = js.native
 }
 
 @js.native
 trait ModelStoreManager extends js.Object {
-  def listModels(): Promise[js.Dictionary[ModelArtifactsInfo]] = js.native
-  def removeModel(path: String): Promise[ModelArtifactsInfo]   = js.native
+  def listModels(): Promise[js.Dictionary[ModelArtifactsInfo]]
+  def removeModel(path: String): Promise[ModelArtifactsInfo]
 }
 
 @js.native

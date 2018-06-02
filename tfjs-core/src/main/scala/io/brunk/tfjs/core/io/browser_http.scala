@@ -30,7 +30,7 @@ class BrowserHTTPRequest protected () extends IOHandler {
   protected def path: String                                    = js.native
   protected def requestInit: RequestInit                        = js.native
   def DEFAULT_METHOD: String                                    = js.native
-  def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
 }
 
 @js.native

@@ -22,12 +22,12 @@ import js.|
 
 @js.native
 @JSGlobal
-class BinaryOpProgram protected () extends GPGPUProgram {
+class BinaryOpProgram protected () extends GPGPUProgram with SupportsBroadasting {
   def this(op: String, aShape: js.Array[Double], bShape: js.Array[Double]) = this()
   var variableNames: js.Array[String] = js.native
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
-  var supportsBroadcasting: Boolean   = js.native
+  //var supportsBroadcasting: Boolean   = js.native
 }
 
 @js.native

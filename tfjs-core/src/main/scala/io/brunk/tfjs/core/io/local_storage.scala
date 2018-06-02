@@ -30,11 +30,13 @@ class BrowserLocalStorage protected () extends IOHandler {
   protected def LS: Storage                                     = js.native
   protected def modelPath: String                               = js.native
   protected def keys: BrowserLocalStorage.Keys                  = js.native
-  def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
-  def load(): Promise[ModelArtifacts]                           = js.native
+  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  //def load(): Promise[ModelArtifacts]                           = js.native
 }
 
-object BrowserLocalStorage {
+@js.native
+@JSGlobal
+object BrowserLocalStorage extends js.Object {
 
   @js.native
   trait Keys extends js.Object {

@@ -16,17 +16,14 @@
 
 package io.brunk.tfjs.core.optimizers
 
+import io.brunk.tfjs.core.NamedTensorMap
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class OptimizerConstructors extends js.Object {}
-
-@js.native
-@JSGlobal
-object OptimizerConstructors extends js.Object {
+trait OptimizerConstructors extends js.Object {
   def sgd(learningRate: Double): SGDOptimizer = js.native
   def momentum(
       learningRate: Double,
@@ -61,3 +58,7 @@ object OptimizerConstructors extends js.Object {
   def adagrad(learningRate: Double, initialAccumulatorValue: Double = ???): AdagradOptimizer =
     js.native
 }
+
+@js.native
+@JSGlobal
+object OptimizerConstructors extends OptimizerConstructors

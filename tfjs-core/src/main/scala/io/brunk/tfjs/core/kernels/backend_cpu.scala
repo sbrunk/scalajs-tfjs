@@ -16,10 +16,10 @@
 
 package io.brunk.tfjs.core.kernels
 
-import io.brunk.tfjs.core.{DataType, Rank, Tensor}
-import io.brunk.tfjs.core.TensorModule._
-import io.brunk.tfjs.core.Types.TypedArray
-import io.brunk.tfjs.core.ops.Conv_util.Conv2DInfo
+import io.brunk.tfjs.core._
+import _root_.io.brunk.tfjs.core.TensorModule._
+import _root_.io.brunk.tfjs.core.Types.TypedArray
+import _root_.io.brunk.tfjs.core.ops.Conv_util.Conv2DInfo
 
 import scala.scalajs.js
 import js.annotation._
@@ -135,7 +135,7 @@ class MathBackendCPU extends KernelBackend {
     js.native
   def avgPoolBackprop(dy: Tensor4D, x: Tensor4D, convInfo: Conv2DInfo): Tensor4D        = js.native
   def cast[T <: TensorND](x: T, dtype: DataType): T                           = js.native
-  def reshape[T <: Tensor[R], R <: Rank](x: T, shape: js.Any): Tensor[R] = js.native
+  def reshape[T <: TensorND, R <: Rank](x: T, shape: ShapeMap[R]#Shape): Tensor[R] = js.native
   def avgPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D                              = js.native
   def resizeBilinear(
       x: Tensor4D,

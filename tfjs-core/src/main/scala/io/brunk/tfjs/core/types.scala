@@ -21,7 +21,7 @@ import js.annotation._
 import js.|
 import scala.scalajs.js.typedarray.{Float32Array, Int32Array, Uint8Array}
 import Types.TensorContainer
-import TensorModule.TensorND
+import TensorModule.{VariableND, TensorND}
 
 sealed trait DataType extends js.Any
 object DataType {
@@ -68,13 +68,26 @@ object DType extends js.Object {
   def apply(value: DType): String = js.native
 }
 
-@js.native
-trait ShapeMap extends js.Object {
-  var R0: js.Array[Double]                          = js.native
-  var R1: Tuple1[Double]                            = js.native
-  var R2: js.Tuple2[Double, Double]                 = js.native
-  var R3: js.Tuple3[Double, Double, Double]         = js.native
-  var R4: js.Tuple4[Double, Double, Double, Double] = js.native
+//@js.native
+//trait ShapeMap extends js.Object {
+//  var R0: js.Array[Double]                          = js.native
+//  var R1: Tuple1[Double]                            = js.native
+//  var R2: js.Tuple2[Double, Double]                 = js.native
+//  var R3: js.Tuple3[Double, Double, Double]         = js.native
+//  var R4: js.Tuple4[Double, Double, Double, Double] = js.native
+//}
+
+sealed trait ShapeMap[+R <: Rank] {
+  type Shape
+}
+
+object ShapeMap {
+  import Rank._
+  trait S0 extends ShapeMap[R0] {type Shape = Array[Double]}
+  trait S1 extends ShapeMap[R1] {type Shape = Tuple1[Double]}
+  trait S2 extends ShapeMap[R2] {type Shape = js.Tuple2[Double, Double]}
+  trait S3 extends ShapeMap[R3] {type Shape = js.Tuple3[Double, Double, Double]}
+  trait S4 extends ShapeMap[R4] {type Shape = js.Tuple4[Double, Double, Double, Double]}
 }
 
 @js.native
@@ -82,6 +95,20 @@ trait DataTypeMap extends js.Object {
   var float32: Float32Array = js.native
   var int32: Int32Array     = js.native
   var bool: Uint8Array      = js.native
+}
+
+@js.native
+trait NamedTensorMap extends js.Object {
+  type T <: TensorND
+  @JSBracketAccess
+  def apply(name: String): T = js.native
+  @JSBracketAccess
+  def update(name: String, v: T): Unit = js.native
+}
+
+@js.native
+trait NamedVariableMap extends NamedTensorMap {
+  override type T <: VariableND
 }
 
 //@js.native
@@ -101,7 +128,7 @@ trait DataTypeMap extends js.Object {
 //}
 
 @js.native
-trait RecursiveArray[T <: js.Any] extends js.Object {
+trait RecursiveArray[T] extends js.Object {
   @JSBracketAccess
   def apply(index: Double): T | RecursiveArray[T] = js.native
   @JSBracketAccess
@@ -149,8 +176,8 @@ object Types extends js.Object {
       js.Array[js.Array[js.Array[T]]]
     ]
   type ArrayData[D <: DataType] = js.Any | RegularArray[Double] | RegularArray[Boolean]
-  type NamedTensorMap           = js.Dictionary[Tensor[Rank]]
-  type NamedVariableMap         = js.Dictionary[Variable[Rank]]
+  //type NamedTensorMap           = js.Dictionary[Tensor[Rank]]
+  //type NamedVariableMap         = js.Dictionary[Variable[Rank]]
   def upcastType(typeA: DataType, typeB: DataType): DataType = js.native
   def sumOutType(`type`: DataType): String                   = js.native
   type TensorContainer =

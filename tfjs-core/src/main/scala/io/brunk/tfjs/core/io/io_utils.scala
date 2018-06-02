@@ -16,7 +16,8 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.Types.{NamedTensorMap, TypedArray}
+import io.brunk.tfjs.core.NamedTensorMap
+import io.brunk.tfjs.core.Types.TypedArray
 
 import scala.scalajs.js
 import js.annotation._
