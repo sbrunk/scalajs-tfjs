@@ -27,10 +27,10 @@ lazy val `scalajs-tfjs-core` =
         library.scalaCheck % Test,
         library.scalaTest  % Test
       ),
-      npmDependencies in Test += "tfjs-core" -> "0.11.0"
+      npmDependencies in Test += "@tensorflow/tfjs-core" -> "0.11.0"
     )
 
-lazy val `tfjs-layers` =
+lazy val `scalajs-tfjs-layers` =
   project
     .in(file("tfjs-layers"))
     .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
@@ -43,6 +43,7 @@ lazy val `tfjs-layers` =
       ),
       npmDependencies in Test += "tfjs-layers" -> "0.6.1"
     )
+  .dependsOn(`scalajs-tfjs-core`)
 
 lazy val example =
   project
@@ -55,10 +56,13 @@ lazy val example =
         library.scalajsDom,
       ),
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
+      npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.0",
       scalaJSUseMainModuleInitializer := true,
-      mainClass in Compile := Some("example.Intro")
+      mainClass in Compile := Some("example.Example")
     )
     .dependsOn(`scala-js-deeplearnjs`)
+    .dependsOn(`scalajs-tfjs-core`)
+
 
 // *****************************************************************************
 // Library dependencies
