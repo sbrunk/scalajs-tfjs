@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.core.TensorModule.TensorND
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -24,7 +26,7 @@ import js.|
 @JSGlobal
 abstract class Activation extends serialization.Serializable {
   @JSName("apply")
-  def apply(tensor: Tensor, axis: Double = ???): Tensor
+  def apply(tensor: Tensor, axis: Double = ???): TensorND
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -32,7 +34,7 @@ abstract class Activation extends serialization.Serializable {
 @JSGlobal
 class Elu extends Activation {
   @JSName("apply")
-  def apply(x: Tensor, alpha: Double = ???): Tensor = js.native
+  def apply(x: TensorND, alpha: Double = ???): TensorND = js.native
 }
 
 @js.native
@@ -45,7 +47,7 @@ object Elu extends js.Object {
 @JSGlobal
 class Selu extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -58,7 +60,7 @@ object Selu extends js.Object {
 @JSGlobal
 class Relu extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -71,7 +73,7 @@ object Relu extends js.Object {
 @JSGlobal
 class Relu6 extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -84,7 +86,7 @@ object Relu6 extends js.Object {
 @JSGlobal
 class Linear extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -97,7 +99,7 @@ object Linear extends js.Object {
 @JSGlobal
 class Sigmoid extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -110,7 +112,7 @@ object Sigmoid extends js.Object {
 @JSGlobal
 class HardSigmoid extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -123,7 +125,7 @@ object HardSigmoid extends js.Object {
 @JSGlobal
 class Softplus extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -136,7 +138,7 @@ object Softplus extends js.Object {
 @JSGlobal
 class Softsign extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -149,7 +151,7 @@ object Softsign extends js.Object {
 @JSGlobal
 class Tanh extends Activation {
   @JSName("apply")
-  def apply(x: Tensor): Tensor = js.native
+  def apply(x: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -162,7 +164,7 @@ object Tanh extends js.Object {
 @JSGlobal
 class Softmax extends Activation {
   @JSName("apply")
-  def apply(x: Tensor, axis: Double = ???): Tensor = js.native
+  def apply(x: TensorND, axis: Double = ???): TensorND = js.native
 }
 
 @js.native
