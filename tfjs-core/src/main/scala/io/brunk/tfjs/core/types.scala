@@ -34,14 +34,26 @@ object DataType {
   val bool    = "bool".asInstanceOf[Bool]
 }
 
-sealed trait Rank extends js.Any
+sealed trait Rank extends js.Any {
+  type Shape
+}
 
 object Rank {
-  sealed trait R0 extends Rank
-  sealed trait R1 extends Rank
-  sealed trait R2 extends Rank
-  sealed trait R3 extends Rank
-  sealed trait R4 extends Rank
+  sealed trait R0 extends Rank {
+    override type Shape = js.Array[Int]
+  }
+  sealed trait R1 extends Rank {
+    override type Shape = Tuple1[Int]
+  }
+  sealed trait R2 extends Rank {
+    type Shape = js.Tuple2[Int, Int]
+  }
+  sealed trait R3 extends Rank {
+    type Shape = js.Tuple3[Int, Int, Int]
+  }
+  sealed trait R4 extends Rank {
+    type Shape = js.Tuple4[Int, Int, Int, Int]
+  }
 
   val R0 = "R0".asInstanceOf[R0]
   val R1 = "R1".asInstanceOf[R1]
@@ -53,6 +65,22 @@ object Rank {
 @js.native
 sealed trait Tuple1[+T1] extends js.Object {
   @JSName("0") val _1: T1 = js.native
+}
+
+object Tuple1 {
+  @inline def apply[T](_1: T): Tuple1[T] =
+    js.Array(_1).asInstanceOf[Tuple1[T]]
+
+  @inline def unapply[T](t: Tuple1[T]): Option[scala.Tuple1[T]] =
+    Some(t)
+
+  @inline implicit def fromScalaTuple1[T](t: scala.Tuple1[T]): Tuple1[T] =
+    apply(t._1)
+
+  @inline implicit def toScalaTuple2[T](t: Tuple1[T]): scala.Tuple1[T] =
+    scala.Tuple1(t._1)
+
+  implicit def fromT[T](t: T): Tuple1[T] = apply(t)
 }
 
 @js.native
@@ -77,18 +105,6 @@ object DType extends js.Object {
 //  var R4: js.Tuple4[Double, Double, Double, Double] = js.native
 //}
 
-sealed trait ShapeMap[+R <: Rank] {
-  type Shape
-}
-
-object ShapeMap {
-  import Rank._
-  trait S0 extends ShapeMap[R0] {type Shape = Array[Double]}
-  trait S1 extends ShapeMap[R1] {type Shape = Tuple1[Double]}
-  trait S2 extends ShapeMap[R2] {type Shape = js.Tuple2[Double, Double]}
-  trait S3 extends ShapeMap[R3] {type Shape = js.Tuple3[Double, Double, Double]}
-  trait S4 extends ShapeMap[R4] {type Shape = js.Tuple4[Double, Double, Double, Double]}
-}
 
 @js.native
 trait DataTypeMap extends js.Object {

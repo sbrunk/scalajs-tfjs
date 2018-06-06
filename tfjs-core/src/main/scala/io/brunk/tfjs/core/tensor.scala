@@ -275,8 +275,7 @@ class Tensor[R <: Rank] protected () extends js.Object {
 }
 
 @js.native
-@JSGlobal
-object Tensor extends js.Object {
+trait TensorCompanion extends js.Object {
   def make[T <: Tensor[R], D <: DataType, R <: Rank](
       shape: js.Any,
       data: TensorData,
@@ -293,8 +292,7 @@ class Variable[R <: Rank] extends Tensor[R] {
 }
 
 @js.native
-@JSGlobal
-object Variable extends js.Object {
+trait VariableCompanion extends js.Object {
   def variable[R <: Rank](
       initialValue: Tensor[R],
       trainable: Boolean = ???,
@@ -304,8 +302,7 @@ object Variable extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
-object TensorModule extends js.Object {
+trait TensorModule extends js.Object {
   type DataId   = js.Object
   type Scalar   = Tensor[Rank.R0]
   type Tensor1D = Tensor[Rank.R1]
@@ -316,3 +313,7 @@ object TensorModule extends js.Object {
   type VariableND = Variable[Rank]
   //val variable: Variable.variable.type = js.native
 }
+
+@js.native
+@JSGlobal
+object TensorModule extends TensorModule

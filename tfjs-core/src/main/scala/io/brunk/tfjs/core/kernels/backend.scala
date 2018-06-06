@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.kernels
 
-import io.brunk.tfjs.core.{DataType, Rank, ShapeMap, Tensor}
+import io.brunk.tfjs.core.{DataType, Rank, Tensor}
 
 import scala.scalajs.js
 import js.annotation._
@@ -134,7 +134,7 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def maxPoolBackprop(dy: Tensor4D, x: Tensor4D, y: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def avgPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def avgPoolBackprop(dy: Tensor4D, x: Tensor4D, convInfo: Conv2DInfo): Tensor4D
-  def reshape[T <: TensorND, R <: Rank](x: T, shape: ShapeMap[R]#Shape): Tensor[R]
+  def reshape[T <: TensorND, R <: Rank](x: T, shape: R#Shape): Tensor[R]
   def cast[T <: TensorND](x: T, dtype: DataType): T
   def tile[T <: TensorND](x: T, reps: js.Array[Double]): T
   def pad[T <: TensorND](

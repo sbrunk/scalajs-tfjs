@@ -16,8 +16,11 @@
 
 package example
 
-import io.brunk.deeplearnjs.{ Environment, Version }
-import io.brunk.deeplearnjs.math._
+
+import io.brunk.tfjs.core.Rank.{R0, R1, R2}
+import io.brunk.tfjs.{core, tf}
+import io.brunk.tfjs.core.ops.ArrayOps
+import io.brunk.tfjs.core.{Environment, Tensor, Version}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.scalajs.js
@@ -26,24 +29,46 @@ import scala.scalajs.js.typedarray.Int32Array
 object Example {
   def main(args: Array[String]): Unit = {
 
-    println(s"deeplearnjs version: ${Version.version}")
+    println("Hello scalajs-tfjs!")
+    println(s"tfjs version: ${Version.version}")
 
-    val math = Environment.ENV.math
+    //val math = Environment.
 
-    val a: Array1D[Int32] = Array1D.`new`(new Int32Array(js.Array(1, 2, 3)), DataType.int32)
-    val b: Scalar[Int32]  = Scalar.`new`(2, DataType.int32)
+    // Tensors
+    val shape = js.Array(2, 3) // 2 rows, 3 columns
+    val a = tf.tensor[R0](js.Array(1.0, 2.0, 3.0, 10.0, 20.0, 30.0), shape)
+    a.print()
 
-    val result: NDArray[Int32, Rank] = math.add(a, b)
+    // The shape can also be inferred:
+    val b = tf.tensor[R0](js.Array(js.Array(1.0, 2.0, 3.0), js.Array(10.0, 20.0, 30.0)))
+    b.print()
+
+    val c = tf.tensor2d(js.Array(js.Array(1.0, 2.0, 3.0), js.Array(10.0, 20.0, 30.0)))
+    c.print()
+
+    val zeros = tf.zeros[R2]((3,5))
+    zeros.print()
+
+    // Variables
+    val initialValues = tf.zeros[R1](shape = 5)
+    initialValues.print()
+    val biases = tf.variable(initialValues)
+    biases.print()
+
+
+
+    //val result: NDArray[Int32, Rank] = math.add(a, b)
 
     // Option 1: With async/await.
     // Caveat: in non-Chrome browsers you need to put this in an async function.
     //println(await result.data());  // Float32Array([3, 4, 5])
 
     // Option 2: With a Future.
-    result.data().toFuture.foreach(println)
+    //result.data().toFuture.foreach(println)
+    a.data().toFuture.foreach(println)
 
     // Option 3: Synchronous download of data.
     // This is simpler, but blocks the UI until the GPU is done.
-    println(result.dataSync())
+    //println(result.dataSync())
   }
 }

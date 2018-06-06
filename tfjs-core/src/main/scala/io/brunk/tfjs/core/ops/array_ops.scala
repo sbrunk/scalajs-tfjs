@@ -17,7 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.TensorModule._
-import io.brunk.tfjs.core.{DataType, Rank, Tensor, TensorBuffer}
+import io.brunk.tfjs.core.{DataType, Rank, Tensor, TensorBuffer, TensorModule}
 import io.brunk.tfjs.core.Types._
 import org.scalajs.dom.{ImageData, html}
 
@@ -26,14 +26,17 @@ import js.annotation._
 import js.{Promise, |}
 import scala.scalajs.js.typedarray.Uint8ClampedArray
 
-@js.native
-@JSGlobal
-class ArrayOps extends js.Object {}
+//@js.native
+//@JSGlobal
+//class ArrayOps extends js.Object {}
 
 @js.native
-@JSGlobal
-object ArrayOps extends js.Object {
-  def tensor[R <: Rank](values: TensorLike, shape: js.Any = ???, dtype: DataType = ???): Tensor[R] =
+@JSImport("@tensorflow/tfjs-core", JSImport.Namespace)
+object ArrayOps extends ArrayOps
+
+@js.native
+trait ArrayOps extends js.Object {
+  def tensor[R <: Rank](values: TensorLike, shape: R#Shape = ???, dtype: DataType = ???): Tensor[R] =
     js.native
   def scalar(value: Double | Boolean, dtype: DataType = ???): Scalar  = js.native
   def tensor1d(values: TensorLike1D, dtype: DataType = ???): Tensor1D = js.native
@@ -52,9 +55,9 @@ object ArrayOps extends js.Object {
       shape: js.Tuple4[Double, Double, Double, Double] = ???,
       dtype: DataType = ???
   ): Tensor4D                                                                         = js.native
-  def ones[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R]                = js.native
-  def zeros[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R]               = js.native
-  def fill[R <: Rank](shape: js.Any, value: Double, dtype: DataType = ???): Tensor[R] = js.native
+  def ones[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]                = js.native
+  def zeros[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]               = js.native
+  def fill[R <: Rank](shape: R#Shape, value: Double, dtype: DataType = ???): Tensor[R] = js.native
   def onesLike[T <: TensorND](x: T): T                                                  = js.native
   def zerosLike[T <: TensorND](x: T): T                                                 = js.native
   def clone[T <: TensorND](x: T): T                                                     = js.native

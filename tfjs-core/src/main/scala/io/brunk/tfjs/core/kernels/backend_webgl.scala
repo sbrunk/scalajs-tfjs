@@ -170,7 +170,7 @@ class MathBackendWebGL protected () extends KernelBackend {
     js.native
   def avgPoolBackprop(dy: Tensor4D, x: Tensor4D, convInfo: Conv2DInfo): Tensor4D        = js.native
   def cast[T <: TensorND](x: T, dtype: DataType): T                           = js.native
-  def reshape[T <: TensorND, R <: Rank](x: T, shape: ShapeMap[R]#Shape): Tensor[R] = js.native
+  def reshape[T <: TensorND, R <: Rank](x: T, shape: R#Shape): Tensor[R] = js.native
   def resizeBilinear(
       x: Tensor4D,
       newHeight: Double,
