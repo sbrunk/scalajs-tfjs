@@ -37,12 +37,7 @@ object Reduction extends js.Object {
 }
 
 @js.native
-@JSGlobal
-class LossOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object LossOps extends js.Object {
+trait LossOps extends js.Object {
   def computeWeightedLoss[T <: TensorND, O <: TensorND](
       losses: T,
       weights: TensorND = ???,

@@ -24,12 +24,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class StridedSliceOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object StridedSliceOps extends js.Object {
+trait StridedSliceOps extends js.Object {
   def stridedSlice[T <: TensorND](
       x: T,
       begin: js.Array[Double],

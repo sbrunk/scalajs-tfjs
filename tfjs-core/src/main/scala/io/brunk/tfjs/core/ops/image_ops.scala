@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class ImageOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object ImageOps extends js.Object {
+trait ImageOps extends js.Object {
   def resizeBilinear[T <: Tensor3D | Tensor4D](
       images: T,
       size: js.Tuple2[Double, Double],

@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class MatmulOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object MatmulOps extends js.Object {
+trait MatmulOps extends js.Object {
   def matMul(
       a: Tensor2D,
       b: Tensor2D,

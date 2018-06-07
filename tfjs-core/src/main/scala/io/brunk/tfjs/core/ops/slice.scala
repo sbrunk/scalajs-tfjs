@@ -24,12 +24,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class SliceOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object SliceOps extends js.Object {
+trait SliceOps extends js.Object {
   def slice1d(x: Tensor1D, begin: Double, size: Double): Tensor1D = js.native
   def slice2d(
       x: Tensor2D,

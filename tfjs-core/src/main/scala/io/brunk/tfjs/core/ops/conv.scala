@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class ConvOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object ConvOps extends js.Object {
+trait ConvOps extends js.Object {
   def conv1d[T <: Tensor2D | Tensor3D](
       x: T,
       filter: Tensor3D,
@@ -47,7 +42,7 @@ object ConvOps extends js.Object {
       dilations: js.Tuple2[Double, Double] | Double = ???,
       dimRoundingMode: String = ???
   ): T = js.native
-  def conv2dDerInput[T <: Tensor3D | Tensor4D](
+  private def conv2dDerInput[T <: Tensor3D | Tensor4D](
       xShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double],
       dy: T,
       filter: Tensor4D,
@@ -55,7 +50,7 @@ object ConvOps extends js.Object {
       pad: String | Double,
       dimRoundingMode: String = ???
   ): T = js.native
-  def conv2dDerFilter[T <: Tensor3D | Tensor4D](
+  private def conv2dDerFilter[T <: Tensor3D | Tensor4D](
       x: T,
       dy: T,
       filterShape: js.Tuple4[Double, Double, Double, Double],

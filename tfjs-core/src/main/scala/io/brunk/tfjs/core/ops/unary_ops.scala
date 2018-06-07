@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class UnaryOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object UnaryOps extends js.Object {
+trait UnaryOps extends js.Object {
   def neg[T <: TensorND](x: T): T                                                     = js.native
   def ceil[T <: TensorND](x: T): T                                                    = js.native
   def floor[T <: TensorND](x: T): T                                                   = js.native

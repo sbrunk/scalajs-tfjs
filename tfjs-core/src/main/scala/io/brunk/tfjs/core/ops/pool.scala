@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class PoolOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object PoolOps extends js.Object {
+trait PoolOps extends js.Object {
   def maxPool[T <: Tensor3D | Tensor4D](
       x: T,
       filterSize: js.Tuple2[Double, Double] | Double,
@@ -36,7 +31,7 @@ object PoolOps extends js.Object {
       pad: String | Double,
       dimRoundingMode: String = ???
   ): T = js.native
-  def maxPoolBackprop(
+  private def maxPoolBackprop(
       dy: Tensor4D,
       input: Tensor4D,
       output: Tensor4D,
@@ -52,7 +47,7 @@ object PoolOps extends js.Object {
       pad: String | Double,
       dimRoundingMode: String = ???
   ): T = js.native
-  def avgPoolBackprop[T <: Tensor3D | Tensor4D](
+  private def avgPoolBackprop[T <: Tensor3D | Tensor4D](
       dy: T,
       input: T,
       filterSize: js.Tuple2[Double, Double] | Double,

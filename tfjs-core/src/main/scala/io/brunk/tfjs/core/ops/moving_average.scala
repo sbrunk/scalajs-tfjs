@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class MovingAverageOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object MovingAverageOps extends js.Object {
+trait MovingAverageOps extends js.Object {
   def movingAverage[T <: TensorND](
       v: T,
       x: T,

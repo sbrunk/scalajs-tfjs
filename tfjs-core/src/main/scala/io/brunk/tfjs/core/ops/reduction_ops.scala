@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class ReductionOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object ReductionOps extends js.Object {
+trait ReductionOps extends js.Object {
   def logSumExp[T <: TensorND](
       x: TensorND,
       axis: Double | js.Array[Double] = ???,

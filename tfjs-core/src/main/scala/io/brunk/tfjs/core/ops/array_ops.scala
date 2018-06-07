@@ -26,14 +26,6 @@ import js.annotation._
 import js.{Promise, |}
 import scala.scalajs.js.typedarray.Uint8ClampedArray
 
-//@js.native
-//@JSGlobal
-//class ArrayOps extends js.Object {}
-
-@js.native
-@JSImport("@tensorflow/tfjs-core", JSImport.Namespace)
-object ArrayOps extends ArrayOps
-
 @js.native
 trait ArrayOps extends js.Object {
   def tensor[R <: Rank](values: TensorLike, shape: R#Shape = ???, dtype: DataType = ???): Tensor[R] =

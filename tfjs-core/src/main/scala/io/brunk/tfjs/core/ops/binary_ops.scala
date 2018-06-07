@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class BinaryOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object BinaryOps extends js.Object {
+trait BinaryOps extends js.Object {
   def add[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
   def addStrict[T <: TensorND](a: T, b: T): T                   = js.native
   def sub[T <: TensorND](a: TensorND, b: TensorND): T               = js.native

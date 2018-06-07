@@ -24,12 +24,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class BatchNormOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object BatchNormOps extends js.Object {
+trait BatchNormOps extends js.Object {
   def batchNormalization2d(
       x: Tensor2D,
       mean: Tensor2D | Tensor1D,

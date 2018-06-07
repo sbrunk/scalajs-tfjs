@@ -33,6 +33,8 @@ import optimizers.OptimizerConstructors
 //  var adam: OptimizerConstructors.adam.type         = js.native
 //}
 
+
 @js.native
-@JSGlobal
-object train extends OptimizerConstructors
+trait Train extends js.Object {
+  val train: OptimizerConstructors = OptimizerConstructors
+}

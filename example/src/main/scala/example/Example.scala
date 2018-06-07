@@ -30,7 +30,7 @@ object Example {
   def main(args: Array[String]): Unit = {
 
     println("Hello scalajs-tfjs!")
-    println(s"tfjs version: ${Version.version}")
+    println(s"tfjs version: ${tf.version}")
 
     //val math = Environment.
 
@@ -54,7 +54,6 @@ object Example {
     initialValues.print()
     val biases = tf.variable(initialValues)
     biases.print()
-
 
 
     //val result: NDArray[Int32, Rank] = math.add(a, b)

@@ -23,11 +23,6 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class LinalgOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object LinalgOps extends js.Object {
+trait LinalgOps extends js.Object {
   def gramSchmidt(xs: js.Array[Tensor1D] | Tensor2D): js.Array[Tensor1D] | Tensor2D = js.native
 }

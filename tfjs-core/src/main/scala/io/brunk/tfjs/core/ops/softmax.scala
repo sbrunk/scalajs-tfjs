@@ -22,14 +22,14 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-@js.native
-@JSGlobal
-class SoftmaxOps extends js.Object {}
 
 @js.native
-@JSGlobal
-object SoftmaxOps extends js.Object {
+trait SoftmaxOps extends js.Object {
   def softmax[T <: TensorND](logits: T, dim: Double = ???): T = js.native
+}
+
+@js.native
+trait SoftmaxLossOps extends js.Object {
   def softmaxCrossEntropy[T <: TensorND, O <: TensorND](labels: T, logits: T, dim: Double = ???): O =
     js.native
 }

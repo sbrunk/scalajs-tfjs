@@ -23,12 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
-class LogicalOps extends js.Object {}
-
-@js.native
-@JSGlobal
-object LogicalOps extends js.Object {
+trait LogicalOps extends js.Object {
   def logicalNot[T <: TensorND](x: T): T                     = js.native
   def logicalAnd[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
   def logicalOr[T <: TensorND](a: TensorND, b: TensorND): T      = js.native
