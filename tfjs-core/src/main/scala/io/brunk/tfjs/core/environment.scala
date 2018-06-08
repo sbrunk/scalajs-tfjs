@@ -73,8 +73,7 @@ class Environment protected () extends js.Object {
 }
 
 @js.native
-@JSGlobal
-object Environment extends js.Object {
+trait EnvironmentCompanion extends js.Object {
   def setBackend(backendType: String, safeMode: Boolean = ???): Unit = js.native
   def getBackend(): String                                           = js.native
   def disposeVariables(): Unit                                       = js.native
@@ -82,8 +81,10 @@ object Environment extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
+@JSImport("@tensorflow/tfjs-core", JSImport.Namespace)
 object EnvironmentModule extends js.Object {
   val URL_PROPERTIES: js.Array[URLProperty] = js.native
   def ENV: Environment                      = js.native
+  type Environment = _root_.io.brunk.tfjs.core.Environment
+  type Type = _root_.io.brunk.tfjs.core.Type
 }

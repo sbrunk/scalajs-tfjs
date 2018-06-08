@@ -16,9 +16,9 @@
 
 package io.brunk.tfjs
 
-import io.brunk.tfjs.core.{TensorModule, Train, VariableCompanion, Version}
-import io.brunk.tfjs.core.ops.{ArrayOps, Ops}
-import io.brunk.tfjs.core.optimizers.OptimizerConstructors
+import io.brunk.tfjs.core._
+import _root_.io.brunk.tfjs.core.ops.{ArrayOps, Ops}
+import _root_.io.brunk.tfjs.core.optimizers.OptimizerConstructors
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -29,6 +29,8 @@ object tf extends
   TensorModule with
   Ops with
   Train with
-  VariableCompanion {
-  val version = Version.version
+  VariableCompanion with
+  EnvironmentCompanion with
+  Version {
+  val environment = EnvironmentModule
 }

@@ -21,8 +21,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSImport("@tensorflow/tfjs-core", JSImport.Namespace)
-object Version extends js.Object {
+trait Version extends js.Object {
   @JSName("version_core")
   val version: String = js.native
 }
