@@ -1,8 +1,12 @@
-# scala-js-deeplearnjs #
+# Scala.js-TensorFlow.js #
 
-This projects aims to provide a [Scala.js](http://www.scala-js.org/) facade for [deeplearn.js](https://deeplearnjs.org).
+This projects aims to provide [Scala.js](http://www.scala-js.org/) facades for [TensorFlow.js](https://js.tensorflow.org/),
+ enabling you to create neural networks with Scala that run and can be trained with GPU acceleration in your browser.
 
-This is WIP and at a very early stage. Don't expect anything to work right now. 
+This is WIP and still at an early stage. The tfjs-core bindings are almost done. You can create tensors and run
+operations on them. See the example project.
+
+Support for tfjs-layers coming soon!
 
 ## Contribution policy ##
 
