@@ -23,6 +23,7 @@ import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
 import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
 import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
 import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.layers.{Activation => ActivationFn}
 
 import scala.scalajs.js
 import js.annotation._

@@ -16,10 +16,10 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.core.io.types.{IOHandler, WeightsManifestConfig}
 import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
-import io.brunk.tfjs.tf.{TensorND, Scalar}
+import io.brunk.tfjs.tf.{Scalar, TensorND}
 import io.brunk.tfjs.tf.serialization
-
 import io.brunk.tfjs.layers.engine._
 
 import scala.scalajs.js
@@ -29,7 +29,7 @@ import js.{Promise, |}
 @js.native
 trait ModelAndWeightsConfig extends js.Object {
   var modelTopology: JsonDict = js.native
-  var weightsManifest: io.WeightsManifestConfig = js.native
+  var weightsManifest: WeightsManifestConfig = js.native
   var pathPrefix: String = js.native
 }
 
@@ -68,7 +68,7 @@ object Sequential extends js.Object {
 @JSGlobalScope
 object Models extends js.Object {
   def modelFromJSON(modelAndWeightsConfig: ModelAndWeightsConfig, customObjects: serialization.ConfigDict = ???): Promise[Model] = js.native
-  def loadModelInternal(pathOrIOHandler: String | io.IOHandler): Promise[Model] = js.native
-  def loadModelFromIOHandler(handler: io.IOHandler, customObjects: serialization.ConfigDict = ???): Promise[Model] = js.native
+  def loadModelInternal(pathOrIOHandler: String | IOHandler): Promise[Model] = js.native
+  def loadModelFromIOHandler(handler: IOHandler, customObjects: serialization.ConfigDict = ???): Promise[Model] = js.native
   def loadModelFromPath(modelConfigPath: String): Promise[Model] = js.native
 }

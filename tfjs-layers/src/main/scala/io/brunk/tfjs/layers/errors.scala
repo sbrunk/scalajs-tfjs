@@ -22,36 +22,36 @@ import js.|
 
 @js.native
 @JSGlobal
-class AttributeError protected () extends Error {
+class AttributeError protected () extends js.Error {
   def this(message: String = ???) = this()
 }
 
 @js.native
 @JSGlobal
-class RuntimeError protected () extends Error {
+class RuntimeError protected () extends js.Error {
   def this(message: String = ???) = this()
 }
 
 @js.native
 @JSGlobal
-class ValueError protected () extends Error {
+class ValueError protected () extends js.Error {
   def this(message: String = ???) = this()
 }
 
 @js.native
 @JSGlobal
-class NotImplementedError protected () extends Error {
+class NotImplementedError protected () extends js.Error {
   def this(message: String = ???) = this()
 }
 
 @js.native
 @JSGlobal
-class AssertionError protected () extends Error {
+class AssertionError protected () extends js.Error {
   def this(message: String = ???) = this()
 }
 
 @js.native
 @JSGlobal
-class IndexError protected () extends Error {
+class IndexError protected () extends js.Error {
   def this(message: String = ???) = this()
 }

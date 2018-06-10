@@ -25,18 +25,17 @@ import js.annotation._
 import js.{Promise, |}
 
 @js.native
-@JSGlobal
-class ModelExports extends js.Object {
-}
-
-@js.native
-@JSGlobal
-object ModelExports extends js.Object {
+trait ModelExportsCompanion extends js.Object {
   def model(config: ContainerConfig): Model = js.native
   def sequential(config: SequentialConfig = ???): Sequential = js.native
   def loadModel(pathOrIOHandler: String | io.IOHandler): Promise[Model] = js.native
   def input(config: InputConfig): SymbolicTensor = js.native
 }
+
+@js.native
+@JSGlobal
+object ModelExports extends ModelExportsCompanion
+
 
 @js.native
 @JSGlobal
@@ -46,11 +45,11 @@ class LayerExports extends js.Object {
 @js.native
 @JSGlobal
 object LayerExports extends js.Object {
-  var Layer: Layer.type = js.native
-  var RNN: RNN.type = js.native
-  var RNNCell: RNNCell.type = js.native
+  // var Layer: Layer.type = js.native TODO resolve illegal cyclic reference
+  //var RNN: RNN.type = js.native TODO resolve illegal cyclic reference
+  //var RNNCell: RNNCell.type = js.native TODO resolve illegal cyclic reference
   def inputLayer(config: InputLayerConfig): Layer = js.native
-  var input: ModelExports.input.type = js.native
+  def input(config: InputConfig): SymbolicTensor = js.native
   def elu(config: ELULayerConfig = ???): Layer = js.native
   def leakyReLU(config: LeakyReLULayerConfig = ???): Layer = js.native
   def softmax(config: SoftmaxLayerConfig = ???): Layer = js.native
