@@ -16,6 +16,9 @@
 
 package io.brunk.tfjs.layers.utils
 
+import io.brunk.tfjs.tf.TensorND
+
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -23,8 +26,8 @@ import js.|
 @js.native
 @JSGlobalScope
 object Test_utils extends js.Object {
-  def expectTensorsClose(actual: Tensor | js.Array[Double], expected: Tensor | js.Array[Double], epsilon: Double = ???): Unit = js.native
-  def expectTensorsValuesInRange(actual: Tensor, low: Double, high: Double): Unit = js.native
+  def expectTensorsClose(actual: TensorND | js.Array[Double], expected: TensorND | js.Array[Double], epsilon: Double = ???): Unit = js.native
+  def expectTensorsValuesInRange(actual: TensorND, low: Double, high: Double): Unit = js.native
   def describeMathCPUAndGPU(testName: String, tests: js.Function0[Unit]): Unit = js.native
   def describeMathCPU(testName: String, tests: js.Function0[Unit]): Unit = js.native
   def describeMathGPU(testName: String, tests: js.Function0[Unit]): Unit = js.native

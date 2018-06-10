@@ -17,6 +17,7 @@
 package io.brunk.tfjs.layers
 
 import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.core.serialization
 
 import scala.scalajs.js
 import js.annotation._
@@ -26,7 +27,7 @@ import js.|
 @JSGlobal
 abstract class Activation extends serialization.Serializable {
   @JSName("apply")
-  def apply(tensor: Tensor, axis: Double = ???): TensorND
+  def apply(tensor: TensorND, axis: Double = ???): TensorND
   def getConfig(): serialization.ConfigDict = js.native
 }
 

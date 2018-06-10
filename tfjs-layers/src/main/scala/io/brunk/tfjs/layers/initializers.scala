@@ -16,6 +16,7 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.Initializers.{Distribution, FanMode}
 import io.brunk.tfjs.layers.Types.Shape
 
 import scala.scalajs.js

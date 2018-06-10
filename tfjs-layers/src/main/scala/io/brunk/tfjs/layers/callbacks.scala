@@ -80,9 +80,9 @@ object History {
 @js.native
 trait History extends js.Object {
   @JSBracketAccess
-  def apply(key: String): js.Array[Double | Tensor] = js.native
+  def apply(key: String): js.Array[Double | TensorND] = js.native
   @JSBracketAccess
-  def update(key: String, v: js.Array[Double | Tensor]): Unit = js.native
+  def update(key: String, v: js.Array[Double | TensorND]): Unit = js.native
 }
 }
 

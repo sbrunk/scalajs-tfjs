@@ -16,8 +16,8 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.NamedTensorMap
-import io.brunk.tfjs.layers.Types.LossOrMetricFn
+import io.brunk.tfjs.layers.{Callback, CustomCallbackConfig, NamedTensorMap}
+import io.brunk.tfjs.layers.Types.{LossOrMetricFn, Shape}
 import io.brunk.tfjs.tf._
 
 import scala.scalajs.js

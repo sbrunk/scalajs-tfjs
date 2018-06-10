@@ -16,13 +16,14 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.core.serialization
 import io.brunk.tfjs.layers.Common.{DataFormat, PaddingMode}
 import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
 import io.brunk.tfjs.layers.{Constraint, Initializer, LayerVariable, Regularizer}
 import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
 import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
 import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
-import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.layers.engine.{InputSpec, Layer, LayerConfig}
 
 import scala.scalajs.js
 import js.annotation._

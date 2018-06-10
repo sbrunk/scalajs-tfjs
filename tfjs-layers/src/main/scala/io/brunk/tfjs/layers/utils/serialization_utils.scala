@@ -16,6 +16,9 @@
 
 package io.brunk.tfjs.layers.utils
 
+import io.brunk.tfjs.core.serialization
+import io.brunk.tfjs.layers.Types.JsonValue
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

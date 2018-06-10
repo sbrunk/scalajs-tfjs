@@ -16,6 +16,10 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.core.serialization
+import io.brunk.tfjs.core.TensorModule.{TensorND, Scalar}
+
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -24,7 +28,7 @@ import js.|
 @JSGlobal
 abstract class Regularizer extends serialization.Serializable {
   @JSName("apply")
-  def apply(x: Tensor): Scalar
+  def apply(x: TensorND): Scalar
 }
 
 @js.native
@@ -48,7 +52,7 @@ trait L2Config extends js.Object {
 class L1L2 protected () extends Regularizer {
   def this(config: L1L2Config = ???) = this()
   @JSName("apply")
-  def apply(x: Tensor): Scalar = js.native
+  def apply(x: TensorND): Scalar = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 

@@ -19,6 +19,7 @@ package io.brunk.tfjs.layers.utils
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import scala.scalajs.js.typedarray.{Float32Array, Int32Array, Uint8Array}
 
 @js.native
 @JSGlobalScope

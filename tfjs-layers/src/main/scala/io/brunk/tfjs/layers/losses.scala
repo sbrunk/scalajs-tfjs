@@ -15,6 +15,7 @@
  */
 
 package io.brunk.tfjs.layers
+import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
 import js.annotation._
@@ -23,20 +24,20 @@ import js.|
 @js.native
 @JSGlobalScope
 object Losses extends js.Object {
-  def meanSquaredError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def meanAbsoluteError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def meanAbsolutePercentageError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def meanSquaredLogarithmicError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def squaredHinge(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def hinge(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def categoricalHinge(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def logcosh(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def categoricalCrossentropy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def sparseCategoricalCrossentropy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def binaryCrossentropy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def kullbackLeiblerDivergence(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def poisson(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def cosineProximity(yTrue: Tensor, yPred: Tensor): Tensor = js.native
+  def meanSquaredError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanSquaredLogarithmicError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def squaredHinge(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def hinge(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def categoricalHinge(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def logcosh(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def sparseCategoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def kullbackLeiblerDivergence(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def poisson(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   val mse: meanSquaredError.type = js.native
   val MSE: meanSquaredError.type = js.native
   val mae: meanAbsoluteError.type = js.native

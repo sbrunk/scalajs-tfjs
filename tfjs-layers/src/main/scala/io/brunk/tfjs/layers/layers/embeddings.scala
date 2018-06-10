@@ -47,9 +47,9 @@ class Embedding protected () extends Layer {
   def this(config: EmbeddingLayerConfig) = this()
   def DEFAULT_EMBEDDINGS_INITIALIZER: InitializerIdentifier = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def computeMask(inputs: Tensor | js.Array[Tensor], mask: Tensor | js.Array[Tensor] = ???): Tensor = js.native
+  def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 

@@ -16,6 +16,10 @@
 
 package io.brunk.tfjs.layers
 
+
+import io.brunk.tfjs.layers.Types.LossOrMetricFn
+import io.brunk.tfjs.tf.TensorND
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -23,12 +27,12 @@ import js.|
 @js.native
 @JSGlobalScope
 object Metrics extends js.Object {
-  def binaryAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def categoricalAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def binaryCrossentropy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def sparseCategoricalAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def topKCategoricalAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def sparseTopKCategoricalAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
+  def binaryAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def categoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def sparseCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def topKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def sparseTopKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   val mse: meanSquaredError.type = js.native
   val MSE: meanSquaredError.type = js.native
   val mae: meanAbsoluteError.type = js.native

@@ -16,9 +16,15 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.tf.{TensorND, Scalar}
+import io.brunk.tfjs.tf.serialization
+
+import io.brunk.tfjs.layers.engine._
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 
 @js.native
 trait ModelAndWeightsConfig extends js.Object {
@@ -39,15 +45,15 @@ class Sequential protected () extends Model {
   def this(config: SequentialConfig = ???) = this()
   def add(layer: Layer): Unit = js.native
   def pop(): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def build(inputShape: Shape = ???): Unit = js.native
-  def setWeights(weights: js.Array[Tensor]): Unit = js.native
+  def setWeights(weights: js.Array[TensorND]): Unit = js.native
   var updatable: Boolean = js.native
-  def evaluate(x: Tensor | js.Array[Tensor], y: Tensor | js.Array[Tensor], config: ModelEvaluateConfig = ???): Scalar | js.Array[Scalar] = js.native
-  def predict(x: Tensor | js.Array[Tensor], config: ModelPredictConfig = ???): Tensor | js.Array[Tensor] = js.native
-  def predictOnBatch(x: Tensor): Tensor | js.Array[Tensor] = js.native
+  def evaluate(x: TensorND | js.Array[TensorND], y: TensorND | js.Array[TensorND], config: ModelEvaluateConfig = ???): Scalar | js.Array[Scalar] = js.native
+  def predict(x: TensorND | js.Array[TensorND], config: ModelPredictConfig = ???): TensorND | js.Array[TensorND] = js.native
+  def predictOnBatch(x: TensorND): TensorND | js.Array[TensorND] = js.native
   def compile(config: ModelCompileConfig): Unit = js.native
-  def fit(x: Tensor | js.Array[Tensor] | js.Dictionary[Tensor], y: Tensor | js.Array[Tensor] | js.Dictionary[Tensor], config: ModelFitConfig = ???): Promise[History] = js.native
+  def fit(x: TensorND | js.Array[TensorND] | js.Dictionary[TensorND], y: TensorND | js.Array[TensorND] | js.Dictionary[TensorND], config: ModelFitConfig = ???): Promise[History] = js.native
   def getConfig(): js.Dynamic = js.native
 }
 

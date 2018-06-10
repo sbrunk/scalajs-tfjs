@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.core.optimizers.Optimizer
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

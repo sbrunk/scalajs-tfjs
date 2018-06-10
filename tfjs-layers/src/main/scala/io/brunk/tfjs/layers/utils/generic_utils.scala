@@ -16,6 +16,10 @@
 
 package io.brunk.tfjs.layers.utils
 
+import io.brunk.tfjs.core.{DataType, serialization}
+import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.layers.Types.Shape
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -35,7 +39,7 @@ object Generic_utils extends js.Object {
   def toCamelCase(identifier: String): String = js.native
   def serializeKerasObject(instance: serialization.Serializable): serialization.ConfigDictValue = js.native
   def deserializeKerasObject(identifier: String | serialization.ConfigDict, moduleObjects: js.Dictionary[js.Any] = ???, customObjects: js.Dictionary[js.Any] = ???, printableModuleName: String = ???): js.Dynamic = js.native
-  def getExactlyOneTensor(xs: Tensor | js.Array[Tensor]): Tensor = js.native
+  def getExactlyOneTensor(xs: TensorND | js.Array[TensorND]): TensorND = js.native
   def getExactlyOneShape(shapes: Shape | js.Array[Shape]): Shape = js.native
   def numberCompare(a: Double, b: Double): Int = js.native
   def reverseNumberCompare(a: Double, b: Double): Double = js.native

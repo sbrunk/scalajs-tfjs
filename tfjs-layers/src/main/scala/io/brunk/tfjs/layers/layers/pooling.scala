@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.layers.layers
 
-import io.brunk.tfjs.layers.Common.{DataFormat, PaddingMode}
+import io.brunk.tfjs.layers.Common.{DataFormat, PaddingMode, PoolMode}
 import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
 import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
 import io.brunk.tfjs.tf._

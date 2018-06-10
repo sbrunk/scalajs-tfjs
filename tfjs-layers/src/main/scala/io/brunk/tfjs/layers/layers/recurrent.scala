@@ -16,12 +16,13 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.core.serialization
 import io.brunk.tfjs.layers.Activations.ActivationIdentifier
 import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
 import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
 import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
 import io.brunk.tfjs.layers._
-import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.Types.{Kwargs, RnnStepFunction, Shape}
 import io.brunk.tfjs.layers.engine.{InputSpec, Layer, LayerConfig}
 
 import scala.scalajs.js
@@ -376,7 +377,7 @@ class StackedRNNCells protected () extends RNNCell {
 @JSGlobal
 object StackedRNNCells extends js.Object {
   var className: String = js.native
-  def fromConfig[T <: serialization.Serializable](cls: serialization.SerializableConstructor[T], config: serialization.ConfigDict, customObjects: tfc.serialization.ConfigDict = ???): T = js.native
+  def fromConfig[T <: serialization.Serializable](cls: serialization.SerializableConstructor[T], config: serialization.ConfigDict, customObjects: serialization.ConfigDict = ???): T = js.native
 }
 
 @js.native

@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.core.serialization.{ConfigDict, Serializable}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -23,5 +25,5 @@ import js.|
 @js.native
 @JSGlobalScope
 object Serialization extends js.Object {
-  def deserialize(config: serialization.ConfigDict, customObjects: serialization.ConfigDict = ???): serialization.Serializable = js.native
+  def deserialize(config: ConfigDict, customObjects: ConfigDict = ???): Serializable = js.native
 }

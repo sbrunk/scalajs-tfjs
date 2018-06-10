@@ -51,7 +51,7 @@ abstract class Wrapper protected () extends Layer {
 @js.native
 @JSGlobal
 object Wrapper extends js.Object {
-  def fromConfig[T <: serialization.Serializable](cls: serialization.SerializableConstructor[T], config: serialization.ConfigDict, customObjects: tfc.serialization.ConfigDict = ???): T = js.native
+  def fromConfig[T <: serialization.Serializable](cls: serialization.SerializableConstructor[T], config: serialization.ConfigDict, customObjects: serialization.ConfigDict = ???): T = js.native
 }
 
 @js.native

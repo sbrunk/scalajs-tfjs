@@ -17,6 +17,7 @@
 package io.brunk.tfjs.layers.backend
 
 import io.brunk.tfjs.core.DataType
+import io.brunk.tfjs.layers.Common.DataFormat
 import io.brunk.tfjs.layers.{LayerVariable, SymbolicTensor}
 import io.brunk.tfjs.layers.Types.Shape
 import io.brunk.tfjs.tf.TensorND
@@ -59,7 +60,7 @@ object Tfjs_backend extends js.Object {
   def randomNormal(shape: Shape, mean: Double = ???, stddev: Double = ???, dtype: String = ???, seed: Double = ???): TensorND = js.native
   def dot(x: TensorND, y: TensorND): TensorND = js.native
   def sign(x: TensorND): TensorND = js.native
-  def qr(x: Tensor2D): js.Tuple2[TensorND, Tensor] = js.native
+  def qr(x: Tensor2D): js.Tuple2[TensorND, TensorND] = js.native
   def oneHot(indices: TensorND, numClasses: Double): TensorND = js.native
   def gather(reference: TensorND, indices: js.Array[Double] | Tensor1D, axis: Double = ???): TensorND = js.native
   def square(x: TensorND): TensorND = js.native
@@ -79,5 +80,5 @@ object Tfjs_backend extends js.Object {
   def sigmoidCrossEntropyWithLogits(target: TensorND, output: TensorND): TensorND = js.native
   def hardSigmoid(x: TensorND): TensorND = js.native
   def inTrainPhase[T](x: js.Function0[T], alt: js.Function0[T], training: Boolean = ???): T = js.native
-  def gradients(lossFn: js.Function0[Scalar], variables: js.Array[LayerVariable]): js.Array[Tensor] = js.native
+  def gradients(lossFn: js.Function0[Scalar], variables: js.Array[LayerVariable]): js.Array[TensorND] = js.native
 }
