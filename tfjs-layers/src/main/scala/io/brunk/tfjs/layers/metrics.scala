@@ -33,14 +33,15 @@ object Metrics extends js.Object {
   def sparseCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def topKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def sparseTopKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  val mse: meanSquaredError.type = js.native
-  val MSE: meanSquaredError.type = js.native
-  val mae: meanAbsoluteError.type = js.native
-  val MAE: meanAbsoluteError.type = js.native
-  val mape: meanAbsolutePercentageError.type = js.native
-  val MAPE: meanAbsolutePercentageError.type = js.native
-  val categoricalCrossentropy: categoricalCrossentropyLoss.type = js.native
-  val cosine: cosineProximity.type = js.native
-  val sparseCategoricalCrossentropy: sparseCategoricalCrossentropyLoss.type = js.native
+  // aliases
+  def mse(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
+  def MSE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
+  def mae(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
+  def MAE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
+  def mape(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
+  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
+  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def cosine(yTrue: TensorND, yPred: TensorND): TensorND = js.native //cosineProximity
+  def sparseCategoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def get(identifier: String | LossOrMetricFn): LossOrMetricFn = js.native
 }

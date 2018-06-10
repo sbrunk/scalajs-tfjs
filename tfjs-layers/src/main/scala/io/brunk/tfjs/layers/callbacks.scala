@@ -65,6 +65,11 @@ class BaseLogger extends Callback {
   def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
 }
 
+/**
+  * Callback that records events into a `History` object. This callback is
+  * automatically applied to every TF.js Layers model. The `History` object gets
+  * returned by the `fit` method of models.
+  */
 @js.native
 @JSGlobal
 class History extends Callback {

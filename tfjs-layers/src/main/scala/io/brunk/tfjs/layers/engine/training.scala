@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.{Callback, CustomCallbackConfig, NamedTensorMap}
+import io.brunk.tfjs.layers.{Callback, CustomCallbackConfig, History, NamedTensorMap}
 import io.brunk.tfjs.layers.Types.{LossOrMetricFn, Shape}
 import io.brunk.tfjs.tf._
 

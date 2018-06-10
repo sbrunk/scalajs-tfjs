@@ -15,6 +15,7 @@
  */
 
 package io.brunk.tfjs.layers
+import io.brunk.tfjs.layers.Types.LossOrMetricFn
 import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
@@ -38,16 +39,17 @@ object Losses extends js.Object {
   def kullbackLeiblerDivergence(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def poisson(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  val mse: meanSquaredError.type = js.native
-  val MSE: meanSquaredError.type = js.native
-  val mae: meanAbsoluteError.type = js.native
-  val MAE: meanAbsoluteError.type = js.native
-  val mape: meanAbsolutePercentageError.type = js.native
-  val MAPE: meanAbsolutePercentageError.type = js.native
-  val msle: meanSquaredLogarithmicError.type = js.native
-  val MSLE: meanSquaredLogarithmicError.type = js.native
-  val kld: kullbackLeiblerDivergence.type = js.native
-  val KLD: kullbackLeiblerDivergence.type = js.native
-  val cosine: cosineProximity.type = js.native
+  // aliases
+  def mse(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
+  def MSE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
+  def mae(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
+  def MAE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
+  def mape(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
+  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
+  def msle(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanSquaredLogarithmicError
+  def MSLE(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanSquaredLogarithmicError
+  def kld(yTrue: TensorND, yPred: TensorND): TensorND = js.native //kullbackLeiblerDivergence
+  def KLD(yTrue: TensorND, yPred: TensorND): TensorND = js.native //kullbackLeiblerDivergence
+  def cosine(yTrue: TensorND, yPred: TensorND): TensorND = js.native //cosineProximity
   def get(identifierOrFn: String | LossOrMetricFn): LossOrMetricFn = js.native
 }

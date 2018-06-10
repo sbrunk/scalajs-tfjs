@@ -34,7 +34,7 @@ object Tfjs_backend extends js.Object {
   def setBackend(requestedBackend: String): Unit = js.native
   def getBackend(): String = js.native
   def getScalar(value: Double, dtype: DataType = ???): Scalar = js.native
-  val epsilon: common_epsilon.type = js.native
+  val epsilon: Double = js.native
   def isBackendSymbolic(): Boolean = js.native
   def shape(x: TensorND | SymbolicTensor): Shape = js.native
   def intShape(x: TensorND | SymbolicTensor): js.Array[Double] = js.native
@@ -49,7 +49,7 @@ object Tfjs_backend extends js.Object {
   def sliceAlongFirstAxis(array: TensorND, start: Double, size: Double): TensorND = js.native
   def sliceAlongLastAxis(array: TensorND, start: Double, size: Double): TensorND = js.native
   def sliceAlongAxis(array: TensorND, start: Double, size: Double, axis: Double): TensorND = js.native
-  def normalizeBatchInTraining(x: TensorND, gamma: TensorND, beta: TensorND, reductionAxes: js.Array[Double], epsilon: Double = ???): js.Tuple3[TensorND, TensorND, Tensor] = js.native
+  def normalizeBatchInTraining(x: TensorND, gamma: TensorND, beta: TensorND, reductionAxes: js.Array[Double], epsilon: Double = ???): js.Tuple3[TensorND, TensorND, TensorND] = js.native
   def concatenate(tensors: js.Array[TensorND], axis: Double = ???): TensorND = js.native
   def concatAlongFirstAxis(a: TensorND, b: TensorND): TensorND = js.native
   def tile(x: TensorND, n: Double | js.Array[Double]): TensorND = js.native
