@@ -18,6 +18,7 @@ package io.brunk.tfjs.core.optimizers
 
 import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
 import io.brunk.tfjs.core.{NamedTensorMap, Rank, Variable}
+import io.brunk.tfjs.core.serialization
 
 import scala.scalajs.js
 import js.annotation._
@@ -25,7 +26,7 @@ import js.|
 
 @js.native
 @JSGlobal
-abstract class Optimizer extends io.brunk.tfjs.core.Serializable {
+abstract class Optimizer extends serialization.Serializable {
   type T <: NamedTensorMap
   def minimize(
       f: js.Function0[Scalar],

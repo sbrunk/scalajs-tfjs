@@ -20,6 +20,32 @@ import scala.scalajs.js
 import js.annotation._
 import js.{Promise, |}
 import Engine.MemoryInfo
+import _root_.io.brunk.tfjs.core
+
+
+@js.native
+trait Index extends TensorModule with
+ops.Ops with
+Train with
+VariableCompanion with
+EnvironmentCompanion with
+Version {
+  type AdadeltaOptimizer = optimizers.AdadeltaOptimizer
+  val  AdadeltaOptimizer = optimizers.AdadeltaOptimizer
+  type AdagradOptimizer = optimizers.AdagradOptimizer
+  type AdamOptimizer = optimizers.AdamOptimizer
+  type AdamaxOptimizer = optimizers.AdamaxOptimizer
+  type MomentumOptimizer = optimizers.MomentumOptimizer
+  type Optimizer = optimizers.Optimizer
+  type RMSPropOptimizer = optimizers.RMSPropOptimizer
+  type SGDOptimizer = optimizers.SGDOptimizer
+  val  environment = EnvironmentModule
+  type Tensor[R <: Rank] = core.Tensor[R]
+  type Variable[R <: Rank] = core.Variable[R]
+  type Rank = core.Rank
+  type DataType = core.DataType
+  val  serialization = core.serialization
+}
 
 @js.native
 @JSGlobalScope

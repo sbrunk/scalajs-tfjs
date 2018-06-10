@@ -16,8 +16,8 @@
 
 package io.brunk.tfjs.core.optimizers
 
-import io.brunk.tfjs.core.{ConfigDict, NamedVariableMap}
-import io.brunk.tfjs.core.Serialization.SerializableConstructor
+import io.brunk.tfjs.core.NamedVariableMap
+import io.brunk.tfjs.core.serialization.{ConfigDict, Serializable, SerializableConstructor}
 
 import scala.scalajs.js
 import js.annotation._
@@ -47,6 +47,6 @@ class RMSPropOptimizer protected () extends Optimizer {
 @JSGlobal
 object RMSPropOptimizer extends js.Object {
   var className: String = js.native
-  def fromConfig[T <: io.brunk.tfjs.core.Serializable](cls: SerializableConstructor[T], config: ConfigDict): T =
+  def fromConfig[T <: Serializable](cls: SerializableConstructor[T], config: ConfigDict): T =
     js.native
 }
