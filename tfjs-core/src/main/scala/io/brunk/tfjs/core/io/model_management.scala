@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.core.io
 
+import io.brunk.tfjs.core.io.types.{ModelArtifactsInfo, ModelStoreManager}
+
 import scala.scalajs.js
 import js.annotation._
 import js.{Promise, |}
@@ -33,8 +35,7 @@ object ModelStoreManagerRegistry extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
-object Model_management extends js.Object {
+trait ModelManagement extends js.Object {
   def listModels(): Promise[js.Dictionary[ModelArtifactsInfo]]                   = js.native
   def removeModel(url: String): Promise[ModelArtifactsInfo]                      = js.native
   def copyModel(sourceURL: String, destURL: String): Promise[ModelArtifactsInfo] = js.native

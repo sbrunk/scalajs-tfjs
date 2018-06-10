@@ -18,6 +18,7 @@ package io.brunk.tfjs.core.io
 
 import io.brunk.tfjs.core.NamedTensorMap
 import io.brunk.tfjs.core.Types.TypedArray
+import io.brunk.tfjs.core.io.types.{ModelArtifacts, ModelArtifactsInfo, WeightsManifestEntry}
 
 import scala.scalajs.js
 import js.annotation._
@@ -26,7 +27,7 @@ import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
 @JSGlobalScope
-object Io_utils extends js.Object {
+object IoUtils extends js.Object {
   def encodeWeights(tensors: NamedTensorMap): Promise[js.Any] = js.native
   def decodeWeights(buffer: ArrayBuffer, specs: js.Array[WeightsManifestEntry]): NamedTensorMap =
     js.native

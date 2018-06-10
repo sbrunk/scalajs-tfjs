@@ -44,6 +44,7 @@ Version {
   type Variable[R <: Rank] = core.Variable[R]
   type Rank = core.Rank
   type DataType = core.DataType
+  val  io = core.io.Io
   val  serialization = core.serialization
 }
 

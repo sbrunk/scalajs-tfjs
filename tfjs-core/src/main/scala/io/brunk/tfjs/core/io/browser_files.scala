@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.io
 
 import io.brunk.tfjs.core.io.Router_registry.IORouter
+import io.brunk.tfjs.core.io.types.IOHandler
 import org.scalajs.dom.File
 
 import scala.scalajs.js
@@ -38,8 +39,7 @@ object BrowserDownloads extends js.Object {
 }
 
 @js.native
-@JSGlobalScope
-object Browser_files extends js.Object {
+trait Browser_files extends js.Object {
   val browserDownloadsRouter: IORouter                          = js.native
   def browserDownloads(fileNamePrefix: String = ???): IOHandler = js.native
   def browserFiles(files: js.Array[File]): IOHandler            = js.native

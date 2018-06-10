@@ -17,7 +17,7 @@
 package io.brunk.tfjs.core.io
 
 import io.brunk.tfjs.core.NamedTensorMap
-import io.brunk.tfjs.core.io.Types.WeightsManifestConfig
+import io.brunk.tfjs.core.io.types.WeightsManifestConfig
 import org.scalajs.dom.experimental.RequestInit
 
 import scala.scalajs.js
@@ -25,8 +25,7 @@ import js.annotation._
 import js.{Promise, |}
 
 @js.native
-@JSGlobalScope
-object Weights_loader extends js.Object {
+trait WeightsLoader extends js.Object {
   def loadWeights(
       manifest: WeightsManifestConfig,
       filePathPrefix: String = ???,

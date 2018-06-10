@@ -17,11 +17,12 @@
 package io.brunk.tfjs.core.io
 
 import io.brunk.tfjs.core.io.Router_registry.IORouter
+import io.brunk.tfjs.core.io.types.{IOHandler, ModelArtifactsInfo, ModelStoreManager}
 import org.scalajs.dom.raw.IDBFactory
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 
 @js.native
 @JSGlobal

@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.io
 
 import io.brunk.tfjs.core.io.Router_registry.IORouter
+import io.brunk.tfjs.core.io.types.IOHandler
 
 import scala.scalajs.js
 import js.annotation._
