@@ -19,12 +19,13 @@ package io.brunk.tfjs.layers
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf.TensorND
 
 @js.native
 @JSGlobal
 abstract class Constraint extends serialization.Serializable {
   @JSName("apply")
-  def apply(w: Tensor): Tensor
+  def apply(w: TensorND): TensorND
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -39,7 +40,7 @@ trait MaxNormConfig extends js.Object {
 class MaxNorm protected () extends Constraint {
   def this(config: MaxNormConfig) = this()
   @JSName("apply")
-  def apply(w: Tensor): Tensor = js.native
+  def apply(w: TensorND): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -59,7 +60,7 @@ trait UnitNormConfig extends js.Object {
 class UnitNorm protected () extends Constraint {
   def this(config: UnitNormConfig) = this()
   @JSName("apply")
-  def apply(w: Tensor): Tensor = js.native
+  def apply(w: TensorND): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -73,7 +74,7 @@ object UnitNorm extends js.Object {
 @JSGlobal
 class NonNeg extends Constraint {
   @JSName("apply")
-  def apply(w: Tensor): Tensor = js.native
+  def apply(w: TensorND): TensorND = js.native
 }
 
 @js.native
@@ -95,7 +96,7 @@ trait MinMaxNormConfig extends js.Object {
 class MinMaxNorm protected () extends Constraint {
   def this(config: MinMaxNormConfig) = this()
   @JSName("apply")
-  def apply(w: Tensor): Tensor = js.native
+  def apply(w: TensorND): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 

@@ -16,9 +16,18 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
+import io.brunk.tfjs.layers.{Constraint, Initializer, Regularizer}
+import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
+import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 trait EmbeddingLayerConfig extends LayerConfig {

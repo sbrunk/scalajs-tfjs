@@ -16,18 +16,24 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.SymbolicTensor
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 @JSGlobal
 abstract class Merge protected () extends Layer {
   def this(config: LayerConfig = ???) = this()
   protected var reshapeRequired: Boolean = js.native
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
 }
 
@@ -35,7 +41,7 @@ abstract class Merge protected () extends Layer {
 @JSGlobal
 class Add protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -48,7 +54,7 @@ object Add extends js.Object {
 @JSGlobal
 class Multiply protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -61,7 +67,7 @@ object Multiply extends js.Object {
 @JSGlobal
 class Average protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -74,7 +80,7 @@ object Average extends js.Object {
 @JSGlobal
 class Maximum protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -87,7 +93,7 @@ object Maximum extends js.Object {
 @JSGlobal
 class Minimum protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -107,7 +113,7 @@ class Concatenate protected () extends Merge {
   def this(config: ConcatenateLayerConfig = ???) = this()
   def DEFAULT_AXIS: Double = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def mergeFunction(inputs: js.Array[Tensor]): Tensor = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
 }
 
@@ -120,10 +126,10 @@ object Concatenate extends js.Object {
 @js.native
 @JSGlobalScope
 object Merge extends js.Object {
-  def add(config: js.Array[SymbolicTensor] | js.Array[Tensor] | LayerConfig = ???): Layer | SymbolicTensor | Tensor = js.native
-  def multiply(config: js.Array[SymbolicTensor] | js.Array[Tensor] | LayerConfig = ???): Layer | SymbolicTensor | Tensor = js.native
-  def average(config: js.Array[SymbolicTensor] | js.Array[Tensor] | LayerConfig = ???): Layer | SymbolicTensor | Tensor = js.native
-  def maximum(config: js.Array[SymbolicTensor] | js.Array[Tensor] | LayerConfig = ???): Layer | SymbolicTensor | Tensor = js.native
-  def minimum(config: js.Array[SymbolicTensor] | js.Array[Tensor] | LayerConfig = ???): Layer | SymbolicTensor | Tensor = js.native
-  def concatenate(config: js.Array[SymbolicTensor] | js.Array[Tensor] | ConcatenateLayerConfig = ???): Layer | SymbolicTensor | Tensor = js.native
+  def add(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
+  def multiply(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
+  def average(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
+  def maximum(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
+  def minimum(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
+  def concatenate(config: js.Array[SymbolicTensor] | js.Array[TensorND] | ConcatenateLayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
 }

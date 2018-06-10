@@ -16,16 +16,20 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.Types.Shape
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 @JSGlobal
 abstract class Initializer extends serialization.Serializable {
   def fromConfigUsesCustomObjects(): Boolean = js.native
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor
+  def apply(shape: Shape, dtype: DataType = ???): TensorND
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -33,7 +37,7 @@ abstract class Initializer extends serialization.Serializable {
 @JSGlobal
 class Zeros extends Initializer {
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
 }
 
 @js.native
@@ -46,7 +50,7 @@ object Zeros extends js.Object {
 @JSGlobal
 class Ones extends Initializer {
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
 }
 
 @js.native
@@ -65,7 +69,7 @@ trait ConstantConfig extends js.Object {
 class Constant protected () extends Initializer {
   def this(config: ConstantConfig) = this()
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -89,7 +93,7 @@ class RandomUniform protected () extends Initializer {
   def DEFAULT_MINVAL: Double = js.native
   def DEFAULT_MAXVAL: Double = js.native
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -113,7 +117,7 @@ class RandomNormal protected () extends Initializer {
   def DEFAULT_MEAN: Double = js.native
   def DEFAULT_STDDEV: Double = js.native
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -137,7 +141,7 @@ class TruncatedNormal protected () extends Initializer {
   def DEFAULT_MEAN: Double = js.native
   def DEFAULT_STDDEV: Double = js.native
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -157,7 +161,7 @@ trait IdentityConfig extends js.Object {
 class Identity protected () extends Initializer {
   def this(config: IdentityConfig) = this()
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -180,7 +184,7 @@ trait VarianceScalingConfig extends js.Object {
 class VarianceScaling protected () extends Initializer {
   def this(config: VarianceScalingConfig) = this()
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -236,7 +240,7 @@ class Orthogonal protected () extends Initializer {
   protected def gain: Double = js.native
   protected def seed: Double = js.native
   @JSName("apply")
-  def apply(shape: Shape, dtype: DataType = ???): Tensor = js.native
+  def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 

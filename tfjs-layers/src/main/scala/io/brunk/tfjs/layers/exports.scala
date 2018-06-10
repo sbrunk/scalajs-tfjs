@@ -16,9 +16,13 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.engine._
+import io.brunk.tfjs.layers.layers._
+import io.brunk.tfjs.tf._
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 
 @js.native
 @JSGlobal
@@ -136,23 +140,23 @@ object InitializerExports extends js.Object {
 @js.native
 @JSGlobal
 class MetricExports extends js.Object {
-  def meanAbsoluteError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def meanAbsolutePercentageError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def MAPE(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def mape(yTrue: Tensor, yPred: Tensor): Tensor = js.native
+  def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def mape(yTrue: TensorND, yPred: TensorND): TensorND = js.native
 }
 
 @js.native
 @JSGlobal
 object MetricExports extends js.Object {
-  def binaryAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def binaryCrossentropy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def categoricalAccuracy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def categoricalCrossentropy(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def cosineProximity(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def meanSquaredError(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def MSE(yTrue: Tensor, yPred: Tensor): Tensor = js.native
-  def mse(yTrue: Tensor, yPred: Tensor): Tensor = js.native
+  def binaryAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def categoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanSquaredError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def MSE(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def mse(yTrue: TensorND, yPred: TensorND): TensorND = js.native
 }
 
 @js.native

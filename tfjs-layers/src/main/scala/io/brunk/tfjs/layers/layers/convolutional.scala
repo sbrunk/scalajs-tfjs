@@ -16,9 +16,19 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Common.{DataFormat, PaddingMode}
+import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
+import io.brunk.tfjs.layers.{Constraint, Initializer, LayerVariable, Regularizer}
+import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
+import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf.TensorND
+
 
 @js.native
 trait BaseConvLayerConfig extends LayerConfig {
@@ -26,7 +36,7 @@ trait BaseConvLayerConfig extends LayerConfig {
   var strides: Double | js.Array[Double] = js.native
   var padding: PaddingMode = js.native
   var dataFormat: DataFormat = js.native
-  var dilationRate: Double | js.Tuple1[Double] | js.Tuple2[Double, Double] = js.native
+  var dilationRate: Double | Tuple1[Double] | js.Tuple2[Double, Double] = js.native
   var activation: String = js.native
   var useBias: Boolean = js.native
   var kernelInitializer: InitializerIdentifier | Initializer = js.native
@@ -53,7 +63,7 @@ abstract class Conv protected () extends Layer {
   protected def strides: js.Array[Double] = js.native
   protected def padding: PaddingMode = js.native
   protected def dataFormat: DataFormat = js.native
-  protected def dilationRate: Double | js.Tuple1[Double] | js.Tuple2[Double, Double] = js.native
+  protected def dilationRate: Double | Tuple1[Double] | js.Tuple2[Double, Double] = js.native
   protected def activation: Activation = js.native
   protected def useBias: Boolean = js.native
   protected def kernelInitializer: Initializer = js.native
@@ -67,7 +77,7 @@ abstract class Conv protected () extends Layer {
   def DEFAULT_KERNEL_INITIALIZER: InitializerIdentifier = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
@@ -91,7 +101,7 @@ class Conv2DTranspose protected () extends Conv2D {
   def this(config: ConvLayerConfig) = this()
   var inputSpec: js.Array[InputSpec] = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
@@ -129,7 +139,7 @@ class SeparableConv protected () extends Conv {
   protected var depthwiseKernel: LayerVariable = js.native
   protected var pointwiseKernel: LayerVariable = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -177,7 +187,7 @@ class Cropping2D protected () extends Layer {
   protected def cropping: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
   protected def dataFormat: DataFormat = js.native
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -190,9 +200,9 @@ object Cropping2D extends js.Object {
 @js.native
 @JSGlobalScope
 object Convolutional extends js.Object {
-  def preprocessConv2DInput(x: Tensor, dataFormat: DataFormat): Tensor = js.native
-  def conv1dWithBias(x: Tensor, kernel: Tensor, bias: Tensor, strides: Double = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: Double = ???): Tensor = js.native
-  def conv1d(x: Tensor, kernel: Tensor, strides: Double = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: Double = ???): Tensor = js.native
-  def conv2d(x: Tensor, kernel: Tensor, strides: js.Array[Double] = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: js.Tuple2[Double, Double] = ???): Tensor = js.native
-  def conv2dWithBias(x: Tensor, kernel: Tensor, bias: Tensor, strides: js.Array[Double] = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: js.Tuple2[Double, Double] = ???): Tensor = js.native
+  def preprocessConv2DInput(x: TensorND, dataFormat: DataFormat): TensorND = js.native
+  def conv1dWithBias(x: TensorND, kernel: TensorND, bias: TensorND, strides: Double = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: Double = ???): TensorND = js.native
+  def conv1d(x: TensorND, kernel: TensorND, strides: Double = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: Double = ???): TensorND = js.native
+  def conv2d(x: TensorND, kernel: TensorND, strides: js.Array[Double] = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: js.Tuple2[Double, Double] = ???): TensorND = js.native
+  def conv2dWithBias(x: TensorND, kernel: TensorND, bias: TensorND, strides: js.Array[Double] = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: js.Tuple2[Double, Double] = ???): TensorND = js.native
 }

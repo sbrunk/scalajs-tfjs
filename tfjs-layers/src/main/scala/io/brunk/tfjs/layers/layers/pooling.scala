@@ -16,6 +16,11 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Common.{DataFormat, PaddingMode}
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.tf._
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -31,12 +36,12 @@ trait Pooling1DLayerConfig extends LayerConfig {
 @JSGlobal
 abstract class Pooling1D protected () extends Layer {
   def this(config: Pooling1DLayerConfig) = this()
-  protected def poolSize: js.Tuple1[Double] = js.native
-  protected def strides: js.Tuple1[Double] = js.native
+  protected def poolSize: Tuple1[Double] = js.native
+  protected def strides: Tuple1[Double] = js.native
   protected def padding: PaddingMode = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def poolingFunction(inputs: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): Tensor
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def poolingFunction(inputs: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): TensorND
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -44,7 +49,7 @@ abstract class Pooling1D protected () extends Layer {
 @JSGlobal
 class MaxPooling1D protected () extends Pooling1D {
   def this(config: Pooling1DLayerConfig) = this()
-  def poolingFunction(inputs: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): Tensor = js.native
+  def poolingFunction(inputs: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): TensorND = js.native
 }
 
 @js.native
@@ -57,7 +62,7 @@ object MaxPooling1D extends js.Object {
 @JSGlobal
 class AveragePooling1D protected () extends Pooling1D {
   def this(config: Pooling1DLayerConfig) = this()
-  def poolingFunction(inputs: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): Tensor = js.native
+  def poolingFunction(inputs: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): TensorND = js.native
 }
 
 @js.native
@@ -83,8 +88,8 @@ abstract class Pooling2D protected () extends Layer {
   protected def padding: PaddingMode = js.native
   protected def dataFormat: DataFormat = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def poolingFunction(inputs: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): Tensor
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def poolingFunction(inputs: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): TensorND
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -92,7 +97,7 @@ abstract class Pooling2D protected () extends Layer {
 @JSGlobal
 class MaxPooling2D protected () extends Pooling2D {
   def this(config: Pooling2DLayerConfig) = this()
-  def poolingFunction(inputs: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): Tensor = js.native
+  def poolingFunction(inputs: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): TensorND = js.native
 }
 
 @js.native
@@ -105,7 +110,7 @@ object MaxPooling2D extends js.Object {
 @JSGlobal
 class AveragePooling2D protected () extends Pooling2D {
   def this(config: Pooling2DLayerConfig) = this()
-  def poolingFunction(inputs: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): Tensor = js.native
+  def poolingFunction(inputs: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double], padding: PaddingMode, dataFormat: DataFormat): TensorND = js.native
 }
 
 @js.native
@@ -119,14 +124,14 @@ object AveragePooling2D extends js.Object {
 abstract class GlobalPooling1D protected () extends Layer {
   def this(config: LayerConfig) = this()
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
 @JSGlobal
 class GlobalAveragePooling1D protected () extends GlobalPooling1D {
   def this(config: LayerConfig) = this()
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -139,7 +144,7 @@ object GlobalAveragePooling1D extends js.Object {
 @JSGlobal
 class GlobalMaxPooling1D protected () extends GlobalPooling1D {
   def this(config: LayerConfig) = this()
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -159,14 +164,14 @@ abstract class GlobalPooling2D protected () extends Layer {
   def this(config: GlobalPooling2DLayerConfig) = this()
   protected var dataFormat: DataFormat = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
 @JSGlobal
 class GlobalAveragePooling2D extends GlobalPooling2D {
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -178,7 +183,7 @@ object GlobalAveragePooling2D extends js.Object {
 @js.native
 @JSGlobal
 class GlobalMaxPooling2D extends GlobalPooling2D {
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -190,5 +195,5 @@ object GlobalMaxPooling2D extends js.Object {
 @js.native
 @JSGlobalScope
 object Pooling extends js.Object {
-  def pool2d(x: Tensor, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double] = ???, padding: PaddingMode = ???, dataFormat: DataFormat = ???, poolMode: PoolMode = ???): Tensor = js.native
+  def pool2d(x: TensorND, poolSize: js.Tuple2[Double, Double], strides: js.Tuple2[Double, Double] = ???, padding: PaddingMode = ???, dataFormat: DataFormat = ???, poolMode: PoolMode = ???): TensorND = js.native
 }

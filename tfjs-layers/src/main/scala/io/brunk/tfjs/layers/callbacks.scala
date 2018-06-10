@@ -16,14 +16,18 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.Callbacks.{Logs, Params, UnresolvedLogs}
+import io.brunk.tfjs.layers.engine.Model
+import io.brunk.tfjs.tf._
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 
 @js.native
 @JSGlobal
 abstract class Callback extends js.Object {
-  var validationData: Tensor | js.Array[Tensor] = js.native
+  var validationData: TensorND | js.Array[TensorND] = js.native
   var model: Model = js.native
   var params: Params = js.native
   def setParams(params: Params): Unit = js.native

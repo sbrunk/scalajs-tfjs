@@ -16,9 +16,19 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Activations.ActivationIdentifier
+import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
+import io.brunk.tfjs.layers.{Constraint, Initializer, Regularizer}
+import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
+import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 trait DropoutLayerConfig extends LayerConfig {
@@ -31,7 +41,7 @@ trait DropoutLayerConfig extends LayerConfig {
 @JSGlobal
 class Dropout protected () extends Layer {
   def this(config: DropoutLayerConfig) = this()
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -64,7 +74,7 @@ class Dense protected () extends Layer {
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -79,7 +89,7 @@ object Dense extends js.Object {
 class Flatten protected () extends Layer {
   def this(config: LayerConfig = ???) = this()
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -98,7 +108,7 @@ trait ActivationLayerConfig extends LayerConfig {
 class Activation protected () extends Layer {
   def this(config: ActivationLayerConfig) = this()
   var activation: ActivationFn = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -124,7 +134,7 @@ class RepeatVector protected () extends Layer {
   def this(config: RepeatVectorLayerConfig) = this()
   def n: Double = js.native
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -139,7 +149,7 @@ object RepeatVector extends js.Object {
 class Reshape protected () extends Layer {
   def this(config: ReshapeLayerConfig) = this()
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 

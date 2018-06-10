@@ -16,9 +16,18 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
+import io.brunk.tfjs.layers.{Constraint, Initializer, Regularizer}
+import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
+import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 trait BatchNormalizationLayerConfig extends LayerConfig {
@@ -42,7 +51,7 @@ trait BatchNormalizationLayerConfig extends LayerConfig {
 class BatchNormalization protected () extends Layer {
   def this(config: BatchNormalizationLayerConfig) = this()
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 

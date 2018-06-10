@@ -16,6 +16,11 @@
 
 package io.brunk.tfjs.layers.engine
 
+import io.brunk.tfjs.layers.Types.{Kwargs, RegularizerFn, Shape}
+import io.brunk.tfjs.layers._
+import io.brunk.tfjs.layers.engine.Topology.CallHook
+import io.brunk.tfjs.tf._
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -72,8 +77,8 @@ trait NodeConfig extends js.Object {
   var tensorIndices: js.Array[Double] = js.native
   var inputTensors: js.Array[SymbolicTensor] = js.native
   var outputTensors: js.Array[SymbolicTensor] = js.native
-  var inputMasks: js.Array[Tensor] = js.native
-  var outputMasks: js.Array[Tensor] = js.native
+  var inputMasks: js.Array[TensorND] = js.native
+  var outputMasks: js.Array[TensorND] = js.native
   var inputShapes: Shape | js.Array[Shape] = js.native
   var outputShapes: Shape | js.Array[Shape] = js.native
 }
@@ -89,8 +94,8 @@ class Node protected () extends js.Object {
   var tensorIndices: js.Array[Double] = js.native
   var inputTensors: js.Array[SymbolicTensor] = js.native
   var outputTensors: js.Array[SymbolicTensor] = js.native
-  var inputMasks: js.Array[Tensor] = js.native
-  var outputMasks: js.Array[Tensor] = js.native
+  var inputMasks: js.Array[TensorND] = js.native
+  var outputMasks: js.Array[TensorND] = js.native
   var inputShapes: Shape | js.Array[Shape] = js.native
   var outputShapes: Shape | js.Array[Shape] = js.native
   def id: Double = js.native
@@ -106,7 +111,7 @@ trait LayerConfig extends js.Object {
   var name: String = js.native
   var trainable: Boolean = js.native
   var updatable: Boolean = js.native
-  var weights: js.Array[Tensor] = js.native
+  var weights: js.Array[TensorND] = js.native
   var inputDType: DataType = js.native
 }
 
@@ -121,7 +126,7 @@ abstract class Layer protected () extends serialization.Serializable {
   var updatable: Boolean = js.native
   var batchInputShape: Shape = js.native
   var dtype: DataType = js.native
-  var initialWeights: js.Array[Tensor] = js.native
+  var initialWeights: js.Array[TensorND] = js.native
   var inboundNodes: js.Array[Node] = js.native
   var outboundNodes: js.Array[Node] = js.native
   var activityRegularizer: Regularizer = js.native
@@ -134,26 +139,26 @@ abstract class Layer protected () extends serialization.Serializable {
   def output: SymbolicTensor | js.Array[SymbolicTensor] = js.native
   def losses: js.Array[RegularizerFn] = js.native
   def calculateLosses(): js.Array[Scalar] = js.native
-  def updates: js.Array[Tensor] = js.native
+  def updates: js.Array[TensorND] = js.native
   var built: Boolean = js.native
   var trainableWeights: js.Array[LayerVariable] = js.native
   var nonTrainableWeights: js.Array[LayerVariable] = js.native
   def weights: js.Array[LayerVariable] = js.native
   def stateful: Boolean = js.native
-  def assertInputCompatibility(inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
-  def invokeCallHook(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Unit = js.native
+  def assertInputCompatibility(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor]): Unit = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  def invokeCallHook(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): Unit = js.native
   def setCallHook(callHook: CallHook): Unit = js.native
   def clearCallHook(): Unit = js.native
   @JSName("apply")
-  def apply(inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
+  def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def getWeights(trainableOnly: Boolean = ???): js.Array[Tensor] = js.native
-  def setWeights(weights: js.Array[Tensor]): Unit = js.native
+  def getWeights(trainableOnly: Boolean = ???): js.Array[TensorND] = js.native
+  def setWeights(weights: js.Array[TensorND]): Unit = js.native
   def addWeight(name: String, shape: Shape, dtype: DataType = ???, initializer: Initializer = ???, regularizer: Regularizer = ???, trainable: Boolean = ???, constraint: Constraint = ???): LayerVariable = js.native
   def addLoss(losses: RegularizerFn | js.Array[RegularizerFn]): Unit = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def computeMask(inputs: Tensor | js.Array[Tensor], mask: Tensor | js.Array[Tensor] = ???): Tensor | js.Array[Tensor] = js.native
+  def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -179,7 +184,7 @@ class InputLayer protected () extends Layer {
   def this(config: InputLayerConfig) = this()
   var sparse: Boolean = js.native
   @JSName("apply")
-  def apply(inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): Tensor | js.Array[Tensor] | SymbolicTensor = js.native
+  def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -233,10 +238,10 @@ abstract class Container protected () extends Layer {
   def weights: js.Array[LayerVariable] = js.native
   def loadWeights(weightsJSON: JsonDict | NamedTensorMap, skipMismatch: Boolean = ???, isNamedTensorMap: Boolean = ???): Unit = js.native
   def toJSON(unused: js.Any = ???, returnString: Boolean = ???): String | JsonDict = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
-  def computeMask(inputs: Tensor | js.Array[Tensor], mask: Tensor | js.Array[Tensor] = ???): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND | js.Array[TensorND] = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def runInternalGraph(inputs: js.Array[Tensor], masks: js.Array[Tensor] = ???): js.Tuple3[js.Array[Tensor], js.Array[Tensor], js.Array[Shape]] = js.native
+  def runInternalGraph(inputs: js.Array[TensorND], masks: js.Array[TensorND] = ???): js.Tuple3[js.Array[TensorND], js.Array[TensorND], js.Array[Shape]] = js.native
   def getLayer(name: String = ???, index: Double = ???): Layer = js.native
   def calculateLosses(): js.Array[Scalar] = js.native
   def getConfig(): serialization.ConfigDict = js.native
@@ -267,7 +272,7 @@ trait NodesByDepth extends js.Object {
 @JSGlobalScope
 object Topology extends js.Object {
   type Op = js.Function1[LayerVariable, LayerVariable]
-  type CallHook = js.Function2[Tensor | js.Array[Tensor], Kwargs, Unit]
+  type CallHook = js.Function2[TensorND | js.Array[TensorND], Kwargs, Unit]
   def Input(config: InputConfig): SymbolicTensor = js.native
   def getSourceInputs(tensor: SymbolicTensor, layer: Layer = ???, nodeIndex: Double = ???): js.Array[SymbolicTensor] = js.native
   def loadWeightsFromNamedTensorMap(weights: NamedTensorMap, layers: js.Array[Layer]): Unit = js.native

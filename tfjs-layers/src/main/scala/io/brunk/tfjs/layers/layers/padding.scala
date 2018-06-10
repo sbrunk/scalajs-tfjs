@@ -16,9 +16,15 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Common.DataFormat
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 trait ZeroPadding2DLayerConfig extends LayerConfig {
@@ -33,7 +39,7 @@ class ZeroPadding2D protected () extends Layer {
   def dataFormat: DataFormat = js.native
   def padding: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -46,6 +52,6 @@ object ZeroPadding2D extends js.Object {
 @js.native
 @JSGlobalScope
 object Padding extends js.Object {
-  def temporalPadding(x: Tensor, padding: js.Tuple2[Double, Double] = ???): Tensor = js.native
-  def spatial2dPadding(x: Tensor, padding: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = ???, dataFormat: DataFormat = ???): Tensor = js.native
+  def temporalPadding(x: TensorND, padding: js.Tuple2[Double, Double] = ???): TensorND = js.native
+  def spatial2dPadding(x: TensorND, padding: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = ???, dataFormat: DataFormat = ???): TensorND = js.native
 }

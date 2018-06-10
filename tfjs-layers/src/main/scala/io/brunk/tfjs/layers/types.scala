@@ -16,6 +16,10 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.Types.{JsonValue, Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.Layer
+import io.brunk.tfjs.tf._
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -50,14 +54,23 @@ trait JsonArray extends js.Array[JsonValue] {
 }
 
 @js.native
+trait NamedTensorMap extends js.Object {
+  type T <: TensorND
+  @JSBracketAccess
+  def apply(name: String): T = js.native
+  @JSBracketAccess
+  def update(name: String, v: T): Unit = js.native
+}
+
+@js.native
 @JSGlobalScope
 object Types extends js.Object {
   type Shape = js.Array[Double]
   def getNextUniqueTensorId(): Double = js.native
-  type LossOrMetricFn = js.Function2[Tensor, Tensor, Tensor]
+  type LossOrMetricFn = js.Function2[TensorND, TensorND, TensorND]
   type RegularizerFn = js.Function0[Scalar]
-  type RnnStepFunction = js.Function2[Tensor, js.Array[Tensor], js.Tuple2[Tensor, js.Array[Tensor]]]
-  type NamedTensorMap = js.Dictionary[Tensor]
+  type RnnStepFunction = js.Function2[TensorND, js.Array[TensorND], js.Tuple2[TensorND, js.Array[TensorND]]]
+  //type NamedTensorMap = js.Dictionary[TensorND]
   type JsonValue = Boolean | Double | String | Null | JsonArray | JsonDict
   type Kwargs = js.Dictionary[js.Any]
 }

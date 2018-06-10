@@ -16,9 +16,18 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.Activations.ActivationIdentifier
+import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
+import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
+import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
+import io.brunk.tfjs.layers._
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{InputSpec, Layer, LayerConfig}
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf.TensorND
 
 @js.native
 trait BaseRNNLayerConfig extends LayerConfig {
@@ -47,18 +56,18 @@ class RNN protected () extends Layer {
   def goBackwards: Boolean = js.native
   def unroll: Boolean = js.native
   var stateSpec: js.Array[InputSpec] = js.native
-  var states: js.Array[Tensor] = js.native
-  def getStates(): js.Array[Tensor] = js.native
-  def setStates(states: js.Array[Tensor]): Unit = js.native
+  var states: js.Array[TensorND] = js.native
+  def getStates(): js.Array[TensorND] = js.native
+  def setStates(states: js.Array[TensorND]): Unit = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def computeMask(inputs: Tensor | js.Array[Tensor], mask: Tensor | js.Array[Tensor] = ???): Tensor = js.native
+  def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def resetStates(states: Tensor | js.Array[Tensor] = ???): Unit = js.native
-  def standardizeArgs(inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor], initialState: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor], constants: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor]): js.Any = js.native
+  def resetStates(states: TensorND | js.Array[TensorND] = ???): Unit = js.native
+  def standardizeArgs(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], initialState: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], constants: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor]): js.Any = js.native
   @JSName("apply")
-  def apply(inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
-  def getInitialState(inputs: Tensor): js.Array[Tensor] = js.native
+  def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  def getInitialState(inputs: TensorND): js.Array[TensorND] = js.native
   def trainableWeights: js.Array[LayerVariable] = js.native
   def nonTrainableWeights: js.Array[LayerVariable] = js.native
   def getConfig(): serialization.ConfigDict = js.native
@@ -121,7 +130,7 @@ class SimpleRNNCell protected () extends RNNCell {
   def DEFAULT_RECURRENT_INITIALIZER: String = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -153,7 +162,7 @@ trait SimpleRNNLayerConfig extends BaseRNNLayerConfig {
 @JSGlobal
 class SimpleRNN protected () extends RNN {
   def this(config: SimpleRNNLayerConfig) = this()
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def units: Double = js.native
   def activation: Activation = js.native
   def useBias: Boolean = js.native
@@ -213,7 +222,7 @@ class GRUCell protected () extends RNNCell {
   var recurrentKernel: LayerVariable = js.native
   var bias: LayerVariable = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -232,7 +241,7 @@ trait GRULayerConfig extends SimpleRNNLayerConfig {
 @JSGlobal
 class GRU protected () extends RNN {
   def this(config: GRULayerConfig) = this()
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def units: Double = js.native
   def activation: Activation = js.native
   def useBias: Boolean = js.native
@@ -296,7 +305,7 @@ class LSTMCell protected () extends RNNCell {
   var recurrentKernel: LayerVariable = js.native
   var bias: LayerVariable = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -316,7 +325,7 @@ trait LSTMLayerConfig extends SimpleRNNLayerConfig {
 @JSGlobal
 class LSTM protected () extends RNN {
   def this(config: LSTMLayerConfig) = this()
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def units: Double = js.native
   def activation: Activation = js.native
   def useBias: Boolean = js.native
@@ -354,13 +363,13 @@ class StackedRNNCells protected () extends RNNCell {
   def this(config: StackedRNNCellsConfig) = this()
   protected var cells: js.Array[RNNCell] = js.native
   def stateSize: js.Array[Double] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
   def getConfig(): serialization.ConfigDict = js.native
   def trainableWeights: js.Array[LayerVariable] = js.native
   def nonTrainableWeights: js.Array[LayerVariable] = js.native
-  def getWeights(): js.Array[Tensor] = js.native
-  def setWeights(weights: js.Array[Tensor]): Unit = js.native
+  def getWeights(): js.Array[TensorND] = js.native
+  def setWeights(weights: js.Array[TensorND]): Unit = js.native
 }
 
 @js.native
@@ -373,5 +382,5 @@ object StackedRNNCells extends js.Object {
 @js.native
 @JSGlobalScope
 object Recurrent extends js.Object {
-  def rnn(stepFunction: RnnStepFunction, inputs: Tensor, initialStates: js.Array[Tensor], goBackwards: Boolean = ???, mask: Tensor = ???, constants: js.Array[Tensor] = ???, unroll: Boolean = ???, inputLength: Double = ???): js.Tuple3[Tensor, Tensor, js.Array[Tensor]] = js.native
+  def rnn(stepFunction: RnnStepFunction, inputs: TensorND, initialStates: js.Array[TensorND], goBackwards: Boolean = ???, mask: TensorND = ???, constants: js.Array[TensorND] = ???, unroll: Boolean = ???, inputLength: Double = ???): js.Tuple3[TensorND, TensorND, js.Array[TensorND]] = js.native
 }

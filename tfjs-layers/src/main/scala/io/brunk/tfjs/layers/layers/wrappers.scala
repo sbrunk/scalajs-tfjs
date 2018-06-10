@@ -16,9 +16,16 @@
 
 package io.brunk.tfjs.layers.layers
 
+import io.brunk.tfjs.layers.{LayerVariable, SymbolicTensor}
+import io.brunk.tfjs.layers.Types.{Kwargs, RegularizerFn, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.layers.layers.Wrappers.BidirectionalMergeMode
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.tf._
+
 
 @js.native
 trait WrapperLayerConfig extends LayerConfig {
@@ -34,10 +41,10 @@ abstract class Wrapper protected () extends Layer {
   var trainable: Boolean = js.native
   def trainableWeights: js.Array[LayerVariable] = js.native
   def nonTrainableWeights: js.Array[LayerVariable] = js.native
-  def updates: js.Array[Tensor] = js.native
+  def updates: js.Array[TensorND] = js.native
   def losses: js.Array[RegularizerFn] = js.native
-  def getWeights(): js.Array[Tensor] = js.native
-  def setWeights(weights: js.Array[Tensor]): Unit = js.native
+  def getWeights(): js.Array[TensorND] = js.native
+  def setWeights(weights: js.Array[TensorND]): Unit = js.native
   def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -53,7 +60,7 @@ class TimeDistributed protected () extends Wrapper {
   def this(config: WrapperLayerConfig) = this()
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -73,13 +80,13 @@ trait BidirectionalLayerConfig extends WrapperLayerConfig {
 class Bidirectional protected () extends Wrapper {
   def this(config: BidirectionalLayerConfig) = this()
   var trainable: Boolean = js.native
-  def getWeights(): js.Array[Tensor] = js.native
-  def setWeights(weights: js.Array[Tensor]): Unit = js.native
+  def getWeights(): js.Array[TensorND] = js.native
+  def setWeights(weights: js.Array[TensorND]): Unit = js.native
   def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
   @JSName("apply")
-  def apply(inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
-  def call(inputs: Tensor | js.Array[Tensor], kwargs: Kwargs): Tensor | js.Array[Tensor] = js.native
-  def resetStates(states: Tensor | js.Array[Tensor] = ???): Unit = js.native
+  def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
+  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  def resetStates(states: TensorND | js.Array[TensorND] = ???): Unit = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
   def trainableWeights: js.Array[LayerVariable] = js.native
   def nonTrainableWeights: js.Array[LayerVariable] = js.native
