@@ -38,9 +38,9 @@ class ZeroPadding2D protected () extends Layer {
   def this(config: ZeroPadding2DLayerConfig = ???) = this()
   def dataFormat: DataFormat = js.native
   def padding: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

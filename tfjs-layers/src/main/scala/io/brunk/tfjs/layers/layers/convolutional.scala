@@ -77,17 +77,17 @@ abstract class Conv protected () extends Layer {
   protected var bias: LayerVariable = js.native
   def DEFAULT_KERNEL_INITIALIZER: InitializerIdentifier = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
 @JSGlobal
 class Conv2D protected () extends Conv {
   def this(config: ConvLayerConfig) = this()
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -100,11 +100,12 @@ object Conv2D extends js.Object {
 @JSGlobal
 class Conv2DTranspose protected () extends Conv2D {
   def this(config: ConvLayerConfig) = this()
-  var inputSpec: js.Array[InputSpec] = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  // cannot override a mutable variable
+  //override var inputSpec: js.Array[InputSpec] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -139,9 +140,9 @@ class SeparableConv protected () extends Conv {
   def DEFAULT_POINTWISE_INITIALIZER: InitializerIdentifier = js.native
   protected var depthwiseKernel: LayerVariable = js.native
   protected var pointwiseKernel: LayerVariable = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -166,7 +167,7 @@ object SeparableConv2D extends js.Object {
 @JSGlobal
 class Conv1D protected () extends Conv {
   def this(config: ConvLayerConfig) = this()
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -188,8 +189,8 @@ class Cropping2D protected () extends Layer {
   protected def cropping: js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
   protected def dataFormat: DataFormat = js.native
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

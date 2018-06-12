@@ -60,9 +60,9 @@ class CallbackList protected () extends js.Object {
 @js.native
 @JSGlobal
 class BaseLogger extends Callback {
-  def onEpochBegin(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onBatchEnd(batch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onEpochBegin(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onBatchEnd(batch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
 }
 
 /**
@@ -75,8 +75,8 @@ class BaseLogger extends Callback {
 class History extends Callback {
   var epoch: js.Array[Double] = js.native
   var history: History.History = js.native
-  def onTrainBegin(logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onTrainBegin(logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
   def syncData(): Promise[Unit] = js.native
 }
 
@@ -111,12 +111,12 @@ class CustomCallback protected () extends Callback {
   protected def epochEnd: js.Function2[Double, Logs, Promise[Unit]] = js.native
   protected def batchBegin: js.Function2[Double, Logs, Promise[Unit]] = js.native
   protected def batchEnd: js.Function2[Double, Logs, Promise[Unit]] = js.native
-  def onEpochBegin(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onBatchBegin(batch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onBatchEnd(batch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onTrainBegin(logs: UnresolvedLogs = ???): Promise[Unit] = js.native
-  def onTrainEnd(logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onEpochBegin(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onEpochEnd(epoch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onBatchBegin(batch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onBatchEnd(batch: Double, logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onTrainBegin(logs: UnresolvedLogs = ???): Promise[Unit] = js.native
+  override def onTrainEnd(logs: UnresolvedLogs = ???): Promise[Unit] = js.native
 }
 
 @js.native

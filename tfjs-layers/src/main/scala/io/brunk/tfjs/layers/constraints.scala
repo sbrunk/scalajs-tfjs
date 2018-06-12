@@ -43,7 +43,7 @@ class MaxNorm protected () extends Constraint {
   def this(config: MaxNormConfig) = this()
   @JSName("apply")
   def apply(w: TensorND): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -63,7 +63,7 @@ class UnitNorm protected () extends Constraint {
   def this(config: UnitNormConfig) = this()
   @JSName("apply")
   def apply(w: TensorND): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -99,7 +99,7 @@ class MinMaxNorm protected () extends Constraint {
   def this(config: MinMaxNormConfig) = this()
   @JSName("apply")
   def apply(w: TensorND): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

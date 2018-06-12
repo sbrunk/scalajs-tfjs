@@ -45,16 +45,19 @@ class Sequential protected () extends Model {
   def this(config: SequentialConfig = ???) = this()
   def add(layer: Layer): Unit = js.native
   def pop(): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def build(inputShape: Shape = ???): Unit = js.native
-  def setWeights(weights: js.Array[TensorND]): Unit = js.native
-  var updatable: Boolean = js.native
-  def evaluate(x: TensorND | js.Array[TensorND], y: TensorND | js.Array[TensorND], config: ModelEvaluateConfig = ???): Scalar | js.Array[Scalar] = js.native
-  def predict(x: TensorND | js.Array[TensorND], config: ModelPredictConfig = ???): TensorND | js.Array[TensorND] = js.native
-  def predictOnBatch(x: TensorND): TensorND | js.Array[TensorND] = js.native
-  def compile(config: ModelCompileConfig): Unit = js.native
-  def fit(x: TensorND | js.Array[TensorND] | js.Dictionary[TensorND], y: TensorND | js.Array[TensorND] | js.Dictionary[TensorND], config: ModelFitConfig = ???): Promise[History] = js.native
-  def getConfig(): js.Dynamic = js.native
+  override def setWeights(weights: js.Array[TensorND]): Unit = js.native
+  // cannot override a mutable variable
+  // override var updatable: Boolean = js.native
+  override def evaluate(x: TensorND | js.Array[TensorND], y: TensorND | js.Array[TensorND], config: ModelEvaluateConfig = ???): Scalar | js.Array[Scalar] = js.native
+  override def predict(x: TensorND | js.Array[TensorND], config: ModelPredictConfig = ???): TensorND | js.Array[TensorND] = js.native
+  override def predictOnBatch(x: TensorND): TensorND | js.Array[TensorND] = js.native
+  override def compile(config: ModelCompileConfig): Unit = js.native
+  override def fit(x: TensorND | js.Array[TensorND] | js.Dictionary[TensorND], y: TensorND | js.Array[TensorND] | js.Dictionary[TensorND], config: ModelFitConfig = ???): Promise[History] = js.native
+  //def getConfig(): js.Dynamic = js.native TODO in TS we return a broader type in a subclass here. Check whether we can map that to Scala
+  @JSName("getConfig")
+  def getConfigAny(): js.Dynamic = js.native
 }
 
 @js.native

@@ -50,9 +50,9 @@ trait BatchNormalizationLayerConfig extends LayerConfig {
 @JSGlobal
 class BatchNormalization protected () extends Layer {
   def this(config: BatchNormalizationLayerConfig) = this()
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

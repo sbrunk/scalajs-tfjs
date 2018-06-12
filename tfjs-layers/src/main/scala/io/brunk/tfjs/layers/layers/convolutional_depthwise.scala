@@ -30,7 +30,8 @@ import io.brunk.tfjs.tf.TensorND
 
 @js.native
 trait DepthwiseConv2DLayerConfig extends BaseConvLayerConfig {
-  var kernelSize: Double | js.Tuple2[Double, Double] = js.native
+  // can't override var and types don't match either
+  // override var kernelSize: Double | js.Tuple2[Double, Double] = js.native
   var depthMultiplier: Double = js.native
   var depthwiseInitializer: InitializerIdentifier | Initializer = js.native
   var depthwiseConstraint: ConstraintIdentifier | Constraint = js.native
@@ -41,9 +42,9 @@ trait DepthwiseConv2DLayerConfig extends BaseConvLayerConfig {
 @JSGlobal
 class DepthwiseConv2D protected () extends Conv2D {
   def this(config: DepthwiseConv2DLayerConfig) = this()
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
 }
 
 @js.native

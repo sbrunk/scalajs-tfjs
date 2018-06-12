@@ -42,8 +42,8 @@ trait DropoutLayerConfig extends LayerConfig {
 @JSGlobal
 class Dropout protected () extends Layer {
   def this(config: DropoutLayerConfig) = this()
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -73,10 +73,10 @@ class Dense protected () extends Layer {
   def this(config: DenseLayerConfig) = this()
   def DEFAULT_KERNEL_INITIALIZER: InitializerIdentifier = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -89,8 +89,8 @@ object Dense extends js.Object {
 @JSGlobal
 class Flatten protected () extends Layer {
   def this(config: LayerConfig = ???) = this()
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -109,8 +109,8 @@ trait ActivationLayerConfig extends LayerConfig {
 class Activation protected () extends Layer {
   def this(config: ActivationLayerConfig) = this()
   var activation: ActivationFn = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -135,8 +135,8 @@ class RepeatVector protected () extends Layer {
   def this(config: RepeatVectorLayerConfig) = this()
   def n: Double = js.native
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -150,8 +150,8 @@ object RepeatVector extends js.Object {
 class Reshape protected () extends Layer {
   def this(config: ReshapeLayerConfig) = this()
   def computeOutputShape(inputShape: Shape): Shape = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

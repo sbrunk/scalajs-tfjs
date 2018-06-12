@@ -44,7 +44,8 @@ trait BaseRNNLayerConfig extends LayerConfig {
 
 @js.native
 trait RNNLayerConfig extends BaseRNNLayerConfig {
-  var cell: RNNCell | js.Array[RNNCell] = js.native
+  // cannot override a mutable variable
+  //override var cell: RNNCell | js.Array[RNNCell] = js.native
 }
 
 @js.native
@@ -60,18 +61,20 @@ class RNN protected () extends Layer {
   var states: js.Array[TensorND] = js.native
   def getStates(): js.Array[TensorND] = js.native
   def setStates(states: js.Array[TensorND]): Unit = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  // TODO until we have real union types aka dotty, we have to stick with the wider type of the base class
+  //override def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
   def resetStates(states: TensorND | js.Array[TensorND] = ???): Unit = js.native
   def standardizeArgs(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], initialState: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], constants: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor]): js.Any = js.native
   @JSName("apply")
-  def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def getInitialState(inputs: TensorND): js.Array[TensorND] = js.native
-  def trainableWeights: js.Array[LayerVariable] = js.native
-  def nonTrainableWeights: js.Array[LayerVariable] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  // TODO This is a var in the base class. Unlike TS Scala does not allow to override a var with a def or val in subclasses
+  // def trainableWeights: js.Array[LayerVariable] = js.native
+  // def nonTrainableWeights: js.Array[LayerVariable] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -122,7 +125,8 @@ class SimpleRNNCell protected () extends RNNCell {
   def biasRegularizer: Regularizer = js.native
   def dropout: Double = js.native
   def recurrentDropout: Double = js.native
-  def stateSize: Double = js.native
+  // method stateSize cannot override a mutable variable
+  // def stateSize: Double = js.native
   var kernel: LayerVariable = js.native
   var recurrentKernel: LayerVariable = js.native
   var bias: LayerVariable = js.native
@@ -130,9 +134,9 @@ class SimpleRNNCell protected () extends RNNCell {
   def DEFAULT_KERNEL_INITIALIZER: String = js.native
   def DEFAULT_RECURRENT_INITIALIZER: String = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -163,7 +167,7 @@ trait SimpleRNNLayerConfig extends BaseRNNLayerConfig {
 @JSGlobal
 class SimpleRNN protected () extends RNN {
   def this(config: SimpleRNNLayerConfig) = this()
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def units: Double = js.native
   def activation: Activation = js.native
   def useBias: Boolean = js.native
@@ -178,7 +182,7 @@ class SimpleRNN protected () extends RNN {
   def biasConstraint: Constraint = js.native
   def dropout: Double = js.native
   def recurrentDropout: Double = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -212,7 +216,8 @@ class GRUCell protected () extends RNNCell {
   def biasConstraint: Constraint = js.native
   def dropout: Double = js.native
   def recurrentDropout: Double = js.native
-  def stateSize: Double = js.native
+  // method stateSize cannot override a mutable variable
+  // override def stateSize: Double = js.native
   def implementation: Double = js.native
   def DEFAULT_ACTIVATION: String = js.native
   def DEFAULT_RECURRENT_ACTIVATION: String = js.native
@@ -222,9 +227,9 @@ class GRUCell protected () extends RNNCell {
   var kernel: LayerVariable = js.native
   var recurrentKernel: LayerVariable = js.native
   var bias: LayerVariable = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -242,7 +247,7 @@ trait GRULayerConfig extends SimpleRNNLayerConfig {
 @JSGlobal
 class GRU protected () extends RNN {
   def this(config: GRULayerConfig) = this()
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def units: Double = js.native
   def activation: Activation = js.native
   def useBias: Boolean = js.native
@@ -258,7 +263,7 @@ class GRU protected () extends RNN {
   def dropout: Double = js.native
   def recurrentDropout: Double = js.native
   def implementation: Double = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -295,7 +300,8 @@ class LSTMCell protected () extends RNNCell {
   def biasRegularizer: Regularizer = js.native
   def dropout: Double = js.native
   def recurrentDropout: Double = js.native
-  def stateSize: js.Array[Double] = js.native
+  //method stateSize cannot override a mutable variable
+  //override def stateSize: js.Array[Double] = js.native
   def implementation: Double = js.native
   def DEFAULT_ACTIVATION: String = js.native
   def DEFAULT_RECURRENT_ACTIVATION: String = js.native
@@ -305,9 +311,9 @@ class LSTMCell protected () extends RNNCell {
   var kernel: LayerVariable = js.native
   var recurrentKernel: LayerVariable = js.native
   var bias: LayerVariable = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -326,7 +332,7 @@ trait LSTMLayerConfig extends SimpleRNNLayerConfig {
 @JSGlobal
 class LSTM protected () extends RNN {
   def this(config: LSTMLayerConfig) = this()
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def units: Double = js.native
   def activation: Activation = js.native
   def useBias: Boolean = js.native
@@ -343,7 +349,7 @@ class LSTM protected () extends RNN {
   def dropout: Double = js.native
   def recurrentDropout: Double = js.native
   def implementation: Double = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -363,14 +369,16 @@ trait StackedRNNCellsConfig extends LayerConfig {
 class StackedRNNCells protected () extends RNNCell {
   def this(config: StackedRNNCellsConfig) = this()
   protected var cells: js.Array[RNNCell] = js.native
-  def stateSize: js.Array[Double] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def getConfig(): serialization.ConfigDict = js.native
-  def trainableWeights: js.Array[LayerVariable] = js.native
-  def nonTrainableWeights: js.Array[LayerVariable] = js.native
+  // method stateSize cannot override a mutable variable
+  // override def stateSize: js.Array[Double] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
+  // TODO This is a var in the base class. Unlike TS Scala does not allow to override a var with a def or val in subclasses
+  // def trainableWeights: js.Array[LayerVariable] = js.native
+  // def nonTrainableWeights: js.Array[LayerVariable] = js.native
   def getWeights(): js.Array[TensorND] = js.native
-  def setWeights(weights: js.Array[TensorND]): Unit = js.native
+  override def setWeights(weights: js.Array[TensorND]): Unit = js.native
 }
 
 @js.native

@@ -46,11 +46,12 @@ trait EmbeddingLayerConfig extends LayerConfig {
 class Embedding protected () extends Layer {
   def this(config: EmbeddingLayerConfig) = this()
   def DEFAULT_EMBEDDINGS_INITIALIZER: InitializerIdentifier = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  // TODO until we have real union types aka dotty, we have to stick with the wider type of the base class
+  //def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

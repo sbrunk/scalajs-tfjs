@@ -32,16 +32,16 @@ abstract class Merge protected () extends Layer {
   def this(config: LayerConfig = ???) = this()
   protected var reshapeRequired: Boolean = js.native
   def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
 }
 
 @js.native
 @JSGlobal
 class Add protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -54,7 +54,7 @@ object Add extends js.Object {
 @JSGlobal
 class Multiply protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -67,7 +67,7 @@ object Multiply extends js.Object {
 @JSGlobal
 class Average protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -80,7 +80,7 @@ object Average extends js.Object {
 @JSGlobal
 class Maximum protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -93,7 +93,7 @@ object Maximum extends js.Object {
 @JSGlobal
 class Minimum protected () extends Merge {
   def this(config: LayerConfig = ???) = this()
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
 }
 
 @js.native
@@ -112,9 +112,9 @@ trait ConcatenateLayerConfig extends LayerConfig {
 class Concatenate protected () extends Merge {
   def this(config: ConcatenateLayerConfig = ???) = this()
   def DEFAULT_AXIS: Double = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
 }
 
 @js.native

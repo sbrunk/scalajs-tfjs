@@ -71,7 +71,7 @@ class Constant protected () extends Initializer {
   def this(config: ConstantConfig) = this()
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -95,7 +95,7 @@ class RandomUniform protected () extends Initializer {
   def DEFAULT_MAXVAL: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -119,7 +119,7 @@ class RandomNormal protected () extends Initializer {
   def DEFAULT_STDDEV: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -143,7 +143,7 @@ class TruncatedNormal protected () extends Initializer {
   def DEFAULT_STDDEV: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -163,7 +163,7 @@ class Identity protected () extends Initializer {
   def this(config: IdentityConfig) = this()
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -186,7 +186,7 @@ class VarianceScaling protected () extends Initializer {
   def this(config: VarianceScalingConfig) = this()
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -204,28 +204,28 @@ trait SeedOnlyInitializerConfig extends js.Object {
 @JSGlobal
 class GlorotUniform protected () extends VarianceScaling {
   def this(config: SeedOnlyInitializerConfig = ???) = this()
-  def getClassName(): String = js.native
+  override def getClassName(): String = js.native
 }
 
 @js.native
 @JSGlobal
 class GlorotNormal protected () extends VarianceScaling {
   def this(config: SeedOnlyInitializerConfig = ???) = this()
-  def getClassName(): String = js.native
+  override def getClassName(): String = js.native
 }
 
 @js.native
 @JSGlobal
 class HeNormal protected () extends VarianceScaling {
   def this(config: SeedOnlyInitializerConfig = ???) = this()
-  def getClassName(): String = js.native
+  override def getClassName(): String = js.native
 }
 
 @js.native
 @JSGlobal
 class LeCunNormal protected () extends VarianceScaling {
   def this(config: SeedOnlyInitializerConfig = ???) = this()
-  def getClassName(): String = js.native
+  override def getClassName(): String = js.native
 }
 
 @js.native
@@ -242,7 +242,7 @@ class Orthogonal protected () extends Initializer {
   protected def seed: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native

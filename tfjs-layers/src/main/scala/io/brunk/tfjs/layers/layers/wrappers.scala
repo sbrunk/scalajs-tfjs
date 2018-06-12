@@ -37,15 +37,17 @@ trait WrapperLayerConfig extends LayerConfig {
 abstract class Wrapper protected () extends Layer {
   def this(config: WrapperLayerConfig) = this()
   def layer: Layer = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  var trainable: Boolean = js.native
-  def trainableWeights: js.Array[LayerVariable] = js.native
-  def nonTrainableWeights: js.Array[LayerVariable] = js.native
-  def updates: js.Array[TensorND] = js.native
-  def losses: js.Array[RegularizerFn] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  // cannot override a mutable variable
+  //override var trainable: Boolean = js.native
+  // TODO This is a var in the base class. Unlike TS Scala does not allow to override a var with a def or val in subclasses
+  //def trainableWeights: js.Array[LayerVariable] = js.native
+  //def nonTrainableWeights: js.Array[LayerVariable] = js.native
+  override def updates: js.Array[TensorND] = js.native
+  override def losses: js.Array[RegularizerFn] = js.native
   def getWeights(): js.Array[TensorND] = js.native
-  def setWeights(weights: js.Array[TensorND]): Unit = js.native
-  def getConfig(): serialization.ConfigDict = js.native
+  override def setWeights(weights: js.Array[TensorND]): Unit = js.native
+  override def getConfig(): serialization.ConfigDict = js.native
 }
 
 @js.native
@@ -58,9 +60,9 @@ object Wrapper extends js.Object {
 @JSGlobal
 class TimeDistributed protected () extends Wrapper {
   def this(config: WrapperLayerConfig) = this()
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
 }
 
 @js.native
@@ -71,7 +73,8 @@ object TimeDistributed extends js.Object {
 
 @js.native
 trait BidirectionalLayerConfig extends WrapperLayerConfig {
-  var layer: RNN = js.native
+  // variable layer cannot override a mutable variable
+  //override var layer: RNN = js.native
   var mergeMode: BidirectionalMergeMode = js.native
 }
 
@@ -79,17 +82,19 @@ trait BidirectionalLayerConfig extends WrapperLayerConfig {
 @JSGlobal
 class Bidirectional protected () extends Wrapper {
   def this(config: BidirectionalLayerConfig) = this()
-  var trainable: Boolean = js.native
-  def getWeights(): js.Array[TensorND] = js.native
-  def setWeights(weights: js.Array[TensorND]): Unit = js.native
-  def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  // cannot override a mutable variable
+  //override var trainable: Boolean = js.native
+  override def getWeights(): js.Array[TensorND] = js.native
+  override def setWeights(weights: js.Array[TensorND]): Unit = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
   @JSName("apply")
-  def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
-  def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
   def resetStates(states: TensorND | js.Array[TensorND] = ???): Unit = js.native
-  def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  def trainableWeights: js.Array[LayerVariable] = js.native
-  def nonTrainableWeights: js.Array[LayerVariable] = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  // TODO This is a var in the base class. Unlike TS Scala does not allow to override a var with a def or val in subclasses
+  // override def trainableWeights: js.Array[LayerVariable] = js.native
+  // override def nonTrainableWeights: js.Array[LayerVariable] = js.native
 }
 
 @js.native
