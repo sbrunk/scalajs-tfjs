@@ -65,7 +65,7 @@ object Example {
     val xs = tf.tensor2d(js.Array(1d, 2d, 3d, 4d), (4d, 1d))
     val ys = tf.tensor2d(js.Array(1d, 3d, 5d, 7d), (4d, 1d))
 
-    model.fit(xs, ys, js.Dynamic.literal(epochs = 10).asInstanceOf[ModelFitConfig]).toFuture.onComplete{
+    model.fit(xs, ys, js.Dynamic.literal(epochs = 10).asInstanceOf[ModelFitConfig]).toFuture.onComplete{ history =>
       println(model.predict(tf.tensor2d(js.Array(5d), (1d, 1d))))
     }
   }
