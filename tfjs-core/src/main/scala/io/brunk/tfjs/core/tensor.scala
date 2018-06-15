@@ -30,7 +30,7 @@ trait TensorData extends js.Object {
 
 @js.native
 @JSGlobal
-class TensorBuffer[R <: Rank] protected () extends js.Object {
+class TensorBuffer[+R <: Rank] protected () extends js.Object {
   def this(shape: js.Any, dtype: DataType, values: TypedArray) = this()
   var dtype: DataType                             = js.native
   var size: Double                                = js.native
@@ -47,7 +47,7 @@ class TensorBuffer[R <: Rank] protected () extends js.Object {
 
 @js.native
 @JSGlobal
-class Tensor[R <: Rank] protected () extends js.Object {
+class Tensor[+R <: Rank] protected () extends js.Object {
   def this(shape: js.Any, dtype: DataType, values: TypedArray = ???, dataId: DataId = ???) = this()
   def id: Double                                                                   = js.native
   var dataId: DataId                                                               = js.native
@@ -90,7 +90,7 @@ class Tensor[R <: Rank] protected () extends js.Object {
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): TensorND = js.native
-  def slice[T <: Tensor[R]](
+  def slice[RR >: R <: Rank, T <: Tensor[RR]](
       `this`: T,
       begin: Double | js.Array[Double],
       size: Double | js.Array[Double] = ???
@@ -104,13 +104,13 @@ class Tensor[R <: Rank] protected () extends js.Object {
       paddings: js.Array[js.Tuple2[Double, Double]],
       constantValue: Double = ???
   ): T = js.native
-  def batchNormalization(
-      mean: Tensor[R] | Tensor1D,
-      variance: Tensor[R] | Tensor1D,
+  def batchNormalization[RR >: R <: Rank](
+      mean: Tensor[RR] | Tensor1D,
+      variance: Tensor[RR] | Tensor1D,
       varianceEpsilon: Double = ???,
-      scale: Tensor[R] | Tensor1D = ???,
-      offset: Tensor[R] | Tensor1D = ???
-  ): Tensor[R] = js.native
+      scale: Tensor[RR] | Tensor1D = ???,
+      offset: Tensor[RR] | Tensor1D = ???
+  ): Tensor[RR] = js.native
   def logSumExp[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
   def sum[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
@@ -178,7 +178,7 @@ class Tensor[R <: Rank] protected () extends js.Object {
   def elu[T <: TensorND](`this`: T): T                                     = js.native
   def selu[T <: TensorND](`this`: T): T                                    = js.native
   def leakyRelu(alpha: Double = ???): Tensor[R]                          = js.native
-  def prelu(alpha: Tensor[R]): Tensor[R]                                 = js.native
+  def prelu[RR >: R <: Rank](alpha: Tensor[RR]): Tensor[RR]                                 = js.native
   def sigmoid[T <: TensorND](`this`: T): T                                 = js.native
   def logSigmoid[T <: TensorND](`this`: T): T                              = js.native
   def softplus[T <: TensorND](`this`: T): T                                = js.native
@@ -264,7 +264,7 @@ class Tensor[R <: Rank] protected () extends js.Object {
       alpha: Double = ???,
       beta: Double = ???
   ): T = js.native
-  def variable(trainable: Boolean = ???, name: String = ???, dtype: DataType = ???): Variable[R] =
+  def variable[RR >: R <: Rank](trainable: Boolean = ???, name: String = ???, dtype: DataType = ???): Variable[RR] =
     js.native
   def unsortedSegmentSum[T <: TensorND](
       `this`: T,
