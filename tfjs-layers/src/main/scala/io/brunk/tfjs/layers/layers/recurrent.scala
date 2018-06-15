@@ -49,7 +49,7 @@ trait RNNLayerConfig extends BaseRNNLayerConfig {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "RNN")
 class RNN protected () extends Layer {
   def this(config: RNNLayerConfig) = this()
   def cell: RNNCell = js.native
@@ -78,13 +78,13 @@ class RNN protected () extends Layer {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "RNN")
 object RNN extends js.Object {
   var className: String = js.native
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "layers.RNNCell")
 abstract class RNNCell extends Layer {
   var stateSize: Double | js.Array[Double] = js.native
 }

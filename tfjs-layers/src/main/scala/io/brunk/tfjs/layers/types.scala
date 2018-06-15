@@ -25,7 +25,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "SymbolicTensor")
 class SymbolicTensor protected () extends js.Object {
   def this(dtype: DataType, shape: Shape, sourceLayer: Layer, inputs: js.Array[SymbolicTensor], callArgs: Kwargs, name: String = ???, outputTensorIndex: Double = ???) = this()
   def dtype: DataType = js.native

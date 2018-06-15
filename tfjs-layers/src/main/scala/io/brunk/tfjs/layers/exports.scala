@@ -33,21 +33,17 @@ trait ModelExportsCompanion extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", JSImport.Namespace)
 object ModelExports extends ModelExportsCompanion
 
-
 @js.native
-@JSGlobal
-class LayerExports extends js.Object {
-}
-
-@js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "layers")
 object LayerExports extends js.Object {
-  // var Layer: Layer.type = js.native TODO resolve illegal cyclic reference
-  //var RNN: RNN.type = js.native TODO resolve illegal cyclic reference
-  //var RNNCell: RNNCell.type = js.native TODO resolve illegal cyclic reference
+  type Layer = engine.Layer
+  val Layer: engine.Layer.type = js.native
+  type RNN = layers.RNN
+  val RNN: layers.RNN.type = js.native
+  type RNNCell = layers.RNNCell
   def inputLayer(config: InputLayerConfig): Layer = js.native
   def input(config: InputConfig): SymbolicTensor = js.native
   def elu(config: ELULayerConfig = ???): Layer = js.native
@@ -100,12 +96,7 @@ object LayerExports extends js.Object {
 }
 
 @js.native
-@JSGlobal
-class ConstraintExports extends js.Object {
-}
-
-@js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "constraints")
 object ConstraintExports extends js.Object {
   def maxNorm(config: MaxNormConfig): Constraint = js.native
   def unitNorm(config: UnitNormConfig): Constraint = js.native
@@ -114,12 +105,7 @@ object ConstraintExports extends js.Object {
 }
 
 @js.native
-@JSGlobal
-class InitializerExports extends js.Object {
-}
-
-@js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "constraints")
 object InitializerExports extends js.Object {
   def zeros(): Zeros = js.native
   def ones(): Initializer = js.native
@@ -137,7 +123,7 @@ object InitializerExports extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "metrics")
 class MetricExports extends js.Object {
   def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
@@ -146,7 +132,7 @@ class MetricExports extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "metrics")
 object MetricExports extends js.Object {
   def binaryAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
@@ -159,12 +145,7 @@ object MetricExports extends js.Object {
 }
 
 @js.native
-@JSGlobal
-class RegularizerExports extends js.Object {
-}
-
-@js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "regularizers")
 object RegularizerExports extends js.Object {
   def l1l2(config: L1L2Config = ???): Regularizer = js.native
   def l1(config: L1Config = ???): Regularizer = js.native

@@ -25,7 +25,7 @@ import js.annotation._
 import js.{Promise, |}
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "Callback")
 abstract class Callback extends js.Object {
   var validationData: TensorND | js.Array[TensorND] = js.native
   var model: Model = js.native
@@ -41,7 +41,7 @@ abstract class Callback extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "CallbackList")
 class CallbackList protected () extends js.Object {
   def this(callbacks: js.Array[Callback] = ???, queueLength: Double = ???) = this()
   var callbacks: js.Array[Callback] = js.native
@@ -102,7 +102,7 @@ trait CustomCallbackConfig extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "CustomCallback")
 class CustomCallback protected () extends Callback {
   def this(config: CustomCallbackConfig) = this()
   protected def trainBegin: js.Function1[Logs, Promise[Unit]] = js.native

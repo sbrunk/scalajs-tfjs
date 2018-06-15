@@ -116,7 +116,7 @@ trait LayerConfig extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "layers.Layer")
 abstract class Layer protected () extends serialization.Serializable {
   def this(config: LayerConfig) = this()
   var name: String = js.native
@@ -163,7 +163,7 @@ abstract class Layer protected () extends serialization.Serializable {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "layers.Layer")
 object Layer extends js.Object {
   def nodeKey(layer: Layer, nodeIndex: Double): String = js.native
 }

@@ -60,6 +60,7 @@ object tfl extends
   val layers: tflayers.LayerExports.type = js.native
   val constraints: tflayers.ConstraintExports.type  = js.native
   val initializers: tflayers.InitializerExports.type  = js.native
+  type metrics = tflayers.MetricExports
   val metrics: tflayers.MetricExports.type = js.native
   val regularizers: tflayers.RegularizerExports.type = js.native
 }

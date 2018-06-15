@@ -86,7 +86,7 @@ trait ModelCompileConfig extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "Model")
 class Model protected () extends Container {
   def this(config: ContainerConfig) = this()
   var optimizer: Optimizer = js.native

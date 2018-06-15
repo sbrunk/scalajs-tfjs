@@ -40,7 +40,7 @@ trait SequentialConfig extends js.Object {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "Sequential")
 class Sequential protected () extends Model {
   def this(config: SequentialConfig = ???) = this()
   def add(layer: Layer): Unit = js.native
@@ -61,7 +61,7 @@ class Sequential protected () extends Model {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "Sequential")
 object Sequential extends js.Object {
   var className: String = js.native
   def fromConfig[T <: serialization.Serializable](cls: serialization.SerializableConstructor[T], config: serialization.ConfigDict): T = js.native
