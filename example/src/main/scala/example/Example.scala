@@ -18,13 +18,17 @@ package example
 
 
 import io.brunk.tfjs.core.Rank.{R0, R1, R2}
-import io.brunk.tfjs.{core, tf}
+import io.brunk.tfjs.{core, tf, tfl}
 import io.brunk.tfjs.core.ops.ArrayOps
 import io.brunk.tfjs.core.{Environment, Tensor, Version}
+import io.brunk.tfjs.layers.engine.ModelFitConfig
+import io.brunk.tfjs.layers.layers.DenseLayerConfig
+import io.brunk.tfjs.tfl.ModelCompileConfig
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.scalajs.js
 import scala.scalajs.js.typedarray.Int32Array
+import js.JSConverters._
 
 object Example {
   def main(args: Array[String]): Unit = {
@@ -55,19 +59,14 @@ object Example {
     val biases = tf.variable(initialValues)
     biases.print()
 
+    val model = tfl.sequential()
+    model.add(tfl.layers.dense(js.Dynamic.literal(units = 1d, inputShape = js.Array(1)).asInstanceOf[DenseLayerConfig]))
+    model.compile(js.Dynamic.literal(loss = "meanSquaredError", optimizer = "sgd").asInstanceOf[ModelCompileConfig])
+    val xs = tf.tensor2d(js.Array(1d, 2d, 3d, 4d), (4d, 1d))
+    val ys = tf.tensor2d(js.Array(1d, 3d, 5d, 7d), (4d, 1d))
 
-    //val result: NDArray[Int32, Rank] = math.add(a, b)
-
-    // Option 1: With async/await.
-    // Caveat: in non-Chrome browsers you need to put this in an async function.
-    //println(await result.data());  // Float32Array([3, 4, 5])
-
-    // Option 2: With a Future.
-    //result.data().toFuture.foreach(println)
-    a.data().toFuture.foreach(println)
-
-    // Option 3: Synchronous download of data.
-    // This is simpler, but blocks the UI until the GPU is done.
-    //println(result.dataSync())
+    model.fit(xs, ys, js.Dynamic.literal(epochs = 10).asInstanceOf[ModelFitConfig]).toFuture.onComplete{
+      println(model.predict(tf.tensor2d(js.Array(5d), (1d, 1d))))
+    }
   }
 }

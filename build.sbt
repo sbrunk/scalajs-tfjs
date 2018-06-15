@@ -1,3 +1,4 @@
+import org.scalajs.sbtplugin.ScalaJSCrossVersion
 // *****************************************************************************
 // Projects
 // *****************************************************************************
@@ -57,11 +58,13 @@ lazy val example =
       ),
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
       npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.0",
+      npmDependencies in Compile += "@tensorflow/tfjs-layers" -> "0.6.1",
       scalaJSUseMainModuleInitializer := true,
       mainClass in Compile := Some("example.Example")
     )
     .dependsOn(`scala-js-deeplearnjs`)
     .dependsOn(`scalajs-tfjs-core`)
+    .dependsOn(`scalajs-tfjs-layers`)
 
 
 // *****************************************************************************
@@ -77,9 +80,9 @@ lazy val library =
       val scalajsDom = "0.9.3"
     }
     val scalaAsync = "org.scala-lang.modules" %% "scala-async" % Version.scalaAsync
-    val scalajsDom = "org.scala-js" %%%! "scalajs-dom" % Version.scalajsDom
+    val scalajsDom = "org.scala-js" % "scalajs-dom" % Version.scalajsDom cross ScalaJSCrossVersion.binary
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
-    val scalaTest  = "org.scalatest"  %%%! "scalatest"  % Version.scalaTest
+    val scalaTest  = "org.scalatest"  % "scalatest"  % Version.scalaTest cross ScalaJSCrossVersion.binary
   }
 
 // *****************************************************************************
