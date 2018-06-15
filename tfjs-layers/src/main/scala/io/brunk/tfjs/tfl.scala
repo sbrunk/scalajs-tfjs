@@ -18,22 +18,48 @@ package io.brunk.tfjs
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import io.brunk.tfjs.{layers => tflayers }
 
 @js.native
 @JSImport("@tensorflow/tfjs-layers", JSImport.Namespace)
-object tfl {
+object tfl extends
+  tflayers.ModelExportsCompanion
+{
   // callbacks
-  type Callback = layers.Callback
-  type CallbackList = layers.CallbackList
-  type CustomCallback = layers.CustomCallback
-  type CustomCallbackConfig = layers.CustomCallbackConfig
-  type Logs = layers.Callbacks.Logs
+  type Callback = tflayers.Callback
+  type CallbackList = tflayers.CallbackList
+  type CustomCallback = tflayers.CustomCallback
+  type CustomCallbackConfig = tflayers.CustomCallbackConfig
+  type Logs = tflayers.Callbacks.Logs
   // engine/training
-  type Model = layers.engine.Model
-  type ModelCompileConfig = layers.engine.ModelCompileConfig
-  type ModelEvaluateConfig = layers.engine.ModelEvaluateConfig
-  type ModelFitConfig = layers.engine.ModelFitConfig
-  type ModelPredictConfig = layers.engine.ModelPredictConfig
+  type Model = tflayers.engine.Model
+  type ModelCompileConfig = tflayers.engine.ModelCompileConfig
+  type ModelEvaluateConfig = tflayers.engine.ModelEvaluateConfig
+  type ModelFitConfig = tflayers.engine.ModelFitConfig
+  type ModelPredictConfig = tflayers.engine.ModelPredictConfig
   // layers/recurrent
-
+  type GRUCellLayerConfig = tflayers.layers.GRUCellLayerConfig
+  type GRULayerConfig            = tflayers.layers.GRULayerConfig
+  type LSTMCellLayerConfig       = tflayers.layers.LSTMCellLayerConfig
+  type LSTMLayerConfig           = tflayers.layers.LSTMLayerConfig
+  type RNN                       = tflayers.layers.RNN
+  val RNN: tflayers.layers.RNN.type = js.native
+  type RNNLayerConfig            = tflayers.layers.RNNLayerConfig
+  type SimpleRNNCellLayerConfig  = tflayers.layers.SimpleRNNCellLayerConfig
+  type SimpleRNNLayerConfig      = tflayers.layers.SimpleRNNLayerConfig
+  // models
+  type ModelAndWeightsConfig     = tflayers.ModelAndWeightsConfig
+  type Sequential                = tflayers.Sequential
+  val Sequential: tflayers.Sequential.type  = js.native
+  type SequentialConfig          = tflayers.SequentialConfig
+  // types
+  type Shape          =  tflayers.Types.Shape
+  type SymbolicTensor = tflayers.SymbolicTensor
+  val version_layers: String = js.native
+  // second level exports
+  val layers: tflayers.LayerExports.type = js.native
+  val constraints: tflayers.ConstraintExports.type  = js.native
+  val initializers: tflayers.InitializerExports.type  = js.native
+  val metrics: tflayers.MetricExports.type = js.native
+  val regularizers: tflayers.RegularizerExports.type = js.native
 }
