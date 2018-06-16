@@ -21,7 +21,7 @@ import js.annotation._
 import js.|
 
 @js.native
-@JSImport("@tensorflow/tfjs-core", JSImport.Namespace)
+@JSImport("@tensorflow/tfjs-core", "serialization")
 object serialization extends js.Object {
 
   @js.native

@@ -16,13 +16,12 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.NamedTensorMap
-import io.brunk.tfjs.core.io.types.WeightsManifestConfig
+import _root_.io.brunk.tfjs.core.NamedTensorMap
+import _root_.io.brunk.tfjs.core.io.types.WeightsManifestConfig
 import org.scalajs.dom.experimental.RequestInit
 
 import scala.scalajs.js
-import js.annotation._
-import js.{Promise, |}
+import js.Promise
 
 @js.native
 trait WeightsLoader extends js.Object {

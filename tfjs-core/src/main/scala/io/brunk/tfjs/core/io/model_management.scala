@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.io.types.{ModelArtifactsInfo, ModelStoreManager}
+import _root_.io.brunk.tfjs.core.io.types.{ModelArtifactsInfo, ModelStoreManager}
 
 import scala.scalajs.js
 import js.annotation._

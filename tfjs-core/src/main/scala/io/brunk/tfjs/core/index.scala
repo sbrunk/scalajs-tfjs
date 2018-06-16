@@ -27,11 +27,13 @@ import _root_.io.brunk.tfjs.core
 trait Index extends TensorModule with
 ops.Ops with
 Train with
+Globals with
 VariableCompanion with
 EnvironmentCompanion with
-Version {
+Version with
+BrowserUtil{
   type AdadeltaOptimizer = optimizers.AdadeltaOptimizer
-  val  AdadeltaOptimizer = optimizers.AdadeltaOptimizer
+  val  AdadeltaOptimizer: optimizers.AdadeltaOptimizer.type = js.native
   type AdagradOptimizer = optimizers.AdagradOptimizer
   type AdamOptimizer = optimizers.AdamOptimizer
   type AdamaxOptimizer = optimizers.AdamaxOptimizer
@@ -39,13 +41,18 @@ Version {
   type Optimizer = optimizers.Optimizer
   type RMSPropOptimizer = optimizers.RMSPropOptimizer
   type SGDOptimizer = optimizers.SGDOptimizer
-  val  environment = EnvironmentModule
   type Tensor[R <: Rank] = core.Tensor[R]
   type Variable[R <: Rank] = core.Variable[R]
   type Rank = core.Rank
   type DataType = core.DataType
-  val  io = core.io.Io
-  val  serialization = core.serialization
+  // TODO LSTMCellFunc
+  // TODO Reduction
+  // Second level exports.
+  val  environment: EnvironmentModule.type = js.native
+  val  io: core.io.io.type = js.native
+  val  serialization: core.serialization.type = js.native
+  // TODO webgl
+  // TODO backend
 }
 
 @js.native

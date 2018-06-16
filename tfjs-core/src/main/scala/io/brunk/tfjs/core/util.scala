@@ -24,7 +24,7 @@ import Types._
 import TensorModule.TensorND
 
 @js.native
-@JSGlobalScope
+@JSImport("@tensorflow/tfjs-core", "util")
 object Util extends js.Object {
   def assertArgumentsAreTensors(
       args: js.Dictionary[TensorND | js.Array[TensorND]],

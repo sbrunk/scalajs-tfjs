@@ -16,8 +16,8 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.io.Router_registry.IORouter
-import io.brunk.tfjs.core.io.types.{IOHandler, ModelArtifactsInfo, ModelStoreManager}
+import _root_.io.brunk.tfjs.core.io.Router_registry.IORouter
+import _root_.io.brunk.tfjs.core.io.types.{IOHandler, ModelArtifactsInfo, ModelStoreManager}
 import org.scalajs.dom.Storage
 
 import scala.scalajs.js

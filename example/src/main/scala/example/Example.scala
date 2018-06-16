@@ -36,8 +36,6 @@ object Example {
     println("Hello scalajs-tfjs!")
     println(s"tfjs version: ${tf.version}")
 
-    //val math = Environment.
-
     // Tensors
     val shape = js.Array(2, 3) // 2 rows, 3 columns
     val a = tf.tensor[R0](js.Array(1.0, 2.0, 3.0, 10.0, 20.0, 30.0), shape)

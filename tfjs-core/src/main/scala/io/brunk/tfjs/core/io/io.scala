@@ -16,10 +16,9 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.NamedTensorMap
-import io.brunk.tfjs.core.io.Router_registry.IORouter
+import _root_.io.brunk.tfjs.core.NamedTensorMap
+import _root_.io.brunk.tfjs.core.io.Router_registry.IORouter
 import org.scalajs.dom.experimental.RequestInit
-import io.brunk.tfjs.core.io
 
 import scala.scalajs.js
 import js.annotation._
@@ -27,8 +26,8 @@ import js.{Promise, |}
 import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
-@JSGlobalScope
-object Io extends ModelManagement with WeightsLoader {
+@JSImport("@tensorflow/tfjs-core", "io")
+object io extends ModelManagement with WeightsLoader {
   def registerSaveRouter(saveRouter: IORouter): Unit    = js.native
   def registerLoadRouter(loadRouter: IORouter): Unit    = js.native
   def getSaveHandlers(url: String): js.Array[IOHandler] = js.native
@@ -48,5 +47,4 @@ object Io extends ModelManagement with WeightsLoader {
   type SaveResult = types.SaveResult
   type WeightsManifestConfig = types.WeightsManifestConfig
   type WeightsManifestEntry = types.WeightsManifestEntry
-
 }

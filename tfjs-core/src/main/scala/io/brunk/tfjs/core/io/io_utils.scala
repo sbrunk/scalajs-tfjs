@@ -16,9 +16,9 @@
 
 package io.brunk.tfjs.core.io
 
-import io.brunk.tfjs.core.NamedTensorMap
-import io.brunk.tfjs.core.Types.TypedArray
-import io.brunk.tfjs.core.io.types.{ModelArtifacts, ModelArtifactsInfo, WeightsManifestEntry}
+import _root_.io.brunk.tfjs.core.NamedTensorMap
+import _root_.io.brunk.tfjs.core.Types.TypedArray
+import _root_.io.brunk.tfjs.core.io.types.{ModelArtifacts, ModelArtifactsInfo, WeightsManifestEntry}
 
 import scala.scalajs.js
 import js.annotation._

@@ -24,8 +24,7 @@ import Types.TensorContainer
 import Engine.{CustomGradientFunc, ScopeFn}
 
 @js.native
-@JSGlobalScope
-object Globals extends js.Object {
+trait Globals extends js.Object {
   def tidy[T <: TensorContainer](
     nameOrFn: String | ScopeFn[T],
     fn: ScopeFn[T] = ???,

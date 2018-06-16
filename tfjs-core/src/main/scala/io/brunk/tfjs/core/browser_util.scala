@@ -21,7 +21,10 @@ import js.annotation._
 import js.{ Promise, | }
 
 @js.native
-@JSGlobal
-object BrowserUtil extends js.Object {
+trait BrowserUtil extends js.Object {
   def nextFrame(): Promise[Unit] = js.native
 }
+
+@js.native
+@JSGlobal
+object BrowserUtil extends BrowserUtil
