@@ -23,6 +23,7 @@ import io.brunk.tfjs.tf._
 import scala.scalajs.js
 import js.annotation._
 import js.{Promise, |}
+import js.JSConverters._
 
 @js.native
 sealed trait ModelLoggingVerbosity extends js.Object {
@@ -78,11 +79,23 @@ trait ClassWeight extends js.Object {
 }
 }
 
-@js.native
-trait ModelCompileConfig extends js.Object {
-  var optimizer: String | Optimizer = js.native
-  var loss: String | js.Array[String] | js.Dictionary[String] | LossOrMetricFn | js.Array[LossOrMetricFn] | js.Dictionary[LossOrMetricFn] = js.native
-  var metrics: js.Array[String] | js.Dictionary[String] = js.native
+@ScalaJSDefined
+class ModelCompileConfig (
+  val optimizer: String | Optimizer,
+  val loss: js.UndefOr[String | js.Array[String] | js.Dictionary[String] | LossOrMetricFn | js.Array[LossOrMetricFn] | js.Dictionary[LossOrMetricFn]] = js.undefined,
+  val metrics: js.UndefOr[js.Array[String] | js.Dictionary[String]] = js.undefined
+) extends js.Object
+
+object ModelCompileConfig {
+  def apply(
+    optimizer: String | Optimizer,
+    loss: js.UndefOr[String | js.Array[String] | js.Dictionary[String] | LossOrMetricFn | js.Array[LossOrMetricFn] | js.Dictionary[LossOrMetricFn]] =js.undefined,
+    metrics: js.UndefOr[js.Array[String] | js.Dictionary[String]] = js.undefined): ModelCompileConfig =
+    new ModelCompileConfig(
+      optimizer = optimizer,
+      loss = loss,
+      metrics = metrics
+    )
 }
 
 @js.native

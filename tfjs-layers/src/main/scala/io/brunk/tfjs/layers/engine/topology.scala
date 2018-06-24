@@ -23,7 +23,7 @@ import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{UndefOr, |}
 
 @js.native
 trait InputSpecConfig extends js.Object {
@@ -102,17 +102,17 @@ class Node protected () extends js.Object {
   def getConfig(): serialization.ConfigDict = js.native
 }
 
-@js.native
+@ScalaJSDefined
 trait LayerConfig extends js.Object {
-  var inputShape: Shape = js.native
-  var batchInputShape: Shape = js.native
-  var batchSize: Double = js.native
-  var dtype: DataType = js.native
-  var name: String = js.native
-  var trainable: Boolean = js.native
-  var updatable: Boolean = js.native
-  var weights: js.Array[TensorND] = js.native
-  var inputDType: DataType = js.native
+  val inputShape: UndefOr[Shape]  = js.undefined
+  val batchInputShape: UndefOr[Shape]  = js.undefined
+  val batchSize: UndefOr[Double]  = js.undefined
+  val dtype: UndefOr[DataType]  = js.undefined
+  val name: UndefOr[String]  = js.undefined
+  val trainable: UndefOr[Boolean]  = js.undefined
+  val updatable: UndefOr[Boolean]  = js.undefined
+  val weights: UndefOr[js.Array[TensorND]]  = js.undefined
+  val inputDType: UndefOr[DataType]  = js.undefined
 }
 
 @js.native

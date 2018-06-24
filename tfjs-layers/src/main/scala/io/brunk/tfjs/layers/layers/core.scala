@@ -27,9 +27,8 @@ import io.brunk.tfjs.layers.{Activation => ActivationFn}
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{UndefOr, |}
 import io.brunk.tfjs.tf._
-
 
 @js.native
 trait DropoutLayerConfig extends LayerConfig {
@@ -52,19 +51,75 @@ object Dropout extends js.Object {
   var className: String = js.native
 }
 
-@js.native
-trait DenseLayerConfig extends LayerConfig {
-  var units: Double = js.native
-  var activation: ActivationIdentifier = js.native
-  var useBias: Boolean = js.native
-  var kernelInitializer: InitializerIdentifier | Initializer = js.native
-  var biasInitializer: InitializerIdentifier | Initializer = js.native
-  var inputDim: Double = js.native
-  var kernelConstraint: ConstraintIdentifier | Constraint = js.native
-  var biasConstraint: ConstraintIdentifier | Constraint = js.native
-  var kernelRegularizer: RegularizerIdentifier | Regularizer = js.native
-  var biasRegularizer: RegularizerIdentifier | Regularizer = js.native
-  var activityRegularizer: RegularizerIdentifier | Regularizer = js.native
+@ScalaJSDefined
+class DenseLayerConfig (
+  val units: Double,
+  val activation: UndefOr[ActivationIdentifier] = js.undefined,
+  val useBias: UndefOr[Boolean]  = js.undefined,
+  val kernelInitializer: UndefOr[InitializerIdentifier | Initializer]  = js.undefined,
+  val biasInitializer: UndefOr[InitializerIdentifier | Initializer]  = js.undefined,
+  val inputDim: UndefOr[Double]  = js.undefined,
+  val kernelConstraint: UndefOr[ConstraintIdentifier | Constraint]  = js.undefined,
+  val biasConstraint: UndefOr[ConstraintIdentifier | Constraint]  = js.undefined,
+  val kernelRegularizer: UndefOr[RegularizerIdentifier | Regularizer]  = js.undefined,
+  val biasRegularizer: UndefOr[RegularizerIdentifier | Regularizer]  = js.undefined,
+  val activityRegularizer: UndefOr[RegularizerIdentifier | Regularizer]  = js.undefined,
+  override val inputShape: UndefOr[Shape] = js.undefined,
+  override val batchInputShape: UndefOr[Shape] = js.undefined,
+  override val batchSize: UndefOr[Double] = js.undefined,
+  override val dtype: UndefOr[DataType] = js.undefined,
+  override val name: UndefOr[String] = js.undefined,
+  override val trainable: UndefOr[Boolean] = js.undefined,
+  override val updatable: UndefOr[Boolean] = js.undefined,
+  override val weights: UndefOr[js.Array[TensorND]] = js.undefined,
+  override val inputDType: UndefOr[DataType] = js.undefined
+) extends LayerConfig
+
+object DenseLayerConfig {
+  def apply(
+    units: Double,
+    activation: UndefOr[ActivationIdentifier] = js.undefined,
+    useBias: UndefOr[Boolean] = js.undefined,
+    kernelInitializer: UndefOr[InitializerIdentifier | Initializer] = js.undefined,
+    biasInitializer: UndefOr[InitializerIdentifier | Initializer] = js.undefined,
+    inputDim: UndefOr[Double] = js.undefined,
+    kernelConstraint: UndefOr[ConstraintIdentifier | Constraint] = js.undefined,
+    biasConstraint: UndefOr[ConstraintIdentifier | Constraint] = js.undefined,
+    kernelRegularizer: UndefOr[RegularizerIdentifier | Regularizer] = js.undefined,
+    biasRegularizer: UndefOr[RegularizerIdentifier | Regularizer] = js.undefined,
+    activityRegularizer: UndefOr[RegularizerIdentifier | Regularizer] = js.undefined,
+    // LayerConfig
+    inputShape: UndefOr[Shape] = js.undefined,
+    batchInputShape: UndefOr[Shape] = js.undefined,
+    batchSize: UndefOr[Double] = js.undefined,
+    dtype: UndefOr[DataType] = js.undefined,
+    name: UndefOr[String] = js.undefined,
+    trainable: UndefOr[Boolean] = js.undefined,
+    updatable: UndefOr[Boolean] = js.undefined,
+    weights: UndefOr[js.Array[TensorND]] = js.undefined,
+    inputDType: UndefOr[DataType] = js.undefined)
+  : DenseLayerConfig = new DenseLayerConfig(
+    units = units,
+    activation = activation,
+    useBias = useBias,
+    kernelInitializer = kernelInitializer,
+    biasInitializer = biasInitializer,
+    inputDim =    inputDim,
+    kernelConstraint =  kernelConstraint,
+    biasConstraint =  biasConstraint,
+    kernelRegularizer =  kernelRegularizer,
+    biasRegularizer =  biasRegularizer,
+    activityRegularizer =  activityRegularizer,
+    // LayerConfig
+    inputShape =  inputShape,
+    batchInputShape =  batchInputShape,
+    batchSize =  batchSize,
+    dtype =  dtype,
+    name =  name,
+    trainable =  trainable,
+    updatable =  updatable,
+    weights =  weights,
+    inputDType =  inputDType)
 }
 
 @js.native

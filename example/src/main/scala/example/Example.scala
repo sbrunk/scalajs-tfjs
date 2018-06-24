@@ -21,7 +21,7 @@ import io.brunk.tfjs.core.Rank.{R0, R1, R2}
 import io.brunk.tfjs.{core, tf, tfl}
 import io.brunk.tfjs.core.ops.ArrayOps
 import io.brunk.tfjs.core.{Environment, Tensor, Version}
-import io.brunk.tfjs.layers.engine.ModelFitConfig
+import io.brunk.tfjs.layers.engine.{ModelCompileConfig, ModelFitConfig}
 import io.brunk.tfjs.layers.layers.DenseLayerConfig
 import io.brunk.tfjs.tfl.ModelCompileConfig
 
@@ -58,8 +58,8 @@ object Example {
     biases.print()
 
     val model = tfl.sequential()
-    model.add(tfl.layers.dense(js.Dynamic.literal(units = 1d, inputShape = js.Array(1)).asInstanceOf[DenseLayerConfig]))
-    model.compile(js.Dynamic.literal(loss = "meanSquaredError", optimizer = "sgd").asInstanceOf[ModelCompileConfig])
+    model.add(tfl.layers.dense(DenseLayerConfig(units = 1d, inputShape = js.Array(1d))))
+    model.compile(ModelCompileConfig(loss = "meanSquaredError", optimizer = "sgd"))
     val xs = tf.tensor2d(js.Array(1d, 2d, 3d, 4d), (4d, 1d))
     val ys = tf.tensor2d(js.Array(1d, 3d, 5d, 7d), (4d, 1d))
 
