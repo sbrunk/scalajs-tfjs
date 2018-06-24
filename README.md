@@ -4,9 +4,19 @@ This projects aims to provide [Scala.js](http://www.scala-js.org/) facades for [
  enabling you to create neural networks with Scala that run and can be trained with GPU acceleration in your browser.
 
 This is WIP and still at an early stage. The tfjs-core bindings are almost done. You can create tensors and run
-operations on them. See the example project.
+operations on them.
 
-Support for tfjs-layers coming soon!
+You can now also use tfjs-layers build a simple sequential model.
+
+See the example project.
+
+## TODO
+* Add remaining core APIs
+* Fix many types that have been set to Any by the initial import
+* Make configuration objects used throughout the API usable from Scala code
+* Better integration with Scala core types like Seq
+* Port more examples from upstream
+* Add/port documentation
 
 ## Contribution policy ##
 
