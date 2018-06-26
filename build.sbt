@@ -46,6 +46,21 @@ lazy val `scalajs-tfjs-layers` =
     )
   .dependsOn(`scalajs-tfjs-core`)
 
+lazy val `scalajs-tfjs-converter` =
+  project
+    .in(file("tfjs-converter"))
+    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
+    .settings(settings)
+    .settings(
+      libraryDependencies ++= Seq(
+        library.scalajsDom,
+        library.scalaCheck % Test,
+        library.scalaTest  % Test
+      ),
+      npmDependencies in Test += "tfjs-converter" -> "0.4.3"
+    )
+    .dependsOn(`scalajs-tfjs-layers`)
+
 lazy val example =
   project
     .in(file("example"))
