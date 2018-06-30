@@ -16,11 +16,11 @@
 
 package io.brunk.tfjs.core.io
 
-import _root_.io.brunk.tfjs.core.io.types.{ModelArtifactsInfo, ModelStoreManager}
+import _root_.io.brunk.tfjs.core.io.types.{ ModelArtifactsInfo, ModelStoreManager }
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 
 @js.native
 @JSGlobal

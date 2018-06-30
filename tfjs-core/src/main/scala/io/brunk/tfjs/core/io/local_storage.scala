@@ -17,20 +17,20 @@
 package io.brunk.tfjs.core.io
 
 import _root_.io.brunk.tfjs.core.io.Router_registry.IORouter
-import _root_.io.brunk.tfjs.core.io.types.{IOHandler, ModelArtifactsInfo, ModelStoreManager}
+import _root_.io.brunk.tfjs.core.io.types.{ IOHandler, ModelArtifactsInfo, ModelStoreManager }
 import org.scalajs.dom.Storage
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 
 @js.native
 @JSGlobal
 class BrowserLocalStorage protected () extends IOHandler {
   def this(modelPath: String) = this()
-  protected def LS: Storage                                     = js.native
-  protected def modelPath: String                               = js.native
-  protected def keys: BrowserLocalStorage.Keys                  = js.native
+  protected def LS: Storage                    = js.native
+  protected def modelPath: String              = js.native
+  protected def keys: BrowserLocalStorage.Keys = js.native
   //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
   //def load(): Promise[ModelArtifacts]                           = js.native
 }

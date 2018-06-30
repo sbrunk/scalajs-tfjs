@@ -24,9 +24,9 @@ import js.|
 
 @js.native
 trait LogicalOps extends js.Object {
-  def logicalNot[T <: TensorND](x: T): T                     = js.native
-  def logicalAnd[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
-  def logicalOr[T <: TensorND](a: TensorND, b: TensorND): T      = js.native
-  def logicalXor[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
+  def logicalNot[T <: TensorND](x: T): T                       = js.native
+  def logicalAnd[T <: TensorND](a: TensorND, b: TensorND): T   = js.native
+  def logicalOr[T <: TensorND](a: TensorND, b: TensorND): T    = js.native
+  def logicalXor[T <: TensorND](a: TensorND, b: TensorND): T   = js.native
   def where[T <: TensorND](condition: TensorND, a: T, b: T): T = js.native
 }

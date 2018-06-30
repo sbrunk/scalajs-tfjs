@@ -20,14 +20,31 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
-@js.native
-@JSGlobalScope
-object Jasmine_util extends js.Object {
-  def describeWithFlags(name: String, constraints: Features, tests: js.Function0[Unit]): Unit =
-    js.native
-  def setBeforeAll(f: js.Function1[Features, Unit]): Unit    = js.native
-  def setAfterAll(f: js.Function1[Features, Unit]): Unit     = js.native
-  def setBeforeEach(f: js.Function1[Features, Unit]): Unit   = js.native
-  def setAfterEach(f: js.Function1[Features, Unit]): Unit    = js.native
-  def setTestEnvFeatures(features: js.Array[Features]): Unit = js.native
-}
+  @js.native
+  trait TestBackendFactory extends js.Object {
+    var name: String                         = js.native
+    var factory: js.Function0[KernelBackend] = js.native
+    var priority: Double                     = js.native
+  }
+
+  @js.native
+  @JSGlobalScope
+  object Jasmine_util extends js.Object {
+    def canEmulateEnvironment(emulatedFeatures: Features): Boolean = js.native
+    def anyFeaturesEquivalentToDefault(
+        emulatedFeatures: js.Array[Features],
+        environment: Environment
+    ): Boolean = js.native
+    def describeWithFlags(
+        name: String,
+        featuresToRun: js.Array[Features],
+        tests: js.Function0[Unit]
+    ): Unit                                                               = js.native
+    def TEST_BACKENDS: js.Array[TestBackendFactory]                       = js.native
+    def setBeforeAll(f: js.Function1[Features, Unit]): Unit               = js.native
+    def setAfterAll(f: js.Function1[Features, Unit]): Unit                = js.native
+    def setBeforeEach(f: js.Function1[Features, Unit]): Unit              = js.native
+    def setAfterEach(f: js.Function1[Features, Unit]): Unit               = js.native
+    def setTestBackends(testBackends: js.Array[TestBackendFactory]): Unit = js.native
+    def registerTestBackends(): Unit                                      = js.native
+  }

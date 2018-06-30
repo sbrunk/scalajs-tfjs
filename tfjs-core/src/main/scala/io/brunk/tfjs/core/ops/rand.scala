@@ -19,7 +19,7 @@ package io.brunk.tfjs.core.ops
 import scala.scalajs.js
 import js.annotation._
 import js.|
-import scala.scalajs.js.typedarray.{Float32Array, Int32Array}
+import scala.scalajs.js.typedarray.{ Float32Array, Int32Array }
 
 @js.native
 trait RandGauss extends js.Object {

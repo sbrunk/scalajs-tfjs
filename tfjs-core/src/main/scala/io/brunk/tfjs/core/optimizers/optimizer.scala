@@ -16,8 +16,8 @@
 
 package io.brunk.tfjs.core.optimizers
 
-import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
-import io.brunk.tfjs.core.{NamedTensorMap, Rank, Variable}
+import io.brunk.tfjs.core.TensorModule.{ Scalar, TensorND }
+import io.brunk.tfjs.core.{ NamedTensorMap, Rank, Variable }
 import io.brunk.tfjs.core.serialization
 
 import scala.scalajs.js

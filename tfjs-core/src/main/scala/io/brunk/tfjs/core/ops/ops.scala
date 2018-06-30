@@ -29,29 +29,31 @@ trait Losses extends LossOps with SoftmaxLossOps
 trait Image extends ImageOps
 
 @js.native
-trait Ops extends
-  BatchNormOps with
-  ConcatOps with
-  ConvOps with
-  MatmulOps with
-  PoolOps with
-TransposeOps with
-ReverseOps with
-SliceOps with
-StridedSliceOps with
-ReductionOps with
-CompareOps with
-LogicalOps with
-UnaryOps with
-BinaryOps with
-NormOps with
-ArrayOps with
-MovingAverageOps with
-LSTMOps with
-SoftmaxOps with
-LRNOps {
+trait Ops
+    extends BatchNormOps
+    with ConcatOps
+    with ConvOps
+    with MatmulOps
+    with PoolOps
+    with TransposeOps
+    with ReverseOps
+    with SliceOps
+    with StridedSliceOps
+    with ReductionOps
+    with SegmentOps
+    with CompareOps
+    with LogicalOps
+    with UnaryOps
+    with BinaryOps
+    with NormOps
+    with ArrayOps
+    with MovingAverageOps
+    with LSTMOps
+    with SoftmaxOps
+    with SigmoidCrossEntropyOps
+    with LRNOps {
   val linalg: LinalgOps = js.native
   // TODO operation
   val losses: Losses = js.native
-  val image: Image = js.native
+  val image: Image   = js.native
 }

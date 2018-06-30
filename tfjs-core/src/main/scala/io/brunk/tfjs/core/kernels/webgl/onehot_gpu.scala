@@ -20,8 +20,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import org.scalajs.dom.webgl
-
-
 @js.native
 @JSGlobal
 class OneHotProgram protected () extends GPGPUProgram {
@@ -29,5 +27,5 @@ class OneHotProgram protected () extends GPGPUProgram {
   var variableNames: js.Array[String] = js.native
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
-  var seedLoc: webgl.UniformLocation   = js.native
+  var seedLoc: webgl.UniformLocation  = js.native
 }

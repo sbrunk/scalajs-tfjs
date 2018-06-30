@@ -17,7 +17,7 @@
 package io.brunk.tfjs.core.optimizers
 
 import io.brunk.tfjs.core.NamedVariableMap
-import io.brunk.tfjs.core.serialization.{ConfigDict, Serializable, SerializableConstructor}
+import io.brunk.tfjs.core.serialization.{ ConfigDict, Serializable, SerializableConstructor }
 
 import scala.scalajs.js
 import js.annotation._

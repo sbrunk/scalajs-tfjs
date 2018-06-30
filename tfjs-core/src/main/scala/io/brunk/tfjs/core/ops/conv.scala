@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{Tensor2D, Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.TensorModule.{ Tensor2D, Tensor3D, Tensor4D }
 
 import scala.scalajs.js
 import js.annotation._

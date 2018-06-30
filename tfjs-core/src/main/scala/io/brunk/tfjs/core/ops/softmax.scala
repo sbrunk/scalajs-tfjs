@@ -21,8 +21,6 @@ import io.brunk.tfjs.core.TensorModule.TensorND
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-
 @js.native
 trait SoftmaxOps extends js.Object {
   def softmax[T <: TensorND](logits: T, dim: Double = ???): T = js.native
@@ -30,6 +28,10 @@ trait SoftmaxOps extends js.Object {
 
 @js.native
 trait SoftmaxLossOps extends js.Object {
-  def softmaxCrossEntropy[T <: TensorND, O <: TensorND](labels: T, logits: T, dim: Double = ???): O =
+  def softmaxCrossEntropy[T <: TensorND, O <: TensorND](
+      labels: T,
+      logits: T,
+      dim: Double = ???
+  ): O =
     js.native
 }

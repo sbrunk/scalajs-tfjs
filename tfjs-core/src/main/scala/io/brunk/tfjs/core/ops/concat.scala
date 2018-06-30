@@ -25,9 +25,9 @@ import js.|
 
 @js.native
 trait ConcatOps extends js.Object {
-  def concat1d(tensors: js.Array[Tensor1D]): Tensor1D                  = js.native
-  def concat2d(tensors: js.Array[Tensor2D], axis: Double): Tensor2D    = js.native
-  def concat3d(tensors: js.Array[Tensor3D], axis: Double): Tensor3D    = js.native
-  def concat4d(tensors: js.Array[Tensor4D], axis: Double): Tensor4D    = js.native
+  def concat1d(tensors: js.Array[Tensor1D]): Tensor1D                    = js.native
+  def concat2d(tensors: js.Array[Tensor2D], axis: Double): Tensor2D      = js.native
+  def concat3d(tensors: js.Array[Tensor3D], axis: Double): Tensor3D      = js.native
+  def concat4d(tensors: js.Array[Tensor4D], axis: Double): Tensor4D      = js.native
   def concat[T <: TensorND](tensors: js.Array[T], axis: Double = ???): T = js.native
 }

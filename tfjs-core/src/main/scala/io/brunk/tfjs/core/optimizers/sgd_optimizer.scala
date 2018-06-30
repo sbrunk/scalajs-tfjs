@@ -16,9 +16,9 @@
 
 package io.brunk.tfjs.core.optimizers
 
-import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
+import io.brunk.tfjs.core.TensorModule.{ Scalar, TensorND }
 import io.brunk.tfjs.core.NamedTensorMap
-import io.brunk.tfjs.core.serialization.{ConfigDict, Serializable, SerializableConstructor}
+import io.brunk.tfjs.core.serialization.{ ConfigDict, Serializable, SerializableConstructor }
 
 import scala.scalajs.js
 import js.annotation._
@@ -29,12 +29,12 @@ import js.|
 class SGDOptimizer protected () extends Optimizer {
   override type T <: NamedTensorMap
   def this(learningRate: Double) = this()
-  protected var learningRate: Double                          = js.native
-  protected var c: Scalar                                     = js.native
-  def applyGradients(variableGradients: T): Unit = js.native
-  def setLearningRate(learningRate: Double): Unit             = js.native
-  def dispose(): Unit                                         = js.native
-  def getConfig(): ConfigDict                                 = js.native
+  protected var learningRate: Double              = js.native
+  protected var c: Scalar                         = js.native
+  def applyGradients(variableGradients: T): Unit  = js.native
+  def setLearningRate(learningRate: Double): Unit = js.native
+  def dispose(): Unit                             = js.native
+  def getConfig(): ConfigDict                     = js.native
 }
 
 @js.native

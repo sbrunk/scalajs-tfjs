@@ -17,16 +17,14 @@
 package io.brunk.tfjs.core.kernels
 
 import io.brunk.tfjs.core.TensorModule.TensorND
-import io.brunk.tfjs.core.{DataType, Rank, Tensor}
+import io.brunk.tfjs.core.{ DataType, Rank, Tensor }
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-
 @js.native
 @JSGlobalScope
 object Backend_util extends js.Object {
   def castTensor[T <: TensorND](x: T, dtype: DataType, backend: KernelBackend): T = js.native
-  def reshapeTensor[T <: Tensor[R], R <: Rank](x: T, shape: js.Any): Tensor[R]     = js.native
+  def reshapeTensor[T <: Tensor[R], R <: Rank](x: T, shape: js.Any): Tensor[R]    = js.native
 }

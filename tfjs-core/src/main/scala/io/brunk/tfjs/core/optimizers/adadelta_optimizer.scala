@@ -17,7 +17,7 @@
 package io.brunk.tfjs.core.optimizers
 
 import io.brunk.tfjs.core.NamedVariableMap
-import io.brunk.tfjs.core.serialization.{ConfigDict, Serializable, SerializableConstructor}
+import io.brunk.tfjs.core.serialization.{ ConfigDict, Serializable, SerializableConstructor }
 
 import scala.scalajs.js
 import js.annotation._
@@ -28,12 +28,12 @@ import js.|
 class AdadeltaOptimizer protected () extends Optimizer {
   override type T = NamedVariableMap
   def this(learningRate: Double, rho: Double, epsilon: Double = ???) = this()
-  protected var learningRate: Double                            = js.native
-  protected var rho: Double                                     = js.native
-  protected var epsilon: Double                                 = js.native
+  protected var learningRate: Double                                     = js.native
+  protected var rho: Double                                              = js.native
+  protected var epsilon: Double                                          = js.native
   override def applyGradients(variableGradients: NamedVariableMap): Unit = js.native
-  def dispose(): Unit                                           = js.native
-  def getConfig(): ConfigDict                                   = js.native
+  def dispose(): Unit                                                    = js.native
+  def getConfig(): ConfigDict                                            = js.native
 }
 
 @js.native

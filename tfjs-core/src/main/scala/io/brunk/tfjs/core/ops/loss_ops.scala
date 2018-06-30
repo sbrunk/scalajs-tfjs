@@ -75,4 +75,11 @@ trait LossOps extends js.Object {
       epsilon: Double = ???,
       reduction: Reduction = ???
   ): O = js.native
+  def huberLoss[T <: TensorND, O <: TensorND](
+      labels: T,
+      predictions: T,
+      weights: TensorND = ???,
+      delta: Double = ???,
+      reduction: Reduction = ???
+  ): O = js.native
 }

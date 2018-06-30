@@ -26,24 +26,52 @@ import org.scalajs.dom
 import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
+trait TextureConfig extends js.Object {
+  var internalFormatFloat: Double
+  var textureFormatFloat: Double
+  var internalFormatHalfFloat: Double
+  var internalFormatPackedFloat: Double
+  var downloadTextureFormat: Double
+  var downloadUnpackNumChannels: Double
+  var defaultNumChannels: Double
+  var textureTypeHalfFloat: Double
+}
+
+@js.native
 @JSGlobalScope
 object Gpgpu_util extends js.Object {
-  def getWebGLContextAttributes(): webgl.ContextAttributes                        = js.native
+  def getWebGLContextAttributes(): webgl.ContextAttributes                  = js.native
   def createWebGLContext(canvas: html.Canvas = ???): webgl.RenderingContext = js.native
-  def createVertexShader(gl: webgl.RenderingContext): webgl.Shader                 = js.native
-  def createVertexBuffer(gl: webgl.RenderingContext): webgl.Buffer                 = js.native
-  def createIndexBuffer(gl: webgl.RenderingContext): webgl.Buffer                  = js.native
-  def createMatrixTexture(gl: webgl.RenderingContext, rows: Double, columns: Double): webgl.Texture =
-    js.native
-  def createColorMatrixTexture(
-      gl: webgl.RenderingContext,
-      rows: Double,
-      columns: Double
+  def createVertexShader(gl: webgl.RenderingContext): webgl.Shader          = js.native
+  def createVertexBuffer(gl: webgl.RenderingContext): webgl.Buffer          = js.native
+  def createIndexBuffer(gl: webgl.RenderingContext): webgl.Buffer           = js.native
+  def getTextureConfig(
+    gl: webgl.RenderingContext,
+    textureHalfFloatExtension: js.Any = ???
+  ): TextureConfig = js.native
+  def createFloat32MatrixTexture(
+    gl: webgl.RenderingContext,
+    rows: Double,
+    columns: Double,
+    textureConfig: TextureConfig
+  ): webgl.Texture = js.native
+  def createFloat16MatrixTexture(
+    gl: webgl.RenderingContext,
+    rows: Double,
+    columns: Double,
+    textureConfig: TextureConfig
+  ): webgl.Texture = js.native
+  def createUnsignedBytesMatrixTexture(
+    gl: webgl.RenderingContext,
+    rows: Double,
+    columns: Double,
+    textureConfig: TextureConfig
   ): webgl.Texture = js.native
   def createPackedMatrixTexture(
       gl: webgl.RenderingContext,
       rows: Double,
-      columns: Double
+      columns: Double,
+     textureConfig: TextureConfig
   ): webgl.Texture = js.native
   def bindVertexProgramAttributeStreams(
       gl: webgl.RenderingContext,
@@ -61,35 +89,40 @@ object Gpgpu_util extends js.Object {
       rows: Double,
       columns: Double,
       matrix: Float32Array,
-      numChannels: Double
+      numChannels: Double,
+      textureConfig: TextureConfig
   ): Unit = js.native
   def uploadMatrixToPackedTexture(
       gl: webgl.RenderingContext,
       texture: webgl.Texture,
       rows: Double,
       columns: Double,
-      matrix: Float32Array
+      matrix: Float32Array,
+      textureConfig: TextureConfig
   ): Unit = js.native
   def downloadMatrixFromOutputTextureAsync(
       gl: webgl.RenderingContext,
       getBufferSubDataAsyncExtension: js.Any,
       rows: Double,
-      columns: Double
-  ): Promise[Float32Array] = js.native
-  def downloadMatrixFromOutputTexture(
-      gl: webgl.RenderingContext,
-      rows: Double,
-      columns: Double
-  ): Float32Array = js.native
-  def downloadMatrixFromRGBAColorTexture(
-      gl: webgl.RenderingContext,
-      rows: Double,
       columns: Double,
-      channels: Double
+      textureConfig: TextureConfig
+  ): Promise[Float32Array] = js.native
+  def downloadFloat32MatrixFromOutputTexture(
+    gl:webgl.RenderingContext,
+    rows: Double,
+    columns: Double,
+    textureConfig: TextureConfig
+  ): Float32Array = js.native
+  def downloadByteEncodedFloatMatrixFromOutputTexture(
+    gl:webgl.RenderingContext,
+    rows: Double,
+    columns: Double,
+    textureConfig: TextureConfig
   ): Float32Array = js.native
   def downloadMatrixFromPackedOutputTexture(
       gl: webgl.RenderingContext,
       rows: Double,
-      columns: Double
+      columns: Double,
+      textureConfig: TextureConfig
   ): Float32Array = js.native
 }

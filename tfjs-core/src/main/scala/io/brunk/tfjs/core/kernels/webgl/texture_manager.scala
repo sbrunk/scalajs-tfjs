@@ -22,18 +22,16 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import org.scalajs.dom.webgl
-
-
 @js.native
 @JSGlobal
 class TextureManager protected () extends js.Object {
   def this(gpgpu: GPGPUContext) = this()
-  def acquireTexture(shapeRC: js.Tuple2[Double, Double], texType: TextureType = ???): WebGLTexture =
+  def acquireTexture(shapeRC: js.Tuple2[Double, Double], texType: TextureUsage): WebGLTexture =
     js.native
   def releaseTexture(
       texture: WebGLTexture,
       shape: js.Tuple2[Double, Double],
-      texType: TextureType = ???
+      texType: TextureUsage
   ): Unit                          = js.native
   def getNumUsedTextures(): Double = js.native
   def getNumFreeTextures(): Double = js.native

@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
+import io.brunk.tfjs.core.TensorModule.{ Scalar, TensorND }
 
 import scala.scalajs.js
 import js.annotation._

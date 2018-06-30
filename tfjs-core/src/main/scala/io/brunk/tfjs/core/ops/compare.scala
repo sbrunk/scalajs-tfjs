@@ -25,15 +25,15 @@ import js.|
 @js.native
 trait CompareOps extends js.Object {
   def notEqual[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
-  def notEqualStrict[T <: TensorND](a: T, b: T): T         = js.native
+  def notEqualStrict[T <: TensorND](a: T, b: T): T             = js.native
   def less[T <: TensorND](a: TensorND, b: TensorND): T         = js.native
-  def lessStrict[T <: TensorND](a: T, b: T): T             = js.native
+  def lessStrict[T <: TensorND](a: T, b: T): T                 = js.native
   def equal[T <: TensorND](a: TensorND, b: TensorND): T        = js.native
-  def equalStrict[T <: TensorND](a: T, b: T): T            = js.native
+  def equalStrict[T <: TensorND](a: T, b: T): T                = js.native
   def lessEqual[T <: TensorND](a: TensorND, b: TensorND): T    = js.native
-  def lessEqualStrict[T <: TensorND](a: T, b: T): T        = js.native
+  def lessEqualStrict[T <: TensorND](a: T, b: T): T            = js.native
   def greater[T <: TensorND](a: TensorND, b: TensorND): T      = js.native
-  def greaterStrict[T <: TensorND](a: T, b: T): T          = js.native
+  def greaterStrict[T <: TensorND](a: T, b: T): T              = js.native
   def greaterEqual[T <: TensorND](a: TensorND, b: TensorND): T = js.native
-  def greaterEqualStrict[T <: TensorND](a: T, b: T): T     = js.native
+  def greaterEqualStrict[T <: TensorND](a: T, b: T): T         = js.native
 }

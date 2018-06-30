@@ -20,7 +20,7 @@ import org.scalajs.dom.experimental.Response
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Date, Promise, |}
+import js.{ Date, Promise, | }
 import scala.scalajs.js.typedarray.ArrayBuffer
 
 object types {
@@ -37,15 +37,15 @@ object types {
 
   @js.native
   trait WeightsManifestGroupConfig extends js.Object {
-    var paths: js.Array[String] = js.native
+    var paths: js.Array[String]                 = js.native
     var weights: js.Array[WeightsManifestEntry] = js.native
   }
 
   @js.native
   trait WeightsManifestEntry extends js.Object {
-    var name: String = js.native
-    var shape: js.Array[Double] = js.native
-    var dtype: String = js.native
+    var name: String                                    = js.native
+    var shape: js.Array[Double]                         = js.native
+    var dtype: String                                   = js.native
     var quantization: WeightsManifestEntry.Quantization = js.native
   }
 
@@ -54,7 +54,7 @@ object types {
     @js.native
     trait Quantization extends js.Object {
       var scale: Double = js.native
-      var min: Double = js.native
+      var min: Double   = js.native
       var dtype: String = js.native
     }
 
@@ -68,24 +68,24 @@ object types {
   @js.native
   trait SaveResult extends js.Object {
     var modelArtifactsInfo: ModelArtifactsInfo = js.native
-    var responses: js.Array[Response] = js.native
-    var errors: js.Array[js.Any | String] = js.native
+    var responses: js.Array[Response]          = js.native
+    var errors: js.Array[js.Any | String]      = js.native
   }
 
   @js.native
   trait ModelArtifactsInfo extends js.Object {
-    var dateSaved: Date = js.native
-    var modelTopologyType: String = js.native
+    var dateSaved: Date            = js.native
+    var modelTopologyType: String  = js.native
     var modelTopologyBytes: Double = js.native
-    var weightSpecsBytes: Double = js.native
-    var weightDataBytes: Double = js.native
+    var weightSpecsBytes: Double   = js.native
+    var weightDataBytes: Double    = js.native
   }
 
   @js.native
   trait ModelArtifacts extends js.Object {
-    var modelTopology: js.Any | ArrayBuffer = js.native
+    var modelTopology: js.Any | ArrayBuffer         = js.native
     var weightSpecs: js.Array[WeightsManifestEntry] = js.native
-    var weightData: ArrayBuffer = js.native
+    var weightData: ArrayBuffer                     = js.native
   }
 
   @js.native
@@ -106,9 +106,9 @@ object types {
   //@js.native
   //@JSGlobalScope
   //object Types extends js.Object {
-    type WeightsManifestConfig = js.Array[WeightsManifestGroupConfig]
-    type LoadHandler = js.Function0[Promise[ModelArtifacts]]
-    type SaveHandler = js.Function1[ModelArtifacts, Promise[SaveResult]]
+  type WeightsManifestConfig = js.Array[WeightsManifestGroupConfig]
+  type LoadHandler           = js.Function0[Promise[ModelArtifacts]]
+  type SaveHandler           = js.Function1[ModelArtifacts, Promise[SaveResult]]
   //}
 
 }

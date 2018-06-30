@@ -25,9 +25,9 @@ import org.scalajs.dom.webgl
 @JSGlobal
 class MultinomialProgram protected () extends GPGPUProgram {
   def this(batchSize: Double, numOutcomes: Double, numSamples: Double) = this()
-  var variableNames: js.Array[String]                                                  = js.native
-  var outputShape: js.Array[Double]                                                    = js.native
-  var userCode: String                                                                 = js.native
+  var variableNames: js.Array[String]                                                   = js.native
+  var outputShape: js.Array[Double]                                                     = js.native
+  var userCode: String                                                                  = js.native
   var seedLoc: webgl.UniformLocation                                                    = js.native
   def getCustomSetupFunc(seed: Double): js.Function2[GPGPUContext, webgl.Program, Unit] = js.native
 }

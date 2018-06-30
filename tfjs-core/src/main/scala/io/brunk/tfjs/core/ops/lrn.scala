@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.TensorModule.{ Tensor3D, Tensor4D }
 
 import scala.scalajs.js
 import js.annotation._
@@ -26,7 +26,7 @@ import js.|
 trait LRNOps extends js.Object {
   def localResponseNormalization[T <: Tensor3D | Tensor4D](
       x: T,
-      radius: Double = ???,
+      depthRadius: Double = ???,
       bias: Double = ???,
       alpha: Double = ???,
       beta: Double = ???

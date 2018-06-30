@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{Scalar, Tensor1D, Tensor2D}
+import io.brunk.tfjs.core.TensorModule.{ Scalar, Tensor1D, Tensor2D }
 import io.brunk.tfjs.core.ops.Lstm.LSTMCellFunc
 
 import scala.scalajs.js

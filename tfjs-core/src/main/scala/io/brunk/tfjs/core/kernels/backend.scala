@@ -16,12 +16,12 @@
 
 package io.brunk.tfjs.core.kernels
 
-import io.brunk.tfjs.core.{DataType, Rank, Tensor}
+import io.brunk.tfjs.core.{ DataType, Rank, Tensor }
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
-import org.scalajs.dom.{ImageData, html}
+import js.{ Promise, | }
+import org.scalajs.dom.{ ImageData, html }
 import io.brunk.tfjs.core.TensorModule._
 import io.brunk.tfjs.core.Types.TypedArray
 import io.brunk.tfjs.core.ops.Conv_util.Conv2DInfo
@@ -67,8 +67,10 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def add(a: TensorND, b: TensorND): TensorND
   def subtract(a: TensorND, b: TensorND): TensorND
   def multiply(a: TensorND, b: TensorND): TensorND
-  def divide(a: TensorND, b: TensorND): TensorND
+  def realDivide(a: TensorND, b: TensorND): TensorND
+  def floorDiv(a: TensorND, b: TensorND): TensorND
   def sum(x: TensorND, axes: js.Array[Double]): TensorND
+  def unsortedSegmentSum[T <: TensorND](x: T, segmentIds: Tensor1D, numSegments: Double): TensorND
   def argMin(x: TensorND, axis: Double): TensorND
   def argMax(x: TensorND, axis: Double): TensorND
   def equal(a: TensorND, b: TensorND): TensorND
@@ -88,6 +90,7 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def mod(a: TensorND, b: TensorND): TensorND
   def max(x: TensorND, axes: js.Array[Double]): TensorND
   def maximum(a: TensorND, b: TensorND): TensorND
+  def all(x: TensorND, axes: js.Array[Double]): TensorND
   def squaredDifference(a: TensorND, b: TensorND): TensorND
   def ceil[T <: TensorND](x: T): T
   def floor[T <: TensorND](x: T): T
@@ -130,6 +133,8 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def conv2dDerInput(dy: Tensor4D, filter: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def conv2dDerFilter(x: Tensor4D, dY: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def depthwiseConv2D(input: Tensor4D, filter: Tensor4D, convInfo: Conv2DInfo): Tensor4D
+  def depthwiseConv2DDerInput(dy: Tensor4D, filter: Tensor4D, convInfo: Conv2DInfo): Tensor4D
+  def depthwiseConv2DDerFilter(x: Tensor4D, dY: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def maxPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def maxPoolBackprop(dy: Tensor4D, x: Tensor4D, y: Tensor4D, convInfo: Conv2DInfo): Tensor4D
   def avgPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D

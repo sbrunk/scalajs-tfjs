@@ -65,13 +65,14 @@ object serialization extends js.Object {
     trait ClassNameMap extends js.Object {
       @JSBracketAccess
       def apply(
-        className: String
-      ): js.Tuple2[SerializableConstructor[Serializable], FromConfigMethod[Serializable]] = js.native
+          className: String
+      ): js.Tuple2[SerializableConstructor[Serializable], FromConfigMethod[Serializable]] =
+        js.native
 
       @JSBracketAccess
       def update(
-        className: String,
-        v: js.Tuple2[SerializableConstructor[Serializable], FromConfigMethod[Serializable]]
+          className: String,
+          v: js.Tuple2[SerializableConstructor[Serializable], FromConfigMethod[Serializable]]
       ): Unit = js.native
     }
 
@@ -83,9 +84,9 @@ object serialization extends js.Object {
   //@js.native
   //@JSGlobalScope
   //object Serialization extends js.Object {
-    type ConfigDictValue = Boolean | Double | String | Null | ConfigDictArray | ConfigDict
-    type SerializableConstructor[T <: Serializable] = js.Any
-    type FromConfigMethod[T <: Serializable] = js.Function2[SerializableConstructor[T], ConfigDict, T]
+  type ConfigDictValue                            = Boolean | Double | String | Null | ConfigDictArray | ConfigDict
+  type SerializableConstructor[T <: Serializable] = js.Any
+  type FromConfigMethod[T <: Serializable]        = js.Function2[SerializableConstructor[T], ConfigDict, T]
   //}
 
 }

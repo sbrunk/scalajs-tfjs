@@ -27,10 +27,11 @@ import js.annotation._
 @JSGlobal
 class BrowserHTTPRequest protected () extends IOHandler {
   def this(path: String, requestInit: RequestInit = ???) = this()
-  protected def path: String                                    = js.native
-  protected def requestInit: RequestInit                        = js.native
-  def DEFAULT_METHOD: String                                    = js.native
-  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  protected def path: String             = js.native
+  protected def requestInit: RequestInit = js.native
+  def DEFAULT_METHOD: String             = js.native
+  // def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  // def load(): Promise[ModelArtifacts] = js.native
 }
 
 @js.native

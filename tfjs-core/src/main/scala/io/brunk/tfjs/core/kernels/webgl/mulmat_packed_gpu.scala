@@ -22,8 +22,6 @@ import js.|
 import org.scalajs.dom.webgl
 
 import scala.scalajs.js.typedarray.Float32Array
-
-
 @js.native
 sealed trait MatrixOrientation extends js.Object {}
 
@@ -59,6 +57,5 @@ object Mulmat_packed_gpu extends js.Object {
       bShapeRowCol: js.Tuple2[Double, Double],
       aOrientation: MatrixOrientation = ???,
       bOrientation: MatrixOrientation = ???
-  ): Float32Array =
-    js.native
+  ): Float32Array = js.native
 }

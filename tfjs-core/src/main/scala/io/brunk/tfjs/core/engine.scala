@@ -18,7 +18,7 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import Engine.MemoryInfo
 import kernels.BackendTimingInfo
 import kernels.KernelBackend
@@ -27,10 +27,8 @@ import Types.TensorContainer
 import TensorModule.DataId
 import Types._
 import Engine.CustomGradientFunc
-import org.scalajs.dom.{ImageData, html}
+import org.scalajs.dom.{ ImageData, html }
 import TensorModule._
-
-
 @js.native
 trait TensorManager extends js.Object {
   def registerTensor(a: TensorND): Unit
@@ -55,12 +53,12 @@ class Engine protected () extends TensorManager {
       inputs: I,
       backwardsFunc: js.Function2[T, js.Array[TensorND], js.Any] = ???
   ): T                                                                      = js.native
-  def registerTensor(a: TensorND): Unit                            = js.native
-  def registerVariable(v: Variable[Rank]): Unit                                   = js.native
-  def disposeTensor(a: TensorND): Unit                                        = js.native
+  def registerTensor(a: TensorND): Unit                                     = js.native
+  def registerVariable(v: Variable[Rank]): Unit                             = js.native
+  def disposeTensor(a: TensorND): Unit                                      = js.native
   def disposeVariables(): Unit                                              = js.native
   def memory(): MemoryInfo                                                  = js.native
-  def keep[T <: TensorND](result: T): T                                       = js.native
+  def keep[T <: TensorND](result: T): T                                     = js.native
   def startScope(name: String = ???, gradientsMode: Boolean = ???): Unit    = js.native
   def endScope(result: TensorContainer, gradientsMode: Boolean = ???): Unit = js.native
   def dispose(): Unit                                                       = js.native
@@ -69,13 +67,13 @@ class Engine protected () extends TensorManager {
       xs: js.Array[TensorND],
       dy: T = ???,
       allowNoGradients: Boolean = ???
-  ): js.Any                                                          = js.native
+  ): js.Any                                                            = js.native
   def customGrad[T <: TensorND](f: CustomGradientFunc[T]): js.Function = js.native
-  def write(dataId: DataId, values: TypedArray): Unit                = js.native
-  def readSync(dataId: DataId): TypedArray                           = js.native
-  def read(dataId: DataId): Promise[TypedArray]                      = js.native
+  def write(dataId: DataId, values: TypedArray): Unit                  = js.native
+  def readSync(dataId: DataId): TypedArray                             = js.native
+  def read(dataId: DataId): Promise[TypedArray]                        = js.native
   def fromPixels(
-    pixels: ImageData | html.Image | html.Canvas | html.Video,
+      pixels: ImageData | html.Image | html.Canvas | html.Video,
       numChannels: Double
   ): Tensor3D                                              = js.native
   def time(query: js.Function0[Unit]): Promise[TimingInfo] = js.native
@@ -86,6 +84,6 @@ class Engine protected () extends TensorManager {
 object Engine extends js.Object {
   type ForwardFunc[T <: TensorND]        = js.Function2[KernelBackend, js.Function, T]
   type CustomGradientFunc[T <: TensorND] = js.Function
-  type MemoryInfo                      = js.Any
-  type ScopeFn[T <: TensorContainer]   = js.Function0[T]
+  type MemoryInfo                        = js.Any
+  type ScopeFn[T <: TensorContainer]     = js.Function0[T]
 }

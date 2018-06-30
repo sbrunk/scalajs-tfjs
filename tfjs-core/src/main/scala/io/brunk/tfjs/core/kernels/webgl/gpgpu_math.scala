@@ -24,8 +24,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import org.scalajs.dom.webgl
-
-
 @js.native
 trait GPGPUProgram extends js.Object {
   var variableNames: js.Array[String]
@@ -65,6 +63,7 @@ object GPGPUBinary {
 trait TensorData[T <: TensorND] extends js.Object {
   var tensor: T
   var texData: TextureData
+  var isUniform: Boolean
 }
 
 @js.native

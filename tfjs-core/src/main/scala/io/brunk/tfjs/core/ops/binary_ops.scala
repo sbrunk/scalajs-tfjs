@@ -25,22 +25,22 @@ import js.|
 @js.native
 trait BinaryOps extends js.Object {
   def add[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def addStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def addStrict[T <: TensorND](a: T, b: T): T                       = js.native
   def sub[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def subStrict[T <: TensorND](a: T, b: T): T                   = js.native
-  def pow[T <: TensorND](base: T, exp: TensorND): T               = js.native
-  def powStrict[T <: TensorND](base: T, exp: TensorND): T         = js.native
+  def subStrict[T <: TensorND](a: T, b: T): T                       = js.native
+  def pow[T <: TensorND](base: T, exp: TensorND): T                 = js.native
+  def powStrict[T <: TensorND](base: T, exp: TensorND): T           = js.native
   def mul[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def mulStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def mulStrict[T <: TensorND](a: T, b: T): T                       = js.native
   def div[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def divStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def divStrict[T <: TensorND](a: T, b: T): T                       = js.native
   def mod[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def modStrict[T <: TensorND](a: T, b: T): T                   = js.native
+  def modStrict[T <: TensorND](a: T, b: T): T                       = js.native
   def minimum[T <: TensorND](a: TensorND, b: TensorND): T           = js.native
-  def minimumStrict[T <: TensorND](a: T, b: T): T               = js.native
+  def minimumStrict[T <: TensorND](a: T, b: T): T                   = js.native
   def maximum[T <: TensorND](a: TensorND, b: TensorND): T           = js.native
-  def maximumStrict[T <: TensorND](a: T, b: T): T               = js.native
+  def maximumStrict[T <: TensorND](a: T, b: T): T                   = js.native
   def squaredDifference[T <: TensorND](a: TensorND, b: TensorND): T = js.native
-  def squaredDifferenceStrict[T <: TensorND](a: T, b: T): T     = js.native
+  def squaredDifferenceStrict[T <: TensorND](a: T, b: T): T         = js.native
   def atan2[T <: TensorND](a: TensorND, b: TensorND): T             = js.native
 }

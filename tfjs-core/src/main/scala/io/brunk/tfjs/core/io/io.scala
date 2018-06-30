@@ -22,7 +22,7 @@ import org.scalajs.dom.experimental.RequestInit
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
@@ -38,13 +38,13 @@ object io extends ModelManagement with WeightsLoader {
   def encodeWeights(tensors: NamedTensorMap): Promise[js.Any] = js.native
   def decodeWeights(buffer: ArrayBuffer, specs: js.Array[WeightsManifestEntry]): NamedTensorMap =
     js.native
-  type IOHandler = types.IOHandler
-  type LoadHandler = types.LoadHandler
-  type ModelArtifacts = types.ModelArtifacts
-  type ModelStoreManager = types.ModelStoreManager
-  type SaveConfig = types.SaveConfig
-  type SaveHandler = types.SaveHandler
-  type SaveResult = types.SaveResult
+  type IOHandler             = types.IOHandler
+  type LoadHandler           = types.LoadHandler
+  type ModelArtifacts        = types.ModelArtifacts
+  type ModelStoreManager     = types.ModelStoreManager
+  type SaveConfig            = types.SaveConfig
+  type SaveHandler           = types.SaveHandler
+  type SaveResult            = types.SaveResult
   type WeightsManifestConfig = types.WeightsManifestConfig
-  type WeightsManifestEntry = types.WeightsManifestEntry
+  type WeightsManifestEntry  = types.WeightsManifestEntry
 }

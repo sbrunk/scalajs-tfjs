@@ -18,7 +18,7 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import Types._
 import Engine._
 import TensorModule.TensorND
@@ -28,14 +28,17 @@ import TensorModule.TensorND
 class Tracking extends js.Object {}
 
 @js.native
-@JSGlobal
-object Tracking extends js.Object {
+trait TrackingCompanion extends js.Object {
   def tidy[T <: TensorContainer](
       nameOrFn: String | ScopeFn[T],
       fn: ScopeFn[T] = ???,
       gradMode: Boolean = ???
   ): T                                                 = js.native
   def dispose(container: js.Any): Unit                 = js.native
-  def keep[T <: TensorND](result: T): T                  = js.native
+  def keep[T <: TensorND](result: T): T                = js.native
   def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native
 }
+
+@js.native
+@JSGlobal
+object Tracking extends TrackingCompanion

@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{Tensor1D, TensorND}
+import io.brunk.tfjs.core.TensorModule.{ Tensor1D, TensorND }
 
 import scala.scalajs.js
 import js.annotation._
@@ -48,15 +48,14 @@ trait ReductionOps extends js.Object {
       x: TensorND,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
-  ): T                                                      = js.native
+  ): T                                                          = js.native
   def argMin[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
   def argMax[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
+  def all[T <: TensorND](
+    x: TensorND,
+    axis: Double | js.Array[Double] = ???,
+    keepDims: Boolean = ???
+  ): T = js.native
   def moments(x: TensorND, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
     js.native
-  def unsortedSegmentSum[T <: TensorND](
-      x: T,
-      segmentIds: Tensor1D,
-      numSegments: Double,
-      axis: Double = ???
-  ): T = js.native
 }

@@ -32,8 +32,6 @@ import optimizers.OptimizerConstructors
 //  var adamax: OptimizerConstructors.adamax.type     = js.native
 //  var adam: OptimizerConstructors.adam.type         = js.native
 //}
-
-
 @js.native
 trait Train extends js.Object {
   val train: OptimizerConstructors = OptimizerConstructors

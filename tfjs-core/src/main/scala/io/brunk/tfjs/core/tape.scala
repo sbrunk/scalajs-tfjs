@@ -25,10 +25,10 @@ import TensorModule.TensorND
 
 @js.native
 trait TapeNode extends js.Object {
-  var id: Double                                                        = js.native
-  var name: String                                                      = js.native
+  var id: Double                                                          = js.native
+  var name: String                                                        = js.native
   var output: TensorND                                                    = js.native
-  var inputs: NamedTensorMap                                            = js.native
+  var inputs: NamedTensorMap                                              = js.native
   var gradient: js.Function1[TensorND | NamedTensorMap, NamedGradientMap] = js.native
 }
 

@@ -23,29 +23,43 @@ import js.annotation._
 import js.|
 import org.scalajs.dom.webgl
 
-import scala.scalajs.js.typedarray.{Float32Array, Uint8Array}
-
+import scala.scalajs.js.typedarray.{ Float32Array, Uint8Array }
 
 @js.native
-sealed trait TextureType extends js.Object {}
+sealed trait TextureUsage extends js.Object {}
 
 @js.native
 @JSGlobal
-object TextureType extends js.Object {
-  var FLOAT: TextureType         = js.native
-  var UNSIGNED_BYTE: TextureType = js.native
+object TextureUsage extends js.Object {
+  var RENDER: TextureUsage   = js.native
+  var UPLOAD: TextureUsage   = js.native
+  var PIXELS: TextureUsage   = js.native
+  var DOWNLOAD: TextureUsage = js.native
   @JSBracketAccess
-  def apply(value: TextureType): String = js.native
+  def apply(value: TextureUsage): String = js.native
+}
+
+@js.native
+sealed trait PhysicalTextureType extends js.Object {}
+
+@js.native
+@JSGlobal
+object PhysicalTextureType extends js.Object {
+  var FLOAT16: PhysicalTextureType       = js.native
+  var FLOAT32: PhysicalTextureType       = js.native
+  var UNSIGNED_BYTE: PhysicalTextureType = js.native
+  @JSBracketAccess
+  def apply(value: PhysicalTextureType): String = js.native
 }
 
 @js.native
 trait TextureData extends js.Object {
-  var texture: webgl.Texture               = js.native
+  var texture: webgl.Texture              = js.native
   var shape: js.Array[Double]             = js.native
   var texShape: js.Tuple2[Double, Double] = js.native
   var dtype: DataType                     = js.native
   var values: js.Any                      = js.native
-  var texType: TextureType                = js.native
+  var texType: TextureUsage               = js.native
 }
 
 @js.native
@@ -54,27 +68,23 @@ object Tex_util extends js.Object {
   def getUnpackedMatrixTextureShapeWidthHeight(
       rows: Double,
       columns: Double
-  ): js.Tuple2[Double, Double] =
-    js.native
+  ): js.Tuple2[Double, Double] = js.native
   def getUnpackedArraySizeFromMatrixSize(matrixSize: Double, channelsPerTexture: Double): Double =
     js.native
   def getColorMatrixTextureShapeWidthHeight(
       rows: Double,
       columns: Double
   ): js.Tuple2[Double, Double] = js.native
-  def getMatrixSizeFromUnpackedArraySize(unpackedSize: Double, channelsPerTexture: Double): Double =
-    js.native
+  def getMatrixSizeFromUnpackedArraySize(
+      unpackedSize: Double,
+      channelsPerTexture: Double
+  ): Double = js.native
   type TypedArray = Float32Array | Uint8Array
   def encodeMatrixToUnpackedArray(
       matrix: TypedArray,
       unpackedArray: TypedArray,
       channelsPerTexture: Double
-  ): Unit                                                     = js.native
-  val FLOAT_MAX: Int                                          = js.native
-  val FLOAT_MIN: Double                                       = js.native
-  val BYTE_NAN_VALUE: Int                                     = js.native
-  def encodeFloatArray(floatArray: Float32Array): Uint8Array  = js.native
-  def decodeToFloatArray(uintArray: Uint8Array): Float32Array = js.native
+  ): Unit = js.native
   def decodeMatrixFromUnpackedArray(
       unpackedArray: Float32Array,
       matrix: Float32Array,

@@ -22,9 +22,7 @@ import js.{Promise, |}
 import TensorModule.TensorND
 import Types.TypedArray
 
-@js.native
-@JSGlobal
-object ALL_ENVS extends js.Object {}
+import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
 trait DoneFn extends js.Object {
@@ -35,9 +33,12 @@ trait DoneFn extends js.Object {
 @js.native
 @JSGlobalScope
 object Test_util extends js.Object {
-  val WEBGL_ENVS: Features = js.native
-  val CPU_ENVS: Features   = js.native
-  val TEST_EPSILON: Double = js.native
+  val WEBGL_ENVS: js.Array[Features]      = js.native
+  val CPU_ENVS: js.Array[Features]        = js.native
+  val CHROME_CPU_ENVS: js.Array[Features] = js.native
+  val NATIVE_ENV: Features                = js.native
+  val BROWSER_ENVS: js.Array[Features]    = js.native
+  val ALL_ENVS: js.Array[Features]        = js.native
   def expectArraysClose(
       actual: TensorND | TypedArray | js.Array[Double],
       expected: TensorND | TypedArray | js.Array[Double] | js.Array[Boolean],
@@ -54,4 +55,5 @@ object Test_util extends js.Object {
       low: Double,
       high: Double
   ): Unit = js.native
+  def expectArrayBuffersEqual(actual: ArrayBuffer, expected: ArrayBuffer): Unit = js.native
 }

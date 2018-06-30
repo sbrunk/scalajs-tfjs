@@ -20,8 +20,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import org.scalajs.dom.webgl
-
-
 @js.native
 trait WebGLQuery extends js.Object {}
 

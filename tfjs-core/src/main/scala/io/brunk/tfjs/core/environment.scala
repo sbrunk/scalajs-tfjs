@@ -39,12 +39,16 @@ object Type extends js.Object {
 trait Features extends js.Object {
   var DEBUG: Boolean                                             = js.native
   var IS_BROWSER: Boolean                                        = js.native
+  var IS_NODE: Boolean                                           = js.native
   var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_VERSION: Double       = js.native
   var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean     = js.native
   var WEBGL_VERSION: Double                                      = js.native
-  var WEBGL_FLOAT_TEXTURE_ENABLED: Boolean                       = js.native
+  var WEBGL_RENDER_FLOAT32_ENABLED: Boolean                      = js.native
+  var WEBGL_DOWNLOAD_FLOAT_ENABLED: Boolean                      = js.native
   var WEBGL_GET_BUFFER_SUB_DATA_ASYNC_EXTENSION_ENABLED: Boolean = js.native
   var BACKEND: String                                            = js.native
+  var TEST_EPSILON: Double                                       = js.native
+  var IS_CHROME: Boolean                                         = js.native
 }
 
 @js.native
@@ -58,6 +62,7 @@ trait URLProperty extends js.Object {
 class Environment protected () extends js.Object {
   def this(features: Features = ???) = this()
   def get[K <: String](feature: K): js.Any              = js.native
+  def getFeatures(): Features                           = js.native
   def set[K <: String](feature: K, value: js.Any): Unit = js.native
   def getBestBackendType(): String                      = js.native
   def setFeatures(features: Features): Unit             = js.native
@@ -86,5 +91,5 @@ object EnvironmentModule extends js.Object {
   val URL_PROPERTIES: js.Array[URLProperty] = js.native
   def ENV: Environment                      = js.native
   type Environment = _root_.io.brunk.tfjs.core.Environment
-  type Type = _root_.io.brunk.tfjs.core.Type
+  type Type        = _root_.io.brunk.tfjs.core.Type
 }

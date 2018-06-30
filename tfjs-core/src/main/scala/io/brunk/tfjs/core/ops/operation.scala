@@ -18,7 +18,7 @@ package io.brunk.tfjs.core.ops
 
 import scala.scalajs.js
 import js.annotation._
-import js.{PropertyDescriptor, |}
+import js.{ PropertyDescriptor, | }
 
 @js.native
 @JSGlobalScope

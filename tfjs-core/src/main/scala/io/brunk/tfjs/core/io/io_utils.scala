@@ -18,11 +18,15 @@ package io.brunk.tfjs.core.io
 
 import _root_.io.brunk.tfjs.core.NamedTensorMap
 import _root_.io.brunk.tfjs.core.Types.TypedArray
-import _root_.io.brunk.tfjs.core.io.types.{ModelArtifacts, ModelArtifactsInfo, WeightsManifestEntry}
+import _root_.io.brunk.tfjs.core.io.types.{
+  ModelArtifacts,
+  ModelArtifactsInfo,
+  WeightsManifestEntry
+}
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
