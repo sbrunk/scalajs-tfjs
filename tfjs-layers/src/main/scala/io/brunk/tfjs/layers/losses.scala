@@ -25,31 +25,31 @@ import js.|
 @js.native
 @JSGlobalScope
 object Losses extends js.Object {
-  def meanSquaredError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def meanSquaredLogarithmicError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def squaredHinge(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def hinge(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def categoricalHinge(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def logcosh(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanSquaredError(yTrue: TensorND, yPred: TensorND): TensorND              = js.native
+  def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND             = js.native
+  def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND   = js.native
+  def meanSquaredLogarithmicError(yTrue: TensorND, yPred: TensorND): TensorND   = js.native
+  def squaredHinge(yTrue: TensorND, yPred: TensorND): TensorND                  = js.native
+  def hinge(yTrue: TensorND, yPred: TensorND): TensorND                         = js.native
+  def categoricalHinge(yTrue: TensorND, yPred: TensorND): TensorND              = js.native
+  def logcosh(yTrue: TensorND, yPred: TensorND): TensorND                       = js.native
+  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND       = js.native
   def sparseCategoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def kullbackLeiblerDivergence(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def poisson(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND            = js.native
+  def kullbackLeiblerDivergence(yTrue: TensorND, yPred: TensorND): TensorND     = js.native
+  def poisson(yTrue: TensorND, yPred: TensorND): TensorND                       = js.native
+  def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND               = js.native
   // aliases
-  def mse(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
-  def MSE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
-  def mae(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
-  def MAE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
-  def mape(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
-  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
-  def msle(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanSquaredLogarithmicError
-  def MSLE(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanSquaredLogarithmicError
-  def kld(yTrue: TensorND, yPred: TensorND): TensorND = js.native //kullbackLeiblerDivergence
-  def KLD(yTrue: TensorND, yPred: TensorND): TensorND = js.native //kullbackLeiblerDivergence
-  def cosine(yTrue: TensorND, yPred: TensorND): TensorND = js.native //cosineProximity
+  def mse(yTrue: TensorND, yPred: TensorND): TensorND              = js.native // meanSquaredError
+  def MSE(yTrue: TensorND, yPred: TensorND): TensorND              = js.native // meanSquaredError
+  def mae(yTrue: TensorND, yPred: TensorND): TensorND              = js.native // meanAbsoluteError
+  def MAE(yTrue: TensorND, yPred: TensorND): TensorND              = js.native // meanAbsoluteError
+  def mape(yTrue: TensorND, yPred: TensorND): TensorND             = js.native //meanAbsolutePercentageError
+  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND             = js.native //meanAbsolutePercentageError
+  def msle(yTrue: TensorND, yPred: TensorND): TensorND             = js.native //meanSquaredLogarithmicError
+  def MSLE(yTrue: TensorND, yPred: TensorND): TensorND             = js.native //meanSquaredLogarithmicError
+  def kld(yTrue: TensorND, yPred: TensorND): TensorND              = js.native //kullbackLeiblerDivergence
+  def KLD(yTrue: TensorND, yPred: TensorND): TensorND              = js.native //kullbackLeiblerDivergence
+  def cosine(yTrue: TensorND, yPred: TensorND): TensorND           = js.native //cosineProximity
   def get(identifierOrFn: String | LossOrMetricFn): LossOrMetricFn = js.native
 }

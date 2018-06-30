@@ -16,15 +16,13 @@
 
 package io.brunk.tfjs.layers
 
-import io.brunk.tfjs.layers.Initializers.{Distribution, FanMode}
+import io.brunk.tfjs.layers.Initializers.{ Distribution, FanMode }
 import io.brunk.tfjs.layers.Types.Shape
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.tf._
-
-
 @js.native
 @JSGlobal
 abstract class Initializer extends serialization.Serializable {
@@ -71,7 +69,7 @@ class Constant protected () extends Initializer {
   def this(config: ConstantConfig) = this()
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -84,7 +82,7 @@ object Constant extends js.Object {
 trait RandomUniformConfig extends js.Object {
   var minval: Double = js.native
   var maxval: Double = js.native
-  var seed: Double = js.native
+  var seed: Double   = js.native
 }
 
 @js.native
@@ -95,7 +93,7 @@ class RandomUniform protected () extends Initializer {
   def DEFAULT_MAXVAL: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -106,20 +104,20 @@ object RandomUniform extends js.Object {
 
 @js.native
 trait RandomNormalConfig extends js.Object {
-  var mean: Double = js.native
+  var mean: Double   = js.native
   var stddev: Double = js.native
-  var seed: Double = js.native
+  var seed: Double   = js.native
 }
 
 @js.native
 @JSGlobal
 class RandomNormal protected () extends Initializer {
   def this(config: RandomNormalConfig) = this()
-  def DEFAULT_MEAN: Double = js.native
+  def DEFAULT_MEAN: Double   = js.native
   def DEFAULT_STDDEV: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -130,20 +128,20 @@ object RandomNormal extends js.Object {
 
 @js.native
 trait TruncatedNormalConfig extends js.Object {
-  var mean: Double = js.native
+  var mean: Double   = js.native
   var stddev: Double = js.native
-  var seed: Double = js.native
+  var seed: Double   = js.native
 }
 
 @js.native
 @JSGlobal
 class TruncatedNormal protected () extends Initializer {
   def this(config: TruncatedNormalConfig) = this()
-  def DEFAULT_MEAN: Double = js.native
+  def DEFAULT_MEAN: Double   = js.native
   def DEFAULT_STDDEV: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -163,7 +161,7 @@ class Identity protected () extends Initializer {
   def this(config: IdentityConfig) = this()
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -174,10 +172,10 @@ object Identity extends js.Object {
 
 @js.native
 trait VarianceScalingConfig extends js.Object {
-  var scale: Double = js.native
-  var mode: FanMode = js.native
+  var scale: Double              = js.native
+  var mode: FanMode              = js.native
   var distribution: Distribution = js.native
-  var seed: Double = js.native
+  var seed: Double               = js.native
 }
 
 @js.native
@@ -186,7 +184,7 @@ class VarianceScaling protected () extends Initializer {
   def this(config: VarianceScalingConfig) = this()
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -237,12 +235,12 @@ trait OrthogonalConfig extends SeedOnlyInitializerConfig {
 @JSGlobal
 class Orthogonal protected () extends Initializer {
   def this(config: OrthogonalConfig = ???) = this()
-  def DEFAULT_GAIN: Double = js.native
+  def DEFAULT_GAIN: Double   = js.native
   protected def gain: Double = js.native
   protected def seed: Double = js.native
   @JSName("apply")
   def apply(shape: Shape, dtype: DataType = ???): TensorND = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+  override def getConfig(): serialization.ConfigDict       = js.native
 }
 
 @js.native
@@ -258,9 +256,11 @@ object Initializers extends js.Object {
   val VALID_FAN_MODE_VALUES: js.Array[String] = js.native
   def checkFanMode(value: String = ???): Unit = js.native
   type Distribution = String
-  val VALID_DISTRIBUTION_VALUES: js.Array[String] = js.native
+  val VALID_DISTRIBUTION_VALUES: js.Array[String]  = js.native
   def checkDistribution(value: String = ???): Unit = js.native
   type InitializerIdentifier = String
   def serializeInitializer(initializer: Initializer): serialization.ConfigDictValue = js.native
-  def getInitializer(identifier: InitializerIdentifier | Initializer | serialization.ConfigDict): Initializer = js.native
+  def getInitializer(
+      identifier: InitializerIdentifier | Initializer | serialization.ConfigDict
+  ): Initializer = js.native
 }

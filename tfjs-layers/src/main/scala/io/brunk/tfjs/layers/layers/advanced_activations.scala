@@ -16,15 +16,13 @@
 
 package io.brunk.tfjs.layers.layers
 
-import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
-import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.layers.Types.{ Kwargs, Shape }
+import io.brunk.tfjs.layers.engine.{ Layer, LayerConfig }
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.tf._
-
-
 @js.native
 trait LeakyReLULayerConfig extends LayerConfig {
   var alpha: Double = js.native
@@ -34,10 +32,14 @@ trait LeakyReLULayerConfig extends LayerConfig {
 @JSGlobal
 class LeakyReLU protected () extends Layer {
   def this(config: LeakyReLULayerConfig = ???) = this()
-  def alpha: Double = js.native
+  def alpha: Double         = js.native
   def DEFAULT_ALPHA: Double = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -56,10 +58,14 @@ trait ELULayerConfig extends LayerConfig {
 @JSGlobal
 class ELU protected () extends Layer {
   def this(config: ELULayerConfig = ???) = this()
-  def alpha: Double = js.native
+  def alpha: Double         = js.native
   def DEFAULT_ALPHA: Double = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -78,10 +84,14 @@ trait ThresholdedReLULayerConfig extends LayerConfig {
 @JSGlobal
 class ThresholdedReLU protected () extends Layer {
   def this(config: ThresholdedReLULayerConfig = ???) = this()
-  def theta: Double = js.native
+  def theta: Double         = js.native
   def DEFAULT_THETA: Double = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -100,11 +110,15 @@ trait SoftmaxLayerConfig extends LayerConfig {
 @JSGlobal
 class Softmax protected () extends Layer {
   def this(config: SoftmaxLayerConfig = ???) = this()
-  def axis: Double = js.native
+  def axis: Double                                      = js.native
   def softmax: js.Function2[TensorND, Double, TensorND] = js.native
-  def DEFAULT_AXIS: Double = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  def DEFAULT_AXIS: Double                              = js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 

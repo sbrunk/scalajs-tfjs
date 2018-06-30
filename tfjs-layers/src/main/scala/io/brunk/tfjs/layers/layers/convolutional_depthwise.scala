@@ -18,10 +18,10 @@ package io.brunk.tfjs.layers.layers
 
 import io.brunk.tfjs.layers.Common.DataFormat
 import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
-import io.brunk.tfjs.layers.{Constraint, Initializer, Regularizer}
+import io.brunk.tfjs.layers.{ Constraint, Initializer, Regularizer }
 import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
 import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
-import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.Types.{ Kwargs, Shape }
 
 import scala.scalajs.js
 import js.annotation._
@@ -32,9 +32,9 @@ import io.brunk.tfjs.tf.TensorND
 trait DepthwiseConv2DLayerConfig extends BaseConvLayerConfig {
   // can't override var and types don't match either
   // override var kernelSize: Double | js.Tuple2[Double, Double] = js.native
-  var depthMultiplier: Double = js.native
+  var depthMultiplier: Double                                   = js.native
   var depthwiseInitializer: InitializerIdentifier | Initializer = js.native
-  var depthwiseConstraint: ConstraintIdentifier | Constraint = js.native
+  var depthwiseConstraint: ConstraintIdentifier | Constraint    = js.native
   var depthwiseRegularizer: RegularizerIdentifier | Regularizer = js.native
 }
 
@@ -43,8 +43,12 @@ trait DepthwiseConv2DLayerConfig extends BaseConvLayerConfig {
 class DepthwiseConv2D protected () extends Conv2D {
   def this(config: DepthwiseConv2DLayerConfig) = this()
   override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
 }
 
 @js.native
@@ -56,5 +60,12 @@ object DepthwiseConv2D extends js.Object {
 @js.native
 @JSGlobalScope
 object Convolutional_depthwise extends js.Object {
-  def depthwiseConv2d(x: TensorND, depthwiseKernel: TensorND, strides: js.Tuple2[Double, Double] = ???, padding: String = ???, dataFormat: DataFormat = ???, dilationRate: js.Tuple2[Double, Double] = ???): TensorND = js.native
+  def depthwiseConv2d(
+      x: TensorND,
+      depthwiseKernel: TensorND,
+      strides: js.Tuple2[Double, Double] = ???,
+      padding: String = ???,
+      dataFormat: DataFormat = ???,
+      dilationRate: js.Tuple2[Double, Double] = ???
+  ): TensorND = js.native
 }

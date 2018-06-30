@@ -17,7 +17,7 @@
 package io.brunk.tfjs.layers
 
 import io.brunk.tfjs.core.TensorModule.TensorND
-import io.brunk.tfjs.core.{TensorModule, serialization}
+import io.brunk.tfjs.core.{ TensorModule, serialization }
 
 import scala.scalajs.js
 import js.annotation._
@@ -179,6 +179,11 @@ object Softmax extends js.Object {
 object Activations extends js.Object {
   type ActivationIdentifier = String
   def serializeActivation(activation: Activation): String = js.native
-  def deserializeActivation(config: serialization.ConfigDict, customObjects: serialization.ConfigDict = ???): Activation = js.native
-  def getActivation(identifier: ActivationIdentifier | serialization.ConfigDict | Activation): Activation = js.native
+  def deserializeActivation(
+      config: serialization.ConfigDict,
+      customObjects: serialization.ConfigDict = ???
+  ): Activation = js.native
+  def getActivation(
+      identifier: ActivationIdentifier | serialization.ConfigDict | Activation
+  ): Activation = js.native
 }

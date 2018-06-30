@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.layers
 
-import io.brunk.tfjs.layers.Types.{JsonValue, Kwargs, Shape}
+import io.brunk.tfjs.layers.Types.{ JsonValue, Kwargs, Shape }
 import io.brunk.tfjs.layers.engine.Layer
 import io.brunk.tfjs.tf._
 
@@ -27,18 +27,26 @@ import js.|
 @js.native
 @JSImport("@tensorflow/tfjs-layers", "SymbolicTensor")
 class SymbolicTensor protected () extends js.Object {
-  def this(dtype: DataType, shape: Shape, sourceLayer: Layer, inputs: js.Array[SymbolicTensor], callArgs: Kwargs, name: String = ???, outputTensorIndex: Double = ???) = this()
-  def dtype: DataType = js.native
-  def shape: Shape = js.native
-  var sourceLayer: Layer = js.native
+  def this(
+      dtype: DataType,
+      shape: Shape,
+      sourceLayer: Layer,
+      inputs: js.Array[SymbolicTensor],
+      callArgs: Kwargs,
+      name: String = ???,
+      outputTensorIndex: Double = ???
+  ) = this()
+  def dtype: DataType                  = js.native
+  def shape: Shape                     = js.native
+  var sourceLayer: Layer               = js.native
   def inputs: js.Array[SymbolicTensor] = js.native
-  def callArgs: Kwargs = js.native
-  def outputTensorIndex: Double = js.native
-  def id: Double = js.native
-  def name: String = js.native
-  def originalName: String = js.native
-  var nodeIndex: Double = js.native
-  var tensorIndex: Double = js.native
+  def callArgs: Kwargs                 = js.native
+  def outputTensorIndex: Double        = js.native
+  def id: Double                       = js.native
+  def name: String                     = js.native
+  def originalName: String             = js.native
+  var nodeIndex: Double                = js.native
+  var tensorIndex: Double              = js.native
 }
 
 @js.native
@@ -50,8 +58,7 @@ trait JsonDict extends js.Object {
 }
 
 @js.native
-trait JsonArray extends js.Array[JsonValue] {
-}
+trait JsonArray extends js.Array[JsonValue] {}
 
 @js.native
 trait NamedTensorMap extends js.Object {
@@ -68,9 +75,10 @@ object Types extends js.Object {
   type Shape = js.Array[Double]
   def getNextUniqueTensorId(): Double = js.native
   type LossOrMetricFn = js.Function2[TensorND, TensorND, TensorND]
-  type RegularizerFn = js.Function0[Scalar]
-  type RnnStepFunction = js.Function2[TensorND, js.Array[TensorND], js.Tuple2[TensorND, js.Array[TensorND]]]
+  type RegularizerFn  = js.Function0[Scalar]
+  type RnnStepFunction =
+    js.Function2[TensorND, js.Array[TensorND], js.Tuple2[TensorND, js.Array[TensorND]]]
   //type NamedTensorMap = js.Dictionary[TensorND]
   type JsonValue = Boolean | Double | String | Null | JsonArray | JsonDict
-  type Kwargs = js.Dictionary[js.Any]
+  type Kwargs    = js.Dictionary[js.Any]
 }

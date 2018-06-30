@@ -17,40 +17,42 @@
 package io.brunk.tfjs.layers.layers
 
 import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
-import io.brunk.tfjs.layers.{Constraint, Initializer, Regularizer}
+import io.brunk.tfjs.layers.{ Constraint, Initializer, Regularizer }
 import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
 import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
-import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
-import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.layers.Types.{ Kwargs, Shape }
+import io.brunk.tfjs.layers.engine.{ Layer, LayerConfig }
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.tf._
-
-
 @js.native
 trait EmbeddingLayerConfig extends LayerConfig {
-  var inputDim: Double = js.native
-  var outputDim: Double = js.native
+  var inputDim: Double                                           = js.native
+  var outputDim: Double                                          = js.native
   var embeddingsInitializer: InitializerIdentifier | Initializer = js.native
   var embeddingsRegularizer: RegularizerIdentifier | Regularizer = js.native
-  var activityRegularizer: RegularizerIdentifier | Regularizer = js.native
-  var embeddingsConstraint: ConstraintIdentifier | Constraint = js.native
-  var maskZero: Boolean = js.native
-  var inputLength: Double | js.Array[Double] = js.native
+  var activityRegularizer: RegularizerIdentifier | Regularizer   = js.native
+  var embeddingsConstraint: ConstraintIdentifier | Constraint    = js.native
+  var maskZero: Boolean                                          = js.native
+  var inputLength: Double | js.Array[Double]                     = js.native
 }
 
 @js.native
 @JSGlobal
 class Embedding protected () extends Layer {
   def this(config: EmbeddingLayerConfig) = this()
-  def DEFAULT_EMBEDDINGS_INITIALIZER: InitializerIdentifier = js.native
+  def DEFAULT_EMBEDDINGS_INITIALIZER: InitializerIdentifier     = js.native
   override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
   // TODO until we have real union types aka dotty, we have to stick with the wider type of the base class
   //def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND]                   = js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 

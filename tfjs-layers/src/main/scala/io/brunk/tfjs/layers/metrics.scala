@@ -16,7 +16,6 @@
 
 package io.brunk.tfjs.layers
 
-
 import io.brunk.tfjs.layers.Types.LossOrMetricFn
 import io.brunk.tfjs.tf.TensorND
 
@@ -27,21 +26,21 @@ import js.|
 @js.native
 @JSGlobalScope
 object Metrics extends js.Object {
-  def binaryAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def categoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def sparseCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def topKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def binaryAccuracy(yTrue: TensorND, yPred: TensorND): TensorND                = js.native
+  def categoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND           = js.native
+  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND            = js.native
+  def sparseCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND     = js.native
+  def topKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND       = js.native
   def sparseTopKCategoricalAccuracy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
   // aliases
-  def mse(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
-  def MSE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanSquaredError
-  def mae(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
-  def MAE(yTrue: TensorND, yPred: TensorND): TensorND = js.native // meanAbsoluteError
-  def mape(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
-  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND = js.native //meanAbsolutePercentageError
-  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def cosine(yTrue: TensorND, yPred: TensorND): TensorND = js.native //cosineProximity
+  def mse(yTrue: TensorND, yPred: TensorND): TensorND                           = js.native // meanSquaredError
+  def MSE(yTrue: TensorND, yPred: TensorND): TensorND                           = js.native // meanSquaredError
+  def mae(yTrue: TensorND, yPred: TensorND): TensorND                           = js.native // meanAbsoluteError
+  def MAE(yTrue: TensorND, yPred: TensorND): TensorND                           = js.native // meanAbsoluteError
+  def mape(yTrue: TensorND, yPred: TensorND): TensorND                          = js.native //meanAbsolutePercentageError
+  def MAPE(yTrue: TensorND, yPred: TensorND): TensorND                          = js.native //meanAbsolutePercentageError
+  def categoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND       = js.native
+  def cosine(yTrue: TensorND, yPred: TensorND): TensorND                        = js.native //cosineProximity
   def sparseCategoricalCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND = js.native
-  def get(identifier: String | LossOrMetricFn): LossOrMetricFn = js.native
+  def get(identifier: String | LossOrMetricFn): LossOrMetricFn                  = js.native
 }

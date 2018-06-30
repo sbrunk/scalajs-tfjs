@@ -17,24 +17,26 @@
 package io.brunk.tfjs.layers.layers
 
 import io.brunk.tfjs.layers.SymbolicTensor
-import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
-import io.brunk.tfjs.layers.engine.{Layer, LayerConfig}
+import io.brunk.tfjs.layers.Types.{ Kwargs, Shape }
+import io.brunk.tfjs.layers.engine.{ Layer, LayerConfig }
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.tf._
-
-
 @js.native
 @JSGlobal
 abstract class Merge protected () extends Layer {
   def this(config: LayerConfig = ???) = this()
-  protected var reshapeRequired: Boolean = js.native
-  def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
+  protected var reshapeRequired: Boolean                        = js.native
+  def mergeFunction(inputs: js.Array[TensorND]): TensorND       = js.native
   override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
-  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def call(
+      inputs: TensorND | js.Array[TensorND],
+      kwargs: Kwargs
+  ): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
 }
 
 @js.native
@@ -111,10 +113,11 @@ trait ConcatenateLayerConfig extends LayerConfig {
 @JSGlobal
 class Concatenate protected () extends Merge {
   def this(config: ConcatenateLayerConfig = ???) = this()
-  def DEFAULT_AXIS: Double = js.native
-  override def build(inputShape: Shape | js.Array[Shape]): Unit = js.native
+  def DEFAULT_AXIS: Double                                         = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit    = js.native
   override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
+    js.native
 }
 
 @js.native
@@ -126,10 +129,22 @@ object Concatenate extends js.Object {
 @js.native
 @JSGlobalScope
 object Merge extends js.Object {
-  def add(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
-  def multiply(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
-  def average(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
-  def maximum(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
-  def minimum(config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
-  def concatenate(config: js.Array[SymbolicTensor] | js.Array[TensorND] | ConcatenateLayerConfig = ???): Layer | SymbolicTensor | TensorND = js.native
+  def add(
+      config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???
+  ): Layer | SymbolicTensor | TensorND = js.native
+  def multiply(
+      config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???
+  ): Layer | SymbolicTensor | TensorND = js.native
+  def average(
+      config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???
+  ): Layer | SymbolicTensor | TensorND = js.native
+  def maximum(
+      config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???
+  ): Layer | SymbolicTensor | TensorND = js.native
+  def minimum(
+      config: js.Array[SymbolicTensor] | js.Array[TensorND] | LayerConfig = ???
+  ): Layer | SymbolicTensor | TensorND = js.native
+  def concatenate(
+      config: js.Array[SymbolicTensor] | js.Array[TensorND] | ConcatenateLayerConfig = ???
+  ): Layer | SymbolicTensor | TensorND = js.native
 }

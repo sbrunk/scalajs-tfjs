@@ -34,7 +34,7 @@ abstract class Constraint extends serialization.Serializable {
 @js.native
 trait MaxNormConfig extends js.Object {
   var maxValue: Double = js.native
-  var axis: Double = js.native
+  var axis: Double     = js.native
 }
 
 @js.native
@@ -42,7 +42,7 @@ trait MaxNormConfig extends js.Object {
 class MaxNorm protected () extends Constraint {
   def this(config: MaxNormConfig) = this()
   @JSName("apply")
-  def apply(w: TensorND): TensorND = js.native
+  def apply(w: TensorND): TensorND                   = js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -62,7 +62,7 @@ trait UnitNormConfig extends js.Object {
 class UnitNorm protected () extends Constraint {
   def this(config: UnitNormConfig) = this()
   @JSName("apply")
-  def apply(w: TensorND): TensorND = js.native
+  def apply(w: TensorND): TensorND                   = js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -89,8 +89,8 @@ object NonNeg extends js.Object {
 trait MinMaxNormConfig extends js.Object {
   var minValue: Double = js.native
   var maxValue: Double = js.native
-  var axis: Double = js.native
-  var rate: Double = js.native
+  var axis: Double     = js.native
+  var rate: Double     = js.native
 }
 
 @js.native
@@ -98,7 +98,7 @@ trait MinMaxNormConfig extends js.Object {
 class MinMaxNorm protected () extends Constraint {
   def this(config: MinMaxNormConfig) = this()
   @JSName("apply")
-  def apply(w: TensorND): TensorND = js.native
+  def apply(w: TensorND): TensorND                   = js.native
   override def getConfig(): serialization.ConfigDict = js.native
 }
 
@@ -113,6 +113,11 @@ object MinMaxNorm extends js.Object {
 object Constraints extends js.Object {
   type ConstraintIdentifier = String
   def serializeConstraint(constraint: Constraint): serialization.ConfigDictValue = js.native
-  def deserializeConstraint(config: serialization.ConfigDict, customObjects: serialization.ConfigDict = ???): Constraint = js.native
-  def getConstraint(identifier: ConstraintIdentifier | serialization.ConfigDict | Constraint): Constraint = js.native
+  def deserializeConstraint(
+      config: serialization.ConfigDict,
+      customObjects: serialization.ConfigDict = ???
+  ): Constraint = js.native
+  def getConstraint(
+      identifier: ConstraintIdentifier | serialization.ConfigDict | Constraint
+  ): Constraint = js.native
 }

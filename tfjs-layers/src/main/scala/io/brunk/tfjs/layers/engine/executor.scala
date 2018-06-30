@@ -27,7 +27,7 @@ import io.brunk.tfjs.tf.TensorND
 @js.native
 trait Feed extends js.Object {
   var key: SymbolicTensor = js.native
-  var value: TensorND = js.native
+  var value: TensorND     = js.native
 }
 
 @js.native
@@ -35,13 +35,17 @@ trait Feed extends js.Object {
 class FeedDict protected () extends js.Object {
   def this(feeds: js.Array[Feed] | FeedDict = ???) = this()
   def add(key: SymbolicTensor, value: TensorND): FeedDict = js.native
-  def addFeed(feed: Feed): Unit = js.native
-  def hasKey(key: SymbolicTensor): Boolean = js.native
-  def getValue(key: SymbolicTensor): TensorND = js.native
+  def addFeed(feed: Feed): Unit                           = js.native
+  def hasKey(key: SymbolicTensor): Boolean                = js.native
+  def getValue(key: SymbolicTensor): TensorND             = js.native
 }
 
 @js.native
 @JSGlobalScope
 object Executor extends js.Object {
-  def execute(fetches: SymbolicTensor | js.Array[SymbolicTensor], feedDict: FeedDict, kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | Tuple1[TensorND | js.Array[TensorND]] = js.native
+  def execute(
+      fetches: SymbolicTensor | js.Array[SymbolicTensor],
+      feedDict: FeedDict,
+      kwargs: Kwargs = ???
+  ): TensorND | js.Array[TensorND] | Tuple1[TensorND | js.Array[TensorND]] = js.native
 }

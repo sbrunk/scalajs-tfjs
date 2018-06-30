@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.layers.layers
 
-import io.brunk.tfjs.core.serialization.{ConfigDict, Serializable}
+import io.brunk.tfjs.core.serialization.{ ConfigDict, Serializable }
 
 import scala.scalajs.js
 import js.annotation._

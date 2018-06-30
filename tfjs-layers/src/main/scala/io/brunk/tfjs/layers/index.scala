@@ -23,9 +23,9 @@ import js.|
 @js.native
 @JSGlobalScope
 object Index extends ModelExportsCompanion {
-  val layers: LayerExports.type = js.native
-  val constraints: ConstraintExports.type = js.native
+  val layers: LayerExports.type             = js.native
+  val constraints: ConstraintExports.type   = js.native
   val initializers: InitializerExports.type = js.native
-  val metrics: MetricExports.type = js.native
+  val metrics: MetricExports.type           = js.native
   val regularizers: RegularizerExports.type = js.native
 }
