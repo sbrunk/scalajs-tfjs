@@ -28,7 +28,7 @@ lazy val `scalajs-tfjs-core` =
         library.scalaCheck % Test,
         library.scalaTest  % Test
       ),
-      npmDependencies in Test += "@tensorflow/tfjs-core" -> "0.11.0"
+      npmDependencies in Test += "@tensorflow/tfjs-core" -> "0.11.9"
     )
 
 lazy val `scalajs-tfjs-layers` =
@@ -57,7 +57,7 @@ lazy val example =
         library.scalajsDom,
       ),
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
-      npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.0",
+      npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.9",
       npmDependencies in Compile += "@tensorflow/tfjs-layers" -> "0.6.1",
       scalaJSUseMainModuleInitializer := true,
       mainClass in Compile := Some("example.Example")
