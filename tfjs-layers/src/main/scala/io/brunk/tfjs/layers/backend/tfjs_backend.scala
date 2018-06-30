@@ -75,7 +75,7 @@ object Tfjs_backend extends js.Object {
       axis: Double = ???
   ): TensorND                                          = js.native
   def square(x: TensorND): TensorND                    = js.native
-  def pow(x: TensorND, a: TensorND | Double): TensorND = js.native     = js.native
+  def pow(x: TensorND, a: TensorND | Double): TensorND = js.native
   def biasAdd(x: TensorND, bias: TensorND, dataFormat: DataFormat = ???): TensorND = js.native
   def elu(x: TensorND, alpha: Double = ???): TensorND                              = js.native
   def softsign(x: TensorND): TensorND                                              = js.native

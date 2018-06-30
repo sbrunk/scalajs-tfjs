@@ -16,10 +16,11 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.Types.{ Kwargs, RegularizerFn, Shape }
+import io.brunk.tfjs.core.{DataType, serialization}
+import io.brunk.tfjs.layers.Types.{Kwargs, RegularizerFn, Shape}
 import io.brunk.tfjs.layers._
 import io.brunk.tfjs.layers.engine.Topology.CallHook
-import io.brunk.tfjs.tf._
+import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
 
 import scala.scalajs.js
 import js.annotation._

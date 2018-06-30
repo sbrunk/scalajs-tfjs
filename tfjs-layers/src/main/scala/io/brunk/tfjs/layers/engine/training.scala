@@ -16,13 +16,13 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.{ Callback, CustomCallbackConfig, History, NamedTensorMap }
-import io.brunk.tfjs.layers.Types.{ LossOrMetricFn, Shape }
+import io.brunk.tfjs.layers.{Callback, CustomCallbackConfig, History, NamedTensorMap}
+import io.brunk.tfjs.layers.Types.{LossOrMetricFn, Shape}
 import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import js.JSConverters._
 
 @js.native
@@ -121,7 +121,7 @@ class Model protected () extends Container {
     lineLength: Double = ???,
     positions: js.Array[Double] = ???,
     printFn: js.Function = ???
-  ): Unit
+  ): Unit = js.native
   def compile(config: ModelCompileConfig): Unit                   = js.native
   def evaluate(
       x: TensorND | js.Array[TensorND],

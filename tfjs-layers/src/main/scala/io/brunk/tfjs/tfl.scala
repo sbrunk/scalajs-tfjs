@@ -34,7 +34,6 @@ object tfl extends tflayers.ModelExportsCompanion {
   type ModelCompileConfig  = tflayers.engine.ModelCompileConfig
   type ModelEvaluateConfig = tflayers.engine.ModelEvaluateConfig
   type ModelFitConfig      = tflayers.engine.ModelFitConfig
-  type ModelPredictConfig  = tflayers.engine.ModelPredictConfig
   // layers/recurrent
   type GRUCellLayerConfig  = tflayers.layers.GRUCellLayerConfig
   type GRULayerConfig      = tflayers.layers.GRULayerConfig
