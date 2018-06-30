@@ -16,28 +16,17 @@
 
 package io.brunk.tfjs.layers.utils
 
-import io.brunk.tfjs.layers.Common.PaddingMode
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
 @JSGlobalScope
-object Conv_utils extends js.Object {
-  def normalizeArray(value: Double | js.Array[Double], n: Double, name: String): js.Array[Double] =
-    js.native
-  def convOutputLength(
-      inputLength: Double,
-      filterSize: Double,
-      padding: PaddingMode,
-      stride: Double,
-      dilation: Double = ???
-  ): Double = js.native
-  def deconvLength(
-      dimSize: Double,
-      strideSize: Double,
-      kernelSize: Double,
-      padding: PaddingMode
-  ): Double = js.native
+object Layer_utils extends js.Object {
+  def printSummary(
+      model: Model,
+      lineLength: Double = ???,
+      positions: js.Array[Double] = ???,
+      printFn: js.Function = ???
+  ): Unit = js.native
 }

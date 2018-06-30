@@ -109,6 +109,12 @@ object MinMaxNorm extends js.Object {
 }
 
 @js.native
+@JSGlobal
+object CONSTRAINT_IDENTIFIER_REGISTRY_SYMBOL_MAP extends js.Object {
+  var string: String = js.native
+}
+
+@js.native
 @JSGlobalScope
 object Constraints extends js.Object {
   type ConstraintIdentifier = String

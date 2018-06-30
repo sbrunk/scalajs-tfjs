@@ -158,6 +158,8 @@ abstract class Layer protected () extends serialization.Serializable {
       inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor],
       kwargs: Kwargs = ???
   ): TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor] = js.native
+  def outputShape: Shape | js.Array[Shape]                                 = js.native
+  def countParams(): Double                                                = js.native
   def build(inputShape: Shape | js.Array[Shape]): Unit                         = js.native
   def getWeights(trainableOnly: Boolean = ???): js.Array[TensorND]             = js.native
   def setWeights(weights: js.Array[TensorND]): Unit                            = js.native

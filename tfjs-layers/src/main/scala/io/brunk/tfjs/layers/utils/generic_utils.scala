@@ -55,4 +55,11 @@ object Generic_utils extends js.Object {
   def isObjectEmpty(obj: js.Any): Boolean                               = js.native
   def checkStringTypeUnionValue(values: js.Array[String], label: String, value: String): Unit =
     js.native
+  def checkArrayTypeAndLength(
+      x: js.Any,
+      expectedType: String,
+      minLength: Double = ???,
+      maxLength: Double = ???
+  ): Boolean                                                         = js.native
+  def countParamsInWeights(weights: js.Array[LayerVariable]): Double = js.native
 }

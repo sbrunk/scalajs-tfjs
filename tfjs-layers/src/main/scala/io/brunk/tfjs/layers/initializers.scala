@@ -250,6 +250,12 @@ object Orthogonal extends js.Object {
 }
 
 @js.native
+@JSGlobal
+object INITIALIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP extends js.Object {
+  var string: String = js.native
+}
+
+@js.native
 @JSGlobalScope
 object Initializers extends js.Object {
   type FanMode = String

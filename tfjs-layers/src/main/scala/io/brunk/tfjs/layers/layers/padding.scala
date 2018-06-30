@@ -24,6 +24,7 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.tf._
+
 @js.native
 trait ZeroPadding2DLayerConfig extends LayerConfig {
   var padding: Double | js.Tuple2[Double, Double] | js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[

@@ -66,6 +66,12 @@ object L1L2 extends js.Object {
 }
 
 @js.native
+@JSGlobal
+object REGULARIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP extends js.Object {
+  var string: String = js.native
+}
+
+@js.native
 @JSGlobalScope
 object Regularizers extends js.Object {
   def l1(config: L1Config = ???): L1L2 = js.native

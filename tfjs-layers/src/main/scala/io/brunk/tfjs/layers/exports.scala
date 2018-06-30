@@ -55,6 +55,7 @@ object LayerExports extends js.Object {
   def conv2dTranspose(config: ConvLayerConfig): Layer                   = js.native
   def separableConv2d(config: SeparableConvLayerConfig): Layer          = js.native
   def cropping2D(config: Cropping2DLayerConfig): Layer                  = js.native
+  def upSampling2d(config: UpSampling2DLayerConfig): Layer              = js.native
   def depthwiseConv2d(config: DepthwiseConv2DLayerConfig): Layer        = js.native
   def activation(config: ActivationLayerConfig): Layer                  = js.native
   def dense(config: DenseLayerConfig): Layer                            = js.native

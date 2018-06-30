@@ -29,6 +29,7 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.tf.TensorND
+
 @js.native
 trait BaseConvLayerConfig extends LayerConfig {
   var kernelSize: Double | js.Array[Double]                             = js.native
@@ -54,35 +55,49 @@ trait ConvLayerConfig extends BaseConvLayerConfig {
 
 @js.native
 @JSGlobal
-abstract class Conv protected () extends Layer {
-  def this(rank: Double, config: ConvLayerConfig) = this()
+abstract class BaseConv protected () extends Layer {
+  def this(rank: Double, config: BaseConvLayerConfig) = this()
   protected def rank: Double                                                      = js.native
-  protected def filters: Double                                                   = js.native
   protected def kernelSize: js.Array[Double]                                      = js.native
   protected def strides: js.Array[Double]                                         = js.native
   protected def padding: PaddingMode                                              = js.native
   protected def dataFormat: DataFormat                                            = js.native
-  protected def dilationRate: Double | Tuple1[Double] | js.Tuple2[Double, Double] = js.native
   protected def activation: Activation                                            = js.native
   protected def useBias: Boolean                                                  = js.native
-  protected def kernelInitializer: Initializer                                    = js.native
+  protected def dilationRate: Double | Tuple1[Double] | js.Tuple2[Double, Double] = js.native
   protected def biasInitializer: Initializer                                      = js.native
-  protected def kernelConstraint: Constraint                                      = js.native
   protected def biasConstraint: Constraint                                        = js.native
-  protected def kernelRegularizer: Regularizer                                    = js.native
   protected def biasRegularizer: Regularizer                                      = js.native
-  protected var kernel: LayerVariable                                             = js.native
   protected var bias: LayerVariable                                               = js.native
   def DEFAULT_KERNEL_INITIALIZER: InitializerIdentifier                           = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier                             = js.native
-  override def build(inputShape: Shape | js.Array[Shape]): Unit                   = js.native
-  override def call(
-      inputs: TensorND | js.Array[TensorND],
-      kwargs: Kwargs
-  ): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
-    js.native
-  override def getConfig(): serialization.ConfigDict = js.native
+}
+
+@js.native
+@JSGlobal
+object BaseConv extends js.Object {
+  def verifyConfig(config: BaseConvLayerConfig): Unit = js.native
+}
+
+@js.native
+@JSGlobal
+abstract class Conv protected () extends BaseConv {
+  def this(rank: Double, config: ConvLayerConfig) = this()
+  protected def filters: Double                                                          = js.native
+  protected var kernel: LayerVariable                                                    = js.native
+  protected def kernelInitializer: Initializer                                           = js.native
+  protected def kernelConstraint: Constraint                                             = js.native
+  protected def kernelRegularizer: Regularizer                                           = js.native
+  override def build(inputShape: Shape | js.Array[Shape]): Unit                                   = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape]   = js.native
+  override def getConfig(): serialization.ConfigDict                                              = js.native
+}
+
+@js.native
+@JSGlobal
+object Conv extends js.Object {
+  def verifyConfig(config: ConvLayerConfig): Unit = js.native
 }
 
 @js.native
@@ -95,7 +110,8 @@ class Conv2D protected () extends Conv {
 @js.native
 @JSGlobal
 object Conv2D extends js.Object {
-  var className: String = js.native
+  var className: String                           = js.native
+  def verifyConfig(config: ConvLayerConfig): Unit = js.native
 }
 
 @js.native
@@ -182,7 +198,8 @@ class Conv1D protected () extends Conv {
 @js.native
 @JSGlobal
 object Conv1D extends js.Object {
-  var className: String = js.native
+  var className: String                           = js.native
+  def verifyConfig(config: ConvLayerConfig): Unit = js.native
 }
 
 @js.native
@@ -212,6 +229,30 @@ class Cropping2D protected () extends Layer {
 @js.native
 @JSGlobal
 object Cropping2D extends js.Object {
+  var className: String = js.native
+}
+
+@js.native
+trait UpSampling2DLayerConfig extends LayerConfig {
+  var size: js.Array[Double] = js.native
+  var dataFormat: DataFormat = js.native
+}
+
+@js.native
+@JSGlobal
+class UpSampling2D protected () extends Layer {
+  def this(config: UpSampling2DLayerConfig) = this()
+  protected def DEFAULT_SIZE: js.Array[Double]                                           = js.native
+  protected def size: js.Array[Double]                                                   = js.native
+  protected def dataFormat: DataFormat                                                   = js.native
+  def computeOutputShape(inputShape: Shape): Shape                                       = js.native
+  override def call(inputs: TensorND | js.Array[TensorND], kwargs: Kwargs): TensorND | js.Array[TensorND] = js.native
+  override def getConfig(): serialization.ConfigDict                                              = js.native
+}
+
+@js.native
+@JSGlobal
+object UpSampling2D extends js.Object {
   var className: String = js.native
 }
 

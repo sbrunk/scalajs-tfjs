@@ -61,3 +61,23 @@ class BatchNormalization protected () extends Layer {
 object BatchNormalization extends js.Object {
   var className: String = js.native
 }
+
+@js.native
+@JSGlobalScope
+object Normalization extends js.Object {
+  def batchNormalization(
+      x: TensorND,
+      mean: TensorND,
+      variance: TensorND,
+      beta: TensorND = ???,
+      gamma: TensorND = ???,
+      epsilon: Double = ???
+  ): TensorND = js.native
+  def normalizeBatchInTraining(
+      x: TensorND,
+      gamma: TensorND,
+      beta: TensorND,
+      reductionAxes: js.Array[Double],
+      epsilon: Double = ???
+  ): js.Tuple3[TensorND, TensorND, TensorND] = js.native
+}

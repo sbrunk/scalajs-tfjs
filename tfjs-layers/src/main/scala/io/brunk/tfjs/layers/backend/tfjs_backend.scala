@@ -50,13 +50,6 @@ object Tfjs_backend extends js.Object {
   def sliceAlongLastAxis(array: TensorND, start: Double, size: Double): TensorND  = js.native
   def sliceAlongAxis(array: TensorND, start: Double, size: Double, axis: Double): TensorND =
     js.native
-  def normalizeBatchInTraining(
-      x: TensorND,
-      gamma: TensorND,
-      beta: TensorND,
-      reductionAxes: js.Array[Double],
-      epsilon: Double = ???
-  ): js.Tuple3[TensorND, TensorND, TensorND]                                 = js.native
   def concatenate(tensors: js.Array[TensorND], axis: Double = ???): TensorND = js.native
   def concatAlongFirstAxis(a: TensorND, b: TensorND): TensorND               = js.native
   def tile(x: TensorND, n: Double | js.Array[Double]): TensorND              = js.native
@@ -82,15 +75,7 @@ object Tfjs_backend extends js.Object {
       axis: Double = ???
   ): TensorND                                          = js.native
   def square(x: TensorND): TensorND                    = js.native
-  def pow(x: TensorND, a: TensorND | Double): TensorND = js.native
-  def batchNormalization(
-      x: TensorND,
-      mean: TensorND,
-      variance: TensorND,
-      beta: TensorND = ???,
-      gamma: TensorND = ???,
-      epsilon: Double = ???
-  ): TensorND                                                                      = js.native
+  def pow(x: TensorND, a: TensorND | Double): TensorND = js.native     = js.native
   def biasAdd(x: TensorND, bias: TensorND, dataFormat: DataFormat = ???): TensorND = js.native
   def elu(x: TensorND, alpha: Double = ???): TensorND                              = js.native
   def softsign(x: TensorND): TensorND                                              = js.native
@@ -100,23 +85,9 @@ object Tfjs_backend extends js.Object {
       noiseShape: js.Array[Double] = ???,
       seed: Double = ???
   ): TensorND                                                = js.native
-  def l2Normalize(x: TensorND, axis: Double = ???): TensorND = js.native
   def nameScope[T](name: String, fn: js.Function0[T]): T     = js.native
   def floatx(): DataType                                     = js.native
   def getUid(prefix: String = ???): String                   = js.native
-  def categoricalCrossentropy(
-      target: TensorND,
-      output: TensorND,
-      fromLogits: Boolean = ???
-  ): TensorND = js.native
-  def sparseCategoricalCrossentropy(
-      target: TensorND,
-      output: TensorND,
-      fromLogits: Boolean = ???
-  ): TensorND = js.native
-  def binaryCrossentropy(target: TensorND, output: TensorND, fromLogits: Boolean = ???): TensorND =
-    js.native
-  def sigmoidCrossEntropyWithLogits(target: TensorND, output: TensorND): TensorND = js.native
   def hardSigmoid(x: TensorND): TensorND                                          = js.native
   def inTrainPhase[T](x: js.Function0[T], alt: js.Function0[T], training: Boolean = ???): T =
     js.native

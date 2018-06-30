@@ -96,5 +96,4 @@ object Models extends js.Object {
       handler: IOHandler,
       customObjects: serialization.ConfigDict = ???
   ): Promise[Model]                                              = js.native
-  def loadModelFromPath(modelConfigPath: String): Promise[Model] = js.native
 }

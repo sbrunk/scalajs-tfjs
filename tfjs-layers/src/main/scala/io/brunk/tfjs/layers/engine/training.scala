@@ -38,12 +38,6 @@ object ModelLoggingVerbosity extends js.Object {
 }
 
 @js.native
-trait ModelPredictConfig extends js.Object {
-  var batchSize: Double = js.native
-  var verbose: Boolean  = js.native
-}
-
-@js.native
 trait ModelEvaluateConfig extends js.Object {
   var batchSize: Double              = js.native
   var verbose: ModelLoggingVerbosity = js.native
@@ -123,12 +117,21 @@ class Model protected () extends Container {
   var metrics: js.Array[String] | js.Dictionary[String]           = js.native
   var metricsNames: js.Array[String]                              = js.native
   var metricsTensors: js.Array[js.Tuple2[LossOrMetricFn, Double]] = js.native
+  def summary(
+    lineLength: Double = ???,
+    positions: js.Array[Double] = ???,
+    printFn: js.Function = ???
+  ): Unit
   def compile(config: ModelCompileConfig): Unit                   = js.native
   def evaluate(
       x: TensorND | js.Array[TensorND],
       y: TensorND | js.Array[TensorND],
       config: ModelEvaluateConfig = ???
   ): Scalar | js.Array[Scalar] = js.native
+  def execute(
+    inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
+    outputs: String | js.Array[String]
+  ): TensorND | js.Array[TensorND] = js.native
   def predict(
       x: TensorND | js.Array[TensorND],
       config: ModelPredictConfig = ???
