@@ -42,8 +42,11 @@ trait Index
   type SGDOptimizer        = optimizers.SGDOptimizer
   type Tensor[R <: Rank]   = core.Tensor[R]
   type Variable[R <: Rank] = core.Variable[R]
-  type Rank                = core.Rank
   type DataType            = core.DataType
+  type InferenceModel      = core.InferenceModel
+  type ModelPredictConfig  = core.ModelPredictConfig
+  type NamedTensorMap = core.NamedTensorMap
+  type Rank                = core.Rank
   // TODO LSTMCellFunc
   // TODO Reduction
   // Second level exports.
