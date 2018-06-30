@@ -39,9 +39,9 @@ class GPGPUContext protected () extends js.Object {
   var program: webgl.Program | Null                                                 = js.native
   def dispose(): Unit                                                               = js.native
   def enableAutomaticDebugValidation(enabled: Boolean): Unit                        = js.native
-  def createFloat32MatrixTexture(rows: Double, columns: Double): WebGLTexture       = js.native
-  def createFloat16MatrixTexture(rows: Double, columns: Double): WebGLTexture       = js.native
-  def createUnsignedBytesMatrixTexture(rows: Double, columns: Double): WebGLTexture = js.native
+  def createFloat32MatrixTexture(rows: Double, columns: Double): webgl.Texture       = js.native
+  def createFloat16MatrixTexture(rows: Double, columns: Double): webgl.Texture       = js.native
+  def createUnsignedBytesMatrixTexture(rows: Double, columns: Double): webgl.Texture = js.native
   def uploadPixelDataToTexture(
       texture: webgl.Texture,
       pixels: dom.ImageData | html.Image | html.Canvas
@@ -62,12 +62,12 @@ class GPGPUContext protected () extends js.Object {
       matrix: Float32Array
   ): Unit = js.native
   def downloadFloat32MatrixFromOutputTexture(
-      texture: WebGLTexture,
+      texture: webgl.Texture,
       rows: Double,
       columns: Double
   ): Float32Array = js.native
   def downloadByteEncodedFloatMatrixFromOutputTexture(
-      texture: WebGLTexture,
+      texture: webgl.Texture,
       rows: Double,
       columns: Double
   ): Float32Array = js.native

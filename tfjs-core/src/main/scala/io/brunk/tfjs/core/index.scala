@@ -21,8 +21,6 @@ import js.annotation._
 import js.{ Promise, | }
 import Engine.MemoryInfo
 import _root_.io.brunk.tfjs.core
-
-
 @js.native
 trait Index
     extends TensorModule

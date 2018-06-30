@@ -22,9 +22,15 @@ import org.scalajs.dom.experimental.RequestInit
 
 import scala.scalajs.js
 import js.Promise
+import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
 trait WeightsLoader extends js.Object {
+  def loadWeightsAsArrayBuffer(
+      fetchURLs: js.Array[String],
+      requestOptions: RequestInit = ???
+  ): Promise[js.Array[ArrayBuffer]] = js.native
+
   def loadWeights(
       manifest: WeightsManifestConfig,
       filePathPrefix: String = ???,

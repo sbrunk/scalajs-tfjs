@@ -58,10 +58,10 @@ class MathBackendCPU extends KernelBackend {
   def pow[T <: TensorND](a: T, b: TensorND): T                = js.native
   def matMul(a: Tensor2D, b: Tensor2D, transposeA: Boolean, transposeB: Boolean): Tensor2D =
     js.native
-  def multiply(a: TensorND, b: TensorND): TensorND                                      = js.native
-  def realDivide(a: TensorND, b: TensorND): TensorND       = js.native
-  def floorDiv(a: TensorND, b: TensorND): TensorND         = js.native
-  def sum(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
+  def multiply(a: TensorND, b: TensorND): TensorND       = js.native
+  def realDivide(a: TensorND, b: TensorND): TensorND     = js.native
+  def floorDiv(a: TensorND, b: TensorND): TensorND       = js.native
+  def sum(x: TensorND, axes: js.Array[Double]): TensorND = js.native
   def unsortedSegmentSum[T <: TensorND](x: T, segmentIds: Tensor1D, numSegments: Double): TensorND =
     js.native
   def argMin(x: TensorND, axis: Double): TensorND                                       = js.native
@@ -130,7 +130,7 @@ class MathBackendCPU extends KernelBackend {
     js.native
   def depthwiseConv2DDerFilter(x: Tensor4D, dy: Tensor4D, convInfo: Conv2DInfo): Tensor4D =
     js.native
-  def tile[T <: TensorND](x: T, reps: js.Array[Double]): T                              = js.native
+  def tile[T <: TensorND](x: T, reps: js.Array[Double]): T = js.native
   def pad[T <: TensorND](
       x: T,
       paddings: js.Array[js.Tuple2[Double, Double]],

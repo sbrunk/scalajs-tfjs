@@ -18,7 +18,7 @@ package io.brunk.tfjs.core.kernels.webgl
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import org.scalajs.dom.webgl
 import org.scalajs.dom.html
 import org.scalajs.dom
@@ -46,32 +46,32 @@ object Gpgpu_util extends js.Object {
   def createVertexBuffer(gl: webgl.RenderingContext): webgl.Buffer          = js.native
   def createIndexBuffer(gl: webgl.RenderingContext): webgl.Buffer           = js.native
   def getTextureConfig(
-    gl: webgl.RenderingContext,
-    textureHalfFloatExtension: js.Any = ???
+      gl: webgl.RenderingContext,
+      textureHalfFloatExtension: js.Any = ???
   ): TextureConfig = js.native
   def createFloat32MatrixTexture(
-    gl: webgl.RenderingContext,
-    rows: Double,
-    columns: Double,
-    textureConfig: TextureConfig
+      gl: webgl.RenderingContext,
+      rows: Double,
+      columns: Double,
+      textureConfig: TextureConfig
   ): webgl.Texture = js.native
   def createFloat16MatrixTexture(
-    gl: webgl.RenderingContext,
-    rows: Double,
-    columns: Double,
-    textureConfig: TextureConfig
+      gl: webgl.RenderingContext,
+      rows: Double,
+      columns: Double,
+      textureConfig: TextureConfig
   ): webgl.Texture = js.native
   def createUnsignedBytesMatrixTexture(
-    gl: webgl.RenderingContext,
-    rows: Double,
-    columns: Double,
-    textureConfig: TextureConfig
+      gl: webgl.RenderingContext,
+      rows: Double,
+      columns: Double,
+      textureConfig: TextureConfig
   ): webgl.Texture = js.native
   def createPackedMatrixTexture(
       gl: webgl.RenderingContext,
       rows: Double,
       columns: Double,
-     textureConfig: TextureConfig
+      textureConfig: TextureConfig
   ): webgl.Texture = js.native
   def bindVertexProgramAttributeStreams(
       gl: webgl.RenderingContext,
@@ -108,16 +108,16 @@ object Gpgpu_util extends js.Object {
       textureConfig: TextureConfig
   ): Promise[Float32Array] = js.native
   def downloadFloat32MatrixFromOutputTexture(
-    gl:webgl.RenderingContext,
-    rows: Double,
-    columns: Double,
-    textureConfig: TextureConfig
+      gl: webgl.RenderingContext,
+      rows: Double,
+      columns: Double,
+      textureConfig: TextureConfig
   ): Float32Array = js.native
   def downloadByteEncodedFloatMatrixFromOutputTexture(
-    gl:webgl.RenderingContext,
-    rows: Double,
-    columns: Double,
-    textureConfig: TextureConfig
+      gl: webgl.RenderingContext,
+      rows: Double,
+      columns: Double,
+      textureConfig: TextureConfig
   ): Float32Array = js.native
   def downloadMatrixFromPackedOutputTexture(
       gl: webgl.RenderingContext,

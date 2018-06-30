@@ -18,7 +18,7 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import TensorModule.TensorND
 import Types.TypedArray
 
@@ -54,6 +54,6 @@ object Test_util extends js.Object {
       actual: TensorND | TypedArray | js.Array[Double],
       low: Double,
       high: Double
-  ): Unit = js.native
+  ): Unit                                                                       = js.native
   def expectArrayBuffersEqual(actual: ArrayBuffer, expected: ArrayBuffer): Unit = js.native
 }

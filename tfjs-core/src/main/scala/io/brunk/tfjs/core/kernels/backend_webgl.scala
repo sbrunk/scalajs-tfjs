@@ -28,6 +28,7 @@ import org.scalajs.dom.webgl.Texture
 import scala.scalajs.js
 import js.annotation._
 import js.{Promise, |}
+import Engine.MemoryInfo
 
 @js.native
 trait CPUTimerQuery extends js.Object {
@@ -35,11 +36,17 @@ trait CPUTimerQuery extends js.Object {
   var endMs: Double   = js.native
 }
 
-@js.native
-trait WebGLTimingInfo extends TimingInfo {
-  var uploadWaitMs: Double   = js.native
-  var downloadWaitMs: Double = js.native
-}
+  @js.native
+  trait WebGLMemoryInfo extends MemoryInfo {
+    var numBytesInGPU: Double = js.native
+    var unreliable: Boolean   = js.native
+  }
+
+  @js.native
+  trait WebGLTimingInfo extends TimingInfo {
+    var uploadWaitMs: Double   = js.native
+    var downloadWaitMs: Double = js.native
+  }
 
 @js.native
 @JSGlobal
@@ -54,10 +61,9 @@ class MathBackendWebGL protected () extends KernelBackend {
   def readSync(dataId: DataId): TypedArray                                           = js.native
   def read(dataId: DataId): Promise[TypedArray]                                      = js.native
   def time(f: js.Function0[Unit]): Promise[WebGLTimingInfo]                          = js.native
-  def memory(): WebGLMemoryInfo                                                              = js.native
+  def memory(): WebGLMemoryInfo                                                      = js.native
   def disposeData(dataId: DataId): Unit                                              = js.native
   def getTexture(dataId: DataId): Texture                                            = js.native
-  def getTexture(dataId: DataId): WebGlTexture                                    = js.native
   def getGPGPUContext(): GPGPUContext                                                = js.native
   def getCanvas(): html.Canvas                                                       = js.native
   def slice[T <: TensorND](x: T, begin: js.Array[Double], size: js.Array[Double]): T = js.native
@@ -95,10 +101,10 @@ class MathBackendWebGL protected () extends KernelBackend {
       x: T,
       paddings: js.Array[js.Tuple2[Double, Double]],
       constantValue: Double
-  ): T                                                                                  = js.native
-  def transpose[T <: TensorND](x: T, perm: js.Array[Double]): T                         = js.native
-  def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double): T                   = js.native
-  def sum(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
+  ): T                                                                = js.native
+  def transpose[T <: TensorND](x: T, perm: js.Array[Double]): T       = js.native
+  def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double): T = js.native
+  def sum(x: TensorND, axes: js.Array[Double]): TensorND              = js.native
   def unsortedSegmentSum[T <: TensorND](x: T, segmentIds: Tensor1D, numSegments: Double): TensorND =
     js.native
   def argMin(x: TensorND, axis: Double): TensorND                                       = js.native
@@ -123,8 +129,8 @@ class MathBackendWebGL protected () extends KernelBackend {
   def maximum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def all(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def squaredDifference(a: TensorND, b: TensorND): TensorND                             = js.native
-  def realDivide(a: TensorND, b: TensorND): TensorND                                        = js.native
-  def floorDiv(a: TensorND, b: TensorND): TensorND                                        = js.native
+  def realDivide(a: TensorND, b: TensorND): TensorND                                    = js.native
+  def floorDiv(a: TensorND, b: TensorND): TensorND                                      = js.native
   def add(a: TensorND, b: TensorND): TensorND                                           = js.native
   def subtract(a: TensorND, b: TensorND): TensorND                                      = js.native
   def pow[T <: TensorND](a: T, b: TensorND): T                                          = js.native
@@ -172,8 +178,8 @@ class MathBackendWebGL protected () extends KernelBackend {
     js.native
   def depthwiseConv2DDerFilter(x: Tensor4D, dy: Tensor4D, convInfo: Conv2DInfo): Tensor4D =
     js.native
-  def maxPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D                              = js.native
-  def avgPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D                              = js.native
+  def maxPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D = js.native
+  def avgPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D = js.native
   def maxPoolBackprop(dy: Tensor4D, x: Tensor4D, y: Tensor4D, convInfo: Conv2DInfo): Tensor4D =
     js.native
   def avgPoolBackprop(dy: Tensor4D, x: Tensor4D, convInfo: Conv2DInfo): Tensor4D = js.native

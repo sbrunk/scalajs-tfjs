@@ -50,17 +50,17 @@ trait ArrayOps extends js.Object {
       values: TensorLike4D,
       shape: js.Tuple4[Double, Double, Double, Double] = ???,
       dtype: DataType = ???
-  ): Tensor4D                                                                          = js.native
+  ): Tensor4D = js.native
   def tensor5d(
-    values: TensorLike5D,
-    shape: js.Tuple5[Double, Double, Double, Double, Double] = ???,
-    dtype: DataType = ???
+      values: TensorLike5D,
+      shape: js.Tuple5[Double, Double, Double, Double, Double] = ???,
+      dtype: DataType = ???
   ): Tensor5D = js.native
   def tensor6d(
-    values: TensorLike6D,
-    shape: js.Tuple6[Double, Double, Double, Double, Double, Double] = ???,
-    dtype: DataType = ???
-  ): Tensor6D
+      values: TensorLike6D,
+      shape: js.Tuple6[Double, Double, Double, Double, Double, Double] = ???,
+      dtype: DataType = ???
+  ): Tensor6D = js.native
   def ones[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]                = js.native
   def zeros[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]               = js.native
   def fill[R <: Rank](shape: R#Shape, value: Double, dtype: DataType = ???): Tensor[R] = js.native

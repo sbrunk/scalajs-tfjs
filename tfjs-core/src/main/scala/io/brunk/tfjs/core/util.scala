@@ -82,9 +82,9 @@ object Util extends js.Object {
   ): js.Any = js.native
   def isTypedArray(
       a: TypedArray | Double | Boolean | RegularArray[Double] | RegularArray[Boolean]
-  ): Boolean                                                                   = js.native
-  def bytesPerElement(dtype: DataType): Double                                 = js.native
-  def isFunction(f: js.Function): Boolean                                      = js.native
-  def getTensorsInContainer(result: TensorContainer): js.Array[Tensor] = js.native
-  def nearestDivisor(size: Double, start: Double): Double              = js.native
+  ): Boolean                                                             = js.native
+  def bytesPerElement(dtype: DataType): Double                           = js.native
+  def isFunction(f: js.Function): Boolean                                = js.native
+  def getTensorsInContainer(result: TensorContainer): js.Array[TensorND] = js.native
+  def nearestDivisor(size: Double, start: Double): Double                = js.native
 }

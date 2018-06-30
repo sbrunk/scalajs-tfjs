@@ -52,9 +52,9 @@ trait ReductionOps extends js.Object {
   def argMin[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
   def argMax[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
   def all[T <: TensorND](
-    x: TensorND,
-    axis: Double | js.Array[Double] = ???,
-    keepDims: Boolean = ???
+      x: TensorND,
+      axis: Double | js.Array[Double] = ???,
+      keepDims: Boolean = ???
   ): T = js.native
   def moments(x: TensorND, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
     js.native

@@ -191,12 +191,12 @@ trait InferenceModel extends js.Object {
   def inputs: js.Array[TensorInfo]  = js.native
   def outputs: js.Array[TensorInfo] = js.native
   def predict(
-    inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
-    config: ModelPredictConfig
+      inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
+      config: ModelPredictConfig
   ): TensorND | js.Array[TensorND] | NamedTensorMap = js.native
   def execute(
-    inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
-    outputs: String | js.Array[String]
+      inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
+      outputs: String | js.Array[String]
   ): TensorND | js.Array[TensorND] = js.native
 }
 
@@ -208,13 +208,13 @@ object Types extends js.Object {
   type TensorLike =
     TypedArray | Double | Boolean | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[
       js.Array[js.Array[Double]]
-      ] | js.Array[js.Array[js.Array[js.Array[Double]]]] | js.Array[
+    ] | js.Array[js.Array[js.Array[js.Array[Double]]]] | js.Array[
       js.Array[js.Array[js.Array[js.Array[Double]]]]
-      ] | js.Array[js.Array[js.Array[js.Array[js.Array[js.Array[Double]]]]]] | js.Array[Boolean] | js.Array[
+    ] | js.Array[js.Array[js.Array[js.Array[js.Array[js.Array[Double]]]]]] | js.Array[Boolean] | js.Array[
       js.Array[Boolean]
-      ] | js.Array[js.Array[js.Array[Boolean]]] | js.Array[js.Array[js.Array[js.Array[Boolean]]]] | js.Array[
+    ] | js.Array[js.Array[js.Array[Boolean]]] | js.Array[js.Array[js.Array[js.Array[Boolean]]]] | js.Array[
       js.Array[js.Array[js.Array[js.Array[Boolean]]]]
-      ] | js.Array[js.Array[js.Array[js.Array[js.Array[js.Array[Boolean]]]]]]
+    ] | js.Array[js.Array[js.Array[js.Array[js.Array[js.Array[Boolean]]]]]]
   type TensorLike1D = TypedArray | js.Array[Double] | js.Array[Boolean]
   type TensorLike2D =
     TypedArray | js.Array[Double] | js.Array[js.Array[Double]] | js.Array[Boolean] | js.Array[
@@ -230,17 +230,17 @@ object Types extends js.Object {
     ] | js.Array[js.Array[js.Array[js.Array[Boolean]]]]
   type TensorLike5D = TypedArray | js.Array[Double] | js.Array[
     js.Array[js.Array[js.Array[js.Array[Double]]]]
-    ] | js.Array[Boolean] | js.Array[js.Array[js.Array[js.Array[js.Array[Boolean]]]]]
+  ] | js.Array[Boolean] | js.Array[js.Array[js.Array[js.Array[js.Array[Boolean]]]]]
   type TensorLike6D = TypedArray | js.Array[Double] | js.Array[
     js.Array[js.Array[js.Array[js.Array[js.Array[Double]]]]]
-    ] | js.Array[Boolean] | js.Array[js.Array[js.Array[js.Array[js.Array[js.Array[Boolean]]]]]]
+  ] | js.Array[Boolean] | js.Array[js.Array[js.Array[js.Array[js.Array[js.Array[Boolean]]]]]]
   type FlatVector = js.Array[Boolean] | js.Array[Double] | TypedArray
   type RegularArray[T] =
     js.Array[T] | js.Array[js.Array[T]] | js.Array[js.Array[js.Array[T]]] | js.Array[
       js.Array[js.Array[js.Array[T]]]
-      ] | js.Array[js.Array[js.Array[js.Array[js.Array[T]]]]] | js.Array[
+    ] | js.Array[js.Array[js.Array[js.Array[js.Array[T]]]]] | js.Array[
       js.Array[js.Array[js.Array[js.Array[js.Array[T]]]]]
-      ]
+    ]
   type ArrayData[D <: DataType] = js.Any | RegularArray[Double] | RegularArray[Boolean]
   //type NamedTensorMap           = js.Dictionary[Tensor[Rank]]
   //type NamedVariableMap         = js.Dictionary[Variable[Rank]]

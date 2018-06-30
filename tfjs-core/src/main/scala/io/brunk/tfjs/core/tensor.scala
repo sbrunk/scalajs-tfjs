@@ -81,7 +81,7 @@ class Tensor[+R <: Rank] protected () extends js.Object {
       axis: Double = ???,
       exclusive: Boolean = ???,
       reverse: Boolean = ???
-  ): T = js.native
+  ): T                                                                            = js.native
   def squeeze[T <: TensorND](axis: js.Array[Double] = ???): T                     = js.native
   def clone[T <: TensorND](`this`: T): T                                          = js.native
   def toString(verbose: Boolean = ???): String                                    = js.native
@@ -116,7 +116,7 @@ class Tensor[+R <: Rank] protected () extends js.Object {
       scale: Tensor[RR] | Tensor1D = ???,
       offset: Tensor[RR] | Tensor1D = ???
   ): Tensor[RR] = js.native
-  def all[T <: Tensor](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
+  def all[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
   def logSumExp[T <: TensorND](axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T =
     js.native
@@ -140,7 +140,7 @@ class Tensor[+R <: Rank] protected () extends js.Object {
   def mul[T <: TensorND](x: TensorND): T                                   = js.native
   def mulStrict[T <: this.type](`this`: T, x: T): T                        = js.native
   def div[T <: TensorND](x: TensorND): T                                   = js.native
-  def floorDiv[T <: TensorND](x: TensorND): T                                = js.native
+  def floorDiv[T <: TensorND](x: TensorND): T                              = js.native
   def divStrict[T <: this.type](`this`: T, x: T): T                        = js.native
   def minimum[T <: TensorND](x: TensorND): T                               = js.native
   def minimumStrict[T <: this.type](`this`: T, x: T): T                    = js.native
@@ -321,8 +321,8 @@ trait TensorModule extends js.Object {
   type Tensor2D   = Tensor[Rank.R2]
   type Tensor3D   = Tensor[Rank.R3]
   type Tensor4D   = Tensor[Rank.R4]
-  type Tensor5D = Tensor[Rank.R5]
-  type Tensor6D = Tensor[Rank.R6]
+  type Tensor5D   = Tensor[Rank.R5]
+  type Tensor6D   = Tensor[Rank.R6]
   type TensorND   = Tensor[Rank]
   type VariableND = Variable[Rank]
   //val variable: Variable.variable.type = js.native
