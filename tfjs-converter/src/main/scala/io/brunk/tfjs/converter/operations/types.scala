@@ -19,6 +19,7 @@ package io.brunk.tfjs.converter.operations
 import scala.scalajs.js
 import js.annotation._
 import js.|
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 object types {
 
@@ -101,7 +102,7 @@ trait ParamValue extends js.Object {
 object Types extends js.Object {
   type ParamTypes = String
   type Category = String
-  type ValueType = String | js.Array[String] | Double | js.Array[Double] | Boolean | js.Array[Boolean] | Tensor | js.Array[Tensor]
+  type ValueType = String | js.Array[String] | Double | js.Array[Double] | Boolean | js.Array[Boolean] | TensorND | js.Array[TensorND]
 }
 
 }

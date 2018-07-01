@@ -23,7 +23,7 @@ import js.|
 package types {
 
   import io.brunk.tfjs.converter.data.types.Types.NamedTensorsMap
-  import io.brunk.tfjs.converter.executor.execution_context.ExecutionContext
+  import io.brunk.tfjs.converter.executor.ExecutionContext
   import io.brunk.tfjs.converter.operations.types.Node
   import io.brunk.tfjs.core.TensorModule.TensorND
 

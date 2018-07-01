@@ -16,15 +16,21 @@
 
 package io.brunk.tfjs.converter.operations.executors
 
+import io.brunk.tfjs.converter.data.types.Types.NamedTensorsMap
+import io.brunk.tfjs.converter.executor.ExecutionContext
+import io.brunk.tfjs.converter.operations.types.Node
+
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
+
+import io.brunk.tfjs.core.TensorModule.TensorND
 
 
 @js.native
 @JSGlobalScope
 object Control_executor extends js.Object {
-  def executeOp(node: Node, tensorMap: NamedTensorsMap, context: ExecutionContext): Promise[js.Array[tfc.Tensor]] = js.native
+  def executeOp(node: Node, tensorMap: NamedTensorsMap, context: ExecutionContext): Promise[js.Array[TensorND]] = js.native
   val CATEGORY: String = js.native
 }
 

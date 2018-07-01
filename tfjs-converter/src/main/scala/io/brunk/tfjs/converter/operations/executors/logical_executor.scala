@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.converter.operations.executors
 
+import io.brunk.tfjs.converter.operations.executors.types.OpExecutor
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

@@ -21,12 +21,10 @@ import js.annotation._
 import js.|
 import io.brunk.tfjs.{tf => tfc}
 
-package frozen_model {
+import io.brunk.tfjs.converter.data.compiled_api.tensorflow.TensorInfo
+import org.scalajs.dom.experimental.RequestInit
 
-  import io.brunk.tfjs.converter.data.compiled_api.tensorflow.TensorInfo
-  import org.scalajs.dom.experimental.RequestInit
-
-  import scala.scalajs.js.Promise
+import scala.scalajs.js.Promise
 
   @js.native
 @JSGlobal
@@ -51,4 +49,3 @@ object Frozen_model extends js.Object {
   def loadFrozenModel(modelUrl: String, weightsManifestUrl: String, requestOption: RequestInit = ???): Promise[FrozenModel] = js.native
 }
 
-}

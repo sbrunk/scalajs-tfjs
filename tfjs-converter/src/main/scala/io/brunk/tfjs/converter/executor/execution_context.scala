@@ -19,8 +19,7 @@ package io.brunk.tfjs.converter.executor
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-package execution_context {
+import io.brunk.tfjs.core.TensorModule.TensorND
 
   import io.brunk.tfjs.converter.data.types.Types.NamedTensorsMap
 
@@ -42,7 +41,6 @@ class ExecutionContext protected () extends js.Object {
   def enterFrame(frameId: String): Unit = js.native
   def exitFrame(): Unit = js.native
   def nextIteration(): Unit = js.native
-  def getWeight(name: String): js.Array[Tensor] = js.native
+  def getWeight(name: String): js.Array[TensorND] = js.native
 }
 
-}
