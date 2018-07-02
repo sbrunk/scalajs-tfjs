@@ -22,7 +22,7 @@ import js.|
 import io.brunk.tfjs.converter.data.compiled_api.tensorflow.IGraphDef
 import io.brunk.tfjs.converter.operations.types.Graph
 
-  @js.native
+@js.native
 @JSGlobal
 class OperationMapper extends js.Object {
   def transformGraph(graph: IGraphDef): Graph = js.native
@@ -33,4 +33,3 @@ class OperationMapper extends js.Object {
 object OperationMapper extends js.Object {
   def Instance: OperationMapper = js.native
 }
-

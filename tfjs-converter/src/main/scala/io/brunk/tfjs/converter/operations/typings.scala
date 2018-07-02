@@ -22,10 +22,10 @@ import js.|
 
 package typings {
 
-@js.native
-@JSGlobal("*.json")
-object json extends js.Object {
-  val value: js.Any = js.native
-}
+  @js.native
+  @JSGlobal("*.json")
+  object json extends js.Object {
+    val value: js.Any = js.native
+  }
 
 }

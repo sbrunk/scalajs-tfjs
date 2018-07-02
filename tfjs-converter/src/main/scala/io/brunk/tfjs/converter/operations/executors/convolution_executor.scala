@@ -26,6 +26,5 @@ import js.|
 @JSGlobalScope
 object Convolution_executor extends js.Object {
   def executeOp: OpExecutor = js.native
-  val CATEGORY: String = js.native
+  val CATEGORY: String      = js.native
 }
-

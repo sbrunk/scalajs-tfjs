@@ -21,12 +21,9 @@ import io.brunk.tfjs.converter.operations.executors.types.OpExecutor
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-
 @js.native
 @JSGlobalScope
 object Matrices_executor extends js.Object {
   def executeOp: OpExecutor = js.native
-  val CATEGORY: String = js.native
+  val CATEGORY: String      = js.native
 }
-

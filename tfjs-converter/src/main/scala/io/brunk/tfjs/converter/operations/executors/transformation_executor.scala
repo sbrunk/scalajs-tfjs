@@ -25,10 +25,10 @@ package transformation_executor {
   import io.brunk.tfjs.converter.operations.executors.types.OpExecutor
 
   @js.native
-@JSGlobalScope
-object Transformation_executor extends js.Object {
-  def executeOp: OpExecutor = js.native
-  val CATEGORY: String = js.native
-}
+  @JSGlobalScope
+  object Transformation_executor extends js.Object {
+    def executeOp: OpExecutor = js.native
+    val CATEGORY: String      = js.native
+  }
 
 }

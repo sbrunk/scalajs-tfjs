@@ -25,10 +25,10 @@ package basic_math_executor {
   import io.brunk.tfjs.converter.operations.executors.types.OpExecutor
 
   @js.native
-@JSGlobalScope
-object Basic_math_executor extends js.Object {
-  def executeOp: OpExecutor = js.native
-  val CATEGORY: String = js.native
-}
+  @JSGlobalScope
+  object Basic_math_executor extends js.Object {
+    def executeOp: OpExecutor = js.native
+    val CATEGORY: String      = js.native
+  }
 
 }

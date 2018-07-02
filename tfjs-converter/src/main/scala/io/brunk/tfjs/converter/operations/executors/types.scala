@@ -28,11 +28,13 @@ package types {
   import io.brunk.tfjs.core.TensorModule.TensorND
 
   import scala.scalajs.js.Promise
-
-
   @js.native
-trait OpExecutor extends js.Object {
-  def apply(node: Node, tensorMap: NamedTensorsMap, context: ExecutionContext): js.Array[TensorND] | Promise[js.Array[TensorND]] = js.native
-}
+  trait OpExecutor extends js.Object {
+    def apply(
+        node: Node,
+        tensorMap: NamedTensorsMap,
+        context: ExecutionContext
+    ): js.Array[TensorND] | Promise[js.Array[TensorND]] = js.native
+  }
 
 }

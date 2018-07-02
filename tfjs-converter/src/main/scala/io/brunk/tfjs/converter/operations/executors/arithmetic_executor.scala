@@ -26,6 +26,5 @@ import io.brunk.tfjs.converter.operations.executors.types.OpExecutor
 @JSGlobalScope
 object Arithmetic_executor extends js.Object {
   def executeOp: OpExecutor = js.native
-  val CATEGORY: String = js.native
+  val CATEGORY: String      = js.native
 }
-

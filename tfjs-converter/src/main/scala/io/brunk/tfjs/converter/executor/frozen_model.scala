@@ -16,36 +16,48 @@
 
 package io.brunk.tfjs.converter.executor
 
+import io.brunk.tfjs.core.TensorInfo
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
 import io.brunk.tfjs.{tf => tfc}
-
-import io.brunk.tfjs.converter.data.compiled_api.tensorflow.TensorInfo
 import org.scalajs.dom.experimental.RequestInit
 
 import scala.scalajs.js.Promise
 
-  @js.native
+@js.native
 @JSGlobal
 class FrozenModel protected () extends tfc.InferenceModel {
   def this(modelUrl: String, weightManifestUrl: String, requestOption: RequestInit = ???) = this()
-  def modelVersion: String = js.native
-  def inputNodes: js.Array[String] = js.native
+  def modelVersion: String          = js.native
+  def inputNodes: js.Array[String]  = js.native
   def outputNodes: js.Array[String] = js.native
-  def inputs: js.Array[TensorInfo] = js.native
-  def outputs: js.Array[TensorInfo] = js.native
-  def getPathPrefix(): String = js.native
-  def load(): Promise[Boolean] = js.native
-  def predict(inputs: tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap, config: tfc.ModelPredictConfig = ???): tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap = js.native
-  def execute(inputs: tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap, outputs: String | js.Array[String] = ???): tfc.TensorND | js.Array[tfc.TensorND] = js.native
-  def executeAsync(inputs: tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap, outputs: String | js.Array[String] = ???): Promise[tfc.TensorND | js.Array[tfc.TensorND]] = js.native
-  def dispose(): Unit = js.native
+  override def inputs: js.Array[TensorInfo]  = js.native
+  override def outputs: js.Array[TensorInfo] = js.native
+  def getPathPrefix(): String       = js.native
+  def load(): Promise[Boolean]      = js.native
+  override def predict(
+      inputs: tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap,
+      config: tfc.ModelPredictConfig = ???
+  ): tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap = js.native
+  override def execute(
+      inputs: tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap,
+      outputs: String | js.Array[String] = ???
+  ): tfc.TensorND | js.Array[tfc.TensorND] = js.native
+  def executeAsync(
+      inputs: tfc.TensorND | js.Array[tfc.TensorND] | tfc.NamedTensorMap,
+      outputs: String | js.Array[String] = ???
+  ): Promise[tfc.TensorND | js.Array[tfc.TensorND]] = js.native
+  def dispose(): Unit                               = js.native
 }
 
 @js.native
 @JSGlobalScope
 object Frozen_model extends js.Object {
-  def loadFrozenModel(modelUrl: String, weightsManifestUrl: String, requestOption: RequestInit = ???): Promise[FrozenModel] = js.native
+  def loadFrozenModel(
+      modelUrl: String,
+      weightsManifestUrl: String,
+      requestOption: RequestInit = ???
+  ): Promise[FrozenModel] = js.native
 }
-

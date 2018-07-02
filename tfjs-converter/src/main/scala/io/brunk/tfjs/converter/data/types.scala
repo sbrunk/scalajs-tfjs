@@ -23,10 +23,10 @@ import io.brunk.tfjs.core.TensorModule.TensorND
 
 package types {
 
-@js.native
-@JSGlobalScope
-object Types extends js.Object {
-  type NamedTensorsMap = js.Dictionary[js.Array[TensorND]]
-}
+  @js.native
+  @JSGlobalScope
+  object Types extends js.Object {
+    type NamedTensorsMap = js.Dictionary[js.Array[TensorND]]
+  }
 
 }
