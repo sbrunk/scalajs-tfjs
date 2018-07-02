@@ -57,20 +57,20 @@ package protobufjs {
 
     @js.native
     trait IAny extends js.Object {
-      var typeUrl: String = js.native
-      var bytes: Uint8Array = js.native
+      var typeUrl: String
+      var bytes: Uint8Array
     }
 
     @js.native
     trait IDuration extends js.Object {
-      var seconds: Double | Long = js.native
-      var nanos: Double = js.native
+      var seconds: Double | Long
+      var nanos: Double
     }
 
     @js.native
     trait ITimestamp extends js.Object {
-      var seconds: Double | Long = js.native
-      var nanos: Double = js.native
+      var seconds: Double | Long
+      var nanos: Double
     }
 
     @js.native
@@ -79,7 +79,7 @@ package protobufjs {
 
     @js.native
     trait IStruct extends js.Object {
-      var fields: IStruct.Fields = js.native
+      var fields: IStruct.Fields
     }
 
     object IStruct {
@@ -97,63 +97,63 @@ package protobufjs {
 
     @js.native
     trait IValue extends js.Object {
-      var kind: String = js.native
-      var nullValue: Int = js.native
-      var numberValue: Double = js.native
-      var stringValue: String = js.native
-      var boolValue: Boolean = js.native
-      var structValue: IStruct = js.native
-      var listValue: IListValue = js.native
+      var kind: String
+      var nullValue: Int
+      var numberValue: Double
+      var stringValue: String
+      var boolValue: Boolean
+      var structValue: IStruct
+      var listValue: IListValue
     }
 
     @js.native
     trait IListValue extends js.Object {
-      var values: js.Array[IValue] = js.native
+      var values: js.Array[IValue]
     }
 
     @js.native
     trait IDoubleValue extends js.Object {
-      var value: Double = js.native
+      var value: Double
     }
 
     @js.native
     trait IFloatValue extends js.Object {
-      var value: Double = js.native
+      var value: Double
     }
 
     @js.native
     trait IInt64Value extends js.Object {
-      var value: Double | Long = js.native
+      var value: Double | Long
     }
 
     @js.native
     trait IUInt64Value extends js.Object {
-      var value: Double | Long = js.native
+      var value: Double | Long
     }
 
     @js.native
     trait IInt32Value extends js.Object {
-      var value: Double = js.native
+      var value: Double
     }
 
     @js.native
     trait IUInt32Value extends js.Object {
-      var value: Double = js.native
+      var value: Double
     }
 
     @js.native
     trait IBoolValue extends js.Object {
-      var value: Boolean = js.native
+      var value: Boolean
     }
 
     @js.native
     trait IStringValue extends js.Object {
-      var value: String = js.native
+      var value: String
     }
 
     @js.native
     trait IBytesValue extends js.Object {
-      var value: Uint8Array = js.native
+      var value: Uint8Array
     }
 
     @js.native
@@ -185,7 +185,7 @@ package protobufjs {
 
     var valuesById: Enum.ValuesById = js.native
     var values: Enum.Values = js.native
-    var comment: String | Null = js.native
+    //var comment: String | Null = js.native
     var comments: Enum.Comments = js.native
     var reserved: js.Array[js.Array[Double] | String] = js.native
 
@@ -234,8 +234,8 @@ package protobufjs {
 
   @js.native
   trait IEnum extends js.Object {
-    var values: IEnum.Values = js.native
-    var options: IEnum.Options = js.native
+    var values: IEnum.Values
+    var options: IEnum.Options
   }
 
   object IEnum {
@@ -275,7 +275,8 @@ package protobufjs {
 
     def d[T <: Double | js.Array[Double] | Long | js.Array[Long] | String | js.Array[String] | Boolean | js.Array[Boolean] | Uint8Array | js.Array[Uint8Array] | Buffer | js.Array[Buffer]](fieldId: Double, fieldType: String | js.Object, fieldRule: String = ???, defaultValue: T = ???): FieldDecorator = js.native
 
-    def d[T <: Message[T]](fieldId: Double, fieldType: Constructor[T] | String, fieldRule: String = ???): FieldDecorator = js.native
+    @JSName("d")
+    def dM[T <: Message[T]](fieldId: Double, fieldType: Constructor[T] | String, fieldRule: String = ???): FieldDecorator = js.native
   }
 
   @js.native
@@ -300,19 +301,19 @@ package protobufjs {
     var resolvedType: Type | Enum | Null = js.native
     var extensionField: Field | Null = js.native
     var declaringField: Field | Null = js.native
-    var comment: String | Null = js.native
+//    var comment: String | Null = js.native
 
     def toJSON(toJSONOptions: IToJSONOptions = ???): IField = js.native
 
-    def resolve(): Field = js.native
+//    def resolve(): Field = js.native
   }
 
   @js.native
   trait IField extends js.Object {
-    var rule: String = js.native
-    var `type`: String = js.native
-    var id: Double = js.native
-    var options: IField.Options = js.native
+    var rule: String
+    var `type`: String
+    var id: Double
+    var options: IField.Options
   }
 
   object IField {
@@ -330,7 +331,7 @@ package protobufjs {
 
   @js.native
   trait IExtensionField extends IField {
-    var extend: String = js.native
+    var extend: String
   }
 
   @js.native
@@ -341,7 +342,7 @@ package protobufjs {
     var keyType: String = js.native
     var resolvedKeyType: ReflectionObject | Null = js.native
 
-    def toJSON(toJSONOptions: IToJSONOptions = ???): IMapField = js.native
+//    def toJSON(toJSONOptions: IToJSONOptions = ???): IMapField = js.native
   }
 
   @js.native
@@ -349,17 +350,17 @@ package protobufjs {
   object MapField extends js.Object {
     def fromJSON(name: String, json: IMapField): MapField = js.native
 
-    def d[T <: js.Dictionary[Double | Long | String | Boolean | Uint8Array | Buffer | js.Array[Double] | Message[js.Any]]](fieldId: Double, fieldKeyType: String, fieldValueType: String | js.Object | Constructor[js.Any]): FieldDecorator = js.native
+    def d[T <: js.Dictionary[Double | Long | String | Boolean | Uint8Array | Buffer | js.Array[Double] | Message[js.Object]]](fieldId: Double, fieldKeyType: String, fieldValueType: String | js.Object | Constructor[js.Any]): FieldDecorator = js.native
   }
 
   @js.native
   trait IMapField extends IField {
-    var keyType: String = js.native
+    var keyType: String
   }
 
   @js.native
   trait IExtensionMapField extends IMapField {
-    var extend: String = js.native
+    var extend: String
   }
 
   @js.native
@@ -408,7 +409,7 @@ package protobufjs {
     var responseStream: Boolean = js.native
     var resolvedRequestType: Type | Null = js.native
     var resolvedResponseType: Type | Null = js.native
-    var comment: String | Null = js.native
+//    var comment: String | Null = js.native
 
     def toJSON(toJSONOptions: IToJSONOptions = ???): IMethod = js.native
   }
@@ -421,12 +422,12 @@ package protobufjs {
 
   @js.native
   trait IMethod extends js.Object {
-    var `type`: String = js.native
-    var requestType: String = js.native
-    var responseType: String = js.native
-    var requestStream: Boolean = js.native
-    var responseStream: Boolean = js.native
-    var options: IMethod.Options = js.native
+    var `type`: String
+    var requestType: String
+    var responseType: String
+    var requestStream: Boolean
+    var responseStream: Boolean
+    var options: IMethod.Options
   }
 
   object IMethod {
@@ -483,9 +484,14 @@ package protobufjs {
 
     def resolveAll(): Namespace = js.native
 
-    def lookup(path: String | js.Array[String], filterTypes: js.Any | js.Array[js.Any], parentAlreadyChecked: Boolean = ???): ReflectionObject | Null = js.native
+    def lookup(path: String | js.Array[String], filterTypes: js.Any | js.Array[js.Any], parentAlreadyChecked: Boolean): ReflectionObject | Null = js.native
 
-    def lookup(path: String | js.Array[String], parentAlreadyChecked: Boolean = ???): ReflectionObject | Null = js.native
+    def lookup(path: String | js.Array[String], filterTypes: js.Any | js.Array[js.Any]): ReflectionObject | Null = js.native
+
+    def lookup(path: String | js.Array[String], parentAlreadyChecked: Boolean): ReflectionObject | Null = js.native
+
+    def lookup(path: String | js.Array[String]): ReflectionObject | Null = js.native
+
 
     def lookupType(path: String | js.Array[String]): Type = js.native
 
@@ -511,8 +517,8 @@ package protobufjs {
 
   @js.native
   trait INamespace extends js.Object {
-    var options: INamespace.Options = js.native
-    var nested: INamespace.Nested = js.native
+    var options: INamespace.Options
+    var nested: INamespace.Nested
   }
 
   object INamespace {
@@ -590,7 +596,7 @@ package protobufjs {
 
     def fieldsArray: js.Array[Field] = js.native
 
-    var comment: String | Null = js.native
+//    var comment: String | Null = js.native
 
     def toJSON(toJSONOptions: IToJSONOptions = ???): IOneOf = js.native
 
@@ -609,8 +615,8 @@ package protobufjs {
 
   @js.native
   trait IOneOf extends js.Object {
-    var oneof: js.Array[String] = js.native
-    var options: IOneOf.Options = js.native
+    var oneof: js.Array[String]
+    var options: IOneOf.Options
   }
 
   object IOneOf {
@@ -628,22 +634,22 @@ package protobufjs {
 
   @js.native
   trait IParserResult extends js.Object {
-    var `package`: String | Unit = js.native
-    var imports: js.Array[String] | Unit = js.native
-    var weakImports: js.Array[String] | Unit = js.native
-    var syntax: String | Unit = js.native
-    var root: Root = js.native
+    var `package`: String | Unit
+    var imports: js.Array[String] | Unit
+    var weakImports: js.Array[String] | Unit
+    var syntax: String | Unit
+    var root: Root
   }
 
   @js.native
   trait IParseOptions extends js.Object {
-    var keepCase: Boolean = js.native
-    var alternateCommentMode: Boolean = js.native
+    var keepCase: Boolean
+    var alternateCommentMode: Boolean
   }
 
   @js.native
   trait IToJSONOptions extends js.Object {
-    var keepComments: Boolean = js.native
+    var keepComments: Boolean
   }
 
   @js.native
@@ -701,7 +707,7 @@ package protobufjs {
   class BufferReader protected() extends Reader {
     def this(buffer: Buffer) = this()
 
-    def bytes(): Buffer = js.native
+//    def bytes(): Buffer = js.native
   }
 
   @js.native
@@ -774,7 +780,7 @@ package protobufjs {
 
     var methods: Service.Methods = js.native
 
-    def toJSON(toJSONOptions: IToJSONOptions = ???): IService = js.native
+//    def toJSON(toJSONOptions: IToJSONOptions = ???): IService = js.native
 
     def methodsArray: js.Array[Method] = js.native
 
@@ -797,7 +803,7 @@ package protobufjs {
 
   @js.native
   trait IService extends INamespace {
-    var methods: IService.Methods = js.native
+    var methods: IService.Methods
   }
 
   object IService {
@@ -851,33 +857,33 @@ package protobufjs {
 
     var ctor: Constructor[js.Any] = js.native
 
-    def toJSON(toJSONOptions: IToJSONOptions = ???): IType = js.native
+//    def toJSON(toJSONOptions: IToJSONOptions = ???): IType = js.native
 
-    def add(`object`: ReflectionObject): Type = js.native
+//    def add(`object`: ReflectionObject): Type = js.native
 
-    def remove(`object`: ReflectionObject): Type = js.native
+//    def remove(`object`: ReflectionObject): Type = js.native
 
     def isReservedId(id: Double): Boolean = js.native
 
     def isReservedName(name: String): Boolean = js.native
 
-    def create(properties: js.Dictionary[js.Any] = ???): Message[js.Any] = js.native
+    def create(properties: js.Dictionary[js.Any] = ???): Message[js.Object] = js.native
 
     def setup(): Type = js.native
 
-    def encode(message: Message[js.Any] | js.Dictionary[js.Any], writer: Writer = ???): Writer = js.native
+    def encode(message: Message[js.Object] | js.Dictionary[js.Any], writer: Writer = ???): Writer = js.native
 
-    def encodeDelimited(message: Message[js.Any] | js.Dictionary[js.Any], writer: Writer = ???): Writer = js.native
+    def encodeDelimited(message: Message[js.Object] | js.Dictionary[js.Any], writer: Writer = ???): Writer = js.native
 
-    def decode(reader: Reader | Uint8Array, length: Double = ???): Message[js.Any] = js.native
+    def decode(reader: Reader | Uint8Array, length: Double = ???): Message[js.Object] = js.native
 
-    def decodeDelimited(reader: Reader | Uint8Array): Message[js.Any] = js.native
+    def decodeDelimited(reader: Reader | Uint8Array): Message[js.Object] = js.native
 
     def verify(message: js.Dictionary[js.Any]): Null | String = js.native
 
-    def fromObject(`object`: js.Dictionary[js.Any]): Message[js.Any] = js.native
+    def fromObject(`object`: js.Dictionary[js.Any]): Message[js.Object] = js.native
 
-    def toObject(message: Message[js.Any], options: IConversionOptions = ???): js.Dictionary[js.Any] = js.native
+    def toObject(message: Message[js.Object], options: IConversionOptions = ???): js.Dictionary[js.Any] = js.native
   }
 
   object Type {
@@ -918,11 +924,11 @@ package protobufjs {
 
   @js.native
   trait IType extends INamespace {
-    var oneofs: IType.Oneofs = js.native
-    var fields: IType.Fields = js.native
-    var extensions: js.Array[js.Array[Double]] = js.native
-    var reserved: js.Array[js.Array[Double]] = js.native
-    var group: Boolean = js.native
+    var oneofs: IType.Oneofs
+    var fields: IType.Fields
+    var extensions: js.Array[js.Array[Double]]
+    var reserved: js.Array[js.Array[Double]]
+    var group: Boolean
   }
 
   object IType {
@@ -949,14 +955,14 @@ package protobufjs {
 
   @js.native
   trait IConversionOptions extends js.Object {
-    var longs: js.Function = js.native
-    var enums: js.Function = js.native
-    var bytes: js.Function = js.native
-    var defaults: Boolean = js.native
-    var arrays: Boolean = js.native
-    var objects: Boolean = js.native
-    var oneofs: Boolean = js.native
-    var json: Boolean = js.native
+    var longs: js.Function
+    var enums: js.Function
+    var bytes: js.Function
+    var defaults: Boolean
+    var arrays: Boolean
+    var objects: Boolean
+    var oneofs: Boolean
+    var json: Boolean
   }
 
   package types {
@@ -1060,9 +1066,9 @@ package protobufjs {
 
   @js.native
   trait Long extends js.Object {
-    var low: Double = js.native
-    var high: Double = js.native
-    var unsigned: Boolean = js.native
+    var low: Double
+    var high: Double
+    var unsigned: Boolean
   }
 
   package util {
@@ -1276,9 +1282,13 @@ package protobufjs {
 
       def asPromise(fn: asPromiseCallback, ctx: js.Any, params: js.Any*): Promise[js.Any] = js.native
 
-      def codegen(functionParams: js.Array[String], functionName: String = ???): Codegen = js.native
+      def codegen(functionParams: js.Array[String], functionName: String): Codegen = js.native
 
-      def codegen(functionName: String = ???): Codegen = js.native
+      def codegen(functionParams: js.Array[String]): Codegen = js.native
+
+      def codegen(functionName: String): Codegen = js.native
+
+      def codegen(): Codegen = js.native
 
       def fetch(filename: String, options: IFetchOptions, callback: FetchCallback): Unit = js.native
 
@@ -1305,8 +1315,8 @@ package protobufjs {
 
   @js.native
   trait IWrapper extends js.Object {
-    var fromObject: WrapperFromObjectConverter = js.native
-    var toObject: WrapperToObjectConverter = js.native
+    var fromObject: WrapperFromObjectConverter
+    var toObject: WrapperToObjectConverter
   }
 
   @js.native
@@ -1367,7 +1377,7 @@ package protobufjs {
   @js.native
   @JSGlobal
   class BufferWriter extends Writer {
-    def finish(): Buffer = js.native
+    override def finish(): Buffer = js.native
   }
 
   @js.native
@@ -1378,8 +1388,8 @@ package protobufjs {
 
   @js.native
   trait IFetchOptions extends js.Object {
-    var binary: Boolean = js.native
-    var xhr: Boolean = js.native
+    var binary: Boolean
+    var xhr: Boolean
   }
 
   @js.native
@@ -1410,11 +1420,15 @@ package protobufjs {
     type AnyNestedObject = IEnum | IType | IService | AnyExtensionField | INamespace
     type OneOfDecorator = js.Function2[js.Object, String, Unit]
 
-    def parse(source: String, options: IParseOptions = ???): IParserResult = js.native
+    def parse(source: String, options: IParseOptions): IParserResult = js.native
 
-    def parse(source: String, root: Root, options: IParseOptions = ???): IParserResult = js.native
+    def parse(source: String): IParserResult = js.native
 
-    type RPCImpl = js.Function3[Method | ServiceMethod[Message[js.Any], Message[js.Any]], Uint8Array, RPCImplCallback, Unit]
+    def parse(source: String, root: Root, options: IParseOptions): IParserResult = js.native
+
+    def parse(source: String, root: Root): IParserResult = js.native
+
+    type RPCImpl = js.Function3[Method | ServiceMethod[Message[js.Object], Message[js.Object]], Uint8Array, RPCImplCallback, Unit]
     type RPCImplCallback = js.Function2[js.Error | Null, Uint8Array | Null, Unit]
     type TokenizerHandleNext = js.Function0[String | Null]
     type TokenizerHandlePeek = js.Function0[String | Null]
@@ -1431,8 +1445,8 @@ package protobufjs {
 
     def verifier(mtype: Type): Codegen = js.native
 
-    type WrapperFromObjectConverter = js.Function2[Type, js.Dictionary[js.Any], Message[js.Any]]
-    type WrapperToObjectConverter = js.Function3[Type, Message[js.Any], IConversionOptions, js.Dictionary[js.Any]]
+    type WrapperFromObjectConverter = js.Function2[Type, js.Dictionary[js.Any], Message[js.Object]]
+    type WrapperToObjectConverter = js.Function3[Type, Message[js.Object], IConversionOptions, js.Dictionary[js.Any]]
     type asPromiseCallback = js.Function
     type Codegen = js.Function
     type EventEmitterListener = js.Function
