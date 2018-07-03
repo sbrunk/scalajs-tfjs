@@ -200,7 +200,9 @@ package protobufjs {
     def isReservedName(name: String): Boolean = js.native
   }
 
-  object Enum {
+  @js.native
+  @JSGlobal
+  object Enum extends js.Object {
 
     @js.native
     trait ValuesById extends js.Object {
@@ -787,7 +789,9 @@ package protobufjs {
     def create[TReq <: Message[TReq], TRes <: Message[TRes]](rpcImpl: RPCImpl[TReq, TRes], requestDelimited: Boolean = ???, responseDelimited: Boolean = ???): rpc.Service[TReq, TRes] = js.native
   }
 
-  object Service {
+  @js.native
+  @JSGlobal
+  object Service extends js.Object {
 
     @js.native
     trait Methods extends js.Object {
@@ -886,7 +890,9 @@ package protobufjs {
     def toObject(message: Message[js.Object], options: IConversionOptions = ???): js.Dictionary[js.Any] = js.native
   }
 
-  object Type {
+  @js.native
+  @JSGlobal
+  object Type extends js.Object {
 
     @js.native
     trait Fields extends js.Object {

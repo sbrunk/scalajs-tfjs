@@ -264,7 +264,9 @@ package compiled_api {
 
     }
 
-    object NameAttrList {
+    @js.native
+    @JSGlobal
+    object NameAttrList extends js.Object {
 
       @js.native
       trait Attr extends js.Object {
@@ -301,7 +303,9 @@ package compiled_api {
       var attr: js.Dictionary[tensorflow.IAttrValue] = js.native
     }
 
-    object NodeDef {
+    @js.native
+    @JSGlobal
+    object NodeDef extends js.Object {
 
       @js.native
       trait Attr extends js.Object {
@@ -610,7 +614,9 @@ package compiled_api {
       var methodName: String = js.native
     }
 
-    object SignatureDef {
+    @js.native
+    @JSGlobal
+    object SignatureDef extends js.Object {
 
       @js.native
       trait Inputs extends js.Object {
@@ -822,7 +828,9 @@ package compiled_api {
       var assetFileDef: js.Array[tensorflow.IAssetFileDef] = js.native
     }
 
-    object MetaGraphDef {
+    @js.native
+    @JSGlobal
+    object MetaGraphDef extends js.Object {
 
       @js.native
       trait CollectionDef extends js.Object {
@@ -856,7 +864,7 @@ package compiled_api {
       }
 
       @js.native
-      @JSGlobal("tensorflow.MetaGraphDef.MetaInfoDef")
+      //@JSGlobal("tensorflow.MetaGraphDef.MetaInfoDef")
       class MetaInfoDef protected () extends IMetaInfoDef {
         def this(p: tensorflow.MetaGraphDef.IMetaInfoDef = ???) = this()
 
@@ -869,7 +877,7 @@ package compiled_api {
       }
 
       @js.native
-      @JSGlobal("tensorflow.MetaGraphDef.MetaInfoDef")
+      //@JSGlobal("tensorflow.MetaGraphDef.MetaInfoDef")
       object MetaInfoDef extends js.Object {
         def decode(
             r: protobufjs.Reader | Uint8Array,
@@ -946,7 +954,9 @@ package compiled_api {
       var ret: js.Dictionary[String] = js.native
     }
 
-    object FunctionDef {
+    @js.native
+    @JSGlobal
+    object FunctionDef extends js.Object {
 
       @js.native
       trait Attr extends js.Object {
