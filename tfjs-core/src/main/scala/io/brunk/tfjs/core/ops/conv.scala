@@ -42,22 +42,6 @@ trait ConvOps extends js.Object {
       dilations: js.Tuple2[Double, Double] | Double = ???,
       dimRoundingMode: String = ???
   ): T = js.native
-  private def conv2dDerInput[T <: Tensor3D | Tensor4D](
-      xShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double],
-      dy: T,
-      filter: Tensor4D,
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): T = js.native
-  private def conv2dDerFilter[T <: Tensor3D | Tensor4D](
-      x: T,
-      dy: T,
-      filterShape: js.Tuple4[Double, Double, Double, Double],
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): Tensor4D = js.native
   def conv2dTranspose[T <: Tensor3D | Tensor4D](
       x: T,
       filter: Tensor4D,
