@@ -499,7 +499,7 @@ package protobufjs {
 
     def lookupTypeOrEnum(path: String | js.Array[String]): Type = js.native
 
-    def lookupService(path: String | js.Array[String]): Service = js.native
+    def lookupService[TReq <: Message[TReq], TRes <: Message[TRes]](path: String | js.Array[String]): Service[TReq, TRes] = js.native
   }
 
   object NamespaceBase {
@@ -752,16 +752,16 @@ package protobufjs {
 
     @js.native
     @JSGlobal("rpc.Service")
-    class Service protected() extends util.EventEmitter {
-      def this(rpcImpl: RPCImpl, requestDelimited: Boolean = ???, responseDelimited: Boolean = ???) = this()
+    class Service[TReq <: Message[TReq], TRes <: Message[TRes]] protected() extends util.EventEmitter {
+      def this(rpcImpl: RPCImpl[TReq, TRes], requestDelimited: Boolean = ???, responseDelimited: Boolean = ???) = this()
 
-      var rpcImpl: RPCImpl | Null = js.native
+      var rpcImpl: RPCImpl[TReq, TRes] | Null = js.native
       var requestDelimited: Boolean = js.native
       var responseDelimited: Boolean = js.native
 
-      def rpcCall[TReq <: Message[TReq], TRes <: Message[TRes]](method: Method | ServiceMethod[TReq, TRes], requestCtor: Constructor[TReq], responseCtor: Constructor[TRes], request: TReq | Properties[TReq], callback: ServiceMethodCallback[TRes]): Unit = js.native
+      def rpcCall(method: Method | ServiceMethod[TReq, TRes], requestCtor: Constructor[TReq], responseCtor: Constructor[TRes], request: TReq | Properties[TReq], callback: ServiceMethodCallback[TRes]): Unit = js.native
 
-      def end(endedByRPC: Boolean = ???): rpc.Service = js.native
+      def end(endedByRPC: Boolean = ???): rpc.Service[TReq, TRes] = js.native
     }
 
     @js.native
@@ -775,7 +775,7 @@ package protobufjs {
 
   @js.native
   @JSGlobal
-  class Service protected() extends NamespaceBase {
+  class Service[TReq <: Message[TReq], TRes <: Message[TRes]] protected() extends NamespaceBase {
     def this(name: String, options: js.Dictionary[js.Any] = ???) = this()
 
     var methods: Service.Methods = js.native
@@ -784,7 +784,7 @@ package protobufjs {
 
     def methodsArray: js.Array[Method] = js.native
 
-    def create(rpcImpl: RPCImpl, requestDelimited: Boolean = ???, responseDelimited: Boolean = ???): rpc.Service = js.native
+    def create[TReq <: Message[TReq], TRes <: Message[TRes]](rpcImpl: RPCImpl[TReq, TRes], requestDelimited: Boolean = ???, responseDelimited: Boolean = ???): rpc.Service[TReq, TRes] = js.native
   }
 
   object Service {
@@ -798,7 +798,7 @@ package protobufjs {
       def update(k: String, v: Method): Unit = js.native
     }
 
-    def fromJSON(name: String, json: IService): Service = js.native
+    def fromJSON[TReq <: Message[TReq], TRes <: Message[TRes]](name: String, json: IService): Service[TReq, TRes] = js.native
   }
 
   @js.native
@@ -1428,7 +1428,7 @@ package protobufjs {
 
     def parse(source: String, root: Root): IParserResult = js.native
 
-    type RPCImpl = js.Function3[Method | ServiceMethod[Message[js.Object], Message[js.Object]], Uint8Array, RPCImplCallback, Unit]
+    type RPCImpl[TReq <: Message[TReq], TRes <: Message[TRes]] = js.Function3[Method | ServiceMethod[TReq, TRes], Uint8Array, RPCImplCallback, Unit]
     type RPCImplCallback = js.Function2[js.Error | Null, Uint8Array | Null, Unit]
     type TokenizerHandleNext = js.Function0[String | Null]
     type TokenizerHandlePeek = js.Function0[String | Null]
