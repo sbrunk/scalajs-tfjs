@@ -92,9 +92,9 @@ lazy val library =
   new {
     object Version {
       val scalaAsync = "0.9.7"
-      val scalaCheck = "1.13.5"
-      val scalaTest  = "3.0.4"
-      val scalajsDom = "0.9.3"
+      val scalaCheck = "1.14.0"
+      val scalaTest  = "3.0.5"
+      val scalajsDom = "0.9.6"
     }
     val scalaAsync = "org.scala-lang.modules" %% "scala-async" % Version.scalaAsync
     val scalajsDom = "org.scala-js" % "scalajs-dom" % Version.scalajsDom cross ScalaJSCrossVersion.binary
