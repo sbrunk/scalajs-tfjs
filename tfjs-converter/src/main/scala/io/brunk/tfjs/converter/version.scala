@@ -23,8 +23,9 @@ import js.|
 package version {
 
   @js.native
-  @JSGlobalScope
+  @JSImport("tfjs-converter", JSImport.Namespace)
   object Version extends js.Object {
+    @JSName("version_converter")
     val version: String = js.native
   }
 

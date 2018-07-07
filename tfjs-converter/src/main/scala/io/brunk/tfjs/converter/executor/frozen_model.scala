@@ -53,11 +53,11 @@ class FrozenModel protected () extends tfc.InferenceModel {
 }
 
 @js.native
-@JSGlobalScope
-object Frozen_model extends js.Object {
+trait FrozenModelModule extends js.Object {
   def loadFrozenModel(
-      modelUrl: String,
-      weightsManifestUrl: String,
-      requestOption: RequestInit = ???
+    modelUrl: String,
+    weightsManifestUrl: String,
+    requestOption: RequestInit = ???
   ): Promise[FrozenModel] = js.native
 }
+

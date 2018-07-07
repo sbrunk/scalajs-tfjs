@@ -74,12 +74,14 @@ lazy val example =
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
       npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.9",
       npmDependencies in Compile += "@tensorflow/tfjs-layers" -> "0.6.1",
+      npmDependencies in Compile += "@tensorflow/tfjs-converter" -> "0.4.3",
       scalaJSUseMainModuleInitializer := true,
       mainClass in Compile := Some("example.Example")
     )
     .dependsOn(`scala-js-deeplearnjs`)
     .dependsOn(`scalajs-tfjs-core`)
     .dependsOn(`scalajs-tfjs-layers`)
+    .dependsOn(`scalajs-tfjs-converter`)
 
 
 // *****************************************************************************

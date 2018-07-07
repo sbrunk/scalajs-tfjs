@@ -16,14 +16,10 @@
 
 package io.brunk.tfjs.converter
 
-import io.brunk.tfjs.converter.executor.FrozenModelModule
-
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation.JSImport
+
 
 @js.native
-trait Index extends FrozenModelModule {
-  type FrozenModel = executor.FrozenModel
-  val version_converter: String = js.native
-}
+@JSImport("tfjs-converter", JSImport.Namespace)
+object api extends Index
