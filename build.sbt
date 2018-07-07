@@ -46,6 +46,21 @@ lazy val `scalajs-tfjs-layers` =
     )
   .dependsOn(`scalajs-tfjs-core`)
 
+lazy val `scalajs-tfjs-converter` =
+  project
+    .in(file("tfjs-converter"))
+    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
+    .settings(settings)
+    .settings(
+      libraryDependencies ++= Seq(
+        library.scalajsDom,
+        library.scalaCheck % Test,
+        library.scalaTest  % Test
+      ),
+      npmDependencies in Test += "tfjs-converter" -> "0.4.3"
+    )
+    .dependsOn(`scalajs-tfjs-layers`)
+
 lazy val example =
   project
     .in(file("example"))
@@ -59,12 +74,14 @@ lazy val example =
       npmDependencies in Compile += "deeplearn" -> "0.4.2",
       npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.9",
       npmDependencies in Compile += "@tensorflow/tfjs-layers" -> "0.6.7",
+      npmDependencies in Compile += "@tensorflow/tfjs-converter" -> "0.4.3",
       scalaJSUseMainModuleInitializer := true,
       mainClass in Compile := Some("example.Example")
     )
     .dependsOn(`scala-js-deeplearnjs`)
     .dependsOn(`scalajs-tfjs-core`)
     .dependsOn(`scalajs-tfjs-layers`)
+    .dependsOn(`scalajs-tfjs-converter`)
 
 
 // *****************************************************************************
