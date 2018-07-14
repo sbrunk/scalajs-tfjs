@@ -28,7 +28,7 @@ lazy val `scalajs-tfjs-core` =
         library.scalaCheck % Test,
         library.scalaTest  % Test
       ),
-      npmDependencies in Test += "@tensorflow/tfjs-core" -> "0.11.9"
+      npmDependencies in Test += npmLibrary.tfjsCore
     )
 
 lazy val `scalajs-tfjs-layers` =
@@ -42,7 +42,7 @@ lazy val `scalajs-tfjs-layers` =
         library.scalaCheck % Test,
         library.scalaTest  % Test
       ),
-      npmDependencies in Test += "tfjs-layers" -> "0.6.7"
+      npmDependencies in Test += npmLibrary.tfjsLayers
     )
   .dependsOn(`scalajs-tfjs-core`)
 
@@ -71,18 +71,40 @@ lazy val example =
         library.scalaAsync,
         library.scalajsDom,
       ),
-      npmDependencies in Compile += "deeplearn" -> "0.4.2",
-      npmDependencies in Compile += "@tensorflow/tfjs-core" -> "0.11.9",
-      npmDependencies in Compile += "@tensorflow/tfjs-layers" -> "0.6.7",
-      npmDependencies in Compile += "@tensorflow/tfjs-converter" -> "0.4.3",
+      npmDependencies in Compile ++= Seq(
+        "deeplearn" -> "0.4.2",
+        npmLibrary.tfjsCore,
+        npmLibrary.tfjsLayers,
+        npmLibrary.tfjsConverter
+      ),
+      npmDevDependencies in Compile += "html-webpack-plugin" -> "3.2.0",
       scalaJSUseMainModuleInitializer := true,
-      mainClass in Compile := Some("example.Example")
-    )
+      mainClass in Compile := Some("example.Example"),
+      webpackConfigFile in fastOptJS := Some(baseDirectory.value / "dev.config.js")
+)
     .dependsOn(`scala-js-deeplearnjs`)
     .dependsOn(`scalajs-tfjs-core`)
     .dependsOn(`scalajs-tfjs-layers`)
     .dependsOn(`scalajs-tfjs-converter`)
 
+lazy val mobilenetExample = project
+  .in(file("examples/mobilenet"))
+  .enablePlugins(AutomateHeaderPlugin, ScalaJSBundlerPlugin)
+  .settings(settings)
+  .settings(
+    libraryDependencies ++= Seq(
+      library.scalajsDom,
+    ),
+    npmDependencies in Compile ++= Seq(
+      npmLibrary.tfjsCore,
+      npmLibrary.tfjsLayers
+    ),
+    npmDevDependencies in Compile += "html-webpack-plugin" -> "3.2.0",
+    webpackConfigFile in fastOptJS := Some(baseDirectory.value / "dev.config.js"),
+    scalaJSUseMainModuleInitializer := true,
+    mainClass in Compile := Some("MobilenetDemo")
+  )
+  .dependsOn(`scalajs-tfjs-layers`)
 
 // *****************************************************************************
 // Library dependencies
@@ -100,6 +122,18 @@ lazy val library =
     val scalajsDom = "org.scala-js" % "scalajs-dom" % Version.scalajsDom cross ScalaJSCrossVersion.binary
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
     val scalaTest  = "org.scalatest"  % "scalatest"  % Version.scalaTest cross ScalaJSCrossVersion.binary
+  }
+
+lazy val npmLibrary =
+  new {
+    object Version {
+      val tfjsCore = "0.11.9"
+      val tfjsLayers = "0.6.7"
+      val tfjsConverter = "0.4.3"
+    }
+    val tfjsCore = "@tensorflow/tfjs-core" -> Version.tfjsCore
+    val tfjsLayers = "@tensorflow/tfjs-layers" -> Version.tfjsLayers
+    val tfjsConverter = "@tensorflow/tfjs-converter" -> Version.tfjsConverter
   }
 
 // *****************************************************************************
@@ -129,7 +163,9 @@ lazy val commonSettings =
     ),
     unmanagedSourceDirectories.in(Compile) := Seq(scalaSource.in(Compile).value),
     unmanagedSourceDirectories.in(Test) := Seq(scalaSource.in(Test).value),
-    //wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
+    //wartremoverWarnings in (Compile, compile) ++= Warts.unsafe,
+    version in webpack := "4.8.1",
+    version in startWebpackDevServer := "3.1.4"
 )
 
 lazy val gitSettings =
