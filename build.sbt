@@ -3,20 +3,6 @@ import org.scalajs.sbtplugin.ScalaJSCrossVersion
 // Projects
 // *****************************************************************************
 
-lazy val `scala-js-deeplearnjs` =
-  project
-    .in(file("."))
-    .enablePlugins(AutomateHeaderPlugin, GitVersioning, GitBranchPrompt, ScalaJSPlugin, ScalaJSBundlerPlugin)
-    .settings(settings)
-    .settings(
-      libraryDependencies ++= Seq(
-        library.scalajsDom,
-        library.scalaCheck % Test,
-        library.scalaTest  % Test
-      ),
-      npmDependencies in Test += "deeplearn" -> "0.4.2"
-    )
-
 lazy val `scalajs-tfjs-core` =
   project
     .in(file("tfjs-core"))
@@ -72,7 +58,6 @@ lazy val example =
         library.scalajsDom,
       ),
       npmDependencies in Compile ++= Seq(
-        "deeplearn" -> "0.4.2",
         npmLibrary.tfjsCore,
         npmLibrary.tfjsLayers,
         npmLibrary.tfjsConverter
@@ -82,7 +67,6 @@ lazy val example =
       mainClass in Compile := Some("example.Example"),
       webpackConfigFile in fastOptJS := Some(baseDirectory.value / "dev.config.js")
 )
-    .dependsOn(`scala-js-deeplearnjs`)
     .dependsOn(`scalajs-tfjs-core`)
     .dependsOn(`scalajs-tfjs-layers`)
     .dependsOn(`scalajs-tfjs-converter`)
