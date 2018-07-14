@@ -29,11 +29,15 @@ class Tracking extends js.Object {}
 
 @js.native
 trait TrackingCompanion extends js.Object {
+  // TODO find a way to deal with the fact that the compiler doesn't see T as subtype of the TensorContainer union type
   def tidy[T <: TensorContainer](
       nameOrFn: String | ScopeFn[T],
       fn: ScopeFn[T] = ???,
       gradMode: Boolean = ???
   ): T                                                 = js.native
+  def tidy(
+    nameOrFn: js.Function0[TensorND],
+  ): TensorND = js.native
   def dispose(container: js.Any): Unit                 = js.native
   def keep[T <: TensorND](result: T): T                = js.native
   def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native

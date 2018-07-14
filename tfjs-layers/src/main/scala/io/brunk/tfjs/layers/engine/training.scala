@@ -156,7 +156,7 @@ class Model protected () extends Container {
 }
 
 @js.native
-@JSGlobal
+@JSImport("@tensorflow/tfjs-layers", "Model")
 object Model extends js.Object {
   var className: String = js.native
 }
