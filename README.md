@@ -8,7 +8,7 @@ operations on them.
 
 You can now also use tfjs-layers build a simple sequential model.
 
-See the example project.
+See [examples/mobilenet](examples/mobbilenet) for a working example ([live demo](https://sbrunk.github.io/scalajs-tfjs/mobilenet/)).
 
 ## TODO
 * Add remaining core APIs

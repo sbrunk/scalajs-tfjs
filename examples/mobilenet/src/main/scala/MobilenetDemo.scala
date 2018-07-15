@@ -58,14 +58,10 @@ object MobilenetDemo {
     var innerText: String = js.native
   }
 
-  var mobilenet: Model = _
-
   def mobilenetDemo(): Unit = {
     status("Loading model...")
 
     tfl.loadModel(MOBILENET_MODEL_PATH).toFuture.foreach { mobilenet =>
-
-      MobilenetDemo.mobilenet = mobilenet
 
       // Warmup the model. This isn't necessary, but makes the first prediction
       // faster. Call `dispose` to release the WebGL memory allocated for the return
@@ -77,16 +73,43 @@ object MobilenetDemo {
       // Make a prediction through the locally hosted cat.jpg.
       getElement[dom.html.Image]("cat").foreach { catElement =>
         if (catElement.complete && catElement.naturalHeight != 0) {
-          predict(catElement)
+          predict(catElement, mobilenet)
           catElement.style.display = ""
         } else {
           catElement.onload = (_: Event) => {
-            predict(catElement)
+            predict(catElement, mobilenet)
             catElement.style.display = ""
           }
         }
       }
       getElement[dom.html.Div]("file-container").foreach{_.style.display = ""}
+
+      getElement[html.Input]("files").foreach { filesElement =>
+        filesElement.addEventListener("change", (evt: dom.Event) => {
+          val files = evt.target.asInstanceOf[html.Input].files
+          // Display thumbnails & issue call to predict each image.
+          (0 until files.length).foreach { i =>
+            val f = files(i)
+            // Only process image files (skip non image files)
+            if (f.`type`.matches("image.*")) {
+              val reader = new FileReader()
+              val idx = i
+              // Closure to capture the file information.
+              reader.onload = e => {
+                // Fill the image & call predict.
+                val img = document.createElement("img").asInstanceOf[html.Image]
+                img.src = e.target.asInstanceOf[dom.FileReader].result.asInstanceOf[String]
+                img.width = IMAGE_SIZE
+                img.height = IMAGE_SIZE
+                img.onload = (_) => predict(img, mobilenet)
+              }
+
+              // Read in the image file as a data URL.
+              reader.readAsDataURL(f)
+            }
+          }
+        })
+      }
     }
   }
 
@@ -94,7 +117,7 @@ object MobilenetDemo {
     * Given an image element, makes a prediction through mobilenet returning the
     * probabilities of the top K classes.
     */
-  def predict(imgElement: html.Image): Unit = {
+  def predict(imgElement: html.Image, mobilenet: Model): Unit = {
     status("Predicting...")
 
     val startTime = dom.window.performance.now()
@@ -178,33 +201,6 @@ object MobilenetDemo {
 
     predictionsElement.insertBefore(
       predictionContainer, predictionsElement.firstChild)
-  }
-
-  getElement[html.Input]("files").foreach { filesElement =>
-    filesElement.addEventListener("change", (evt: dom.Event) => {
-      val files = evt.target.asInstanceOf[html.Input].files
-      // Display thumbnails & issue call to predict each image.
-      (0 until files.length).foreach { i =>
-        val f = files(i)
-        // Only process image files (skip non image files)
-        if (f.`type`.matches("image.*")) {
-          val reader = new FileReader()
-          val idx = i
-          // Closure to capture the file information.
-          reader.onload = e => {
-            // Fill the image & call predict.
-            val img = document.createElement("img").asInstanceOf[html.Image]
-            img.src = e.target.asInstanceOf[dom.FileReader].result.asInstanceOf[String]
-            img.width = IMAGE_SIZE
-            img.height = IMAGE_SIZE
-            img.onload = (_) => predict(img)
-          }
-
-          // Read in the image file as a data URL.
-          reader.readAsDataURL(f)
-        }
-      }
-    })
   }
 
   val demoStatusElement = document.getElementById("status").asInstanceOf[html.Element]
