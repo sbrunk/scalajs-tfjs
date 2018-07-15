@@ -83,8 +83,11 @@ lazy val mobilenetExample = project
       npmLibrary.tfjsCore,
       npmLibrary.tfjsLayers
     ),
-    npmDevDependencies in Compile += "html-webpack-plugin" -> "3.2.0",
-    webpackConfigFile in fastOptJS := Some(baseDirectory.value / "dev.config.js"),
+    npmDevDependencies in Compile ++= Seq(
+      "html-webpack-plugin" -> "3.2.0",
+      "copy-webpack-plugin" -> "4.5.2"
+    ),
+    webpackConfigFile := Some(baseDirectory.value / "webpack.config.js"),
     scalaJSUseMainModuleInitializer := true,
     mainClass in Compile := Some("MobilenetDemo")
   )

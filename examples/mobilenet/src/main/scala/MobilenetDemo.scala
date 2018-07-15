@@ -52,6 +52,7 @@ object MobilenetDemo {
     }
   }
 
+  // TODO remove once the next scalajs-dom version is out that will have innerText merged
   @js.native
   trait RichHTMLElement extends html.Element {
     var innerText: String = js.native
