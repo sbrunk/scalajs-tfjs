@@ -1,10 +1,28 @@
+/*
+ * Copyright 2017 Sören Brunk
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.brunk.tfjs.core.ops
+
+import io.brunk.tfjs.core.{DataType, Rank, Tensor}
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
-
-package tensor_ops {
+import io.brunk.tfjs.core.TensorModule.{Tensor1D, Tensor2D, Tensor3D, Tensor4D, Tensor5D, Tensor6D, TensorND, Scalar}
+import io.brunk.tfjs.core.Types._
 
 @js.native
 @JSGlobalScope
@@ -20,12 +38,8 @@ object Tensor_ops extends js.Object {
   def ones[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R] = js.native
   def zeros[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R] = js.native
   def fill[R <: Rank](shape: js.Any, value: Double, dtype: DataType = ???): Tensor[R] = js.native
-  def onesLike_[T <: Tensor](x: T | TensorLike): T = js.native
-  def zerosLike_[T <: Tensor](x: T | TensorLike): T = js.native
+  def onesLike[T <: TensorND](x: T | TensorLike): T = js.native
+  def zerosLike[T <: TensorND](x: T | TensorLike): T = js.native
   def linspace(start: Double, stop: Double, num: Double): Tensor1D = js.native
   def range(start: Double, stop: Double, step: Double = ???, dtype: String = ???): Tensor1D = js.native
-  val onesLike: onesLike_.type = js.native
-  val zerosLike: zerosLike_.type = js.native
-}
-
 }
