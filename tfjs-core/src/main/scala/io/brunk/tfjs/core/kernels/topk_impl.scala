@@ -22,10 +22,14 @@ import js.annotation._
 import io.brunk.tfjs.core.DataType
 import io.brunk.tfjs.core.Types.TypedArray
 import io.brunk.tfjs.core.TensorModule.TensorND
-
-
 @js.native
 @JSGlobalScope
 object Topk_impl extends js.Object {
-  def topkImpl[T <: TensorND](x: TypedArray, xShape: js.Array[Double], xDtype: DataType, k: Double, sorted: Boolean): js.Tuple2[T, T] = js.native
+  def topkImpl[T <: TensorND](
+      x: TypedArray,
+      xShape: js.Array[Double],
+      xDtype: DataType,
+      k: Double,
+      sorted: Boolean
+  ): js.Tuple2[T, T] = js.native
 }

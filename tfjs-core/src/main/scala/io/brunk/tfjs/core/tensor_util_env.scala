@@ -21,12 +21,18 @@ import js.annotation._
 import js.|
 import _root_.io.brunk.tfjs.core.TensorModule.TensorND
 import _root_.io.brunk.tfjs.core.Types.TensorLike
-
-
-
 @js.native
 @JSGlobalScope
 object Tensor_util_env extends js.Object {
-  def convertToTensor[T <: TensorND](x: T | TensorLike, argName: String, functionName: String, dtype: DataType = ???): T = js.native
-  def convertToTensorArray[T <: TensorND](arg: js.Array[T] | js.Array[TensorLike], argName: String, functionName: String): js.Array[T] = js.native
+  def convertToTensor[T <: TensorND](
+      x: T | TensorLike,
+      argName: String,
+      functionName: String,
+      dtype: DataType = ???
+  ): T = js.native
+  def convertToTensorArray[T <: TensorND](
+      arg: js.Array[T] | js.Array[TensorLike],
+      argName: String,
+      functionName: String
+  ): js.Array[T] = js.native
 }

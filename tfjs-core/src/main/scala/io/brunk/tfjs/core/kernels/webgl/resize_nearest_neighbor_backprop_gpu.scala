@@ -24,6 +24,6 @@ import io.brunk.tfjs.core.TensorModule.Tensor4D
 class ResizeNearestNeigborBackpropProgram protected () extends GPGPUProgram {
   def this(dy: Tensor4D, x: Tensor4D, alignCorners: Boolean) = this()
   var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double] = js.native
-  var userCode: String = js.native
+  var outputShape: js.Array[Double]   = js.native
+  var userCode: String                = js.native
 }

@@ -25,6 +25,11 @@ import js.annotation._
 @js.native
 @JSGlobalScope
 object Non_max_suppression_impl extends js.Object {
-  def nonMaxSuppressionImpl(boxes: TypedArray, scores: TypedArray, maxOutputSize: Double, iouThreshold: Double, scoreThreshold: Double): Tensor1D = js.native
+  def nonMaxSuppressionImpl(
+      boxes: TypedArray,
+      scores: TypedArray,
+      maxOutputSize: Double,
+      iouThreshold: Double,
+      scoreThreshold: Double
+  ): Tensor1D = js.native
 }
-

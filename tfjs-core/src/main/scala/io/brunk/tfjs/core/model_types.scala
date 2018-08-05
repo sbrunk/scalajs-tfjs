@@ -20,19 +20,22 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import _root_.io.brunk.tfjs.core.TensorModule.TensorND
-
-
 @js.native
 trait ModelPredictConfig extends js.Object {
   var batchSize: Double = js.native
-  var verbose: Boolean = js.native
+  var verbose: Boolean  = js.native
 }
 
 @js.native
 trait InferenceModel extends js.Object {
-  def inputs: js.Array[TensorInfo] = js.native
+  def inputs: js.Array[TensorInfo]  = js.native
   def outputs: js.Array[TensorInfo] = js.native
-  def predict(inputs: TensorND | js.Array[TensorND] | NamedTensorMap, config: ModelPredictConfig): TensorND | js.Array[TensorND] | NamedTensorMap = js.native
-  def execute(inputs: TensorND | js.Array[TensorND] | NamedTensorMap, outputs: String | js.Array[String]): TensorND | js.Array[TensorND] = js.native
+  def predict(
+      inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
+      config: ModelPredictConfig
+  ): TensorND | js.Array[TensorND] | NamedTensorMap = js.native
+  def execute(
+      inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
+      outputs: String | js.Array[String]
+  ): TensorND | js.Array[TensorND] = js.native
 }
-

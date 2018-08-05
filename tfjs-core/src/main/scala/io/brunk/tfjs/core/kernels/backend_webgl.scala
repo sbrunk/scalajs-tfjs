@@ -19,7 +19,7 @@ package io.brunk.tfjs.core.kernels
 import io.brunk.tfjs.core._
 import _root_.io.brunk.tfjs.core.TensorModule._
 import _root_.io.brunk.tfjs.core.Types.TypedArray
-import _root_.io.brunk.tfjs.core.kernels.webgl.{GPGPUContext, TextureData, TextureManager}
+import _root_.io.brunk.tfjs.core.kernels.webgl.{ GPGPUContext, TextureData, TextureManager }
 import _root_.io.brunk.tfjs.core.ops.Conv_util.Conv2DInfo
 import org.scalajs.dom
 import org.scalajs.dom.html
@@ -27,7 +27,7 @@ import org.scalajs.dom.webgl.Texture
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import Engine.MemoryInfo
 
 @js.native
@@ -36,17 +36,17 @@ trait CPUTimerQuery extends js.Object {
   var endMs: Double   = js.native
 }
 
-  @js.native
-  trait WebGLMemoryInfo extends MemoryInfo {
-    var numBytesInGPU: Double = js.native
-    var unreliable: Boolean   = js.native
-  }
+@js.native
+trait WebGLMemoryInfo extends MemoryInfo {
+  var numBytesInGPU: Double = js.native
+  var unreliable: Boolean   = js.native
+}
 
-  @js.native
-  trait WebGLTimingInfo extends TimingInfo {
-    var uploadWaitMs: Double   = js.native
-    var downloadWaitMs: Double = js.native
-  }
+@js.native
+trait WebGLTimingInfo extends TimingInfo {
+  var uploadWaitMs: Double   = js.native
+  var downloadWaitMs: Double = js.native
+}
 
 @js.native
 @JSGlobal

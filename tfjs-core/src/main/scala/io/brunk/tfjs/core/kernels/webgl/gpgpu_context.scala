@@ -31,14 +31,14 @@ class GPGPUContext protected () extends js.Object {
   var gl: webgl.RenderingContext                      = js.native
   var loseContextExtension: WebGLLoseContextExtension = js.native
   var disjointQueryTimerExtension
-    : WebGL2DisjointQueryTimerExtension | WebGL1DisjointQueryTimerExtension         = js.native
-  var vertexBuffer: webgl.Buffer                                                    = js.native
-  var indexBuffer: webgl.Buffer                                                     = js.native
-  var framebuffer: webgl.Framebuffer                                                = js.native
-  var outputTexture: webgl.Texture | Null                                           = js.native
-  var program: webgl.Program | Null                                                 = js.native
-  def dispose(): Unit                                                               = js.native
-  def enableAutomaticDebugValidation(enabled: Boolean): Unit                        = js.native
+    : WebGL2DisjointQueryTimerExtension | WebGL1DisjointQueryTimerExtension          = js.native
+  var vertexBuffer: webgl.Buffer                                                     = js.native
+  var indexBuffer: webgl.Buffer                                                      = js.native
+  var framebuffer: webgl.Framebuffer                                                 = js.native
+  var outputTexture: webgl.Texture | Null                                            = js.native
+  var program: webgl.Program | Null                                                  = js.native
+  def dispose(): Unit                                                                = js.native
+  def enableAutomaticDebugValidation(enabled: Boolean): Unit                         = js.native
   def createFloat32MatrixTexture(rows: Double, columns: Double): webgl.Texture       = js.native
   def createFloat16MatrixTexture(rows: Double, columns: Double): webgl.Texture       = js.native
   def createUnsignedBytesMatrixTexture(rows: Double, columns: Double): webgl.Texture = js.native

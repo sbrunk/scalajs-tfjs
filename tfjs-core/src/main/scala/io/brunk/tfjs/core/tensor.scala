@@ -34,7 +34,7 @@ class TensorBuffer[R <: Rank] protected () extends js.Object {
   def this(shape: R#Shape, dtype: DataType, values: TypedArray) = this()
   var dtype: DataType                             = js.native
   var size: Double                                = js.native
-  var shape: R#Shape                               = js.native
+  var shape: R#Shape                              = js.native
   var strides: js.Array[Double]                   = js.native
   var values: TypedArray                          = js.native
   def set(value: Double, locs: Double*): Unit     = js.native
@@ -51,7 +51,7 @@ class Tensor[+R <: Rank] protected () extends js.Object {
   def this(shape: R#Shape, dtype: DataType, values: TypedArray = ???, dataId: DataId = ???) = this()
   def id: Double                                                                   = js.native
   var dataId: DataId                                                               = js.native
-  def shape: R#Shape                                                                = js.native
+  def shape: R#Shape                                                               = js.native
   def size: Double                                                                 = js.native
   def dtype: DataType                                                              = js.native
   def rankType: R                                                                  = js.native
@@ -62,19 +62,19 @@ class Tensor[+R <: Rank] protected () extends js.Object {
   def as2D(rows: Double, columns: Double): Tensor2D                                = js.native
   def as3D(rows: Double, columns: Double, depth: Double): Tensor3D                 = js.native
   def as4D(rows: Double, columns: Double, depth: Double, depth2: Double): Tensor4D = js.native
-  def asType[T <: this.type](dtype: DataType): T                        = js.native
+  def asType[T <: this.type](dtype: DataType): T                                   = js.native
   def rank: Double                                                                 = js.native
   def get(locs: Double*): Double                                                   = js.native
-  def buffer[RR >: R <: Rank](): TensorBuffer[RR]                                                    = js.native
+  def buffer[RR >: R <: Rank](): TensorBuffer[RR]                                  = js.native
   def data(): Promise[TypedArray]                                                  = js.native
   def dataSync(): TypedArray                                                       = js.native
   def dispose(): Unit                                                              = js.native
   def isDisposed: Boolean                                                          = js.native
-  def toFloat[T <: this.type](): T                                        = js.native
+  def toFloat[T <: this.type](): T                                                 = js.native
   def toInt(): this.type                                                           = js.native
   def toBool(): this.type                                                          = js.native
   def print(verbose: Boolean = ???): Unit                                          = js.native
-  def reshape[R2 <: Rank](newShape: R2#Shape): Tensor[R2]                            = js.native
+  def reshape[R2 <: Rank](newShape: R2#Shape): Tensor[R2]                          = js.native
   def reshapeAs[T <: TensorND](x: T): T                                            = js.native
   def expandDims[R2 <: Rank](axis: Double = ???): Tensor[R2]                       = js.native
   def cumsum[T <: TensorND](

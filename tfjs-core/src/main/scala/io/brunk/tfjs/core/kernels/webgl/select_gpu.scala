@@ -25,6 +25,6 @@ import js.|
 class SelectProgram protected () extends GPGPUProgram {
   def this(cRank: Double, shape: js.Array[Double], rank: Double) = this()
   var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double] = js.native
-  var userCode: String = js.native
+  var outputShape: js.Array[Double]   = js.native
+  var userCode: String                = js.native
 }

@@ -21,8 +21,6 @@ import js.annotation._
 import js.|
 import _root_.io.brunk.tfjs.core.TensorModule.TensorND
 import Tensor_types.TensorContainer
-
-
 @js.native
 trait TensorContainerObject extends js.Object {
   @JSBracketAccess
@@ -32,20 +30,20 @@ trait TensorContainerObject extends js.Object {
 }
 
 @js.native
-trait TensorContainerArray extends js.Array[TensorContainer] {
-}
+trait TensorContainerArray extends js.Array[TensorContainer] {}
 
 @js.native
 trait TensorInfo extends js.Object {
-  var name: String = js.native
+  var name: String            = js.native
   var shape: js.Array[Double] = js.native
-  var dtype: DataType = js.native
+  var dtype: DataType         = js.native
 }
 
 @js.native
 @JSGlobalScope
 object Tensor_types extends js.Object {
-  type NamedTensorMap = js.Dictionary[TensorND]
+  type NamedTensorMap   = js.Dictionary[TensorND]
   type NamedVariableMap = js.Dictionary[Variable[Rank]]
-  type TensorContainer = Unit | TensorND | String | Double | Boolean | TensorContainerObject | TensorContainerArray
+  type TensorContainer =
+    Unit | TensorND | String | Double | Boolean | TensorContainerObject | TensorContainerArray
 }

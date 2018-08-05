@@ -26,5 +26,6 @@ import io.brunk.tfjs.core.TensorModule.TensorND
 @js.native
 @JSGlobalScope
 object Topk extends js.Object {
-  def topk[T <: TensorND](x: T | TensorLike, k: Double = ???, sorted: Boolean = ???): js.Any = js.native
+  def topk[T <: TensorND](x: T | TensorLike, k: Double = ???, sorted: Boolean = ???): js.Any =
+    js.native
 }

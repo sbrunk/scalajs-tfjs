@@ -45,7 +45,7 @@ trait Index
   type DataType            = core.DataType
   type InferenceModel      = core.InferenceModel
   type ModelPredictConfig  = core.ModelPredictConfig
-  type NamedTensorMap = core.NamedTensorMap
+  type NamedTensorMap      = core.NamedTensorMap
   type Rank                = core.Rank
   // TODO LSTMCellFunc
   // TODO Reduction

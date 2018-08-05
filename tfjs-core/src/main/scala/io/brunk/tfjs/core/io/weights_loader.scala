@@ -18,7 +18,7 @@ package io.brunk.tfjs.core.io
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import scala.scalajs.js.typedarray.ArrayBuffer
 import _root_.io.brunk.tfjs.core.io.types.WeightsManifestConfig
 import _root_.io.brunk.tfjs.core.NamedTensorMap
@@ -27,7 +27,14 @@ import org.scalajs.dom.experimental.RequestInit
 @js.native
 @JSGlobalScope
 object Weights_loader extends js.Object {
-  def loadWeightsAsArrayBuffer(fetchURLs: js.Array[String], requestOptions: RequestInit = ???): Promise[js.Array[ArrayBuffer]] = js.native
-  def loadWeights(manifest: WeightsManifestConfig, filePathPrefix: String = ???, weightNames: js.Array[String] = ???, requestOptions: RequestInit = ???): Promise[NamedTensorMap] = js.native
+  def loadWeightsAsArrayBuffer(
+      fetchURLs: js.Array[String],
+      requestOptions: RequestInit = ???
+  ): Promise[js.Array[ArrayBuffer]] = js.native
+  def loadWeights(
+      manifest: WeightsManifestConfig,
+      filePathPrefix: String = ???,
+      weightNames: js.Array[String] = ???,
+      requestOptions: RequestInit = ???
+  ): Promise[NamedTensorMap] = js.native
 }
-

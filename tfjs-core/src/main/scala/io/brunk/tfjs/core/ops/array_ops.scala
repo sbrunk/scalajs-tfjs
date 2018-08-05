@@ -60,7 +60,7 @@ trait ArrayOps extends js.Object {
       values: TensorLike6D,
       shape: js.Tuple6[Double, Double, Double, Double, Double, Double] = ???,
       dtype: DataType = ???
-  ): Tensor6D = js.native
+  ): Tensor6D                                                                          = js.native
   def ones[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]                = js.native
   def zeros[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]               = js.native
   def fill[R <: Rank](shape: R#Shape, value: Double, dtype: DataType = ???): Tensor[R] = js.native

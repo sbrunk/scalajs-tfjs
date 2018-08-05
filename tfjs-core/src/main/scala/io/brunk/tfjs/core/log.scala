@@ -24,5 +24,5 @@ import js.|
 @JSGlobalScope
 object Log extends js.Object {
   def warn(msg: js.Any*): Unit = js.native
-  def log(msg: js.Any*): Unit = js.native
+  def log(msg: js.Any*): Unit  = js.native
 }

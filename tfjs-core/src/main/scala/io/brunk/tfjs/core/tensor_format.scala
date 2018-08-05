@@ -24,6 +24,10 @@ import _root_.io.brunk.tfjs.core.Types.TypedArray
 @js.native
 @JSGlobalScope
 object Tensor_format extends js.Object {
-  def tensorToString(vals: TypedArray, shape: js.Array[Double], dtype: DataType, verbose: Boolean): String = js.native
+  def tensorToString(
+      vals: TypedArray,
+      shape: js.Array[Double],
+      dtype: DataType,
+      verbose: Boolean
+  ): String = js.native
 }
-
