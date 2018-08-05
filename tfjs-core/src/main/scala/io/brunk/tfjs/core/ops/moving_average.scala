@@ -16,17 +16,18 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Scalar, TensorND }
+import io.brunk.tfjs.core.TensorModule.{Scalar, TensorND}
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
-trait MovingAverageOps extends js.Object {
+trait MovingAverage extends js.Object {
   def movingAverage[T <: TensorND](
-      v: T,
-      x: T,
+      v: T | TensorLike,
+      x: T | TensorLike,
       decay: Double | Scalar,
       step: Double | Scalar = ???,
       zeroDebias: Boolean = ???

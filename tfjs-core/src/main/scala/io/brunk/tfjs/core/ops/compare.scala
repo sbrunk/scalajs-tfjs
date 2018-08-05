@@ -23,7 +23,7 @@ import js.annotation._
 import js.|
 
 @js.native
-trait CompareOps extends js.Object {
+trait Compare extends js.Object {
   def notEqual[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
   def notEqualStrict[T <: TensorND](a: T, b: T): T             = js.native
   def less[T <: TensorND](a: TensorND, b: TensorND): T         = js.native

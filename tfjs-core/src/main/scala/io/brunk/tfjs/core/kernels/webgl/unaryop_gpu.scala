@@ -27,6 +27,8 @@ class UnaryOpProgram protected () extends GPGPUProgram {
   var variableNames: js.Array[String] = js.native
   var userCode: String                = js.native
   var outputShape: js.Array[Double]   = js.native
+  var startLoc: WebGLUniformLocation                                       = js.native
+  def getCustomSetupFunc(): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
 }
 
 @js.native

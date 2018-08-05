@@ -21,8 +21,6 @@ import js.annotation._
 import js.{ PropertyDescriptor, | }
 
 @js.native
-@JSGlobalScope
-object Operation extends js.Object {
-  def operation(target: js.Any, name: String, descriptor: PropertyDescriptor): PropertyDescriptor =
-    js.native
+trait Operation extends js.Object {
+  def op[T <: js.Function](f: js.Dictionary[T]): T = js.native
 }

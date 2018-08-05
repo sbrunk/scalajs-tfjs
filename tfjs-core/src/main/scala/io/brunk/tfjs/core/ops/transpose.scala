@@ -17,12 +17,13 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
-trait TransposeOps extends js.Object {
-  def transpose[T <: TensorND](x: T, perm: js.Array[Double] = ???): T = js.native
+trait Transpose extends js.Object {
+  def transpose[T <: TensorND](x: T | TensorLike, perm: js.Array[Double] = ???): T = js.native
 }

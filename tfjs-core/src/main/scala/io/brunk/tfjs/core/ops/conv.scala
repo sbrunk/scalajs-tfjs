@@ -16,17 +16,18 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Tensor2D, Tensor3D, Tensor4D }
+import io.brunk.tfjs.core.TensorModule.{Tensor2D, Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
-trait ConvOps extends js.Object {
+trait Conv extends js.Object {
   def conv1d[T <: Tensor2D | Tensor3D](
-      x: T,
-      filter: Tensor3D,
+      x: T | TensorLike,
+      filter: Tensor3D | TensorLike,
       stride: Double,
       pad: String | Double,
       dataFormat: String = ???,
@@ -34,33 +35,17 @@ trait ConvOps extends js.Object {
       dimRoundingMode: String = ???
   ): T = js.native
   def conv2d[T <: Tensor3D | Tensor4D](
-      x: T,
-      filter: Tensor4D,
+      x: T | TensorLike,
+      filter: Tensor4D | TensorLike,
       strides: js.Tuple2[Double, Double] | Double,
       pad: String | Double,
       dataFormat: String = ???,
       dilations: js.Tuple2[Double, Double] | Double = ???,
       dimRoundingMode: String = ???
   ): T = js.native
-  private def conv2dDerInput[T <: Tensor3D | Tensor4D](
-      xShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double],
-      dy: T,
-      filter: Tensor4D,
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): T = js.native
-  private def conv2dDerFilter[T <: Tensor3D | Tensor4D](
-      x: T,
-      dy: T,
-      filterShape: js.Tuple4[Double, Double, Double, Double],
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): Tensor4D = js.native
   def conv2dTranspose[T <: Tensor3D | Tensor4D](
-      x: T,
-      filter: Tensor4D,
+      x: T | TensorLike,
+      filter: Tensor4D | TensorLike,
       outputShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double],
       strides: js.Tuple2[Double, Double] | Double,
       pad: String | Double,

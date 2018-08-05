@@ -18,7 +18,7 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import Engine.MemoryInfo
 import kernels.BackendTimingInfo
 import kernels.KernelBackend
@@ -27,8 +27,14 @@ import Types.TensorContainer
 import TensorModule.DataId
 import Types._
 import Engine.CustomGradientFunc
-import org.scalajs.dom.{ ImageData, html }
+import org.scalajs.dom.{ImageData, html}
 import TensorModule._
+
+@js.native
+trait TimingInfo extends BackendTimingInfo {
+  var wallMs: Double
+}
+
 @js.native
 trait TensorManager extends js.Object {
   def registerTensor(a: TensorND): Unit
@@ -37,10 +43,6 @@ trait TensorManager extends js.Object {
   def memory(): js.Any
 }
 
-@js.native
-trait TimingInfo extends BackendTimingInfo {
-  var wallMs: Double
-}
 
 @js.native
 @JSGlobal
@@ -48,6 +50,11 @@ class Engine protected () extends TensorManager {
   def this(backend: KernelBackend, safeMode: Boolean) = this()
   var safeMode: Boolean                     = js.native
   var registeredVariables: NamedVariableMap = js.native
+  def tidy[T <: TensorContainer](
+    nameOrFn: String | ScopeFn[T],
+    fn: ScopeFn[T] = ???,
+    gradMode: Boolean = ???
+  ): T = js.native
   def runKernel[T <: TensorND, I <: NamedTensorMap](
       forwardFunc: ForwardFunc[T],
       inputs: I,
@@ -82,7 +89,7 @@ class Engine protected () extends TensorManager {
 @js.native
 @JSGlobalScope
 object Engine extends js.Object {
-  type ForwardFunc[T <: TensorND]        = js.Function2[KernelBackend, js.Function, T]
+  type ForwardFunc[T]        = js.Function2[KernelBackend, js.Function, T]
   type CustomGradientFunc[T <: TensorND] = js.Function
   type MemoryInfo                        = js.Any
   type ScopeFn[T <: TensorContainer]     = js.Function0[T]

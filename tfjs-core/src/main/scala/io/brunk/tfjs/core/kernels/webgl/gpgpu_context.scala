@@ -18,12 +18,19 @@ package io.brunk.tfjs.core.kernels.webgl
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import org.scalajs.dom.webgl
 import org.scalajs.dom.html
 import org.scalajs.dom
 
 import scala.scalajs.js.typedarray.Float32Array
+
+@js.native
+trait FenceContext extends js.Object {
+  var query: WebGLQuery | WebGLSync = js.native
+  def isFencePassed(): Boolean      = js.native
+}
+
 @js.native
 @JSGlobal
 class GPGPUContext protected () extends js.Object {
@@ -45,8 +52,7 @@ class GPGPUContext protected () extends js.Object {
   def uploadPixelDataToTexture(
       texture: webgl.Texture,
       pixels: dom.ImageData | html.Image | html.Canvas
-  ): Unit =
-    js.native
+  ): Unit = js.native
   def createPackedMatrixTexture(rows: Double, columns: Double): webgl.Texture = js.native
   def deleteMatrixTexture(texture: webgl.Texture): Unit                       = js.native
   def uploadMatrixToTexture(
@@ -71,11 +77,17 @@ class GPGPUContext protected () extends js.Object {
       rows: Double,
       columns: Double
   ): Float32Array = js.native
-  def downloadMatrixFromTextureAsync(
+  def downloadFloat32MatrixFromBuffer(
+    buffer: webgl.Buffer,
+    rows: Double,
+    columns: Double
+  ): Float32Array = js.native
+  def maybeCreateBufferFromTexture(
       texture: webgl.Texture,
       rows: Double,
       columns: Double
-  ): Promise[Float32Array] = js.native
+  ): webgl.Buffer | webgl.Texture            = js.native
+  def createAndWaitForFence(): Promise[Unit] = js.native
   def downloadMatrixFromPackedTexture(
       texture: webgl.Texture,
       rows: Double,
@@ -125,10 +137,10 @@ class GPGPUContext protected () extends js.Object {
   def debugValidate(): Unit                                  = js.native
   def executeProgram(): Unit                                 = js.native
   def blockUntilAllProgramsCompleted(): Unit                 = js.native
-  def runQuery(queryFn: js.Function0[Unit]): Promise[Double] = js.native
   def beginQuery(): WebGLQuery                               = js.native
   def endQuery(): Unit                                       = js.native
-  def pollQueryTime(query: WebGLQuery): Promise[Double]      = js.native
+  def waitForQueryAndGetTime(query: WebGLQuery): Promise[Double] = js.native
+  def pollFence(fenceContext: FenceContext): Promise[Unit]       = js.native
   def pollItems(): Unit                                      = js.native
 }
 

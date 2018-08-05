@@ -65,6 +65,7 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def concat(a: Tensor2D, b: Tensor2D): Tensor2D
   def neg[T <: TensorND](a: T): T
   def add(a: TensorND, b: TensorND): TensorND
+  def addN[T <: TensorND](tensors: js.Array[T]): T
   def subtract(a: TensorND, b: TensorND): TensorND
   def multiply(a: TensorND, b: TensorND): TensorND
   def realDivide(a: TensorND, b: TensorND): TensorND
@@ -83,14 +84,15 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   def logicalAnd(a: TensorND, b: TensorND): TensorND
   def logicalOr(a: TensorND, b: TensorND): TensorND
   def where(condition: TensorND, a: TensorND, b: TensorND, dtype: DataType): TensorND
-  def topKValues[T <: TensorND](x: T, k: Double): Tensor1D
-  def topKIndices(x: TensorND, k: Double): Tensor1D
+  def select(condition: TensorND, a: TensorND, b: TensorND): TensorND
+  def topk[T <: TensorND](x: T, k: Double, sorted: Boolean): js.Tuple2[T, T]
   def min(x: TensorND, axes: js.Array[Double]): TensorND
   def minimum(a: TensorND, b: TensorND): TensorND
   def mod(a: TensorND, b: TensorND): TensorND
   def max(x: TensorND, axes: js.Array[Double]): TensorND
   def maximum(a: TensorND, b: TensorND): TensorND
   def all(x: TensorND, axes: js.Array[Double]): TensorND
+  def any(x: TensorND, axes: js.Array[Double]): TensorND
   def squaredDifference(a: TensorND, b: TensorND): TensorND
   def ceil[T <: TensorND](x: T): T
   def floor[T <: TensorND](x: T): T
@@ -149,6 +151,16 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   ): T
   def transpose[T <: TensorND](x: T, perm: js.Array[Double]): T
   def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double): T
+  def batchToSpaceND[T <: TensorND](
+    x: T,
+    blockShape: js.Array[Double],
+    crops: js.Array[js.Array[Double]]
+  ): T = js.native
+  def spaceToBatchND[T <: TensorND](
+    x: T,
+    blockShape: js.Array[Double],
+    paddings: js.Array[js.Array[Double]]
+  ): T = js.native
   def resizeBilinear(
       x: Tensor4D,
       newHeight: Double,
@@ -162,6 +174,7 @@ trait KernelBackend extends TensorStorage with BackendTimer {
       newWidth: Double,
       alignCorners: Boolean
   ): Tensor4D
+  def resizeNearestNeighborBackprop(dy: Tensor4D, x: Tensor4D, alignCorners: Boolean): Tensor4D
   def batchNormalization(
       x: Tensor4D,
       mean: Tensor4D | Tensor1D,
@@ -177,6 +190,15 @@ trait KernelBackend extends TensorStorage with BackendTimer {
       alpha: Double,
       beta: Double
   ): Tensor4D
+  def LRNGrad(
+    dy: Tensor4D,
+    inputImage: Tensor4D,
+    outputImage: Tensor4D,
+    radius: Double,
+    bias: Double,
+    alpha: Double,
+    beta: Double
+  ): Tensor4D
   def multinomial(
       logits: Tensor2D,
       normalized: Boolean,
@@ -185,5 +207,12 @@ trait KernelBackend extends TensorStorage with BackendTimer {
   ): Tensor2D
   def oneHot(indices: Tensor1D, depth: Double, onValue: Double, offValue: Double): Tensor2D
   def cumsum(x: TensorND, axis: Double, exclusive: Boolean, reverse: Boolean): TensorND
+  def nonMaxSuppression(
+    boxes: Tensor2D,
+    scores: Tensor1D,
+    maxOutputSize: Double,
+    iouThreshold: Double,
+    scoreThreshold: Double = ???
+  ): Tensor1D
   def dispose(): Unit
 }

@@ -18,7 +18,7 @@ package io.brunk.tfjs.core.kernels.webgl
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import org.scalajs.dom.webgl
 import org.scalajs.dom.html
 import org.scalajs.dom
@@ -100,13 +100,20 @@ object Gpgpu_util extends js.Object {
       matrix: Float32Array,
       textureConfig: TextureConfig
   ): Unit = js.native
-  def downloadMatrixFromOutputTextureAsync(
+  def maybeCreateBufferFromOutputTexture(
       gl: webgl.RenderingContext,
-      getBufferSubDataAsyncExtension: js.Any,
+      texture: webgl.Texture,
       rows: Double,
       columns: Double,
       textureConfig: TextureConfig
-  ): Promise[Float32Array] = js.native
+  ):  webgl.Buffer | webgl.Texture = js.native
+  def downloadFloat32MatrixFromBuffer(
+    gl: webgl.RenderingContext,
+    buffer: webgl.Buffer,
+    rows: Double,
+    columns: Double,
+    textureConfig: TextureConfig
+  ): Float32Array = js.native
   def downloadFloat32MatrixFromOutputTexture(
       gl: webgl.RenderingContext,
       rows: Double,

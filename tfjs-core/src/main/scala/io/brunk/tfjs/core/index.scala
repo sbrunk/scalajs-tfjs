@@ -31,6 +31,8 @@ trait Index
     with EnvironmentCompanion
     with Version
     with BrowserUtil {
+  type InferenceModel      = core.InferenceModel
+  type ModelPredictConfig  = core.ModelPredictConfig
   type AdadeltaOptimizer = optimizers.AdadeltaOptimizer
   val AdadeltaOptimizer: optimizers.AdadeltaOptimizer.type = js.native
   type AdagradOptimizer    = optimizers.AdagradOptimizer
@@ -43,8 +45,6 @@ trait Index
   type Tensor[R <: Rank]   = core.Tensor[R]
   type Variable[R <: Rank] = core.Variable[R]
   type DataType            = core.DataType
-  type InferenceModel      = core.InferenceModel
-  type ModelPredictConfig  = core.ModelPredictConfig
   type NamedTensorMap      = core.NamedTensorMap
   type Rank                = core.Rank
   // TODO LSTMCellFunc
@@ -55,6 +55,7 @@ trait Index
   val serialization: core.serialization.type = js.native
   // TODO webgl
   // TODO backend
+  // TODO doc
 }
 
 @js.native
@@ -64,5 +65,4 @@ object Index extends js.Object {
   def getBackend(): String                                           = js.native
   def disposeVariables(): Unit                                       = js.native
   def memory(): MemoryInfo                                           = js.native
-  def nextFrame(): Promise[Unit]                                     = js.native
 }

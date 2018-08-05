@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
@@ -24,9 +25,9 @@ import js.|
 
 @js.native
 trait LogicalOps extends js.Object {
-  def logicalNot[T <: TensorND](x: T): T                       = js.native
-  def logicalAnd[T <: TensorND](a: TensorND, b: TensorND): T   = js.native
-  def logicalOr[T <: TensorND](a: TensorND, b: TensorND): T    = js.native
-  def logicalXor[T <: TensorND](a: TensorND, b: TensorND): T   = js.native
-  def where[T <: TensorND](condition: TensorND, a: T, b: T): T = js.native
+  def logicalNot[T <: TensorND](x: T | TensorLike): T                       = js.native
+  def logicalAnd[T <: TensorND](a: TensorND | TensorLike, b: TensorND | TensorLike): T   = js.native
+  def logicalOr[T <: TensorND](a: TensorND | TensorLike, b: TensorND | TensorLike): T    = js.native
+  def logicalXor[T <: TensorND](a: TensorND | TensorLike, b: TensorND | TensorLike): T   = js.native
+  def where[T <: TensorND](condition: TensorND | TensorLike, a: T | TensorLike, b: T | TensorLike): T = js.native
 }

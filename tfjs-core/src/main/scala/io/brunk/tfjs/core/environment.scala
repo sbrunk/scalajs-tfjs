@@ -18,49 +18,18 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 import Engine.MemoryInfo
 import kernels.KernelBackend
 
-@js.native
-sealed trait Type extends js.Object {}
 
-@js.native
-@JSGlobal
-object Type extends js.Object {
-  var NUMBER: Type  = js.native
-  var BOOLEAN: Type = js.native
-  var STRING: Type  = js.native
-  @JSBracketAccess
-  def apply(value: Type): String = js.native
-}
-
-@js.native
-trait Features extends js.Object {
-  var DEBUG: Boolean                                             = js.native
-  var IS_BROWSER: Boolean                                        = js.native
-  var IS_NODE: Boolean                                           = js.native
-  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_VERSION: Double       = js.native
-  var WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE: Boolean     = js.native
-  var WEBGL_VERSION: Double                                      = js.native
-  var WEBGL_RENDER_FLOAT32_ENABLED: Boolean                      = js.native
-  var WEBGL_DOWNLOAD_FLOAT_ENABLED: Boolean                      = js.native
-  var WEBGL_GET_BUFFER_SUB_DATA_ASYNC_EXTENSION_ENABLED: Boolean = js.native
-  var BACKEND: String                                            = js.native
-  var TEST_EPSILON: Double                                       = js.native
-  var IS_CHROME: Boolean                                         = js.native
-}
-
-@js.native
-trait URLProperty extends js.Object {
-  var name: String = js.native
-  var `type`: Type = js.native
-}
 
 @js.native
 @JSGlobal
 class Environment protected () extends js.Object {
   def this(features: Features = ???) = this()
+  var backendName: String                               = js.native
+  var backend: KernelBackend                            = js.native
   def get[K <: String](feature: K): js.Any              = js.native
   def getFeatures(): Features                           = js.native
   def set[K <: String](feature: K, value: js.Any): Unit = js.native
@@ -71,7 +40,8 @@ class Environment protected () extends js.Object {
   def registerBackend(
       name: String,
       factory: js.Function0[KernelBackend],
-      priority: Double = ???
+      priority: Double = ???,
+      setTensorTrackerFn: js.Function1[js.Function0[TensorTracker], Unit] = ???
   ): Boolean                            = js.native
   def removeBackend(name: String): Unit = js.native
   def engine: Engine                    = js.native
@@ -83,6 +53,14 @@ trait EnvironmentCompanion extends js.Object {
   def getBackend(): String                                           = js.native
   def disposeVariables(): Unit                                       = js.native
   def memory(): MemoryInfo                                           = js.native
+  def tidy[T <: TensorContainer](
+      nameOrFn: String | ScopeFn[T],
+      fn: ScopeFn[T] = ???,
+      gradMode: Boolean = ???
+  ): T                                                 = js.native
+  def dispose(container: TensorContainer): Unit        = js.native
+  def keep[T <: TensorND](result: T): T                = js.native
+  def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native
 }
 
 @js.native

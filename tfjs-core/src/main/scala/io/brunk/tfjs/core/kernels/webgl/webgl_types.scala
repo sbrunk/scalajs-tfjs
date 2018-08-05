@@ -20,18 +20,6 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import org.scalajs.dom.webgl
-@js.native
-trait WebGLQuery extends js.Object {}
-
-@js.native
-trait WebGL2RenderingContext extends webgl.RenderingContext {
-  var QUERY_RESULT: Double                                        = js.native
-  var QUERY_RESULT_AVAILABLE: Double                              = js.native
-  var createQuery: js.Function0[WebGLQuery]                       = js.native
-  var beginQuery: js.Function2[Double, WebGLQuery, Unit]          = js.native
-  var endQuery: js.Function1[Double, Unit]                        = js.native
-  var getQueryParameter: js.Function2[WebGLQuery, Double, Double] = js.native
-}
 
 @js.native
 trait WebGL2DisjointQueryTimerExtension extends js.Object {
@@ -62,9 +50,4 @@ trait WebGLContextAttributes extends js.Object {
   var depth: Boolean                        = js.native
   var stencil: Boolean                      = js.native
   var failIfMajorPerformanceCaveat: Boolean = js.native
-}
-
-@js.native
-trait WebGLLoseContextExtension extends js.Object {
-  def loseContext(): Unit = js.native
 }

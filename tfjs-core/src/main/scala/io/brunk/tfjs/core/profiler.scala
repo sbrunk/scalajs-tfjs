@@ -27,7 +27,7 @@ import TensorModule.TensorND
 @JSGlobal
 class Profiler protected () extends js.Object {
   def this(backendTimer: BackendTimer, logger: Logger = ???) = this()
-  def profileKernel[T <: TensorND](name: String, f: js.Function0[T]): T = js.native
+  def profileKernel[T <: TensorND | js.Array[TensorND]](name: String, f: js.Function0[T | js.Array[TensorND]]): T = js.native
 }
 
 @js.native

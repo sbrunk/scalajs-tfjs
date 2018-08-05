@@ -33,12 +33,12 @@ trait DoneFn extends js.Object {
 @js.native
 @JSGlobalScope
 object Test_util extends js.Object {
-  val WEBGL_ENVS: js.Array[Features]      = js.native
-  val CPU_ENVS: js.Array[Features]        = js.native
-  val CHROME_CPU_ENVS: js.Array[Features] = js.native
-  val NATIVE_ENV: Features                = js.native
-  val BROWSER_ENVS: js.Array[Features]    = js.native
-  val ALL_ENVS: js.Array[Features]        = js.native
+  val WEBGL_ENVS: Features   = js.native
+  val NODE_ENVS: Features    = js.native
+  val CHROME_ENVS: Features  = js.native
+  val BROWSER_ENVS: Features = js.native
+  val CPU_ENVS: Features     = js.native
+  val ALL_ENVS: Features     = js.native
   def expectArraysClose(
       actual: TensorND | TypedArray | js.Array[Double],
       expected: TensorND | TypedArray | js.Array[Double] | js.Array[Boolean],

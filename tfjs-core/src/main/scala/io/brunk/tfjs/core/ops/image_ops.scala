@@ -16,22 +16,37 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Tensor3D, Tensor4D }
+import io.brunk.tfjs.core.TensorModule.{Tensor1D, Tensor2D, Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
 
 @js.native
 trait ImageOps extends js.Object {
   def resizeBilinear[T <: Tensor3D | Tensor4D](
-      images: T,
+      images: T | TensorLike,
       size: js.Tuple2[Double, Double],
       alignCorners: Boolean = ???
   ): T = js.native
   def resizeNearestNeighbor[T <: Tensor3D | Tensor4D](
-      images: T,
+      images: T | TensorLike,
       size: js.Tuple2[Double, Double],
       alignCorners: Boolean = ???
   ): T = js.native
+  def nonMaxSuppression(
+    boxes: Tensor2D | TensorLike,
+    scores: Tensor1D | TensorLike,
+    maxOutputSize: Double,
+    iouThreshold: Double = ???,
+    scoreThreshold: Double = ???
+  ): Tensor1D = js.native
+  def nonMaxSuppressionAsync(
+    boxes: Tensor2D | TensorLike,
+    scores: Tensor1D | TensorLike,
+    maxOutputSize: Double,
+    iouThreshold: Double = ???,
+    scoreThreshold: Double = ???
+  ): Promise[Tensor1D]
 }

@@ -96,6 +96,15 @@ class MathBackendWebGL protected () extends KernelBackend {
       alpha: Double,
       beta: Double
   ): Tensor4D                                              = js.native
+  def LRNGrad(
+    dy: Tensor4D,
+    inputImage: Tensor4D,
+    outputImage: Tensor4D,
+    depthRadius: Double,
+    bias: Double,
+    alpha: Double,
+    beta: Double
+  ): Tensor4D
   def tile[T <: TensorND](x: T, reps: js.Array[Double]): T = js.native
   def pad[T <: TensorND](
       x: T,
@@ -104,6 +113,16 @@ class MathBackendWebGL protected () extends KernelBackend {
   ): T                                                                = js.native
   def transpose[T <: TensorND](x: T, perm: js.Array[Double]): T       = js.native
   def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double): T = js.native
+  def batchToSpaceND[T <: Tensor](
+    x: T,
+    blockShape: js.Array[Double],
+    crops: js.Array[js.Array[Double]]
+  ): T = js.native
+  def spaceToBatchND[T <: Tensor](
+    x: T,
+    blockShape: js.Array[Double],
+    paddings: js.Array[js.Tuple2[Double, Double]]
+  ): T                                               = js.native
   def sum(x: TensorND, axes: js.Array[Double]): TensorND              = js.native
   def unsortedSegmentSum[T <: TensorND](x: T, segmentIds: Tensor1D, numSegments: Double): TensorND =
     js.native
@@ -128,10 +147,12 @@ class MathBackendWebGL protected () extends KernelBackend {
   def max(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def maximum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def all(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
+  def any(x: Tensor, axes: js.Array[Double]): Tensor                                 = js.native
   def squaredDifference(a: TensorND, b: TensorND): TensorND                             = js.native
   def realDivide(a: TensorND, b: TensorND): TensorND                                    = js.native
   def floorDiv(a: TensorND, b: TensorND): TensorND                                      = js.native
   def add(a: TensorND, b: TensorND): TensorND                                           = js.native
+  def addN[T <: Tensor](tensors: js.Array[T]): T                                     = js.native
   def subtract(a: TensorND, b: TensorND): TensorND                                      = js.native
   def pow[T <: TensorND](a: T, b: TensorND): T                                          = js.native
   def ceil[T <: TensorND](x: T): T                                                      = js.native
@@ -198,6 +219,8 @@ class MathBackendWebGL protected () extends KernelBackend {
       newWidth: Double,
       alignCorners: Boolean
   ): Tensor4D = js.native
+  def resizeNearestNeighborBackprop(dy: Tensor4D, x: Tensor4D, alignCorners: Boolean): Tensor4D =
+    js.native
   def multinomial(
       logits: Tensor2D,
       normalized: Boolean,
@@ -206,6 +229,19 @@ class MathBackendWebGL protected () extends KernelBackend {
   ): Tensor2D = js.native
   def oneHot(indices: Tensor1D, depth: Double, onValue: Double, offValue: Double): Tensor2D =
     js.native
+  def nonMaxSuppression(
+    boxes: Tensor2D,
+    scores: Tensor1D,
+    maxOutputSize: Double,
+    iouThreshold: Double,
+    scoreThreshold: Double
+  ): Tensor1D                             = js.native
   def getTextureManager(): TextureManager = js.native
   def dispose(): Unit                     = js.native
+}
+
+@js.native
+@JSGlobalScope
+object Backend_webgl extends js.Object {
+  val SIZE_UPLOAD_UNIFORM: Int = js.native
 }

@@ -16,7 +16,8 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Tensor1D, TensorND }
+import io.brunk.tfjs.core.TensorModule.{Tensor1D, TensorND}
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
@@ -25,37 +26,42 @@ import js.|
 @js.native
 trait ReductionOps extends js.Object {
   def logSumExp[T <: TensorND](
-      x: TensorND,
+      x: TensorND | TensorLike,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
   def sum[T <: TensorND](
-      x: TensorND,
+      x: TensorND | TensorLike,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
   def mean[T <: TensorND](
-      x: TensorND,
+      x: TensorND | TensorLike,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
   def min[T <: TensorND](
-      x: TensorND,
+      x: TensorND | TensorLike,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
   def max[T <: TensorND](
-      x: TensorND,
+      x: TensorND | TensorLike,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T                                                          = js.native
-  def argMin[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
-  def argMax[T <: TensorND](x: TensorND, axis: Double = ???): T = js.native
+  def argMin[T <: TensorND](x: TensorND | TensorLike, axis: Double = ???): T = js.native
+  def argMax[T <: TensorND](x: TensorND | TensorLike, axis: Double = ???): T = js.native
   def all[T <: TensorND](
-      x: TensorND,
+      x: TensorND | TensorLike,
       axis: Double | js.Array[Double] = ???,
       keepDims: Boolean = ???
   ): T = js.native
-  def moments(x: TensorND, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
+  def any[T <: TensorND](
+    x: TensorND | TensorLike,
+    axis: Double | js.Array[Double] = ???,
+    keepDims: Boolean = ???
+  ): T = js.native
+  def moments(x: TensorND | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any =
     js.native
 }

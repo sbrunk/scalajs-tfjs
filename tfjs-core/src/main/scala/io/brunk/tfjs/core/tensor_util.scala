@@ -24,5 +24,15 @@ import TensorModule.TensorND
 @js.native
 @JSGlobalScope
 object Tensor_util extends js.Object {
-  def tensorToString(t: TensorND, verbose: Boolean): String = js.native
+  def assertTypesMatch(a: TensorND, b: TensorND): Unit                          = js.native
+  def isTensorInList(tensor: TensorND, tensorList: js.Array[TensorND]): Boolean = js.native
+  def flattenNameArrayMap(
+    nameArrayMap: TensorND | NamedTensorMap,
+    keys: js.Array[String] = ???
+  ): js.Array[TensorND] = js.native
+  def unflattenToNameArrayMap(
+    keys: js.Array[String],
+    flatArrays: js.Array[TensorND]
+  ): NamedTensorMap                                                    = js.native
+  def getTensorsInContainer(result: TensorContainer): js.Array[TensorND] = js.native
 }

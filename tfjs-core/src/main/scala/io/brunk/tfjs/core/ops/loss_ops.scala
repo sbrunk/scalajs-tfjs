@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
@@ -39,47 +40,61 @@ object Reduction extends js.Object {
 @js.native
 trait LossOps extends js.Object {
   def computeWeightedLoss[T <: TensorND, O <: TensorND](
-      losses: T,
-      weights: TensorND = ???,
+      losses: T | TensorLike,
+      weights: TensorND | TensorLike = ???,
       reduction: Reduction = ???
   ): O = js.native
   def absoluteDifference[T <: TensorND, O <: TensorND](
-      labels: T,
-      predictions: T,
-      weights: TensorND = ???,
+      labels: T | TensorLike,
+      predictions: T | TensorLike,
+      weights: TensorND | TensorLike = ???,
       reduction: Reduction = ???
   ): O = js.native
   def meanSquaredError[T <: TensorND, O <: TensorND](
-      labels: T,
-      predictions: T,
-      weights: TensorND = ???,
+      labels: T | TensorLike,
+      predictions: T | TensorLike,
+      weights: TensorND | TensorLike = ???,
       reduction: Reduction = ???
   ): O = js.native
   def cosineDistance[T <: TensorND, O <: TensorND](
-      labels: T,
-      predictions: T,
+      labels: T | TensorLike,
+      predictions: T | TensorLike,
       axis: Double,
-      weights: TensorND = ???,
+      weights: TensorND | TensorLike = ???,
       reduction: Reduction = ???
   ): O = js.native
   def hingeLoss[T <: TensorND, O <: TensorND](
-      labels: T,
-      predictions: T,
-      weights: TensorND = ???,
+      labels: T | TensorLike,
+      predictions: T | TensorLike,
+      weights: TensorND | TensorLike = ???,
       reduction: Reduction = ???
   ): O = js.native
   def logLoss[T <: TensorND, O <: TensorND](
-      labels: T,
-      predictions: T,
-      weights: TensorND = ???,
+      labels: T | TensorLike,
+      predictions: T | TensorLike,
+      weights: TensorND | TensorLike = ???,
       epsilon: Double = ???,
       reduction: Reduction = ???
   ): O = js.native
+  def sigmoidCrossEntropy[T <: TensorND, O <: TensorND](
+    multiClassLabels: T | TensorLike,
+    logits: T | TensorLike,
+    weights: TensorND | TensorLike = ???,
+    labelSmoothing: Double = ???,
+    reduction: Reduction = ???
+  ): O = js.native
   def huberLoss[T <: TensorND, O <: TensorND](
-      labels: T,
-      predictions: T,
+      labels: T | TensorLike,
+      predictions: T | TensorLike,
       weights: TensorND = ???,
       delta: Double = ???,
       reduction: Reduction = ???
+  ): O = js.native
+  def softmaxCrossEntropy[T <: TensorND, O <: TensorND](
+    onehotLabels: T | TensorLike,
+    logits: T | TensorLike,
+    weights: TensorND | TensorLike = ???,
+    labelSmoothing: Double = ???,
+    reduction: Reduction = ???
   ): O = js.native
 }

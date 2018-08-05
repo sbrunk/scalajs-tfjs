@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Tensor1D, Tensor2D }
+import io.brunk.tfjs.core.TensorModule.{ Tensor1D, Tensor2D, TensorND }
 
 import scala.scalajs.js
 import js.annotation._
@@ -25,4 +25,5 @@ import js.|
 @js.native
 trait LinalgOps extends js.Object {
   def gramSchmidt(xs: js.Array[Tensor1D] | Tensor2D): js.Array[Tensor1D] | Tensor2D = js.native
+  def qr(x: TensorND, fullMatrices: Boolean = ???): js.Tuple2[TensorND, TensorND]         = js.native
 }

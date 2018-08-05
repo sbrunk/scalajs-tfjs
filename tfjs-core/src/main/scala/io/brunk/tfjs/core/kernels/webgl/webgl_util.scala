@@ -49,7 +49,7 @@ object Webgl_util extends js.Object {
   def createStaticIndexBuffer(gl: webgl.RenderingContext, data: Uint16Array): webgl.Buffer =
     js.native
   def queryMaxTextureSize(gl: webgl.RenderingContext): Double  = js.native
-  def getChannelsPerTexture(): Double                          = js.native
+  def getNumChannels(): Double                          = js.native
   def createTexture(gl: webgl.RenderingContext): webgl.Texture = js.native
   def validateTextureSize(gl: webgl.RenderingContext, width: Double, height: Double): Unit =
     js.native

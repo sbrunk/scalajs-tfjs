@@ -24,9 +24,6 @@ import Engine.ScopeFn
 import TensorModule.{ Scalar, TensorND }
 import Engine.CustomGradientFunc
 
-@js.native
-@JSGlobal
-class Gradients extends js.Object {}
 
 @js.native
 @JSGlobal

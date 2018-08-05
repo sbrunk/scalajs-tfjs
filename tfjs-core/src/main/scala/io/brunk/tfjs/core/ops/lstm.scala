@@ -16,7 +16,8 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Scalar, Tensor1D, Tensor2D }
+import io.brunk.tfjs.core.TensorModule.{Scalar, Tensor1D, Tensor2D}
+import io.brunk.tfjs.core.Types.TensorLike
 import io.brunk.tfjs.core.ops.Lstm.LSTMCellFunc
 
 import scala.scalajs.js
@@ -24,21 +25,21 @@ import js.annotation._
 import js.|
 
 @js.native
-trait LSTMOps extends js.Object {
+trait Lstm extends js.Object {
   def multiRNNCell(
       lstmCells: js.Array[LSTMCellFunc],
-      data: Tensor2D,
-      c: js.Array[Tensor2D],
-      h: js.Array[Tensor2D]
+      data: Tensor2D | TensorLike,
+      c: js.Array[Tensor2D] | js.Array[TensorLike],
+      h: js.Array[Tensor2D] | js.Array[TensorLike]
   ): js.Tuple2[js.Array[Tensor2D], js.Array[Tensor2D]] =
     js.native
   def basicLSTMCell(
-      forgetBias: Scalar,
-      lstmKernel: Tensor2D,
-      lstmBias: Tensor1D,
-      data: Tensor2D,
-      c: Tensor2D,
-      h: Tensor2D
+      forgetBias: Scalar | TensorLike,
+      lstmKernel: Tensor2D | TensorLike,
+      lstmBias: Tensor1D | TensorLike,
+      data: Tensor2D | TensorLike,
+      c: Tensor2D | TensorLike,
+      h: Tensor2D | TensorLike
   ): js.Tuple2[Tensor2D, Tensor2D] = js.native
 }
 

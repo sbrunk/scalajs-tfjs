@@ -54,6 +54,7 @@ class MathBackendCPU extends KernelBackend {
   def concat(a: Tensor2D, b: Tensor2D): Tensor2D              = js.native
   def neg[T <: TensorND](x: T): T                             = js.native
   def add(a: TensorND, b: TensorND): TensorND                 = js.native
+  def addN[T <: TensorND](tensors: js.Array[T]): T            = js.native
   def subtract(a: TensorND, b: TensorND): TensorND            = js.native
   def pow[T <: TensorND](a: T, b: TensorND): T                = js.native
   def matMul(a: Tensor2D, b: Tensor2D, transposeA: Boolean, transposeB: Boolean): Tensor2D =
@@ -76,15 +77,16 @@ class MathBackendCPU extends KernelBackend {
   def logicalNot[T <: TensorND](x: T): T                                                = js.native
   def logicalAnd(a: TensorND, b: TensorND): TensorND                                    = js.native
   def logicalOr(a: TensorND, b: TensorND): TensorND                                     = js.native
-  def where(condition: TensorND, a: TensorND, b: TensorND, dtype: DataType): TensorND   = js.native
-  def topKValues[T <: TensorND](x: T, k: Double): Tensor1D                              = js.native
-  def topKIndices(x: TensorND, k: Double): Tensor1D                                     = js.native
+  def select(condition: TensorND, a: TensorND, b: TensorND): TensorND                        = js.native
+  def where(condition: TensorND): Tensor2D                                             = js.native
+  def topk[T <: TensorND](x: T, k: Double, sorted: Boolean): js.Tuple2[T, T]           = js.native
   def min(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def minimum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def mod(a: TensorND, b: TensorND): TensorND                                           = js.native
   def max(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def maximum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def all(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
+  def any(x: TensorND, axes: js.Array[Double]): TensorND                                 = js.native
   def squaredDifference(a: TensorND, b: TensorND): TensorND                             = js.native
   def ceil[T <: TensorND](x: T): T                                                      = js.native
   def floor[T <: TensorND](x: T): T                                                     = js.native
@@ -138,6 +140,16 @@ class MathBackendCPU extends KernelBackend {
   ): T                                                                = js.native
   def transpose[T <: TensorND](x: T, perm: js.Array[Double]): T       = js.native
   def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double): T = js.native
+  def batchToSpaceND[T <: TensorND](
+    x: T,
+    blockShape: js.Array[Double],
+    crops: js.Array[js.Array[Double]]
+  ): T = js.native
+  def spaceToBatchND[T <: TensorND](
+    x: T,
+    blockShape: js.Array[Double],
+    paddings: js.Array[js.Tuple2[Double, Double]]
+  ): T                                                     = js.native
   def maxPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D            = js.native
   def maxPoolBackprop(dy: Tensor4D, x: Tensor4D, y: Tensor4D, convInfo: Conv2DInfo): Tensor4D =
     js.native
@@ -162,6 +174,11 @@ class MathBackendCPU extends KernelBackend {
       newWidth: Double,
       alignCorners: Boolean
   ): Tensor4D = js.native
+  def resizeNearestNeighborBackprop(
+    dy: Tensor4D,
+    x: Tensor4D,
+    alignCorners: Boolean
+  ): Tensor[Rank.R4] = js.native
   def batchNormalization(
       x: Tensor4D,
       mean: Tensor4D | Tensor1D,
@@ -177,6 +194,15 @@ class MathBackendCPU extends KernelBackend {
       alpha: Double,
       beta: Double
   ): Tensor4D = js.native
+  def LRNGrad(
+    dy: Tensor4D,
+    inputImage: Tensor4D,
+    outputImage: Tensor4D,
+    depthRadius: Double,
+    bias: Double,
+    alpha: Double,
+    beta: Double
+  ): Tensor4D = js.native
   def multinomial(
       logits: Tensor2D,
       normalized: Boolean,
@@ -185,5 +211,12 @@ class MathBackendCPU extends KernelBackend {
   ): Tensor2D = js.native
   def oneHot(indices: Tensor1D, depth: Double, onValue: Double, offValue: Double): Tensor2D =
     js.native
+  def nonMaxSuppression(
+    boxes: Tensor2D,
+    scores: Tensor1D,
+    maxOutputSize: Double,
+    iouThreshold: Double,
+    scoreThreshold: Double
+  ): Tensor1D         = js.native
   def dispose(): Unit = js.native
 }

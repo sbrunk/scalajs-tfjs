@@ -24,7 +24,7 @@ import js.annotation._
 import js.|
 
 @js.native
-trait NormOps extends js.Object {
+trait Norm extends js.Object {
   def norm(
       x: TensorND,
       ord: Double | String = ???,

@@ -16,22 +16,21 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Scalar, Tensor1D, Tensor2D }
+import io.brunk.tfjs.core.TensorModule.{Scalar, Tensor1D, Tensor2D, TensorND}
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
-trait MatmulOps extends js.Object {
+trait Matmul extends js.Object {
   def matMul(
-      a: Tensor2D,
-      b: Tensor2D,
+      a: Tensor2D | TensorLike,
+      b: Tensor2D | TensorLike,
       transposeA: Boolean = ???,
       transposeB: Boolean = ???
   ): Tensor2D                                                    = js.native
-  def vectorTimesMatrix(v: Tensor1D, matrix: Tensor2D): Tensor1D = js.native
-  def matrixTimesVector(matrix: Tensor2D, v: Tensor1D): Tensor1D = js.native
-  def dotProduct(v1: Tensor1D, v2: Tensor1D): Scalar             = js.native
-  def outerProduct(v1: Tensor1D, v2: Tensor1D): Tensor2D         = js.native
+  def outerProduct(v1: Tensor1D | TensorLike, v2: Tensor1D | TensorLike): Tensor2D         = js.native
+  def dot(v1: TensorND | TensorLike, v2: TensorND | TensorLike): TensorND             = js.native
 }

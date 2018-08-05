@@ -16,45 +16,46 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.{ Rank, Tensor }
-import io.brunk.tfjs.core.TensorModule.{ Tensor1D, Tensor2D, Tensor3D, Tensor4D }
+import io.brunk.tfjs.core.{Rank, Tensor}
+import io.brunk.tfjs.core.TensorModule.{Tensor1D, Tensor2D, Tensor3D, Tensor4D}
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
 @js.native
-trait BatchNormOps extends js.Object {
+trait Batchnorm extends js.Object {
   def batchNormalization2d(
-      x: Tensor2D,
-      mean: Tensor2D | Tensor1D,
-      variance: Tensor2D | Tensor1D,
+      x: Tensor2D | TensorLike,
+      mean: Tensor2D | Tensor1D | TensorLike,
+      variance: Tensor2D | Tensor1D | TensorLike,
       varianceEpsilon: Double = ???,
-      scale: Tensor2D | Tensor1D = ???,
-      offset: Tensor2D | Tensor1D = ???
+      scale: Tensor2D | Tensor1D | TensorLike = ???,
+      offset: Tensor2D | Tensor1D | TensorLike = ???
   ): Tensor2D = js.native
   def batchNormalization3d(
-      x: Tensor3D,
-      mean: Tensor3D | Tensor1D,
-      variance: Tensor3D | Tensor1D,
+      x: Tensor3D | TensorLike,
+      mean: Tensor3D | Tensor1D | TensorLike,
+      variance: Tensor3D | Tensor1D | TensorLike,
       varianceEpsilon: Double = ???,
-      scale: Tensor3D | Tensor1D = ???,
-      offset: Tensor3D | Tensor1D = ???
+      scale: Tensor3D | Tensor1D | TensorLike = ???,
+      offset: Tensor3D | Tensor1D | TensorLike = ???
   ): Tensor3D = js.native
   def batchNormalization4d(
-      x: Tensor4D,
-      mean: Tensor4D | Tensor1D,
-      variance: Tensor4D | Tensor1D,
+      x: Tensor4D | TensorLike,
+      mean: Tensor4D | Tensor1D | TensorLike,
+      variance: Tensor4D | Tensor1D | TensorLike,
       varianceEpsilon: Double = ???,
-      scale: Tensor4D | Tensor1D = ???,
-      offset: Tensor4D | Tensor1D = ???
+      scale: Tensor4D | Tensor1D | TensorLike = ???,
+      offset: Tensor4D | Tensor1D | TensorLike = ???
   ): Tensor4D = js.native
   def batchNormalization[R <: Rank](
-      x: Tensor[R],
-      mean: Tensor[R] | Tensor1D,
-      variance: Tensor[R] | Tensor1D,
+      x: Tensor[R] | Tensor1D | TensorLike,
+      mean: Tensor[R] | Tensor1D | TensorLike,
+      variance: Tensor[R] | Tensor1D | TensorLike,
       varianceEpsilon: Double = ???,
-      scale: Tensor[R] | Tensor1D = ???,
-      offset: Tensor[R] | Tensor1D = ???
+      scale: Tensor[R] | Tensor1D | TensorLike = ???,
+      offset: Tensor[R] | Tensor1D | TensorLike = ???
   ): Tensor[R] = js.native
 }

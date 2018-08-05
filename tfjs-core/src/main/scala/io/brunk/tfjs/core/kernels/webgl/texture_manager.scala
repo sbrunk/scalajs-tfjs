@@ -31,7 +31,7 @@ class TextureManager protected () extends js.Object {
   def releaseTexture(
       texture: WebGLTexture,
       shape: js.Tuple2[Double, Double],
-      texType: TextureUsage
+      logicalTexType: TextureUsage
   ): Unit                          = js.native
   def getNumUsedTextures(): Double = js.native
   def getNumFreeTextures(): Double = js.native

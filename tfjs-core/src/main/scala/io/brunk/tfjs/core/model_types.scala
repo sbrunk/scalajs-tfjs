@@ -20,6 +20,7 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import _root_.io.brunk.tfjs.core.TensorModule.TensorND
+
 @js.native
 trait ModelPredictConfig extends js.Object {
   var batchSize: Double = js.native

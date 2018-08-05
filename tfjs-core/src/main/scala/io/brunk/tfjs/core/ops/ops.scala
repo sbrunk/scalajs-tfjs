@@ -30,30 +30,33 @@ trait Image extends ImageOps
 
 @js.native
 trait Ops
-    extends BatchNormOps
-    with ConcatOps
-    with ConvOps
-    with MatmulOps
-    with PoolOps
-    with TransposeOps
+    extends Batchnorm
+    with Concat
+    with Conv
+    with Matmul
     with ReverseOps
-    with SliceOps
-    with StridedSliceOps
-    with ReductionOps
-    with SegmentOps
-    with CompareOps
-    with LogicalOps
+    with Pool
+    with Slice
     with UnaryOps
+    with ReductionOps
+    with Compare
     with BinaryOps
-    with NormOps
+    with ReluOps
+    with LogicalOps
     with ArrayOps
-    with MovingAverageOps
-    with LSTMOps
-    with SoftmaxOps
-    with SigmoidCrossEntropyOps
-    with LRNOps {
+    with TensorOps
+    with Transpose
+    with Softmax
+    with Lrn
+    with Norm
+    with SegmentOps
+    with Lstm
+    with MovingAverage
+    with StridedSliceOps
+    with Topk
+    with Operation {
+  val image: Image   = js.native
   val linalg: LinalgOps = js.native
   // TODO operation
   val losses: Losses = js.native
-  val image: Image   = js.native
 }

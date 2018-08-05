@@ -17,6 +17,7 @@
 package io.brunk.tfjs.core.ops
 
 import io.brunk.tfjs.core.TensorModule.TensorND
+import io.brunk.tfjs.core.Types.TensorLike
 
 import scala.scalajs.js
 import js.annotation._
@@ -24,41 +25,36 @@ import js.|
 
 @js.native
 trait UnaryOps extends js.Object {
-  def neg[T <: TensorND](x: T): T                                                     = js.native
-  def ceil[T <: TensorND](x: T): T                                                    = js.native
-  def floor[T <: TensorND](x: T): T                                                   = js.native
-  def sign[T <: TensorND](x: T): T                                                    = js.native
-  def round[T <: TensorND](x: T): T                                                   = js.native
-  def exp[T <: TensorND](x: T): T                                                     = js.native
-  def expm1[T <: TensorND](x: T): T                                                   = js.native
-  def log[T <: TensorND](x: T): T                                                     = js.native
-  def log1p[T <: TensorND](x: T): T                                                   = js.native
-  def sqrt[T <: TensorND](x: T): T                                                    = js.native
-  def rsqrt[T <: TensorND](x: T): T                                                   = js.native
-  def square[T <: TensorND](x: T): T                                                  = js.native
-  def reciprocal[T <: TensorND](x: T): T                                              = js.native
-  def abs[T <: TensorND](x: T): T                                                     = js.native
-  def clipByValue[T <: TensorND](x: T, clipValueMin: Double, clipValueMax: Double): T = js.native
-  def relu[T <: TensorND](x: T): T                                                    = js.native
-  def elu[T <: TensorND](x: T): T                                                     = js.native
-  def selu[T <: TensorND](x: T): T                                                    = js.native
-  def leakyRelu[T <: TensorND](x: T, alpha: Double = ???): T                          = js.native
-  def prelu[T <: TensorND](x: T, alpha: T): T                                         = js.native
-  def sigmoid[T <: TensorND](x: T): T                                                 = js.native
-  def logSigmoid[T <: TensorND](x: T): T                                              = js.native
-  def softplus[T <: TensorND](x: T): T                                                = js.native
-  def sin[T <: TensorND](x: T): T                                                     = js.native
-  def cos[T <: TensorND](x: T): T                                                     = js.native
-  def tan[T <: TensorND](x: T): T                                                     = js.native
-  def asin[T <: TensorND](x: T): T                                                    = js.native
-  def acos[T <: TensorND](x: T): T                                                    = js.native
-  def atan[T <: TensorND](x: T): T                                                    = js.native
-  def sinh[T <: TensorND](x: T): T                                                    = js.native
-  def cosh[T <: TensorND](x: T): T                                                    = js.native
-  def tanh[T <: TensorND](x: T): T                                                    = js.native
-  def asinh[T <: TensorND](x: T): T                                                   = js.native
-  def acosh[T <: TensorND](x: T): T                                                   = js.native
-  def atanh[T <: TensorND](x: T): T                                                   = js.native
-  def erf[T <: TensorND](x: T): T                                                     = js.native
-  def step[T <: TensorND](x: T, alpha: Double = ???): T                               = js.native
+  def neg[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def ceil[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def floor[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def sign[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def round[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def exp[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def expm1[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def log[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def log1p[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def sqrt[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def rsqrt[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def square[T <: TensorND](x: T | TensorLike): T                                                  = js.native
+  def reciprocal[T <: TensorND](x: T | TensorLike): T                                              = js.native
+  def abs[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def clipByValue[T <: TensorND](x: T | TensorLike, clipValueMin: Double, clipValueMax: Double): T = js.native
+  def sigmoid[T <: TensorND](x: T | TensorLike): T                                                 = js.native
+  def logSigmoid[T <: TensorND](x: T | TensorLike): T                                              = js.native
+  def softplus[T <: TensorND](x: T | TensorLike): T                                                = js.native
+  def sin[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def cos[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def tan[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def asin[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def acos[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def atan[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def sinh[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def cosh[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def tanh[T <: TensorND](x: T | TensorLike): T                                                    = js.native
+  def asinh[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def acosh[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def atanh[T <: TensorND](x: T | TensorLike): T                                                   = js.native
+  def erf[T <: TensorND](x: T | TensorLike): T                                                     = js.native
+  def step[T <: TensorND](x: T | TensorLike, alpha: Double = ???): T                               = js.native
 }
