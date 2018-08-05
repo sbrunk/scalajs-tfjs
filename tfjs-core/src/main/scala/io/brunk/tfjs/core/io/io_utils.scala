@@ -16,30 +16,24 @@
 
 package io.brunk.tfjs.core.io
 
-import _root_.io.brunk.tfjs.core.NamedTensorMap
-import _root_.io.brunk.tfjs.core.Types.TypedArray
-import _root_.io.brunk.tfjs.core.io.types.{
-  ModelArtifacts,
-  ModelArtifactsInfo,
-  WeightsManifestEntry
-}
-
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
-import scala.scalajs.js.typedarray.ArrayBuffer
+import js.|
+
+package io_utils {
 
 @js.native
 @JSGlobalScope
-object IoUtils extends js.Object {
+object Io_utils extends js.Object {
   def encodeWeights(tensors: NamedTensorMap): Promise[js.Any] = js.native
-  def decodeWeights(buffer: ArrayBuffer, specs: js.Array[WeightsManifestEntry]): NamedTensorMap =
-    js.native
-  def concatenateTypedArrays(xs: js.Array[TypedArray]): ArrayBuffer                    = js.native
-  def stringByteLength(str: String): Double                                            = js.native
-  def arrayBufferToBase64String(buffer: ArrayBuffer): String                           = js.native
-  def base64StringToArrayBuffer(str: String): ArrayBuffer                              = js.native
-  def concatenateArrayBuffers(buffers: js.Array[ArrayBuffer]): ArrayBuffer             = js.native
-  def basename(path: String): String                                                   = js.native
+  def decodeWeights(buffer: ArrayBuffer, specs: js.Array[WeightsManifestEntry]): NamedTensorMap = js.native
+  def concatenateTypedArrays(xs: js.Array[TypedArray]): ArrayBuffer = js.native
+  def stringByteLength(str: String): Double = js.native
+  def arrayBufferToBase64String(buffer: ArrayBuffer): String = js.native
+  def base64StringToArrayBuffer(str: String): ArrayBuffer = js.native
+  def concatenateArrayBuffers(buffers: js.Array[ArrayBuffer]): ArrayBuffer = js.native
+  def basename(path: String): String = js.native
   def getModelArtifactsInfoForJSON(modelArtifacts: ModelArtifacts): ModelArtifactsInfo = js.native
+}
+
 }

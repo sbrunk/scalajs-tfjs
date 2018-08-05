@@ -18,13 +18,14 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.|
+
+package browser_util {
 
 @js.native
-trait BrowserUtil extends js.Object {
+@JSGlobalScope
+object Browser_util extends js.Object {
   def nextFrame(): Promise[Unit] = js.native
 }
 
-@js.native
-@JSGlobal
-object BrowserUtil extends BrowserUtil
+}

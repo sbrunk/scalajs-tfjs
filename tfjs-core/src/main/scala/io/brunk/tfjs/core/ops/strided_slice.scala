@@ -16,21 +16,17 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
-import io.brunk.tfjs.core.TensorModule.TensorND
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package strided_slice {
+
 @js.native
-trait StridedSliceOps extends js.Object {
-  def stridedSlice[T <: TensorND](
-      x: T,
-      begin: js.Array[Double],
-      end: js.Array[Double],
-      strides: js.Array[Double],
-      beginMask: Double = ???,
-      endMask: Double = ???
-  ): T = js.native
+@JSGlobalScope
+object Strided_slice extends js.Object {
+  def stridedSlice_[T <: Tensor](x: T | TensorLike, begin: js.Array[Double], end: js.Array[Double], strides: js.Array[Double], beginMask: Double = ???, endMask: Double = ???): T = js.native
+  val stridedSlice: stridedSlice_.type = js.native
+}
+
 }

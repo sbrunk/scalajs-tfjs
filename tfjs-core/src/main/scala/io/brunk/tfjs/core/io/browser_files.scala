@@ -16,20 +16,17 @@
 
 package io.brunk.tfjs.core.io
 
-import _root_.io.brunk.tfjs.core.io.Router_registry.IORouter
-import _root_.io.brunk.tfjs.core.io.types.IOHandler
-import org.scalajs.dom.File
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
-import scala.concurrent.Promise
+
+package browser_files {
 
 @js.native
 @JSGlobal
 class BrowserDownloads protected () extends IOHandler {
   def this(fileNamePrefix: String = ???) = this()
-  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
 }
 
 @js.native
@@ -39,8 +36,11 @@ object BrowserDownloads extends js.Object {
 }
 
 @js.native
-trait Browser_files extends js.Object {
-  val browserDownloadsRouter: IORouter                          = js.native
+@JSGlobalScope
+object Browser_files extends js.Object {
+  val browserDownloadsRouter: IORouter = js.native
   def browserDownloads(fileNamePrefix: String = ???): IOHandler = js.native
-  def browserFiles(files: js.Array[File]): IOHandler            = js.native
+  def browserFiles(files: js.Array[File]): IOHandler = js.native
+}
+
 }

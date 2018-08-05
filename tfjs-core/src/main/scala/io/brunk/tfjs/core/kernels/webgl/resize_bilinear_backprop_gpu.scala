@@ -16,17 +16,19 @@
 
 package io.brunk.tfjs.core.kernels.webgl
 
-import io.brunk.tfjs.core.TensorModule.Tensor4D
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
+
+package resize_bilinear_backprop_gpu {
 
 @js.native
 @JSGlobal
 class ResizeBilinearBackpropProgram protected () extends GPGPUProgram {
   def this(dy: Tensor4D, x: Tensor4D, alignCorners: Boolean) = this()
   var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double]   = js.native
-  var userCode: String                = js.native
+  var outputShape: js.Array[Double] = js.native
+  var userCode: String = js.native
+}
+
 }

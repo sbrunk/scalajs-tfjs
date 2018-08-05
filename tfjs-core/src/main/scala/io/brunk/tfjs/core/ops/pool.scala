@@ -16,42 +16,19 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Tensor3D, Tensor4D }
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package pool {
+
 @js.native
-trait PoolOps extends js.Object {
-  def maxPool[T <: Tensor3D | Tensor4D](
-      x: T,
-      filterSize: js.Tuple2[Double, Double] | Double,
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): T = js.native
-  private def maxPoolBackprop(
-      dy: Tensor4D,
-      input: Tensor4D,
-      output: Tensor4D,
-      filterSize: js.Tuple2[Double, Double] | Double,
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): Tensor4D = js.native
-  def avgPool[T <: Tensor3D | Tensor4D](
-      x: T,
-      filterSize: js.Tuple2[Double, Double] | Double,
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double,
-      dimRoundingMode: String = ???
-  ): T = js.native
-  private def avgPoolBackprop[T <: Tensor3D | Tensor4D](
-      dy: T,
-      input: T,
-      filterSize: js.Tuple2[Double, Double] | Double,
-      strides: js.Tuple2[Double, Double] | Double,
-      pad: String | Double
-  ): T = js.native
+@JSGlobalScope
+object Pool extends js.Object {
+  def maxPool_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filterSize: js.Tuple2[Double, Double] | Double, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dimRoundingMode: String = ???): T = js.native
+  def avgPool_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filterSize: js.Tuple2[Double, Double] | Double, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dimRoundingMode: String = ???): T = js.native
+  val maxPool: maxPool_.type = js.native
+  val avgPool: avgPool_.type = js.native
+}
+
 }

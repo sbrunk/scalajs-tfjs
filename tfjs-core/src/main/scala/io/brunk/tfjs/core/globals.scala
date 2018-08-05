@@ -18,26 +18,17 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
-import TensorModule.{ Scalar, TensorND }
-import Types.TensorContainer
-import Engine.{ CustomGradientFunc, ScopeFn }
+import js.|
+
+package globals {
 
 @js.native
-trait Globals extends TrackingCompanion {
-  // TODO reuse Tracking trait but without gradScope
-  def grad[I <: TensorND, O <: TensorND](f: js.Function1[I, O]): js.Function2[I, O, I] = js.native
-  def grads[O <: TensorND](
-      f: js.Function
-  ): js.Function2[js.Array[TensorND], O, js.Array[TensorND]] =
-    js.native
-  def valueAndGrad[I <: TensorND, O <: TensorND](
-      f: js.Function1[I, O]
-  ): js.Function2[I, O, js.Any] =
-    js.native
-  def valueAndGrads[O <: TensorND](f: js.Function): js.Function2[js.Array[TensorND], O, js.Any] =
-    js.native
-  def variableGrads(f: js.Function0[Scalar], varList: js.Array[Variable[Rank]] = ???): js.Any =
-    js.native
-  def customGrad[T <: TensorND](f: CustomGradientFunc[T]): js.Function = js.native
+@JSGlobalScope
+object Globals extends js.Object {
+  val tidy: Environment.tidy.type = js.native
+  val keep: Environment.keep.type = js.native
+  val dispose: Environment.dispose.type = js.native
+  val time: Environment.time.type = js.native
+}
+
 }

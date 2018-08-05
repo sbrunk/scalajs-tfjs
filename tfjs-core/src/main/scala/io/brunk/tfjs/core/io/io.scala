@@ -16,35 +16,19 @@
 
 package io.brunk.tfjs.core.io
 
-import _root_.io.brunk.tfjs.core.NamedTensorMap
-import _root_.io.brunk.tfjs.core.io.Router_registry.IORouter
-import org.scalajs.dom.experimental.RequestInit
-
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
-import scala.scalajs.js.typedarray.ArrayBuffer
+import js.|
+
+package io {
 
 @js.native
-@JSImport("@tensorflow/tfjs-core", "io")
-object io extends ModelManagement with WeightsLoader {
-  def registerSaveRouter(saveRouter: IORouter): Unit    = js.native
-  def registerLoadRouter(loadRouter: IORouter): Unit    = js.native
-  def getSaveHandlers(url: String): js.Array[IOHandler] = js.native
-  def getLoadHandlers(url: String): js.Array[IOHandler] = js.native
-  // browser_http
-  def browserHTTPRequest(path: String, requestInit: RequestInit = ???): IOHandler = js.native
-  // IoUtils
-  def encodeWeights(tensors: NamedTensorMap): Promise[js.Any] = js.native
-  def decodeWeights(buffer: ArrayBuffer, specs: js.Array[WeightsManifestEntry]): NamedTensorMap =
-    js.native
-  type IOHandler             = types.IOHandler
-  type LoadHandler           = types.LoadHandler
-  type ModelArtifacts        = types.ModelArtifacts
-  type ModelStoreManager     = types.ModelStoreManager
-  type SaveConfig            = types.SaveConfig
-  type SaveHandler           = types.SaveHandler
-  type SaveResult            = types.SaveResult
-  type WeightsManifestConfig = types.WeightsManifestConfig
-  type WeightsManifestEntry  = types.WeightsManifestEntry
+@JSGlobalScope
+object Io extends js.Object {
+  val registerSaveRouter: IORouterRegistry.registerSaveRouter.type = js.native
+  val registerLoadRouter: IORouterRegistry.registerLoadRouter.type = js.native
+  val getSaveHandlers: IORouterRegistry.getSaveHandlers.type = js.native
+  val getLoadHandlers: IORouterRegistry.getLoadHandlers.type = js.native
+}
+
 }

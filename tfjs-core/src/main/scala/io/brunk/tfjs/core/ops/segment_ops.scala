@@ -17,10 +17,18 @@
 package io.brunk.tfjs.core.ops
 
 import scala.scalajs.js
-import io.brunk.tfjs.core.TensorModule.{ Tensor1D, TensorND }
+import js.annotation._
+import js.|
+
+package segment_ops {
 
 @js.native
-trait SegmentOps extends js.Object {
-  def unsortedSegmentSum[T <: TensorND](x: T, segmentIds: Tensor1D, numSegments: Double): T =
-    js.native
+@JSGlobalScope
+object Segment_ops extends js.Object {
+  def unsortedSegmentSum_[T <: Tensor](x: T | TensorLike, segmentIds: Tensor1D | TensorLike, numSegments: Double): T = js.native
+  def gather_[T <: Tensor](x: T | TensorLike, indices: Tensor1D | TensorLike, axis: Double = ???): T = js.native
+  val gather: gather_.type = js.native
+  val unsortedSegmentSum: unsortedSegmentSum_.type = js.native
+}
+
 }

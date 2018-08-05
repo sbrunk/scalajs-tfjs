@@ -16,24 +16,39 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.TensorND
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package compare {
+
 @js.native
-trait CompareOps extends js.Object {
-  def notEqual[T <: TensorND](a: TensorND, b: TensorND): T     = js.native
-  def notEqualStrict[T <: TensorND](a: T, b: T): T             = js.native
-  def less[T <: TensorND](a: TensorND, b: TensorND): T         = js.native
-  def lessStrict[T <: TensorND](a: T, b: T): T                 = js.native
-  def equal[T <: TensorND](a: TensorND, b: TensorND): T        = js.native
-  def equalStrict[T <: TensorND](a: T, b: T): T                = js.native
-  def lessEqual[T <: TensorND](a: TensorND, b: TensorND): T    = js.native
-  def lessEqualStrict[T <: TensorND](a: T, b: T): T            = js.native
-  def greater[T <: TensorND](a: TensorND, b: TensorND): T      = js.native
-  def greaterStrict[T <: TensorND](a: T, b: T): T              = js.native
-  def greaterEqual[T <: TensorND](a: TensorND, b: TensorND): T = js.native
-  def greaterEqualStrict[T <: TensorND](a: T, b: T): T         = js.native
+@JSGlobalScope
+object Compare extends js.Object {
+  def notEqual_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def notEqualStrict_[T <: Tensor](a: T | TensorLike, b: T | TensorLike): T = js.native
+  def less_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def lessStrict_[T <: Tensor](a: T | TensorLike, b: T | TensorLike): T = js.native
+  def equal_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def equalStrict_[T <: Tensor](a: T | TensorLike, b: T | TensorLike): T = js.native
+  def lessEqual_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def lessEqualStrict_[T <: Tensor](a: T | TensorLike, b: T | TensorLike): T = js.native
+  def greater_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def greaterStrict_[T <: Tensor](a: T | TensorLike, b: T | TensorLike): T = js.native
+  def greaterEqual_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def greaterEqualStrict_[T <: Tensor](a: T | TensorLike, b: T | TensorLike): T = js.native
+  val equal: equal_.type = js.native
+  val equalStrict: equalStrict_.type = js.native
+  val greater: greater_.type = js.native
+  val greaterEqual: greaterEqual_.type = js.native
+  val greaterEqualStrict: greaterEqualStrict_.type = js.native
+  val greaterStrict: greaterStrict_.type = js.native
+  val less: less_.type = js.native
+  val lessEqual: lessEqual_.type = js.native
+  val lessEqualStrict: lessEqualStrict_.type = js.native
+  val lessStrict: lessStrict_.type = js.native
+  val notEqual: notEqual_.type = js.native
+  val notEqualStrict: notEqualStrict_.type = js.native
+}
+
 }

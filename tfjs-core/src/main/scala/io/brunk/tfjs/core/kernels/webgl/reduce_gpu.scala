@@ -16,17 +16,19 @@
 
 package io.brunk.tfjs.core.kernels.webgl
 
-import io.brunk.tfjs.core.ops.ReduceInfo
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
+
+package reduce_gpu {
 
 @js.native
 @JSGlobal
 class ReduceProgram protected () extends GPGPUProgram {
   def this(reduceInfo: ReduceInfo, reduceType: String) = this()
   var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double]   = js.native
-  var userCode: String                = js.native
+  var outputShape: js.Array[Double] = js.native
+  var userCode: String = js.native
+}
+
 }

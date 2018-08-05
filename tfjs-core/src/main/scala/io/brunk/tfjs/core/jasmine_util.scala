@@ -19,33 +19,25 @@ package io.brunk.tfjs.core
 import scala.scalajs.js
 import js.annotation._
 import js.|
-import kernels.KernelBackend
+
+package jasmine_util {
 
 @js.native
-trait TestBackendFactory extends js.Object {
-  var name: String                         = js.native
+trait TestEnv extends js.Object {
+  var name: String = js.native
   var factory: js.Function0[KernelBackend] = js.native
-  var priority: Double                     = js.native
+  var features: Features = js.native
 }
 
 @js.native
 @JSGlobalScope
 object Jasmine_util extends js.Object {
-  def canEmulateEnvironment(emulatedFeatures: Features): Boolean = js.native
-  def anyFeaturesEquivalentToDefault(
-      emulatedFeatures: js.Array[Features],
-      environment: Environment
-  ): Boolean = js.native
-  def describeWithFlags(
-      name: String,
-      featuresToRun: js.Array[Features],
-      tests: js.Function0[Unit]
-  ): Unit                                                               = js.native
-  def TEST_BACKENDS: js.Array[TestBackendFactory]                       = js.native
-  def setBeforeAll(f: js.Function1[Features, Unit]): Unit               = js.native
-  def setAfterAll(f: js.Function1[Features, Unit]): Unit                = js.native
-  def setBeforeEach(f: js.Function1[Features, Unit]): Unit              = js.native
-  def setAfterEach(f: js.Function1[Features, Unit]): Unit               = js.native
-  def setTestBackends(testBackends: js.Array[TestBackendFactory]): Unit = js.native
-  def registerTestBackends(): Unit                                      = js.native
+  def envSatisfiesConstraints(constraints: Features): Boolean = js.native
+  def parseKarmaFlags(args: js.Array[String]): TestEnv = js.native
+  def describeWithFlags(name: String, constraints: Features, tests: js.Function0[Unit]): Unit = js.native
+  def TEST_ENVS: js.Array[TestEnv] = js.native
+  val CPU_FACTORY: js.Function0[MathBackendCPU] = js.native
+  def setTestEnvs(testEnvs: js.Array[TestEnv]): Unit = js.native
+}
+
 }

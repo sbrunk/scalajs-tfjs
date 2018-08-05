@@ -16,18 +16,25 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.Tensor
-import io.brunk.tfjs.core.TensorModule._
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package concat {
+
 @js.native
-trait ConcatOps extends js.Object {
-  def concat1d(tensors: js.Array[Tensor1D]): Tensor1D                    = js.native
-  def concat2d(tensors: js.Array[Tensor2D], axis: Double): Tensor2D      = js.native
-  def concat3d(tensors: js.Array[Tensor3D], axis: Double): Tensor3D      = js.native
-  def concat4d(tensors: js.Array[Tensor4D], axis: Double): Tensor4D      = js.native
-  def concat[T <: TensorND](tensors: js.Array[T], axis: Double = ???): T = js.native
+@JSGlobalScope
+object Concat extends js.Object {
+  def concat1d_(tensors: js.Array[Tensor1D] | js.Array[TensorLike]): Tensor1D = js.native
+  def concat2d_(tensors: js.Array[Tensor2D] | js.Array[TensorLike], axis: Double): Tensor2D = js.native
+  def concat3d_(tensors: js.Array[Tensor3D] | js.Array[TensorLike], axis: Double): Tensor3D = js.native
+  def concat4d_(tensors: js.Array[Tensor4D] | js.Array[TensorLike], axis: Double): Tensor4D = js.native
+  def concat_[T <: Tensor](tensors: js.Array[T] | js.Array[TensorLike], axis: Double = ???): T = js.native
+  val concat: concat_.type = js.native
+  val concat1d: concat1d_.type = js.native
+  val concat2d: concat2d_.type = js.native
+  val concat3d: concat3d_.type = js.native
+  val concat4d: concat4d_.type = js.native
+}
+
 }

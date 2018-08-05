@@ -16,22 +16,20 @@
 
 package io.brunk.tfjs.core.io
 
-import _root_.io.brunk.tfjs.core.io.Router_registry.IORouter
-import _root_.io.brunk.tfjs.core.io.types.{ IOHandler, ModelArtifactsInfo, ModelStoreManager }
-import org.scalajs.dom.raw.IDBFactory
-
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.|
+
+package indexed_db {
 
 @js.native
 @JSGlobal
 class BrowserIndexedDB protected () extends IOHandler {
   def this(modelPath: String) = this()
   protected def indexedDB: IDBFactory = js.native
-  protected def modelPath: String     = js.native
-  //def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
-  //def load(): Promise[ModelArtifacts]                           = js.native
+  protected def modelPath: String = js.native
+  def save(modelArtifacts: ModelArtifacts): Promise[SaveResult] = js.native
+  def load(): Promise[ModelArtifacts] = js.native
 }
 
 @js.native
@@ -44,13 +42,15 @@ object BrowserIndexedDB extends js.Object {
 @JSGlobal
 class BrowserIndexedDBManager extends ModelStoreManager {
   def listModels(): Promise[js.Dictionary[ModelArtifactsInfo]] = js.native
-  def removeModel(path: String): Promise[ModelArtifactsInfo]   = js.native
+  def removeModel(path: String): Promise[ModelArtifactsInfo] = js.native
 }
 
 @js.native
 @JSGlobalScope
 object Indexed_db extends js.Object {
-  def deleteDatabase(): Promise[Unit]                = js.native
-  val indexedDBRouter: IORouter                      = js.native
+  def deleteDatabase(): Promise[Unit] = js.native
+  val indexedDBRouter: IORouter = js.native
   def browserIndexedDB(modelPath: String): IOHandler = js.native
+}
+
 }

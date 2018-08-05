@@ -20,8 +20,12 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package version {
+
 @js.native
-trait Version extends js.Object {
-  @JSName("version_core")
+@JSGlobalScope
+object Version extends js.Object {
   val version: String = js.native
+}
+
 }

@@ -16,19 +16,17 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.{ Tensor3D, Tensor4D }
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package lrn {
+
 @js.native
-trait LRNOps extends js.Object {
-  def localResponseNormalization[T <: Tensor3D | Tensor4D](
-      x: T,
-      depthRadius: Double = ???,
-      bias: Double = ???,
-      alpha: Double = ???,
-      beta: Double = ???
-  ): T = js.native
+@JSGlobalScope
+object Lrn extends js.Object {
+  def localResponseNormalization_[T <: Tensor3D | Tensor4D](x: T | TensorLike, depthRadius: Double = ???, bias: Double = ???, alpha: Double = ???, beta: Double = ???): T = js.native
+  val localResponseNormalization: localResponseNormalization_.type = js.native
+}
+
 }

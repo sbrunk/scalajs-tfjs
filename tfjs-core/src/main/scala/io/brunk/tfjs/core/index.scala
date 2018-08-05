@@ -18,51 +18,17 @@ package io.brunk.tfjs.core
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
-import Engine.MemoryInfo
-import _root_.io.brunk.tfjs.core
-@js.native
-trait Index
-    extends TensorModule
-    with ops.Ops
-    with Train
-    with Globals
-    with VariableCompanion
-    with EnvironmentCompanion
-    with Version
-    with BrowserUtil {
-  type AdadeltaOptimizer = optimizers.AdadeltaOptimizer
-  val AdadeltaOptimizer: optimizers.AdadeltaOptimizer.type = js.native
-  type AdagradOptimizer    = optimizers.AdagradOptimizer
-  type AdamOptimizer       = optimizers.AdamOptimizer
-  type AdamaxOptimizer     = optimizers.AdamaxOptimizer
-  type MomentumOptimizer   = optimizers.MomentumOptimizer
-  type Optimizer           = optimizers.Optimizer
-  type RMSPropOptimizer    = optimizers.RMSPropOptimizer
-  type SGDOptimizer        = optimizers.SGDOptimizer
-  type Tensor[R <: Rank]   = core.Tensor[R]
-  type Variable[R <: Rank] = core.Variable[R]
-  type DataType            = core.DataType
-  type InferenceModel      = core.InferenceModel
-  type ModelPredictConfig  = core.ModelPredictConfig
-  type NamedTensorMap = core.NamedTensorMap
-  type Rank                = core.Rank
-  // TODO LSTMCellFunc
-  // TODO Reduction
-  // Second level exports.
-  val environment: EnvironmentModule.type    = js.native
-  val io: core.io.io.type                    = js.native
-  val serialization: core.serialization.type = js.native
-  // TODO webgl
-  // TODO backend
-}
+import js.|
+
+package index {
 
 @js.native
 @JSGlobalScope
 object Index extends js.Object {
-  def setBackend(backendType: String, safeMode: Boolean = ???): Unit = js.native
-  def getBackend(): String                                           = js.native
-  def disposeVariables(): Unit                                       = js.native
-  def memory(): MemoryInfo                                           = js.native
-  def nextFrame(): Promise[Unit]                                     = js.native
+  val setBackend: environment.Environment.setBackend.type = js.native
+  val getBackend: environment.Environment.getBackend.type = js.native
+  val disposeVariables: environment.Environment.disposeVariables.type = js.native
+  val memory: environment.Environment.memory.type = js.native
+}
+
 }

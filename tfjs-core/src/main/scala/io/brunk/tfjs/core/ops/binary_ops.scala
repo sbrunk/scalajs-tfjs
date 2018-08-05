@@ -16,31 +16,57 @@
 
 package io.brunk.tfjs.core.ops
 
-import io.brunk.tfjs.core.TensorModule.TensorND
-
 import scala.scalajs.js
 import js.annotation._
 import js.|
 
+package binary_ops {
+
 @js.native
-trait BinaryOps extends js.Object {
-  def add[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def addStrict[T <: TensorND](a: T, b: T): T                       = js.native
-  def sub[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def subStrict[T <: TensorND](a: T, b: T): T                       = js.native
-  def pow[T <: TensorND](base: T, exp: TensorND): T                 = js.native
-  def powStrict[T <: TensorND](base: T, exp: TensorND): T           = js.native
-  def mul[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def mulStrict[T <: TensorND](a: T, b: T): T                       = js.native
-  def div[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def divStrict[T <: TensorND](a: T, b: T): T                       = js.native
-  def mod[T <: TensorND](a: TensorND, b: TensorND): T               = js.native
-  def modStrict[T <: TensorND](a: T, b: T): T                       = js.native
-  def minimum[T <: TensorND](a: TensorND, b: TensorND): T           = js.native
-  def minimumStrict[T <: TensorND](a: T, b: T): T                   = js.native
-  def maximum[T <: TensorND](a: TensorND, b: TensorND): T           = js.native
-  def maximumStrict[T <: TensorND](a: T, b: T): T                   = js.native
-  def squaredDifference[T <: TensorND](a: TensorND, b: TensorND): T = js.native
-  def squaredDifferenceStrict[T <: TensorND](a: T, b: T): T         = js.native
-  def atan2[T <: TensorND](a: TensorND, b: TensorND): T             = js.native
+@JSGlobalScope
+object Binary_ops extends js.Object {
+  def add_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def addN_[T <: Tensor](tensors: js.Array[T | TensorLike]): T = js.native
+  def addStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def sub_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def subStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def pow_[T <: Tensor](base: T | TensorLike, exp: Tensor | TensorLike): T = js.native
+  def powStrict_[T <: Tensor](base: T, exp: Tensor): T = js.native
+  def mul_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def mulStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def div_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def floorDiv_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def divStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def mod_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def modStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def minimum_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def minimumStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def maximum_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def maximumStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def squaredDifference_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  def squaredDifferenceStrict_[T <: Tensor](a: T, b: T): T = js.native
+  def atan2_[T <: Tensor](a: Tensor | TensorLike, b: Tensor | TensorLike): T = js.native
+  val add: add_.type = js.native
+  val addN: addN_.type = js.native
+  val addStrict: addStrict_.type = js.native
+  val atan2: atan2_.type = js.native
+  val div: div_.type = js.native
+  val divStrict: divStrict_.type = js.native
+  val floorDiv: floorDiv_.type = js.native
+  val maximum: maximum_.type = js.native
+  val maximumStrict: maximumStrict_.type = js.native
+  val minimum: minimum_.type = js.native
+  val minimumStrict: minimumStrict_.type = js.native
+  val mod: mod_.type = js.native
+  val modStrict: modStrict_.type = js.native
+  val mul: mul_.type = js.native
+  val mulStrict: mulStrict_.type = js.native
+  val pow: pow_.type = js.native
+  val powStrict: powStrict_.type = js.native
+  val squaredDifference: squaredDifference_.type = js.native
+  val squaredDifferenceStrict: squaredDifferenceStrict_.type = js.native
+  val sub: sub_.type = js.native
+  val subStrict: subStrict_.type = js.native
+}
+
 }
