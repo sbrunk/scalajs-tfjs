@@ -22,13 +22,13 @@ import js.|
 
 package index {
 
-@js.native
-@JSGlobalScope
-object Index extends js.Object {
-  val setBackend: environment.Environment.setBackend.type = js.native
-  val getBackend: environment.Environment.getBackend.type = js.native
-  val disposeVariables: environment.Environment.disposeVariables.type = js.native
-  val memory: environment.Environment.memory.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Index extends js.Object {
+    val setBackend: environment.Environment.setBackend.type             = js.native
+    val getBackend: environment.Environment.getBackend.type             = js.native
+    val disposeVariables: environment.Environment.disposeVariables.type = js.native
+    val memory: environment.Environment.memory.type                     = js.native
+  }
 
 }

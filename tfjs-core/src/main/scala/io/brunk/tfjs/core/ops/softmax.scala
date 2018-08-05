@@ -22,11 +22,11 @@ import js.|
 
 package softmax {
 
-@js.native
-@JSGlobalScope
-object Softmax extends js.Object {
-  def softmax_[T <: Tensor](logits: T | TensorLike, dim: Double = ???): T = js.native
-  val softmax: softmax_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Softmax extends js.Object {
+    def softmax_[T <: Tensor](logits: T | TensorLike, dim: Double = ???): T = js.native
+    val softmax: softmax_.type                                              = js.native
+  }
 
 }

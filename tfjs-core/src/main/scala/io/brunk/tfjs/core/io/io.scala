@@ -22,13 +22,13 @@ import js.|
 
 package io {
 
-@js.native
-@JSGlobalScope
-object Io extends js.Object {
-  val registerSaveRouter: IORouterRegistry.registerSaveRouter.type = js.native
-  val registerLoadRouter: IORouterRegistry.registerLoadRouter.type = js.native
-  val getSaveHandlers: IORouterRegistry.getSaveHandlers.type = js.native
-  val getLoadHandlers: IORouterRegistry.getLoadHandlers.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Io extends js.Object {
+    val registerSaveRouter: IORouterRegistry.registerSaveRouter.type = js.native
+    val registerLoadRouter: IORouterRegistry.registerLoadRouter.type = js.native
+    val getSaveHandlers: IORouterRegistry.getSaveHandlers.type       = js.native
+    val getLoadHandlers: IORouterRegistry.getLoadHandlers.type       = js.native
+  }
 
 }

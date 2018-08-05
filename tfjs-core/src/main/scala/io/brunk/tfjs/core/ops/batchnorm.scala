@@ -22,17 +22,45 @@ import js.|
 
 package batchnorm {
 
-@js.native
-@JSGlobalScope
-object Batchnorm extends js.Object {
-  def batchNormalization2d_(x: Tensor2D | TensorLike, mean: Tensor2D | Tensor1D | TensorLike, variance: Tensor2D | Tensor1D | TensorLike, varianceEpsilon: Double = ???, scale: Tensor2D | Tensor1D | TensorLike = ???, offset: Tensor2D | Tensor1D | TensorLike = ???): Tensor2D = js.native
-  def batchNormalization3d_(x: Tensor3D | TensorLike, mean: Tensor3D | Tensor1D | TensorLike, variance: Tensor3D | Tensor1D | TensorLike, varianceEpsilon: Double = ???, scale: Tensor3D | Tensor1D | TensorLike = ???, offset: Tensor3D | Tensor1D | TensorLike = ???): Tensor3D = js.native
-  def batchNormalization4d_(x: Tensor4D | TensorLike, mean: Tensor4D | Tensor1D | TensorLike, variance: Tensor4D | Tensor1D | TensorLike, varianceEpsilon: Double = ???, scale: Tensor4D | Tensor1D | TensorLike = ???, offset: Tensor4D | Tensor1D | TensorLike = ???): Tensor4D = js.native
-  def batchNormalization_[R <: Rank](x: Tensor[R] | Tensor1D | TensorLike, mean: Tensor[R] | Tensor1D | TensorLike, variance: Tensor[R] | Tensor1D | TensorLike, varianceEpsilon: Double = ???, scale: Tensor[R] | Tensor1D | TensorLike = ???, offset: Tensor[R] | Tensor1D | TensorLike = ???): Tensor[R] = js.native
-  val batchNormalization2d: batchNormalization2d_.type = js.native
-  val batchNormalization3d: batchNormalization3d_.type = js.native
-  val batchNormalization4d: batchNormalization4d_.type = js.native
-  val batchNormalization: batchNormalization_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Batchnorm extends js.Object {
+    def batchNormalization2d_(
+        x: Tensor2D | TensorLike,
+        mean: Tensor2D | Tensor1D | TensorLike,
+        variance: Tensor2D | Tensor1D | TensorLike,
+        varianceEpsilon: Double = ???,
+        scale: Tensor2D | Tensor1D | TensorLike = ???,
+        offset: Tensor2D | Tensor1D | TensorLike = ???
+    ): Tensor2D = js.native
+    def batchNormalization3d_(
+        x: Tensor3D | TensorLike,
+        mean: Tensor3D | Tensor1D | TensorLike,
+        variance: Tensor3D | Tensor1D | TensorLike,
+        varianceEpsilon: Double = ???,
+        scale: Tensor3D | Tensor1D | TensorLike = ???,
+        offset: Tensor3D | Tensor1D | TensorLike = ???
+    ): Tensor3D = js.native
+    def batchNormalization4d_(
+        x: Tensor4D | TensorLike,
+        mean: Tensor4D | Tensor1D | TensorLike,
+        variance: Tensor4D | Tensor1D | TensorLike,
+        varianceEpsilon: Double = ???,
+        scale: Tensor4D | Tensor1D | TensorLike = ???,
+        offset: Tensor4D | Tensor1D | TensorLike = ???
+    ): Tensor4D = js.native
+    def batchNormalization_[R <: Rank](
+        x: Tensor[R] | Tensor1D | TensorLike,
+        mean: Tensor[R] | Tensor1D | TensorLike,
+        variance: Tensor[R] | Tensor1D | TensorLike,
+        varianceEpsilon: Double = ???,
+        scale: Tensor[R] | Tensor1D | TensorLike = ???,
+        offset: Tensor[R] | Tensor1D | TensorLike = ???
+    ): Tensor[R]                                         = js.native
+    val batchNormalization2d: batchNormalization2d_.type = js.native
+    val batchNormalization3d: batchNormalization3d_.type = js.native
+    val batchNormalization4d: batchNormalization4d_.type = js.native
+    val batchNormalization: batchNormalization_.type     = js.native
+  }
 
 }

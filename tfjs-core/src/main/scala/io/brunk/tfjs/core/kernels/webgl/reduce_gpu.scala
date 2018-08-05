@@ -22,13 +22,13 @@ import js.|
 
 package reduce_gpu {
 
-@js.native
-@JSGlobal
-class ReduceProgram protected () extends GPGPUProgram {
-  def this(reduceInfo: ReduceInfo, reduceType: String) = this()
-  var variableNames: js.Array[String] = js.native
-  var outputShape: js.Array[Double] = js.native
-  var userCode: String = js.native
-}
+  @js.native
+  @JSGlobal
+  class ReduceProgram protected () extends GPGPUProgram {
+    def this(reduceInfo: ReduceInfo, reduceType: String) = this()
+    var variableNames: js.Array[String] = js.native
+    var outputShape: js.Array[Double]   = js.native
+    var userCode: String                = js.native
+  }
 
 }

@@ -22,17 +22,37 @@ import js.|
 
 package image_ops {
 
-@js.native
-@JSGlobalScope
-object Image_ops extends js.Object {
-  def resizeBilinear_[T <: Tensor3D | Tensor4D](images: T | TensorLike, size: js.Tuple2[Double, Double], alignCorners: Boolean = ???): T = js.native
-  def resizeNearestNeighbor_[T <: Tensor3D | Tensor4D](images: T | TensorLike, size: js.Tuple2[Double, Double], alignCorners: Boolean = ???): T = js.native
-  def nonMaxSuppression_(boxes: Tensor2D | TensorLike, scores: Tensor1D | TensorLike, maxOutputSize: Double, iouThreshold: Double = ???, scoreThreshold: Double = ???): Tensor1D = js.native
-  def nonMaxSuppressionAsync_(boxes: Tensor2D | TensorLike, scores: Tensor1D | TensorLike, maxOutputSize: Double, iouThreshold: Double = ???, scoreThreshold: Double = ???): Promise[Tensor1D] = js.native
-  val resizeBilinear: resizeBilinear_.type = js.native
-  val resizeNearestNeighbor: resizeNearestNeighbor_.type = js.native
-  val nonMaxSuppression: nonMaxSuppression_.type = js.native
-  val nonMaxSuppressionAsync: nonMaxSuppressionAsync_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Image_ops extends js.Object {
+    def resizeBilinear_[T <: Tensor3D | Tensor4D](
+        images: T | TensorLike,
+        size: js.Tuple2[Double, Double],
+        alignCorners: Boolean = ???
+    ): T = js.native
+    def resizeNearestNeighbor_[T <: Tensor3D | Tensor4D](
+        images: T | TensorLike,
+        size: js.Tuple2[Double, Double],
+        alignCorners: Boolean = ???
+    ): T = js.native
+    def nonMaxSuppression_(
+        boxes: Tensor2D | TensorLike,
+        scores: Tensor1D | TensorLike,
+        maxOutputSize: Double,
+        iouThreshold: Double = ???,
+        scoreThreshold: Double = ???
+    ): Tensor1D = js.native
+    def nonMaxSuppressionAsync_(
+        boxes: Tensor2D | TensorLike,
+        scores: Tensor1D | TensorLike,
+        maxOutputSize: Double,
+        iouThreshold: Double = ???,
+        scoreThreshold: Double = ???
+    ): Promise[Tensor1D]                                     = js.native
+    val resizeBilinear: resizeBilinear_.type                 = js.native
+    val resizeNearestNeighbor: resizeNearestNeighbor_.type   = js.native
+    val nonMaxSuppression: nonMaxSuppression_.type           = js.native
+    val nonMaxSuppressionAsync: nonMaxSuppressionAsync_.type = js.native
+  }
 
 }

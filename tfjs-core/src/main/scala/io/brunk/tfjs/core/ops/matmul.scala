@@ -22,15 +22,20 @@ import js.|
 
 package matmul {
 
-@js.native
-@JSGlobalScope
-object Matmul extends js.Object {
-  def matMul_(a: Tensor2D | TensorLike, b: Tensor2D | TensorLike, transposeA: Boolean = ???, transposeB: Boolean = ???): Tensor2D = js.native
-  def outerProduct_(v1: Tensor1D | TensorLike, v2: Tensor1D | TensorLike): Tensor2D = js.native
-  def dot_(t1: Tensor | TensorLike, t2: Tensor | TensorLike): Tensor = js.native
-  val matMul: matMul_.type = js.native
-  val dot: dot_.type = js.native
-  val outerProduct: outerProduct_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Matmul extends js.Object {
+    def matMul_(
+        a: Tensor2D | TensorLike,
+        b: Tensor2D | TensorLike,
+        transposeA: Boolean = ???,
+        transposeB: Boolean = ???
+    ): Tensor2D                                                                       = js.native
+    def outerProduct_(v1: Tensor1D | TensorLike, v2: Tensor1D | TensorLike): Tensor2D = js.native
+    def dot_(t1: Tensor | TensorLike, t2: Tensor | TensorLike): Tensor                = js.native
+    val matMul: matMul_.type                                                          = js.native
+    val dot: dot_.type                                                                = js.native
+    val outerProduct: outerProduct_.type                                              = js.native
+  }
 
 }

@@ -22,11 +22,11 @@ import js.|
 
 package transpose {
 
-@js.native
-@JSGlobalScope
-object Transpose extends js.Object {
-  def transpose_[T <: Tensor](x: T | TensorLike, perm: js.Array[Double] = ???): T = js.native
-  val transpose: transpose_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Transpose extends js.Object {
+    def transpose_[T <: Tensor](x: T | TensorLike, perm: js.Array[Double] = ???): T = js.native
+    val transpose: transpose_.type                                                  = js.native
+  }
 
 }

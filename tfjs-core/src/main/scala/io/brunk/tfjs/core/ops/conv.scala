@@ -22,19 +22,58 @@ import js.|
 
 package conv {
 
-@js.native
-@JSGlobalScope
-object Conv extends js.Object {
-  def conv1d_[T <: Tensor2D | Tensor3D](x: T | TensorLike, filter: Tensor3D | TensorLike, stride: Double, pad: String | Double, dataFormat: String = ???, dilation: Double = ???, dimRoundingMode: String = ???): T = js.native
-  def conv2d_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filter: Tensor4D | TensorLike, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dataFormat: String = ???, dilations: js.Tuple2[Double, Double] | Double = ???, dimRoundingMode: String = ???): T = js.native
-  def conv2dTranspose_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filter: Tensor4D | TensorLike, outputShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double], strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dimRoundingMode: String = ???): T = js.native
-  def depthwiseConv2d_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filter: Tensor4D | TensorLike, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dataFormat: String = ???, dilations: js.Tuple2[Double, Double] | Double = ???, dimRoundingMode: String = ???): T = js.native
-  def separableConv2d_[T <: Tensor3D | Tensor4D](x: T | TensorLike, depthwiseFilter: Tensor4D | TensorLike, pointwiseFilter: Tensor4D | TensorLike, strides: js.Tuple2[Double, Double] | Double, pad: String, dilation: js.Tuple2[Double, Double] | Double = ???, dataFormat: String = ???): T = js.native
-  val conv1d: conv1d_.type = js.native
-  val conv2d: conv2d_.type = js.native
-  val depthwiseConv2d: depthwiseConv2d_.type = js.native
-  val separableConv2d: separableConv2d_.type = js.native
-  val conv2dTranspose: conv2dTranspose_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Conv extends js.Object {
+    def conv1d_[T <: Tensor2D | Tensor3D](
+        x: T | TensorLike,
+        filter: Tensor3D | TensorLike,
+        stride: Double,
+        pad: String | Double,
+        dataFormat: String = ???,
+        dilation: Double = ???,
+        dimRoundingMode: String = ???
+    ): T = js.native
+    def conv2d_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        filter: Tensor4D | TensorLike,
+        strides: js.Tuple2[Double, Double] | Double,
+        pad: String | Double,
+        dataFormat: String = ???,
+        dilations: js.Tuple2[Double, Double] | Double = ???,
+        dimRoundingMode: String = ???
+    ): T = js.native
+    def conv2dTranspose_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        filter: Tensor4D | TensorLike,
+        outputShape: js.Tuple4[Double, Double, Double, Double] | js.Tuple3[Double, Double, Double],
+        strides: js.Tuple2[Double, Double] | Double,
+        pad: String | Double,
+        dimRoundingMode: String = ???
+    ): T = js.native
+    def depthwiseConv2d_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        filter: Tensor4D | TensorLike,
+        strides: js.Tuple2[Double, Double] | Double,
+        pad: String | Double,
+        dataFormat: String = ???,
+        dilations: js.Tuple2[Double, Double] | Double = ???,
+        dimRoundingMode: String = ???
+    ): T = js.native
+    def separableConv2d_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        depthwiseFilter: Tensor4D | TensorLike,
+        pointwiseFilter: Tensor4D | TensorLike,
+        strides: js.Tuple2[Double, Double] | Double,
+        pad: String,
+        dilation: js.Tuple2[Double, Double] | Double = ???,
+        dataFormat: String = ???
+    ): T                                       = js.native
+    val conv1d: conv1d_.type                   = js.native
+    val conv2d: conv2d_.type                   = js.native
+    val depthwiseConv2d: depthwiseConv2d_.type = js.native
+    val separableConv2d: separableConv2d_.type = js.native
+    val conv2dTranspose: conv2dTranspose_.type = js.native
+  }
 
 }

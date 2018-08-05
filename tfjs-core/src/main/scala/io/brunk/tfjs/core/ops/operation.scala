@@ -22,10 +22,10 @@ import js.|
 
 package operation {
 
-@js.native
-@JSGlobalScope
-object Operation extends js.Object {
-  def op[T <: js.Function](f: js.Dictionary[T]): T = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Operation extends js.Object {
+    def op[T <: js.Function](f: js.Dictionary[T]): T = js.native
+  }
 
 }

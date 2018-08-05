@@ -22,10 +22,10 @@ import js.|
 
 package where_impl {
 
-@js.native
-@JSGlobalScope
-object Where_impl extends js.Object {
-  def whereImpl(condShape: js.Array[Double], condVals: TypedArray): Tensor2D = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Where_impl extends js.Object {
+    def whereImpl(condShape: js.Array[Double], condVals: TypedArray): Tensor2D = js.native
+  }
 
 }

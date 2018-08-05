@@ -22,11 +22,18 @@ import js.|
 
 package strided_slice {
 
-@js.native
-@JSGlobalScope
-object Strided_slice extends js.Object {
-  def stridedSlice_[T <: Tensor](x: T | TensorLike, begin: js.Array[Double], end: js.Array[Double], strides: js.Array[Double], beginMask: Double = ???, endMask: Double = ???): T = js.native
-  val stridedSlice: stridedSlice_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Strided_slice extends js.Object {
+    def stridedSlice_[T <: Tensor](
+        x: T | TensorLike,
+        begin: js.Array[Double],
+        end: js.Array[Double],
+        strides: js.Array[Double],
+        beginMask: Double = ???,
+        endMask: Double = ???
+    ): T                                 = js.native
+    val stridedSlice: stridedSlice_.type = js.native
+  }
 
 }

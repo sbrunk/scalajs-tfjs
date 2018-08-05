@@ -22,11 +22,11 @@ import js.|
 
 package backend_util {
 
-@js.native
-@JSGlobalScope
-object Backend_util extends js.Object {
-  def castTensor[T <: Tensor](x: T, dtype: DataType, backend: KernelBackend): T = js.native
-  def reshapeTensor[T <: Tensor, R <: Rank](x: T, shape: js.Any): Tensor[R] = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Backend_util extends js.Object {
+    def castTensor[T <: Tensor](x: T, dtype: DataType, backend: KernelBackend): T = js.native
+    def reshapeTensor[T <: Tensor, R <: Rank](x: T, shape: js.Any): Tensor[R]     = js.native
+  }
 
 }

@@ -22,11 +22,16 @@ import js.|
 
 package norm {
 
-@js.native
-@JSGlobalScope
-object Norm extends js.Object {
-  def norm_(x: Tensor | TensorLike, ord: Double | String = ???, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): Tensor = js.native
-  val norm: norm_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Norm extends js.Object {
+    def norm_(
+        x: Tensor | TensorLike,
+        ord: Double | String = ???,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): Tensor            = js.native
+    val norm: norm_.type = js.native
+  }
 
 }

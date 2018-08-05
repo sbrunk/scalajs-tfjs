@@ -22,15 +22,15 @@ import js.|
 
 package erf_util {
 
-@js.native
-@JSGlobalScope
-object Erf_util extends js.Object {
-  val ERF_P: Double = js.native
-  val ERF_A1: Double = js.native
-  val ERF_A2: Double = js.native
-  val ERF_A3: Double = js.native
-  val ERF_A4: Double = js.native
-  val ERF_A5: Double = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Erf_util extends js.Object {
+    val ERF_P: Double  = js.native
+    val ERF_A1: Double = js.native
+    val ERF_A2: Double = js.native
+    val ERF_A3: Double = js.native
+    val ERF_A4: Double = js.native
+    val ERF_A5: Double = js.native
+  }
 
 }

@@ -22,13 +22,13 @@ import js.|
 
 package globals {
 
-@js.native
-@JSGlobalScope
-object Globals extends js.Object {
-  val tidy: Environment.tidy.type = js.native
-  val keep: Environment.keep.type = js.native
-  val dispose: Environment.dispose.type = js.native
-  val time: Environment.time.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Globals extends js.Object {
+    val tidy: Environment.tidy.type       = js.native
+    val keep: Environment.keep.type       = js.native
+    val dispose: Environment.dispose.type = js.native
+    val time: Environment.time.type       = js.native
+  }
 
 }

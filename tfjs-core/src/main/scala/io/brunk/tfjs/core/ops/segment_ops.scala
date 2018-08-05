@@ -22,13 +22,21 @@ import js.|
 
 package segment_ops {
 
-@js.native
-@JSGlobalScope
-object Segment_ops extends js.Object {
-  def unsortedSegmentSum_[T <: Tensor](x: T | TensorLike, segmentIds: Tensor1D | TensorLike, numSegments: Double): T = js.native
-  def gather_[T <: Tensor](x: T | TensorLike, indices: Tensor1D | TensorLike, axis: Double = ???): T = js.native
-  val gather: gather_.type = js.native
-  val unsortedSegmentSum: unsortedSegmentSum_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Segment_ops extends js.Object {
+    def unsortedSegmentSum_[T <: Tensor](
+        x: T | TensorLike,
+        segmentIds: Tensor1D | TensorLike,
+        numSegments: Double
+    ): T = js.native
+    def gather_[T <: Tensor](
+        x: T | TensorLike,
+        indices: Tensor1D | TensorLike,
+        axis: Double = ???
+    ): T                                             = js.native
+    val gather: gather_.type                         = js.native
+    val unsortedSegmentSum: unsortedSegmentSum_.type = js.native
+  }
 
 }

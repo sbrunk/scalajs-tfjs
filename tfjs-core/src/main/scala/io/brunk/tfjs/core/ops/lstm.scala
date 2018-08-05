@@ -22,14 +22,26 @@ import js.|
 
 package lstm {
 
-@js.native
-@JSGlobalScope
-object Lstm extends js.Object {
-  type LSTMCellFunc = js.Any
-  def multiRNNCell_(lstmCells: js.Array[LSTMCellFunc], data: Tensor2D | TensorLike, c: js.Array[Tensor2D] | js.Array[TensorLike], h: js.Array[Tensor2D] | js.Array[TensorLike]): js.Tuple2[js.Array[Tensor2D], js.Array[Tensor2D]] = js.native
-  def basicLSTMCell_(forgetBias: Scalar | TensorLike, lstmKernel: Tensor2D | TensorLike, lstmBias: Tensor1D | TensorLike, data: Tensor2D | TensorLike, c: Tensor2D | TensorLike, h: Tensor2D | TensorLike): js.Tuple2[Tensor2D, Tensor2D] = js.native
-  val basicLSTMCell: basicLSTMCell_.type = js.native
-  val multiRNNCell: multiRNNCell_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Lstm extends js.Object {
+    type LSTMCellFunc = js.Any
+    def multiRNNCell_(
+        lstmCells: js.Array[LSTMCellFunc],
+        data: Tensor2D | TensorLike,
+        c: js.Array[Tensor2D] | js.Array[TensorLike],
+        h: js.Array[Tensor2D] | js.Array[TensorLike]
+    ): js.Tuple2[js.Array[Tensor2D], js.Array[Tensor2D]] = js.native
+    def basicLSTMCell_(
+        forgetBias: Scalar | TensorLike,
+        lstmKernel: Tensor2D | TensorLike,
+        lstmBias: Tensor1D | TensorLike,
+        data: Tensor2D | TensorLike,
+        c: Tensor2D | TensorLike,
+        h: Tensor2D | TensorLike
+    ): js.Tuple2[Tensor2D, Tensor2D]       = js.native
+    val basicLSTMCell: basicLSTMCell_.type = js.native
+    val multiRNNCell: multiRNNCell_.type   = js.native
+  }
 
 }

@@ -22,60 +22,93 @@ import js.|
 
 package tex_util {
 
-@js.native
-sealed trait TextureUsage extends js.Object {
-}
+  @js.native
+  sealed trait TextureUsage extends js.Object {}
 
-@js.native
-@JSGlobal
-object TextureUsage extends js.Object {
-  var RENDER: TextureUsage = js.native
-  var UPLOAD: TextureUsage = js.native
-  var PIXELS: TextureUsage = js.native
-  var DOWNLOAD: TextureUsage = js.native
-  @JSBracketAccess
-  def apply(value: TextureUsage): String = js.native
-}
+  @js.native
+  @JSGlobal
+  object TextureUsage extends js.Object {
+    var RENDER: TextureUsage   = js.native
+    var UPLOAD: TextureUsage   = js.native
+    var PIXELS: TextureUsage   = js.native
+    var DOWNLOAD: TextureUsage = js.native
+    @JSBracketAccess
+    def apply(value: TextureUsage): String = js.native
+  }
 
-@js.native
-sealed trait PhysicalTextureType extends js.Object {
-}
+  @js.native
+  sealed trait PhysicalTextureType extends js.Object {}
 
-@js.native
-@JSGlobal
-object PhysicalTextureType extends js.Object {
-  var FLOAT16: PhysicalTextureType = js.native
-  var FLOAT32: PhysicalTextureType = js.native
-  var UNSIGNED_BYTE: PhysicalTextureType = js.native
-  @JSBracketAccess
-  def apply(value: PhysicalTextureType): String = js.native
-}
+  @js.native
+  @JSGlobal
+  object PhysicalTextureType extends js.Object {
+    var FLOAT16: PhysicalTextureType       = js.native
+    var FLOAT32: PhysicalTextureType       = js.native
+    var UNSIGNED_BYTE: PhysicalTextureType = js.native
+    @JSBracketAccess
+    def apply(value: PhysicalTextureType): String = js.native
+  }
 
-@js.native
-trait TextureData extends js.Object {
-  var texture: WebGLTexture = js.native
-  var shape: js.Array[Double] = js.native
-  var texShape: js.Tuple2[Double, Double] = js.native
-  var dtype: DataType = js.native
-  var values: js.Any = js.native
-  var usage: TextureUsage = js.native
-}
+  @js.native
+  trait TextureData extends js.Object {
+    var texture: WebGLTexture               = js.native
+    var shape: js.Array[Double]             = js.native
+    var texShape: js.Tuple2[Double, Double] = js.native
+    var dtype: DataType                     = js.native
+    var values: js.Any                      = js.native
+    var usage: TextureUsage                 = js.native
+  }
 
-@js.native
-@JSGlobalScope
-object Tex_util extends js.Object {
-  def getUnpackedMatrixTextureShapeWidthHeight(rows: Double, columns: Double): js.Tuple2[Double, Double] = js.native
-  def getUnpackedArraySizeFromMatrixSize(matrixSize: Double, channelsPerTexture: Double): Double = js.native
-  def getColorMatrixTextureShapeWidthHeight(rows: Double, columns: Double): js.Tuple2[Double, Double] = js.native
-  def getMatrixSizeFromUnpackedArraySize(unpackedSize: Double, channelsPerTexture: Double): Double = js.native
-  type TypedArray = Float32Array | Uint8Array
-  def encodeMatrixToUnpackedArray(matrix: TypedArray, unpackedArray: TypedArray, channelsPerTexture: Double): Unit = js.native
-  def decodeMatrixFromUnpackedArray(unpackedArray: Float32Array, matrix: Float32Array, channelsPerTexture: Double): Unit = js.native
-  def decodeMatrixFromUnpackedColorRGBAArray(unpackedArray: Float32Array, matrix: Float32Array, channels: Double): Unit = js.native
-  def getPackedMatrixTextureShapeWidthHeight(rows: Double, columns: Double): js.Tuple2[Double, Double] = js.native
-  def getPackedRGBAArraySizeFromMatrixShape(rows: Double, columns: Double): Double = js.native
-  def encodeMatrixToPackedRGBA(matrix: Float32Array, rows: Double, columns: Double, packedRGBA: Float32Array): Float32Array = js.native
-  def decodeMatrixFromPackedRGBA(packedRGBA: Float32Array, rows: Double, columns: Double, matrix: Float32Array): Float32Array = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Tex_util extends js.Object {
+    def getUnpackedMatrixTextureShapeWidthHeight(
+        rows: Double,
+        columns: Double
+    ): js.Tuple2[Double, Double] = js.native
+    def getUnpackedArraySizeFromMatrixSize(matrixSize: Double, channelsPerTexture: Double): Double =
+      js.native
+    def getColorMatrixTextureShapeWidthHeight(
+        rows: Double,
+        columns: Double
+    ): js.Tuple2[Double, Double] = js.native
+    def getMatrixSizeFromUnpackedArraySize(
+        unpackedSize: Double,
+        channelsPerTexture: Double
+    ): Double = js.native
+    type TypedArray = Float32Array | Uint8Array
+    def encodeMatrixToUnpackedArray(
+        matrix: TypedArray,
+        unpackedArray: TypedArray,
+        channelsPerTexture: Double
+    ): Unit = js.native
+    def decodeMatrixFromUnpackedArray(
+        unpackedArray: Float32Array,
+        matrix: Float32Array,
+        channelsPerTexture: Double
+    ): Unit = js.native
+    def decodeMatrixFromUnpackedColorRGBAArray(
+        unpackedArray: Float32Array,
+        matrix: Float32Array,
+        channels: Double
+    ): Unit = js.native
+    def getPackedMatrixTextureShapeWidthHeight(
+        rows: Double,
+        columns: Double
+    ): js.Tuple2[Double, Double]                                                     = js.native
+    def getPackedRGBAArraySizeFromMatrixShape(rows: Double, columns: Double): Double = js.native
+    def encodeMatrixToPackedRGBA(
+        matrix: Float32Array,
+        rows: Double,
+        columns: Double,
+        packedRGBA: Float32Array
+    ): Float32Array = js.native
+    def decodeMatrixFromPackedRGBA(
+        packedRGBA: Float32Array,
+        rows: Double,
+        columns: Double,
+        matrix: Float32Array
+    ): Float32Array = js.native
+  }
 
 }

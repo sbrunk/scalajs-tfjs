@@ -22,29 +22,61 @@ import js.|
 
 package reduction_ops {
 
-@js.native
-@JSGlobalScope
-object Reduction_ops extends js.Object {
-  def logSumExp_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def sum_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def mean_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def min_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def max_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def argMin_[T <: Tensor](x: Tensor | TensorLike, axis: Double = ???): T = js.native
-  def argMax_[T <: Tensor](x: Tensor | TensorLike, axis: Double = ???): T = js.native
-  def all_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def any_[T <: Tensor](x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): T = js.native
-  def moments_(x: Tensor | TensorLike, axis: Double | js.Array[Double] = ???, keepDims: Boolean = ???): js.Any = js.native
-  val all: all_.type = js.native
-  val any: any_.type = js.native
-  val argMax: argMax_.type = js.native
-  val argMin: argMin_.type = js.native
-  val logSumExp: logSumExp_.type = js.native
-  val max: max_.type = js.native
-  val mean: mean_.type = js.native
-  val min: min_.type = js.native
-  val moments: moments_.type = js.native
-  val sum: sum_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Reduction_ops extends js.Object {
+    def logSumExp_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T = js.native
+    def sum_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T = js.native
+    def mean_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T = js.native
+    def min_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T = js.native
+    def max_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T                                                                    = js.native
+    def argMin_[T <: Tensor](x: Tensor | TensorLike, axis: Double = ???): T = js.native
+    def argMax_[T <: Tensor](x: Tensor | TensorLike, axis: Double = ???): T = js.native
+    def all_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T = js.native
+    def any_[T <: Tensor](
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): T = js.native
+    def moments_(
+        x: Tensor | TensorLike,
+        axis: Double | js.Array[Double] = ???,
+        keepDims: Boolean = ???
+    ): js.Any                      = js.native
+    val all: all_.type             = js.native
+    val any: any_.type             = js.native
+    val argMax: argMax_.type       = js.native
+    val argMin: argMin_.type       = js.native
+    val logSumExp: logSumExp_.type = js.native
+    val max: max_.type             = js.native
+    val mean: mean_.type           = js.native
+    val min: min_.type             = js.native
+    val moments: moments_.type     = js.native
+    val sum: sum_.type             = js.native
+  }
 
 }

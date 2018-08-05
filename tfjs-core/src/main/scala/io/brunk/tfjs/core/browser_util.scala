@@ -22,10 +22,10 @@ import js.|
 
 package browser_util {
 
-@js.native
-@JSGlobalScope
-object Browser_util extends js.Object {
-  def nextFrame(): Promise[Unit] = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Browser_util extends js.Object {
+    def nextFrame(): Promise[Unit] = js.native
+  }
 
 }

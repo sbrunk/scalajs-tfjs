@@ -22,13 +22,25 @@ import js.|
 
 package pool {
 
-@js.native
-@JSGlobalScope
-object Pool extends js.Object {
-  def maxPool_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filterSize: js.Tuple2[Double, Double] | Double, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dimRoundingMode: String = ???): T = js.native
-  def avgPool_[T <: Tensor3D | Tensor4D](x: T | TensorLike, filterSize: js.Tuple2[Double, Double] | Double, strides: js.Tuple2[Double, Double] | Double, pad: String | Double, dimRoundingMode: String = ???): T = js.native
-  val maxPool: maxPool_.type = js.native
-  val avgPool: avgPool_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Pool extends js.Object {
+    def maxPool_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        filterSize: js.Tuple2[Double, Double] | Double,
+        strides: js.Tuple2[Double, Double] | Double,
+        pad: String | Double,
+        dimRoundingMode: String = ???
+    ): T = js.native
+    def avgPool_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        filterSize: js.Tuple2[Double, Double] | Double,
+        strides: js.Tuple2[Double, Double] | Double,
+        pad: String | Double,
+        dimRoundingMode: String = ???
+    ): T                       = js.native
+    val maxPool: maxPool_.type = js.native
+    val avgPool: avgPool_.type = js.native
+  }
 
 }

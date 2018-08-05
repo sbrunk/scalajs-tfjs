@@ -22,19 +22,23 @@ import js.|
 
 package reverse {
 
-@js.native
-@JSGlobalScope
-object Reverse extends js.Object {
-  def reverse1d_(x: Tensor1D | TensorLike): Tensor1D = js.native
-  def reverse2d_(x: Tensor2D | TensorLike, axis: Double | js.Array[Double] = ???): Tensor2D = js.native
-  def reverse3d_(x: Tensor3D | TensorLike, axis: Double | js.Array[Double] = ???): Tensor3D = js.native
-  def reverse4d_(x: Tensor4D | TensorLike, axis: Double | js.Array[Double] = ???): Tensor4D = js.native
-  def reverse_[T <: Tensor](x: T | TensorLike, axis: Double | js.Array[Double] = ???): T = js.native
-  val reverse: reverse_.type = js.native
-  val reverse1d: reverse1d_.type = js.native
-  val reverse2d: reverse2d_.type = js.native
-  val reverse3d: reverse3d_.type = js.native
-  val reverse4d: reverse4d_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Reverse extends js.Object {
+    def reverse1d_(x: Tensor1D | TensorLike): Tensor1D = js.native
+    def reverse2d_(x: Tensor2D | TensorLike, axis: Double | js.Array[Double] = ???): Tensor2D =
+      js.native
+    def reverse3d_(x: Tensor3D | TensorLike, axis: Double | js.Array[Double] = ???): Tensor3D =
+      js.native
+    def reverse4d_(x: Tensor4D | TensorLike, axis: Double | js.Array[Double] = ???): Tensor4D =
+      js.native
+    def reverse_[T <: Tensor](x: T | TensorLike, axis: Double | js.Array[Double] = ???): T =
+      js.native
+    val reverse: reverse_.type     = js.native
+    val reverse1d: reverse1d_.type = js.native
+    val reverse2d: reverse2d_.type = js.native
+    val reverse3d: reverse3d_.type = js.native
+    val reverse4d: reverse4d_.type = js.native
+  }
 
 }

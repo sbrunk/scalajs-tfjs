@@ -22,22 +22,23 @@ import js.|
 
 package jasmine_util {
 
-@js.native
-trait TestEnv extends js.Object {
-  var name: String = js.native
-  var factory: js.Function0[KernelBackend] = js.native
-  var features: Features = js.native
-}
+  @js.native
+  trait TestEnv extends js.Object {
+    var name: String                         = js.native
+    var factory: js.Function0[KernelBackend] = js.native
+    var features: Features                   = js.native
+  }
 
-@js.native
-@JSGlobalScope
-object Jasmine_util extends js.Object {
-  def envSatisfiesConstraints(constraints: Features): Boolean = js.native
-  def parseKarmaFlags(args: js.Array[String]): TestEnv = js.native
-  def describeWithFlags(name: String, constraints: Features, tests: js.Function0[Unit]): Unit = js.native
-  def TEST_ENVS: js.Array[TestEnv] = js.native
-  val CPU_FACTORY: js.Function0[MathBackendCPU] = js.native
-  def setTestEnvs(testEnvs: js.Array[TestEnv]): Unit = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Jasmine_util extends js.Object {
+    def envSatisfiesConstraints(constraints: Features): Boolean = js.native
+    def parseKarmaFlags(args: js.Array[String]): TestEnv        = js.native
+    def describeWithFlags(name: String, constraints: Features, tests: js.Function0[Unit]): Unit =
+      js.native
+    def TEST_ENVS: js.Array[TestEnv]                   = js.native
+    val CPU_FACTORY: js.Function0[MathBackendCPU]      = js.native
+    def setTestEnvs(testEnvs: js.Array[TestEnv]): Unit = js.native
+  }
 
 }

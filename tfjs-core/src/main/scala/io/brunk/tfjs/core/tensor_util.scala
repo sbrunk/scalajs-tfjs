@@ -22,14 +22,20 @@ import js.|
 
 package tensor_util {
 
-@js.native
-@JSGlobalScope
-object Tensor_util extends js.Object {
-  def assertTypesMatch(a: Tensor, b: Tensor): Unit = js.native
-  def isTensorInList(tensor: Tensor, tensorList: js.Array[Tensor]): Boolean = js.native
-  def flattenNameArrayMap(nameArrayMap: Tensor | NamedTensorMap, keys: js.Array[String] = ???): js.Array[Tensor] = js.native
-  def unflattenToNameArrayMap(keys: js.Array[String], flatArrays: js.Array[Tensor]): NamedTensorMap = js.native
-  def getTensorsInContainer(result: TensorContainer): js.Array[Tensor] = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Tensor_util extends js.Object {
+    def assertTypesMatch(a: Tensor, b: Tensor): Unit                          = js.native
+    def isTensorInList(tensor: Tensor, tensorList: js.Array[Tensor]): Boolean = js.native
+    def flattenNameArrayMap(
+        nameArrayMap: Tensor | NamedTensorMap,
+        keys: js.Array[String] = ???
+    ): js.Array[Tensor] = js.native
+    def unflattenToNameArrayMap(
+        keys: js.Array[String],
+        flatArrays: js.Array[Tensor]
+    ): NamedTensorMap                                                    = js.native
+    def getTensorsInContainer(result: TensorContainer): js.Array[Tensor] = js.native
+  }
 
 }

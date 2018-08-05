@@ -22,13 +22,18 @@ import js.|
 
 package shader_compiler {
 
-@js.native
-@JSGlobalScope
-object Shader_compiler extends js.Object {
-  type ShapeInfo = js.Any
-  type InputInfo = js.Any
-  def makeShader(inputsInfo: js.Array[InputInfo], outputShape: ShapeInfo, userCode: String, broadcast: Boolean): String = js.native
-  def getCoordsDataType(rank: Double): String = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Shader_compiler extends js.Object {
+    type ShapeInfo = js.Any
+    type InputInfo = js.Any
+    def makeShader(
+        inputsInfo: js.Array[InputInfo],
+        outputShape: ShapeInfo,
+        userCode: String,
+        broadcast: Boolean
+    ): String                                   = js.native
+    def getCoordsDataType(rank: Double): String = js.native
+  }
 
 }

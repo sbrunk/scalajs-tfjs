@@ -22,11 +22,17 @@ import js.|
 
 package lrn {
 
-@js.native
-@JSGlobalScope
-object Lrn extends js.Object {
-  def localResponseNormalization_[T <: Tensor3D | Tensor4D](x: T | TensorLike, depthRadius: Double = ???, bias: Double = ???, alpha: Double = ???, beta: Double = ???): T = js.native
-  val localResponseNormalization: localResponseNormalization_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Lrn extends js.Object {
+    def localResponseNormalization_[T <: Tensor3D | Tensor4D](
+        x: T | TensorLike,
+        depthRadius: Double = ???,
+        bias: Double = ???,
+        alpha: Double = ???,
+        beta: Double = ???
+    ): T                                                             = js.native
+    val localResponseNormalization: localResponseNormalization_.type = js.native
+  }
 
 }

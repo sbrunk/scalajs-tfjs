@@ -22,11 +22,17 @@ import js.|
 
 package moving_average {
 
-@js.native
-@JSGlobalScope
-object Moving_average extends js.Object {
-  def movingAverage_[T <: Tensor](v: T | TensorLike, x: T | TensorLike, decay: Double | Scalar, step: Double | Scalar = ???, zeroDebias: Boolean = ???): T = js.native
-  val movingAverage: movingAverage_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Moving_average extends js.Object {
+    def movingAverage_[T <: Tensor](
+        v: T | TensorLike,
+        x: T | TensorLike,
+        decay: Double | Scalar,
+        step: Double | Scalar = ???,
+        zeroDebias: Boolean = ???
+    ): T                                   = js.native
+    val movingAverage: movingAverage_.type = js.native
+  }
 
 }

@@ -22,13 +22,13 @@ import js.|
 
 package linalg_ops {
 
-@js.native
-@JSGlobalScope
-object Linalg_ops extends js.Object {
-  def gramSchmidt_(xs: js.Array[Tensor1D] | Tensor2D): js.Array[Tensor1D] | Tensor2D = js.native
-  def qr_(x: Tensor, fullMatrices: Boolean = ???): js.Tuple2[Tensor, Tensor] = js.native
-  val gramSchmidt: gramSchmidt_.type = js.native
-  val qr: qr_.type = js.native
-}
+  @js.native
+  @JSGlobalScope
+  object Linalg_ops extends js.Object {
+    def gramSchmidt_(xs: js.Array[Tensor1D] | Tensor2D): js.Array[Tensor1D] | Tensor2D = js.native
+    def qr_(x: Tensor, fullMatrices: Boolean = ???): js.Tuple2[Tensor, Tensor]         = js.native
+    val gramSchmidt: gramSchmidt_.type                                                 = js.native
+    val qr: qr_.type                                                                   = js.native
+  }
 
 }
