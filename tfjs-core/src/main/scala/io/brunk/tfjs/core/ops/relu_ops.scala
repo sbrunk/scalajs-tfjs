@@ -21,9 +21,9 @@ import js.annotation._
 import js.|
 import io.brunk.tfjs.core.TensorModule.TensorND
 import io.brunk.tfjs.core.Types.TensorLike
+
 @js.native
-@JSGlobalScope
-object Relu_ops extends js.Object {
+trait ReluOps extends js.Object {
   def relu[T <: TensorND](x: T | TensorLike): T                           = js.native
   def elu[T <: TensorND](x: T | TensorLike): T                            = js.native
   def selu[T <: TensorND](x: T | TensorLike): T                           = js.native

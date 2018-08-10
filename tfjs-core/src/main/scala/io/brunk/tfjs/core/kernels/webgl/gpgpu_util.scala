@@ -26,20 +26,21 @@ import org.scalajs.dom
 import scala.scalajs.js.typedarray.Float32Array
 
 @js.native
-trait TextureConfig extends js.Object {
-  var internalFormatFloat: Double
-  var textureFormatFloat: Double
-  var internalFormatHalfFloat: Double
-  var internalFormatPackedFloat: Double
-  var downloadTextureFormat: Double
-  var downloadUnpackNumChannels: Double
-  var defaultNumChannels: Double
-  var textureTypeHalfFloat: Double
-}
-
-@js.native
 @JSGlobalScope
-object Gpgpu_util extends js.Object {
+object GPGPUUtil extends js.Object {
+
+  @js.native
+  trait TextureConfig extends js.Object {
+    var internalFormatFloat: Double
+    var textureFormatFloat: Double
+    var internalFormatHalfFloat: Double
+    var internalFormatPackedFloat: Double
+    var downloadTextureFormat: Double
+    var downloadUnpackNumChannels: Double
+    var defaultNumChannels: Double
+    var textureTypeHalfFloat: Double
+  }
+
   def getWebGLContextAttributes(): webgl.ContextAttributes                  = js.native
   def createWebGLContext(canvas: html.Canvas = ???): webgl.RenderingContext = js.native
   def createVertexShader(gl: webgl.RenderingContext): webgl.Shader          = js.native

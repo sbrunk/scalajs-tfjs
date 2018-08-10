@@ -20,6 +20,7 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import TensorModule.TensorND
+import _root_.io.brunk.tfjs.core.Tensor_types.TensorContainer
 
 @js.native
 @JSGlobalScope

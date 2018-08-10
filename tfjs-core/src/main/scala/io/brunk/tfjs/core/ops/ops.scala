@@ -23,18 +23,12 @@ import js.annotation._
 import js.|
 
 @js.native
-trait Losses extends LossOps with SoftmaxLossOps
-
-@js.native
-trait Image extends ImageOps
-
-@js.native
 trait Ops
     extends Batchnorm
     with Concat
     with Conv
     with Matmul
-    with ReverseOps
+    with Reverse
     with Pool
     with Slice
     with UnaryOps
@@ -52,11 +46,12 @@ trait Ops
     with SegmentOps
     with Lstm
     with MovingAverage
-    with StridedSliceOps
+    with StridedSlice
     with Topk
     with Operation {
-  val image: Image   = js.native
+  // Second level exports.
+  val image: ImageOps   = js.native
   val linalg: LinalgOps = js.native
   // TODO operation
-  val losses: Losses = js.native
+  val losses: LossOps = js.native
 }

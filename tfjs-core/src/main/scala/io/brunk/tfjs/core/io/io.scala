@@ -22,12 +22,18 @@ import org.scalajs.dom.experimental.RequestInit
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import scala.scalajs.js.typedarray.ArrayBuffer
 
 @js.native
 @JSImport("@tensorflow/tfjs-core", "io")
-object io extends ModelManagement with WeightsLoader {
+object io extends ModelManagement {
+  def loadWeights(
+    manifest: WeightsManifestConfig,
+    filePathPrefix: String = ???,
+    weightNames: js.Array[String] = ???,
+    requestOptions: RequestInit = ???
+  ): Promise[NamedTensorMap] = js.native
   def registerSaveRouter(saveRouter: IORouter): Unit    = js.native
   def registerLoadRouter(loadRouter: IORouter): Unit    = js.native
   def getSaveHandlers(url: String): js.Array[IOHandler] = js.native
@@ -38,6 +44,7 @@ object io extends ModelManagement with WeightsLoader {
   def encodeWeights(tensors: NamedTensorMap): Promise[js.Any] = js.native
   def decodeWeights(buffer: ArrayBuffer, specs: js.Array[WeightsManifestEntry]): NamedTensorMap =
     js.native
+  // TODO browserFiles, concatenateArrayBuffers, fromMemory, getModelArtifactsInfoForJSON
   type IOHandler             = types.IOHandler
   type LoadHandler           = types.LoadHandler
   type ModelArtifacts        = types.ModelArtifacts

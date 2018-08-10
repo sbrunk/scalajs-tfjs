@@ -23,7 +23,7 @@ import _root_.io.brunk.tfjs.core.ops.Conv_util.Conv2DInfo
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import org.scalajs.dom.html
 import org.scalajs.dom
 
@@ -79,13 +79,19 @@ class MathBackendCPU extends KernelBackend {
   def logicalOr(a: TensorND, b: TensorND): TensorND                                     = js.native
   def select(condition: TensorND, a: TensorND, b: TensorND): TensorND                        = js.native
   def where(condition: TensorND): Tensor2D                                             = js.native
+  def where(
+    condition: TensorND,
+    a: TensorND,
+    b: TensorND,
+    dtype: DataType
+  ): TensorND = js.native
   def topk[T <: TensorND](x: T, k: Double, sorted: Boolean): js.Tuple2[T, T]           = js.native
   def min(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def minimum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def mod(a: TensorND, b: TensorND): TensorND                                           = js.native
   def max(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def maximum(a: TensorND, b: TensorND): TensorND                                       = js.native
-  def all(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
+  def all(x: TensorND, axes: js.Array[Double]): TensorND                                 = js.native
   def any(x: TensorND, axes: js.Array[Double]): TensorND                                 = js.native
   def squaredDifference(a: TensorND, b: TensorND): TensorND                             = js.native
   def ceil[T <: TensorND](x: T): T                                                      = js.native
@@ -148,8 +154,9 @@ class MathBackendCPU extends KernelBackend {
   def spaceToBatchND[T <: TensorND](
     x: T,
     blockShape: js.Array[Double],
-    paddings: js.Array[js.Tuple2[Double, Double]]
-  ): T                                                     = js.native
+    // TODO original impl takes js.Array[js.Tuple2[Double, Double]] here but js.Array[js.Array[Double]] in superclass
+    paddings: js.Array[js.Array[Double]]
+  ): T = js.native
   def maxPool(x: Tensor4D, convInfo: Conv2DInfo): Tensor4D            = js.native
   def maxPoolBackprop(dy: Tensor4D, x: Tensor4D, y: Tensor4D, convInfo: Conv2DInfo): Tensor4D =
     js.native

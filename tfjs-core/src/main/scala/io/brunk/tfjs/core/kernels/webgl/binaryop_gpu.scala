@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.core.kernels.webgl
 
+import org.scalajs.dom.webgl
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -28,8 +30,8 @@ class BinaryOpProgram protected () extends GPGPUProgram with SupportsBroadasting
   var outputShape: js.Array[Double]   = js.native
   var userCode: String                = js.native
   //var supportsBroadcasting: Boolean   = js.native
-  var startLoc: WebGLUniformLocation                                       = js.native
-  def getCustomSetupFunc(): js.Function2[GPGPUContext, WebGLProgram, Unit] = js.native
+  var startLoc: webgl.UniformLocation                                       = js.native
+  def getCustomSetupFunc(): js.Function2[GPGPUContext, webgl.Program, Unit] = js.native
 }
 
 @js.native

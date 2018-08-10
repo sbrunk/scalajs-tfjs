@@ -21,7 +21,9 @@ import js.annotation._
 import js.{Promise, |}
 import Engine.MemoryInfo
 import kernels.KernelBackend
-
+import Engine.ScopeFn
+import Tensor_types.TensorContainer
+import TensorModule.TensorND
 
 
 @js.native
@@ -48,7 +50,8 @@ class Environment protected () extends js.Object {
 }
 
 @js.native
-trait EnvironmentCompanion extends js.Object {
+@JSGlobal
+object Environment extends js.Object {
   def setBackend(backendType: String, safeMode: Boolean = ???): Unit = js.native
   def getBackend(): String                                           = js.native
   def disposeVariables(): Unit                                       = js.native

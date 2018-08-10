@@ -28,7 +28,6 @@ trait Index
     with Train
     with Globals
     with VariableCompanion
-    with EnvironmentCompanion
     with Version
     with BrowserUtil {
   type InferenceModel      = core.InferenceModel
@@ -51,18 +50,16 @@ trait Index
   // TODO Reduction
   // Second level exports.
   val environment: EnvironmentModule.type    = js.native
-  val io: core.io.io.type                    = js.native
-  val serialization: core.serialization.type = js.native
-  // TODO webgl
-  // TODO backend
-  // TODO doc
-}
-
-@js.native
-@JSGlobalScope
-object Index extends js.Object {
+  // Start Environment
   def setBackend(backendType: String, safeMode: Boolean = ???): Unit = js.native
   def getBackend(): String                                           = js.native
   def disposeVariables(): Unit                                       = js.native
   def memory(): MemoryInfo                                           = js.native
+  // End Environment
+  val io: core.io.io.type                    = js.native
+  val serialization: core.serialization.type = js.native
+  // TODO webgl
+  val webgl: WebGl = js.native
+  // TODO backend
+  // TODO doc
 }

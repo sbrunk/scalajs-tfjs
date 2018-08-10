@@ -155,12 +155,12 @@ trait KernelBackend extends TensorStorage with BackendTimer {
     x: T,
     blockShape: js.Array[Double],
     crops: js.Array[js.Array[Double]]
-  ): T = js.native
+  ): T
   def spaceToBatchND[T <: TensorND](
     x: T,
     blockShape: js.Array[Double],
     paddings: js.Array[js.Array[Double]]
-  ): T = js.native
+  ): T
   def resizeBilinear(
       x: Tensor4D,
       newHeight: Double,

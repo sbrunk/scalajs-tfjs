@@ -25,7 +25,7 @@ import org.scalajs.dom.html
 import scala.scalajs.js.typedarray.{ Float32Array, Uint16Array }
 @js.native
 @JSGlobalScope
-object Webgl_util extends js.Object {
+object WebglUtil extends js.Object {
   def createWebGLRenderingContext(attributes: WebGLContextAttributes): webgl.RenderingContext =
     js.native
   def createWebGLRenderingContextFromCanvas(

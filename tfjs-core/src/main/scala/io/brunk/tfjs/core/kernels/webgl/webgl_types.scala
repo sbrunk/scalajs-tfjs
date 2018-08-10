@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.core.kernels.webgl
 
+import io.brunk.dom.WebGLQuery
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

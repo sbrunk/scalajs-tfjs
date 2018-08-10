@@ -14,17 +14,15 @@
  * limitations under the License.
  */
 
-package io.brunk.tfjs.core.kernels
-
-import io.brunk.tfjs.core.TensorModule.TensorND
-import io.brunk.tfjs.core.{ DataType, Rank, Tensor }
-
+/** DOM API facades that aren't in scalajs-dom yet. TODO PR */
+package io.brunk.dom
 import scala.scalajs.js
-import js.annotation._
-import js.|
+import scala.scalajs.js.annotation.JSGlobal
+
 @js.native
-@JSGlobalScope
-object Backend_util extends js.Object {
-  def castTensor[T <: TensorND](x: T, dtype: DataType, backend: KernelBackend): T = js.native
-  def reshapeTensor[T <: Tensor[R], R <: Rank](x: T, shape: R#Shape): Tensor[R]    = js.native
-}
+@JSGlobal
+class WebGLQuery private[this] () extends js.Object
+
+@js.native
+@JSGlobal
+class WebGLSync private[this] () extends js.Object

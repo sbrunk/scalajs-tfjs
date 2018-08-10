@@ -36,27 +36,27 @@ trait ArrayOps extends js.Object {
       dtype: DataType = ???
   ): Tensor2D = js.native
   def randomNormal[R <: Rank](
-      shape: js.Any,
+      shape: R#Shape,
       mean: Double = ???,
       stdDev: Double = ???,
       dtype: String = ???,
       seed: Double = ???
   ): Tensor[R] = js.native
   def truncatedNormal[R <: Rank](
-      shape: js.Any,
+      shape: R#Shape,
       mean: Double = ???,
       stdDev: Double = ???,
       dtype: String = ???,
       seed: Double = ???
   ): Tensor[R] = js.native
   def randomUniform[R <: Rank](
-      shape: js.Any,
+      shape: R#Shape,
       minval: Double = ???,
       maxval: Double = ???,
       dtype: DataType = ???
   ): Tensor[R] = js.native
   def rand[R <: Rank](
-      shape: js.Any,
+      shape: R#Shape,
       randFunction: js.Function0[Double],
       dtype: DataType = ???
   ): Tensor[R] = js.native
@@ -80,7 +80,7 @@ trait ArrayOps extends js.Object {
       img: Tensor2D | Tensor3D | TensorLike,
       canvas: html.Canvas = ???
   ): Promise[Uint8ClampedArray]                                             = js.native
-  def reshape[R2 <: Rank](x: TensorND | TensorLike, shape: js.Any): Tensor[R2]           = js.native
+  def reshape[R2 <: Rank](x: TensorND | TensorLike, shape: R2#Shape): Tensor[R2]           = js.native
   def squeeze[T <: TensorND](x: TensorND | TensorLike, axis: js.Array[Double] = ???): T  = js.native
   def cast[T <: TensorND](x: T | TensorLike, dtype: DataType): T                         = js.native
   def tile[T <: TensorND](x: T | TensorLike, reps: js.Array[Double]): T                  = js.native
@@ -119,16 +119,16 @@ trait ArrayOps extends js.Object {
       constantValue: Double = ???
   ): T = js.native
   def stack[T <: TensorND](tensors: js.Array[T] | js.Array[TensorLike], axis: Double = ???): TensorND = js.native
-  def batchToSpaceND_[T <: TensorND](
+  def batchToSpaceND[T <: TensorND](
     x: T | TensorLike,
     blockShape: js.Array[Double],
     crops: js.Array[js.Array[Double]]
   ): T = js.native
-  def spaceToBatchND_[T <: TensorND](
+  def spaceToBatchND[T <: TensorND](
     x: T | TensorLike,
     blockShape: js.Array[Double],
     paddings: js.Array[js.Array[Double]]
-  ): T
+  ): T = js.native
   def unstack[T <: TensorND](value: T | TensorLike, axis: Double = ???): js.Array[TensorND] = js.native
   def split[T <: TensorND](
       x: T | TensorLike,
@@ -142,11 +142,8 @@ trait ArrayOps extends js.Object {
       reverse: Boolean = ???
   ): T                                                                    = js.native
   def expandDims[R2 <: Rank](x: TensorND | TensorLike, axis: Double = ???): Tensor[R2] = js.native
-  def linspace(start: Double, stop: Double, num: Double): Tensor1D        = js.native
-  def range(start: Double, stop: Double, step: Double = ???, dtype: String = ???): Tensor1D =
-    js.native
   def buffer[R <: Rank](
-      shape: js.Any,
+      shape: R#Shape,
       dtype: DataType = ???,
       values: TypedArray = ???
   ): TensorBuffer[R]                                           = js.native

@@ -65,7 +65,6 @@ lazy val example =
       npmDevDependencies in Compile += "html-webpack-plugin" -> "3.2.0",
       scalaJSUseMainModuleInitializer := true,
       mainClass in Compile := Some("example.Example"),
-      webpackConfigFile in fastOptJS := Some(baseDirectory.value / "dev.config.js")
 )
     .dependsOn(`scalajs-tfjs-core`)
     .dependsOn(`scalajs-tfjs-layers`)
@@ -114,7 +113,7 @@ lazy val library =
 lazy val npmLibrary =
   new {
     object Version {
-      val tfjsCore = "0.11.9"
+      val tfjsCore = "0.12.8"
       val tfjsLayers = "0.6.7"
       val tfjsConverter = "0.4.3"
     }

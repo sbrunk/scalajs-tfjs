@@ -20,6 +20,7 @@ import scala.scalajs.js
 import js.annotation._
 import js.|
 import kernels.KernelBackend
+import kernels.MathBackendCPU
 
 @js.native
 trait TestEnv extends js.Object {

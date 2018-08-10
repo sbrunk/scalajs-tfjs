@@ -155,7 +155,7 @@ trait NamedVariableMap extends NamedTensorMap {
 //}
 
 @js.native
-trait RecursiveArray[T <: js.Any] extends js.Object {
+trait RecursiveArray[T] extends js.Object {
   @JSBracketAccess
   def apply(index: Double): T | RecursiveArray[T] = js.native
   @JSBracketAccess

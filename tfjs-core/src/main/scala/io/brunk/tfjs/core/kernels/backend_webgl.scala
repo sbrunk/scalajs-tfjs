@@ -104,7 +104,7 @@ class MathBackendWebGL protected () extends KernelBackend {
     bias: Double,
     alpha: Double,
     beta: Double
-  ): Tensor4D
+  ): Tensor4D = js.native
   def tile[T <: TensorND](x: T, reps: js.Array[Double]): T = js.native
   def pad[T <: TensorND](
       x: T,
@@ -113,16 +113,17 @@ class MathBackendWebGL protected () extends KernelBackend {
   ): T                                                                = js.native
   def transpose[T <: TensorND](x: T, perm: js.Array[Double]): T       = js.native
   def gather[T <: TensorND](x: T, indices: Tensor1D, axis: Double): T = js.native
-  def batchToSpaceND[T <: Tensor](
+  def batchToSpaceND[T <: TensorND](
     x: T,
     blockShape: js.Array[Double],
     crops: js.Array[js.Array[Double]]
   ): T = js.native
-  def spaceToBatchND[T <: Tensor](
+  def spaceToBatchND[T <: TensorND](
     x: T,
     blockShape: js.Array[Double],
-    paddings: js.Array[js.Tuple2[Double, Double]]
-  ): T                                               = js.native
+    // TODO original impl takes js.Array[js.Tuple2[Double, Double]] here but js.Array[js.Array[Double]] in superclass
+    paddings: js.Array[js.Array[Double]]
+  ): T = js.native
   def sum(x: TensorND, axes: js.Array[Double]): TensorND              = js.native
   def unsortedSegmentSum[T <: TensorND](x: T, segmentIds: Tensor1D, numSegments: Double): TensorND =
     js.native
@@ -138,21 +139,27 @@ class MathBackendWebGL protected () extends KernelBackend {
   def logicalNot[T <: TensorND](x: T): T                                                = js.native
   def logicalAnd(a: TensorND, b: TensorND): TensorND                                    = js.native
   def logicalOr(a: TensorND, b: TensorND): TensorND                                     = js.native
-  def where(condition: TensorND, a: TensorND, b: TensorND, dtype: DataType): TensorND   = js.native
-  def topKValues[T <: TensorND](x: T, k: Double): Tensor1D                              = js.native
-  def topKIndices(x: TensorND, k: Double): Tensor1D                                     = js.native
+  def select(condition: TensorND, a: TensorND, b: TensorND): TensorND                        = js.native
+  def where(condition: TensorND): Tensor2D                                             = js.native
+  def where(
+    condition: TensorND,
+    a: TensorND,
+    b: TensorND,
+    dtype: DataType
+  ): TensorND = js.native
+  def topk[T <: TensorND](x: T, k: Double, sorted: Boolean): js.Tuple2[T, T]           = js.native
   def min(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def minimum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def mod(a: TensorND, b: TensorND): TensorND                                           = js.native
   def max(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
   def maximum(a: TensorND, b: TensorND): TensorND                                       = js.native
   def all(x: TensorND, axes: js.Array[Double]): TensorND                                = js.native
-  def any(x: Tensor, axes: js.Array[Double]): Tensor                                 = js.native
+  def any(x: TensorND, axes: js.Array[Double]): TensorND                                 = js.native
   def squaredDifference(a: TensorND, b: TensorND): TensorND                             = js.native
   def realDivide(a: TensorND, b: TensorND): TensorND                                    = js.native
   def floorDiv(a: TensorND, b: TensorND): TensorND                                      = js.native
   def add(a: TensorND, b: TensorND): TensorND                                           = js.native
-  def addN[T <: Tensor](tensors: js.Array[T]): T                                     = js.native
+  def addN[T <: TensorND](tensors: js.Array[T]): T                                     = js.native
   def subtract(a: TensorND, b: TensorND): TensorND                                      = js.native
   def pow[T <: TensorND](a: T, b: TensorND): T                                          = js.native
   def ceil[T <: TensorND](x: T): T                                                      = js.native

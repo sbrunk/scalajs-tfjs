@@ -25,12 +25,30 @@ import Engine.{ CustomGradientFunc, ScopeFn }
 
 @js.native
 trait Globals extends js.Object {
+  // Start Gradients
+  def grad[I <: TensorND, O <: TensorND](f: js.Function1[I, O]): js.Function2[I, O, I] = js.native
+  def grads[O <: TensorND](
+    f: js.Function
+  ): js.Function2[js.Array[TensorND], O, js.Array[TensorND]] =
+    js.native
+  def valueAndGrad[I <: TensorND, O <: TensorND](
+    f: js.Function1[I, O]
+  ): js.Function2[I, O, js.Any] =
+    js.native
+  def valueAndGrads[O <: TensorND](f: js.Function): js.Function2[js.Array[TensorND], O, js.Any] =
+    js.native
+  def variableGrads(f: js.Function0[Scalar], varList: js.Array[Variable[Rank]] = ???): js.Any =
+    js.native
+  def customGrad[T <: TensorND](f: CustomGradientFunc[T]): js.Function = js.native
+  // End Gradients
+  // Start Environment
   def tidy[T <: TensorContainer](
     nameOrFn: String | ScopeFn[T],
     fn: ScopeFn[T] = ???,
     gradMode: Boolean = ???
   ): T                                                 = js.native
   def dispose(container: TensorContainer): Unit        = js.native
-  def keep[T <: Tensor](result: T): T                  = js.native
+  def keep[T <: TensorND](result: T): T                  = js.native
   def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native
+  // End Environment
 }

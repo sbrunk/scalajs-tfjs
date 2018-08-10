@@ -22,11 +22,9 @@ import js.{Promise, |}
 import Engine.MemoryInfo
 import kernels.BackendTimingInfo
 import kernels.KernelBackend
-import Engine.ForwardFunc
-import Types.TensorContainer
+import Engine.{CustomGradientFunc, ForwardFunc, ScopeFn}
+import Types.{TensorContainer, TypedArray}
 import TensorModule.DataId
-import Types._
-import Engine.CustomGradientFunc
 import org.scalajs.dom.{ImageData, html}
 import TensorModule._
 

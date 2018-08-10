@@ -19,3 +19,13 @@ package io.brunk.tfjs.core
 import scala.scalajs.js
 import js.annotation._
 import js.|
+
+@js.native
+trait WebGl extends js.Object {
+  type MathBackendWebGL = kernels.MathBackendWebGL
+  type WebGLMemoryInfo = kernels.WebGLMemoryInfo
+  type WebGLTimingInfo = kernels.WebGLTimingInfo
+  type GPGPUContext = kernels.webgl.GPGPUContext
+  val GPGPUUtil: kernels.webgl.GPGPUUtil.type = js.native
+  val WebGLUtil: kernels.webgl.WebglUtil.type = js.native
+}

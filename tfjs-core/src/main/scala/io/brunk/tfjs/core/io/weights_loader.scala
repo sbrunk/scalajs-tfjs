@@ -26,7 +26,7 @@ import org.scalajs.dom.experimental.RequestInit
 
 @js.native
 @JSGlobalScope
-object Weights_loader extends js.Object {
+object WeightsLoader extends js.Object {
   def loadWeightsAsArrayBuffer(
       fetchURLs: js.Array[String],
       requestOptions: RequestInit = ???

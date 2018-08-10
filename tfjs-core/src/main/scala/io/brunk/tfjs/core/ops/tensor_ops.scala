@@ -34,9 +34,8 @@ import io.brunk.tfjs.core.TensorModule.{
 import io.brunk.tfjs.core.Types._
 
 @js.native
-@JSGlobalScope
-object Tensor_ops extends js.Object {
-  def tensor[R <: Rank](values: TensorLike, shape: js.Any = ???, dtype: DataType = ???): Tensor[R] =
+trait TensorOps extends js.Object {
+  def tensor[R <: Rank](values: TensorLike, shape: R#Shape = ???, dtype: DataType = ???): Tensor[R] =
     js.native
   def scalar(value: Double | Boolean, dtype: DataType = ???): Scalar  = js.native
   def tensor1d(values: TensorLike1D, dtype: DataType = ???): Tensor1D = js.native
@@ -65,9 +64,9 @@ object Tensor_ops extends js.Object {
       shape: js.Tuple6[Double, Double, Double, Double, Double, Double] = ???,
       dtype: DataType = ???
   ): Tensor6D                                                                         = js.native
-  def ones[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R]                = js.native
-  def zeros[R <: Rank](shape: js.Any, dtype: DataType = ???): Tensor[R]               = js.native
-  def fill[R <: Rank](shape: js.Any, value: Double, dtype: DataType = ???): Tensor[R] = js.native
+  def ones[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]                = js.native
+  def zeros[R <: Rank](shape: R#Shape, dtype: DataType = ???): Tensor[R]               = js.native
+  def fill[R <: Rank](shape: R#Shape, value: Double, dtype: DataType = ???): Tensor[R] = js.native
   def onesLike[T <: TensorND](x: T | TensorLike): T                                   = js.native
   def zerosLike[T <: TensorND](x: T | TensorLike): T                                  = js.native
   def linspace(start: Double, stop: Double, num: Double): Tensor1D                    = js.native

@@ -16,12 +16,15 @@
 
 package io.brunk.tfjs.core.kernels.webgl
 
+import io.brunk.dom.{WebGLQuery, WebGLSync}
+
 import scala.scalajs.js
 import js.annotation._
 import js.{Promise, |}
 import org.scalajs.dom.webgl
 import org.scalajs.dom.html
 import org.scalajs.dom
+import org.scalajs.dom.experimental.webgl.extensions.WebGLLoseContext
 
 import scala.scalajs.js.typedarray.Float32Array
 
@@ -36,7 +39,7 @@ trait FenceContext extends js.Object {
 class GPGPUContext protected () extends js.Object {
   def this(gl: webgl.RenderingContext = ???) = this()
   var gl: webgl.RenderingContext                      = js.native
-  var loseContextExtension: WebGLLoseContextExtension = js.native
+  var loseContextExtension: WebGLLoseContext = js.native
   var disjointQueryTimerExtension
     : WebGL2DisjointQueryTimerExtension | WebGL1DisjointQueryTimerExtension          = js.native
   var vertexBuffer: webgl.Buffer                                                     = js.native
@@ -146,6 +149,6 @@ class GPGPUContext protected () extends js.Object {
 
 @js.native
 @JSGlobalScope
-object Gpgpu_context extends js.Object {
+object GPGPUContextModule extends js.Object {
   def binSearchLastTrue(arr: js.Array[js.Function0[Boolean]]): Double = js.native
 }
