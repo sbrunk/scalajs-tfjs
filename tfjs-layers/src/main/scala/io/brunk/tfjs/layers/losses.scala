@@ -25,27 +25,31 @@ import js.|
 @js.native
 @JSGlobalScope
 object Losses extends js.Object {
-  def l2Normalize(x: TensorND, axis: Double = ???): TensorND                = js.native
-  def meanSquaredError(yTrue: TensorND, yPred: TensorND): TensorND              = js.native
-  def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND             = js.native
-  def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND   = js.native
-  def meanSquaredLogarithmicError(yTrue: TensorND, yPred: TensorND): TensorND   = js.native
-  def squaredHinge(yTrue: TensorND, yPred: TensorND): TensorND                  = js.native
-  def hinge(yTrue: TensorND, yPred: TensorND): TensorND                         = js.native
-  def categoricalHinge(yTrue: TensorND, yPred: TensorND): TensorND              = js.native
-  def logcosh(yTrue: TensorND, yPred: TensorND): TensorND                       = js.native
-  def categoricalCrossentropy(target: TensorND, output: TensorND, fromLogits: Boolean = ???): TensorND =
+  def l2Normalize(x: TensorND, axis: Double = ???): TensorND                  = js.native
+  def meanSquaredError(yTrue: TensorND, yPred: TensorND): TensorND            = js.native
+  def meanAbsoluteError(yTrue: TensorND, yPred: TensorND): TensorND           = js.native
+  def meanAbsolutePercentageError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def meanSquaredLogarithmicError(yTrue: TensorND, yPred: TensorND): TensorND = js.native
+  def squaredHinge(yTrue: TensorND, yPred: TensorND): TensorND                = js.native
+  def hinge(yTrue: TensorND, yPred: TensorND): TensorND                       = js.native
+  def categoricalHinge(yTrue: TensorND, yPred: TensorND): TensorND            = js.native
+  def logcosh(yTrue: TensorND, yPred: TensorND): TensorND                     = js.native
+  def categoricalCrossentropy(
+      target: TensorND,
+      output: TensorND,
+      fromLogits: Boolean = ???
+  ): TensorND =
     js.native
   def sparseCategoricalCrossentropy(
-    target: TensorND,
-    output: TensorND,
-    fromLogits: Boolean = ???
-  ): TensorND                                                                 = js.native
+      target: TensorND,
+      output: TensorND,
+      fromLogits: Boolean = ???
+  ): TensorND                                                                     = js.native
   def sigmoidCrossEntropyWithLogits(target: TensorND, output: TensorND): TensorND = js.native
-  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND            = js.native
-  def kullbackLeiblerDivergence(yTrue: TensorND, yPred: TensorND): TensorND     = js.native
-  def poisson(yTrue: TensorND, yPred: TensorND): TensorND                       = js.native
-  def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND               = js.native
+  def binaryCrossentropy(yTrue: TensorND, yPred: TensorND): TensorND              = js.native
+  def kullbackLeiblerDivergence(yTrue: TensorND, yPred: TensorND): TensorND       = js.native
+  def poisson(yTrue: TensorND, yPred: TensorND): TensorND                         = js.native
+  def cosineProximity(yTrue: TensorND, yPred: TensorND): TensorND                 = js.native
   // aliases
   def mse(yTrue: TensorND, yPred: TensorND): TensorND              = js.native // meanSquaredError
   def MSE(yTrue: TensorND, yPred: TensorND): TensorND              = js.native // meanSquaredError

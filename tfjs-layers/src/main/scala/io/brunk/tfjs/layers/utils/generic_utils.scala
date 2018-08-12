@@ -16,7 +16,7 @@
 
 package io.brunk.tfjs.layers.utils
 
-import io.brunk.tfjs.core.{DataType, serialization}
+import io.brunk.tfjs.core.{ DataType, serialization }
 import io.brunk.tfjs.core.TensorModule.TensorND
 import io.brunk.tfjs.layers.LayerVariable
 import io.brunk.tfjs.layers.Types.Shape

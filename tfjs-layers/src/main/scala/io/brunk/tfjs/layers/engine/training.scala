@@ -16,13 +16,13 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.{Callback, CustomCallbackConfig, History, NamedTensorMap}
-import io.brunk.tfjs.layers.Types.{LossOrMetricFn, Shape}
+import io.brunk.tfjs.layers.{ Callback, CustomCallbackConfig, History, NamedTensorMap }
+import io.brunk.tfjs.layers.Types.{ LossOrMetricFn, Shape }
 import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 import js.JSConverters._
 
 @js.native
@@ -65,7 +65,7 @@ trait ModelFitConfig extends js.Object {
   var initialEpoch: Double                    = js.native
   var stepsPerEpoch: Double                   = js.native
   var validationSteps: Double                 = js.native
-  var yieldEvery: String                                     = js.native
+  var yieldEvery: String                      = js.native
 }
 
 object ModelFitConfig {
@@ -82,9 +82,11 @@ object ModelFitConfig {
 @ScalaJSDefined
 class ModelCompileConfig(
     val optimizer: String | Optimizer,
-    val loss: js.UndefOr[String | js.Array[String] | js.Dictionary[String] | LossOrMetricFn | js.Array[
-      LossOrMetricFn
-    ] | js.Dictionary[LossOrMetricFn]] = js.undefined,
+    val loss: js.UndefOr[
+      String | js.Array[String] | js.Dictionary[String] | LossOrMetricFn | js.Array[
+        LossOrMetricFn
+      ] | js.Dictionary[LossOrMetricFn]
+    ] = js.undefined,
     val metrics: js.UndefOr[js.Array[String] | js.Dictionary[String]] = js.undefined
 ) extends js.Object
 
@@ -119,19 +121,19 @@ class Model protected () extends Container {
   var metricsNames: js.Array[String]                              = js.native
   var metricsTensors: js.Array[js.Tuple2[LossOrMetricFn, Double]] = js.native
   def summary(
-    lineLength: Double = ???,
-    positions: js.Array[Double] = ???,
-    printFn: js.Function = ???
-  ): Unit = js.native
-  def compile(config: ModelCompileConfig): Unit                   = js.native
+      lineLength: Double = ???,
+      positions: js.Array[Double] = ???,
+      printFn: js.Function = ???
+  ): Unit                                       = js.native
+  def compile(config: ModelCompileConfig): Unit = js.native
   def evaluate(
       x: TensorND | js.Array[TensorND],
       y: TensorND | js.Array[TensorND],
       config: ModelEvaluateConfig = ???
   ): Scalar | js.Array[Scalar] = js.native
   def execute(
-    inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
-    outputs: String | js.Array[String]
+      inputs: TensorND | js.Array[TensorND] | NamedTensorMap,
+      outputs: String | js.Array[String]
   ): TensorND | js.Array[TensorND] = js.native
   def predict(
       x: TensorND | js.Array[TensorND],

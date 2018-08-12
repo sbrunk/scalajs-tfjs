@@ -27,6 +27,6 @@ import js.{ Promise, | }
 @js.native
 @JSImport("@tensorflow/tfjs-layers", "Callback")
 abstract class Callback extends js.Object {
-  var model: Model                                                           = js.native
-  def setModel(model: Model): Unit                                           = js.native
+  var model: Model                 = js.native
+  def setModel(model: Model): Unit = js.native
 }

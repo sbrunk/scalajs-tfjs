@@ -17,15 +17,15 @@
 package io.brunk.tfjs.layers
 
 import io.brunk.tfjs.core.ModelPredictConfig
-import io.brunk.tfjs.core.io.types.{IOHandler, WeightsManifestConfig}
-import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
-import io.brunk.tfjs.tf.{Scalar, TensorND}
+import io.brunk.tfjs.core.io.types.{ IOHandler, WeightsManifestConfig }
+import io.brunk.tfjs.layers.Types.{ Kwargs, Shape }
+import io.brunk.tfjs.tf.{ Scalar, TensorND }
 import io.brunk.tfjs.tf.serialization
 import io.brunk.tfjs.layers.engine._
 
 import scala.scalajs.js
 import js.annotation._
-import js.{Promise, |}
+import js.{ Promise, | }
 
 @js.native
 trait ModelAndWeightsConfig extends js.Object {
@@ -96,5 +96,5 @@ object Models extends js.Object {
   def loadModelFromIOHandler(
       handler: IOHandler,
       customObjects: serialization.ConfigDict = ???
-  ): Promise[Model]                                              = js.native
+  ): Promise[Model] = js.native
 }

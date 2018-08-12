@@ -60,9 +60,9 @@ object Tfjs_backend extends js.Object {
       reference: TensorND,
       indices: js.Array[Double] | Tensor1D,
       axis: Double = ???
-  ): TensorND                                          = js.native
-  def square(x: TensorND): TensorND                    = js.native
-  def pow(x: TensorND, a: TensorND | Double): TensorND = js.native
+  ): TensorND                                                                      = js.native
+  def square(x: TensorND): TensorND                                                = js.native
+  def pow(x: TensorND, a: TensorND | Double): TensorND                             = js.native
   def biasAdd(x: TensorND, bias: TensorND, dataFormat: DataFormat = ???): TensorND = js.native
   def elu(x: TensorND, alpha: Double = ???): TensorND                              = js.native
   def softsign(x: TensorND): TensorND                                              = js.native
@@ -71,8 +71,8 @@ object Tfjs_backend extends js.Object {
       level: Scalar,
       noiseShape: js.Array[Double] = ???,
       seed: Double = ???
-  ): TensorND                                                = js.native
-  def hardSigmoid(x: TensorND): TensorND                                          = js.native
+  ): TensorND                            = js.native
+  def hardSigmoid(x: TensorND): TensorND = js.native
   def inTrainPhase[T](x: js.Function0[T], alt: js.Function0[T], training: Boolean = ???): T =
     js.native
 }
