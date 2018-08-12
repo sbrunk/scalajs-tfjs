@@ -16,6 +16,8 @@
 
 package io.brunk.tfjs.layers.utils
 
+import io.brunk.tfjs.layers.LayerVariable
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

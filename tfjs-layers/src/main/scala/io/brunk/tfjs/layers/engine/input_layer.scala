@@ -16,6 +16,10 @@
 
 package io.brunk.tfjs.layers.engine
 
+import io.brunk.tfjs.core.{DataType, serialization}
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.core.TensorModule.TensorND
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -35,12 +39,13 @@ trait InputLayerConfig extends js.Object {
 class InputLayer protected () extends Layer {
   def this(config: InputLayerConfig) = this()
   var sparse: Boolean = js.native
-  @JSName("apply")
-  def apply(
-      inputs: Tensor | js.Array[Tensor] | SymbolicTensor | js.Array[SymbolicTensor],
-      kwargs: Kwargs = ???
-  ): Tensor | js.Array[Tensor] | SymbolicTensor = js.native
-  def getConfig(): serialization.ConfigDict     = js.native
+// until we have real union types aka dotty, we have to stick with the wider type of the base class
+//  @JSName("apply")
+//  override def apply(
+//      inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor],
+//      kwargs: Kwargs = ???
+//  ): TensorND | js.Array[TensorND] | SymbolicTensor = js.native
+  override def getConfig(): serialization.ConfigDict     = js.native
 }
 
 @js.native

@@ -47,6 +47,9 @@ trait Globals extends js.Object {
     fn: ScopeFn[T] = ???,
     gradMode: Boolean = ???
   ): T                                                 = js.native
+  def tidy(
+    nameOrFn: js.Function0[TensorND],
+  ): TensorND = js.native
   def dispose(container: TensorContainer): Unit        = js.native
   def keep[T <: TensorND](result: T): T                  = js.native
   def time(f: js.Function0[Unit]): Promise[TimingInfo] = js.native

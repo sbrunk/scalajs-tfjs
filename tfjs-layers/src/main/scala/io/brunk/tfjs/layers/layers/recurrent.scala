@@ -22,8 +22,8 @@ import io.brunk.tfjs.layers.Constraints.ConstraintIdentifier
 import io.brunk.tfjs.layers.Initializers.InitializerIdentifier
 import io.brunk.tfjs.layers.Regularizers.RegularizerIdentifier
 import io.brunk.tfjs.layers._
-import io.brunk.tfjs.layers.Types.{ Kwargs, RnnStepFunction, Shape }
-import io.brunk.tfjs.layers.engine.{ InputSpec, Layer, LayerConfig }
+import io.brunk.tfjs.layers.Types.{Kwargs, RnnStepFunction, Shape}
+import io.brunk.tfjs.layers.engine.{InputSpec, Layer, LayerConfig, SymbolicTensor}
 
 import scala.scalajs.js
 import js.annotation._

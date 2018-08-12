@@ -114,7 +114,7 @@ lazy val npmLibrary =
   new {
     object Version {
       val tfjsCore = "0.12.8"
-      val tfjsLayers = "0.6.7"
+      val tfjsLayers = "0.7.2"
       val tfjsConverter = "0.4.3"
     }
     val tfjsCore = "@tensorflow/tfjs-core" -> Version.tfjsCore

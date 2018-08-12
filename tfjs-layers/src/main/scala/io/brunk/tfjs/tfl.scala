@@ -18,17 +18,19 @@ package io.brunk.tfjs
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import io.brunk.tfjs.{ layers => tflayers }
+import io.brunk.tfjs.{layers => tflayers}
 
 @js.native
 @JSImport("@tensorflow/tfjs-layers", JSImport.Namespace)
 object tfl extends tflayers.ModelExportsCompanion {
-  // callbacks
-  type Callback             = tflayers.Callback
+  // base_callbacks
   type CallbackList         = tflayers.CallbackList
   type CustomCallback       = tflayers.CustomCallback
   type CustomCallbackConfig = tflayers.CustomCallbackConfig
-  type Logs                 = tflayers.Callbacks.Logs
+  // callbacks
+  type Callback             = tflayers.Callback
+  // engine/topology
+  type SymbolicTensor = tflayers.engine.SymbolicTensor
   // engine/training
   type Model               = tflayers.engine.Model
   type ModelCompileConfig  = tflayers.engine.ModelCompileConfig
@@ -44,6 +46,8 @@ object tfl extends tflayers.ModelExportsCompanion {
   type RNNLayerConfig           = tflayers.layers.RNNLayerConfig
   type SimpleRNNCellLayerConfig = tflayers.layers.SimpleRNNCellLayerConfig
   type SimpleRNNLayerConfig     = tflayers.layers.SimpleRNNLayerConfig
+  // layers/logs
+  val Logs: tflayers.Logs.type = js.native
   // models
   type ModelAndWeightsConfig = tflayers.ModelAndWeightsConfig
   type Sequential            = tflayers.Sequential
@@ -51,12 +55,14 @@ object tfl extends tflayers.ModelExportsCompanion {
   type SequentialConfig = tflayers.SequentialConfig
   // types
   type Shape          = tflayers.Types.Shape
-  type SymbolicTensor = tflayers.SymbolicTensor
+  // variables
+  type LayerVariable = tflayers.LayerVariable
+  // version
   val version_layers: String = js.native
   // second level exports
-  val layers: tflayers.LayerExports.type             = js.native
   val constraints: tflayers.ConstraintExports.type   = js.native
   val initializers: tflayers.InitializerExports.type = js.native
+  val layers: tflayers.LayerExports.type             = js.native
   type metrics = tflayers.MetricExports
   val metrics: tflayers.MetricExports.type           = js.native
   val regularizers: tflayers.RegularizerExports.type = js.native

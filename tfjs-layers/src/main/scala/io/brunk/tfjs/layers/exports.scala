@@ -22,7 +22,8 @@ import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
+import Container.ContainerConfig
 
 @js.native
 trait ModelExportsCompanion extends js.Object {

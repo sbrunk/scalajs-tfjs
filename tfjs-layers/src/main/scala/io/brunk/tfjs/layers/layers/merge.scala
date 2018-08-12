@@ -16,9 +16,8 @@
 
 package io.brunk.tfjs.layers.layers
 
-import io.brunk.tfjs.layers.SymbolicTensor
-import io.brunk.tfjs.layers.Types.{ Kwargs, Shape }
-import io.brunk.tfjs.layers.engine.{ Layer, LayerConfig }
+import io.brunk.tfjs.layers.Types.{Kwargs, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig, SymbolicTensor}
 
 import scala.scalajs.js
 import js.annotation._

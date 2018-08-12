@@ -16,6 +16,9 @@
 
 package io.brunk.tfjs.layers
 
+import io.brunk.tfjs.layers.engine.{InputLayerConfig, Layer, LayerConfig}
+import io.brunk.tfjs.layers.layers._
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -72,8 +75,9 @@ object Exports_layers extends js.Object {
   def stackedRNNCells(config: StackedRNNCellsConfig): RNNCell           = js.native
   def bidirectional(config: BidirectionalLayerConfig): Wrapper          = js.native
   def timeDistributed(config: WrapperLayerConfig): Layer                = js.native
-  val globalMaxPool1d: globalMaxPooling1d.type                          = js.native
-  val globalMaxPool2d: globalMaxPooling2d.type                          = js.native
-  val maxPool1d: maxPooling1d.type                                      = js.native
-  val maxPool2d: maxPooling2d.type                                      = js.native
+  // Aliases for pooling.
+  def globalMaxPool1d(config: LayerConfig): Layer                    = js.native
+  def globalMaxPool2d(config: GlobalPooling2DLayerConfig): Layer     = js.native
+  def maxPool1d(config: Pooling1DLayerConfig): Layer                 = js.native
+  def maxPool2d(config: Pooling2DLayerConfig): Layer                 = js.native
 }

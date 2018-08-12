@@ -208,6 +208,8 @@ object MobilenetDemo {
   val status = (msg: String) => demoStatusElement.asInstanceOf[RichHTMLElement].innerText = msg
 
   def main(args: Array[String]): Unit = {
+    println(s"tfjs-core version: ${tf.version}")
+    println(s"tfjs-layers version: ${tfl.version_layers}")
     mobilenetDemo
   }
 }

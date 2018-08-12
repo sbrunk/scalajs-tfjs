@@ -18,7 +18,7 @@ package io.brunk.tfjs.layers
 
 import io.brunk.tfjs.core.{ DataType, Variable }
 import io.brunk.tfjs.layers.Types.Shape
-import io.brunk.tfjs.core.TensorModule.{ TensorND, VariableND }
+import io.brunk.tfjs.core.TensorModule.{ Scalar, TensorND, VariableND }
 
 import scala.scalajs.js
 import js.annotation._

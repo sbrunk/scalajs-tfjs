@@ -18,7 +18,8 @@ package io.brunk.tfjs.layers
 
 import scala.scalajs.js
 import js.annotation._
-import js.|
+import js.{Promise, |}
+import io.brunk.tfjs.core.TensorModule.Scalar
 
 @js.native
 @JSGlobalScope

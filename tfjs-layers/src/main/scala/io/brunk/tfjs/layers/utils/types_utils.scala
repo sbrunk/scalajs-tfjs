@@ -16,6 +16,9 @@
 
 package io.brunk.tfjs.layers.utils
 
+import io.brunk.tfjs.layers.Types.Shape
+import io.brunk.tfjs.core.TensorModule.TensorND
+
 import scala.scalajs.js
 import js.annotation._
 import js.|
@@ -25,6 +28,6 @@ import js.|
 object Types_utils extends js.Object {
   def isArrayOfShapes(x: Shape | js.Array[Shape]): Boolean            = js.native
   def normalizeShapeList(x: Shape | js.Array[Shape]): js.Array[Shape] = js.native
-  def getExactlyOneTensor(xs: Tensor | js.Array[Tensor]): Tensor      = js.native
+  def getExactlyOneTensor(xs: TensorND | js.Array[TensorND]): TensorND      = js.native
   def getExactlyOneShape(shapes: Shape | js.Array[Shape]): Shape      = js.native
 }

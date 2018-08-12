@@ -34,7 +34,7 @@ object Example {
   def main(args: Array[String]): Unit = {
 
     println("Hello scalajs-tfjs!")
-    println(s"tfjs version: ${tf.version}")
+    println(s"tfjs-core version: ${tf.version}")
 
     // Tensors
     val shape = js.Array(2, 3) // 2 rows, 3 columns

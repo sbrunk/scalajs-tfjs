@@ -18,8 +18,9 @@ package io.brunk.tfjs.layers.backend
 
 import io.brunk.tfjs.core.DataType
 import io.brunk.tfjs.layers.Common.DataFormat
-import io.brunk.tfjs.layers.{ LayerVariable, SymbolicTensor }
+import io.brunk.tfjs.layers.LayerVariable
 import io.brunk.tfjs.layers.Types.Shape
+import io.brunk.tfjs.layers.engine.SymbolicTensor
 import io.brunk.tfjs.tf.TensorND
 
 import scala.scalajs.js

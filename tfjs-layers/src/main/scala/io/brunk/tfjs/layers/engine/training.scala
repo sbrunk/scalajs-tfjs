@@ -16,14 +16,15 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.{ Callback, CustomCallbackConfig, History, NamedTensorMap }
-import io.brunk.tfjs.layers.Types.{ LossOrMetricFn, Shape }
+import io.brunk.tfjs.layers.{Callback, CustomCallbackConfig, History, NamedTensorMap}
+import io.brunk.tfjs.layers.Types.{LossOrMetricFn, Shape}
 import io.brunk.tfjs.tf._
 
 import scala.scalajs.js
 import js.annotation._
-import js.{ Promise, | }
+import js.{Promise, |}
 import js.JSConverters._
+import Container.ContainerConfig
 
 @js.native
 sealed trait ModelLoggingVerbosity extends js.Object {}
@@ -109,7 +110,7 @@ object ModelCompileConfig {
 
 @js.native
 @JSImport("@tensorflow/tfjs-layers", "Model")
-class Model protected () extends Container {
+class Model protected () extends Container.Container {
   def this(config: ContainerConfig) = this()
   var optimizer: Optimizer = js.native
   var loss: String | js.Array[String] | js.Dictionary[String] | LossOrMetricFn | js.Array[

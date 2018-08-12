@@ -16,6 +16,9 @@
 
 package io.brunk.tfjs.layers.backend
 
+import io.brunk.tfjs.core.DataType
+import io.brunk.tfjs.tf.Scalar
+
 import scala.scalajs.js
 import js.annotation._
 import js.|

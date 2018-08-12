@@ -16,7 +16,6 @@
 
 package io.brunk.tfjs.layers
 
-import io.brunk.tfjs.layers.Callbacks.{ Logs, Params, UnresolvedLogs }
 import io.brunk.tfjs.layers.engine.Model
 import io.brunk.tfjs.tf._
 

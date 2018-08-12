@@ -16,9 +16,8 @@
 
 package io.brunk.tfjs.layers.layers
 
-import io.brunk.tfjs.layers.{ LayerVariable, SymbolicTensor }
-import io.brunk.tfjs.layers.Types.{ Kwargs, RegularizerFn, Shape }
-import io.brunk.tfjs.layers.engine.{ Layer, LayerConfig }
+import io.brunk.tfjs.layers.Types.{Kwargs, RegularizerFn, Shape}
+import io.brunk.tfjs.layers.engine.{Layer, LayerConfig, SymbolicTensor}
 import io.brunk.tfjs.layers.layers.Wrappers.BidirectionalMergeMode
 
 import scala.scalajs.js

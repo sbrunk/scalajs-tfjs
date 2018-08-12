@@ -16,7 +16,6 @@
 
 package io.brunk.tfjs.layers.engine
 
-import io.brunk.tfjs.layers.SymbolicTensor
 import io.brunk.tfjs.layers.Types.Kwargs
 
 import scala.scalajs.js
