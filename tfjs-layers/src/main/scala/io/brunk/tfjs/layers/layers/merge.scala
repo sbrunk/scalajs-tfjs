@@ -118,6 +118,7 @@ class Concatenate protected () extends Merge {
   override def mergeFunction(inputs: js.Array[TensorND]): TensorND = js.native
   override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
     js.native
+  override def getConfig(): serialization.ConfigDict                                            = js.native
 }
 
 @js.native

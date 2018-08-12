@@ -114,6 +114,10 @@ class Bidirectional protected () extends Wrapper {
 @JSGlobal
 object Bidirectional extends js.Object {
   var className: String = js.native
+  def fromConfig[T <: serialization.Serializable](
+    cls: serialization.SerializableConstructor[T],
+    config: serialization.ConfigDict
+  ): T = js.native
 }
 
 @js.native

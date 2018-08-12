@@ -65,6 +65,7 @@ trait ModelFitConfig extends js.Object {
   var initialEpoch: Double                    = js.native
   var stepsPerEpoch: Double                   = js.native
   var validationSteps: Double                 = js.native
+  var yieldEvery: String                                     = js.native
 }
 
 object ModelFitConfig {

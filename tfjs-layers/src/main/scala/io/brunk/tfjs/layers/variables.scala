@@ -93,4 +93,8 @@ object Variables extends js.Object {
   def batchGetValue(xs: js.Array[LayerVariable]): js.Array[TensorND]  = js.native
   def batchSetValue(variablesAndValues: js.Array[js.Tuple2[LayerVariable, TensorND]]): Unit =
     js.native
+  def gradients(
+      lossFn: js.Function0[Scalar],
+      variables: js.Array[LayerVariable]
+  ): js.Array[TensorND] = js.native
 }

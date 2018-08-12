@@ -71,6 +71,7 @@ abstract class BaseConv protected () extends Layer {
   protected var bias: LayerVariable                                               = js.native
   def DEFAULT_KERNEL_INITIALIZER: InitializerIdentifier                           = js.native
   def DEFAULT_BIAS_INITIALIZER: InitializerIdentifier                             = js.native
+  override def getConfig(): serialization.ConfigDict             = js.native
 }
 
 @js.native

@@ -34,8 +34,6 @@ object Generic_utils extends js.Object {
   def singletonOrArray[T](xs: js.Array[T]): T | js.Array[T]            = js.native
   def toList(x: js.Any): js.Array[js.Any]                              = js.native
   def objectListUid(objs: js.Any | js.Array[js.Any]): String           = js.native
-  def isArrayOfShapes(x: Shape | js.Array[Shape]): Boolean             = js.native
-  def normalizeShapeList(x: Shape | js.Array[Shape]): js.Array[Shape]  = js.native
   def toSnakeCase(name: String): String                                = js.native
   def toCamelCase(identifier: String): String                          = js.native
   def serializeKerasObject(instance: serialization.Serializable): serialization.ConfigDictValue =
@@ -46,8 +44,6 @@ object Generic_utils extends js.Object {
       customObjects: js.Dictionary[js.Any] = ???,
       printableModuleName: String = ???
   ): js.Dynamic                                                         = js.native
-  def getExactlyOneTensor(xs: TensorND | js.Array[TensorND]): TensorND  = js.native
-  def getExactlyOneShape(shapes: Shape | js.Array[Shape]): Shape        = js.native
   def numberCompare(a: Double, b: Double): Int                          = js.native
   def reverseNumberCompare(a: Double, b: Double): Double                = js.native
   def stringToDType(dtype: String): DataType                            = js.native
@@ -61,6 +57,5 @@ object Generic_utils extends js.Object {
       expectedType: String,
       minLength: Double = ???,
       maxLength: Double = ???
-  ): Boolean                                                         = js.native
-  def countParamsInWeights(weights: js.Array[LayerVariable]): Double = js.native
+  ): Boolean = js.native
 }

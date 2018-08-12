@@ -30,16 +30,9 @@ import io.brunk.tfjs.tf._
 @js.native
 @JSGlobalScope
 object Tfjs_backend extends js.Object {
-  def disposeScalarCache(): Unit                                                  = js.native
   def setBackend(requestedBackend: String): Unit                                  = js.native
   def getBackend(): String                                                        = js.native
-  def getScalar(value: Double, dtype: DataType = ???): Scalar                     = js.native
-  val epsilon: Double                                                             = js.native
   def isBackendSymbolic(): Boolean                                                = js.native
-  def shape(x: TensorND | SymbolicTensor): Shape                                  = js.native
-  def intShape(x: TensorND | SymbolicTensor): js.Array[Double]                    = js.native
-  def ndim(x: TensorND | SymbolicTensor): Double                                  = js.native
-  def dtype(x: TensorND | SymbolicTensor): DataType                               = js.native
   def countParams(x: TensorND | SymbolicTensor): Double                           = js.native
   def cast(x: TensorND, dtype: String): TensorND                                  = js.native
   def expandDims(x: TensorND, axis: Double = ???): TensorND                       = js.native
@@ -53,11 +46,6 @@ object Tfjs_backend extends js.Object {
   def concatenate(tensors: js.Array[TensorND], axis: Double = ???): TensorND = js.native
   def concatAlongFirstAxis(a: TensorND, b: TensorND): TensorND               = js.native
   def tile(x: TensorND, n: Double | js.Array[Double]): TensorND              = js.native
-  def identity(x: TensorND): TensorND                                        = js.native
-  def eyeVariable(size: Double, dtype: DataType = ???, name: String = ???): LayerVariable =
-    js.native
-  def scalarTimesArray(c: Scalar, x: TensorND): TensorND = js.native
-  def scalarPlusArray(c: Scalar, x: TensorND): TensorND  = js.native
   def randomNormal(
       shape: Shape,
       mean: Double = ???,
@@ -67,7 +55,6 @@ object Tfjs_backend extends js.Object {
   ): TensorND                                                 = js.native
   def dot(x: TensorND, y: TensorND): TensorND                 = js.native
   def sign(x: TensorND): TensorND                             = js.native
-  def qr(x: Tensor2D): js.Tuple2[TensorND, TensorND]          = js.native
   def oneHot(indices: TensorND, numClasses: Double): TensorND = js.native
   def gather(
       reference: TensorND,
@@ -85,14 +72,7 @@ object Tfjs_backend extends js.Object {
       noiseShape: js.Array[Double] = ???,
       seed: Double = ???
   ): TensorND                                                = js.native
-  def nameScope[T](name: String, fn: js.Function0[T]): T     = js.native
-  def floatx(): DataType                                     = js.native
-  def getUid(prefix: String = ???): String                   = js.native
   def hardSigmoid(x: TensorND): TensorND                                          = js.native
   def inTrainPhase[T](x: js.Function0[T], alt: js.Function0[T], training: Boolean = ???): T =
     js.native
-  def gradients(
-      lossFn: js.Function0[Scalar],
-      variables: js.Array[LayerVariable]
-  ): js.Array[TensorND] = js.native
 }

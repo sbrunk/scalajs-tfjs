@@ -71,6 +71,32 @@ object InputSpec {
 }
 
 @js.native
+@JSGlobal
+class SymbolicTensor protected () extends js.Object {
+  def this(
+      dtype: DataType,
+      shape: Shape,
+      sourceLayer: Layer,
+      inputs: js.Array[SymbolicTensor],
+      callArgs: Kwargs,
+      name: String = ???,
+      outputTensorIndex: Double = ???
+  ) = this()
+  def dtype: DataType                  = js.native
+  def shape: Shape                     = js.native
+  var sourceLayer: Layer               = js.native
+  def inputs: js.Array[SymbolicTensor] = js.native
+  def callArgs: Kwargs                 = js.native
+  def outputTensorIndex: Double        = js.native
+  def id: Double                       = js.native
+  def name: String                     = js.native
+  def originalName: String             = js.native
+  def rank: Double                     = js.native
+  var nodeIndex: Double                = js.native
+  var tensorIndex: Double              = js.native
+}
+
+@js.native
 trait NodeConfig extends js.Object {
   var outboundLayer: Layer                    = js.native
   var inboundLayers: js.Array[Layer]          = js.native
@@ -189,142 +215,13 @@ object Layer extends js.Object {
 }
 
 @js.native
-trait InputLayerConfig extends js.Object {
-  var inputShape: Shape      = js.native
-  var batchSize: Double      = js.native
-  var batchInputShape: Shape = js.native
-  var dtype: DataType        = js.native
-  var sparse: Boolean        = js.native
-  var name: String           = js.native
-}
-
-@js.native
-@JSGlobal
-class InputLayer protected () extends Layer {
-  def this(config: InputLayerConfig) = this()
-  var sparse: Boolean = js.native
-  // TODO until we have real union types aka dotty, we have to stick with the wider type of the base class
-  // @JSName("apply")
-  //override def apply(inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor], kwargs: Kwargs = ???): TensorND | js.Array[TensorND] | SymbolicTensor = js.native
-  override def getConfig(): serialization.ConfigDict = js.native
-}
-
-@js.native
-@JSGlobal
-object InputLayer extends js.Object {
-  def className: String = js.native
-}
-
-@js.native
-trait InputConfig extends js.Object {
-  var shape: Shape      = js.native
-  var batchShape: Shape = js.native
-  var name: String      = js.native
-  var dtype: DataType   = js.native
-  var sparse: Boolean   = js.native
-}
-
-@js.native
-trait ContainerConfig extends js.Object {
-  var inputs: SymbolicTensor | js.Array[SymbolicTensor]  = js.native
-  var outputs: SymbolicTensor | js.Array[SymbolicTensor] = js.native
-  var name: String                                       = js.native
-}
-
-@js.native
-@JSGlobal
-abstract class Container protected () extends Layer {
-  def this(config: ContainerConfig) = this()
-  var inputs: js.Array[SymbolicTensor]                = js.native
-  var outputs: js.Array[SymbolicTensor]               = js.native
-  var inputLayers: js.Array[Layer]                    = js.native
-  var inputLayersNodeIndices: js.Array[Double]        = js.native
-  var inputLayersTensorIndices: js.Array[Double]      = js.native
-  var outputLayers: js.Array[Layer]                   = js.native
-  var outputLayersNodeIndices: js.Array[Double]       = js.native
-  var outputLayersTensorIndices: js.Array[Double]     = js.native
-  var layers: js.Array[Layer]                         = js.native
-  var layersByDepth: Container.LayersByDepth          = js.native
-  var nodesByDepth: Container.NodesByDepth            = js.native
-  var containerNodes: Set[String]                     = js.native
-  var inputNames: js.Array[String]                    = js.native
-  var outputNames: js.Array[String]                   = js.native
-  var feedInputShapes: js.Array[Shape]                = js.native
-  protected var internalInputShapes: js.Array[Shape]  = js.native
-  protected var internalOutputShapes: js.Array[Shape] = js.native
-  protected var feedInputNames: js.Array[String]      = js.native
-  protected var feedOutputNames: js.Array[String]     = js.native
-  // TODO This is a var in the base class. Unlike TS Scala does not allow to override a var with a def or val in subclasses
-  //def trainableWeights: js.Array[LayerVariable] = js.native
-  //def nonTrainableWeights: js.Array[LayerVariable] = js.native
-  override def weights: js.Array[LayerVariable] = js.native
-  def loadWeights(
-      weightsJSON: JsonDict | NamedTensorMap,
-      skipMismatch: Boolean = ???,
-      isNamedTensorMap: Boolean = ???
-  ): Unit                                                                          = js.native
-  def toJSON(unused: js.Any = ???, returnString: Boolean = ???): String | JsonDict = js.native
-  override def call(
-      inputs: TensorND | js.Array[TensorND],
-      kwargs: Kwargs
-  ): TensorND | js.Array[TensorND] = js.native
-  override def computeMask(
-      inputs: TensorND | js.Array[TensorND],
-      mask: TensorND | js.Array[TensorND] = ???
-  ): TensorND | js.Array[TensorND] = js.native
-  override def computeOutputShape(inputShape: Shape | js.Array[Shape]): Shape | js.Array[Shape] =
-    js.native
-  def runInternalGraph(
-      inputs: js.Array[TensorND],
-      masks: js.Array[TensorND] = ???
-  ): js.Tuple3[js.Array[TensorND], js.Array[TensorND], js.Array[Shape]] = js.native
-  def getLayer(name: String = ???, index: Double = ???): Layer          = js.native
-  override def calculateLosses(): js.Array[Scalar]                      = js.native
-  override def getConfig(): serialization.ConfigDict                    = js.native
-  override def stateful: Boolean                                        = js.native
-}
-
-@js.native
-@JSGlobal
-object Container extends js.Object {
-
-  @js.native
-  trait LayersByDepth extends js.Object {
-    @JSBracketAccess
-    def apply(depth: String): js.Array[Layer] = js.native
-    @JSBracketAccess
-    def update(depth: String, v: js.Array[Layer]): Unit = js.native
-  }
-
-  @js.native
-  trait NodesByDepth extends js.Object {
-    @JSBracketAccess
-    def apply(depth: String): js.Array[Node] = js.native
-    @JSBracketAccess
-    def update(depth: String, v: js.Array[Node]): Unit = js.native
-  }
-  def fromConfig[T <: serialization.Serializable](
-      cls: serialization.SerializableConstructor[T],
-      config: serialization.ConfigDict
-  ): T = js.native
-}
-
-@js.native
 @JSGlobalScope
 object Topology extends js.Object {
   type Op       = js.Function1[LayerVariable, LayerVariable]
   type CallHook = js.Function2[TensorND | js.Array[TensorND], Kwargs, Unit]
-  def Input(config: InputConfig): SymbolicTensor = js.native
   def getSourceInputs(
       tensor: SymbolicTensor,
       layer: Layer = ???,
       nodeIndex: Double = ???
   ): js.Array[SymbolicTensor] = js.native
-  def loadWeightsFromNamedTensorMap(weights: NamedTensorMap, layers: js.Array[Layer]): Unit =
-    js.native
-  def loadWeightsFromJson(
-      weightsJSON: JsonDict,
-      layers: js.Array[Layer],
-      skipMismatch: Boolean = ???
-  ): Unit = js.native
 }

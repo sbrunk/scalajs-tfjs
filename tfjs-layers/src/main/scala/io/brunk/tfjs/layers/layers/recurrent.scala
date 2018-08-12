@@ -67,11 +67,6 @@ class RNN protected () extends Layer {
   //override def computeMask(inputs: TensorND | js.Array[TensorND], mask: TensorND | js.Array[TensorND] = ???): TensorND = js.native
   override def build(inputShape: Shape | js.Array[Shape]): Unit      = js.native
   def resetStates(states: TensorND | js.Array[TensorND] = ???): Unit = js.native
-  def standardizeArgs(
-      inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor],
-      initialState: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor],
-      constants: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor]
-  ): js.Any = js.native
   @JSName("apply")
   override def apply(
       inputs: TensorND | js.Array[TensorND] | SymbolicTensor | js.Array[SymbolicTensor],
